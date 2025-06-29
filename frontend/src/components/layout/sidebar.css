@@ -1,0 +1,437 @@
+/* src/components/common/sidebar.css */
+.relaxplus-sidebar {
+  background: #f5f0e8 !important;
+  border-right: 1px solid #e8ddd4 !important;
+  height: 100vh !important;
+  position: fixed !important;
+  left: 0 !important;
+  top: 0 !important;
+  z-index: 100 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  box-shadow: 2px 0 8px rgba(93, 64, 55, 0.1) !important;
+}
+
+/* Logo Section */
+.sidebar-logo {
+  padding: 32px 24px;
+  text-align: center;
+  border-bottom: 1px solid #e8ddd4;
+  background: #f5f0e8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-svg {
+  width: 60px;
+  height: 60px;
+  transition: all 0.3s ease;
+}
+
+.relaxplus-sidebar.ant-layout-sider-collapsed .logo-svg {
+  width: 40px;
+  height: 40px;
+}
+
+.logo-text {
+  font-size: 24px;
+  font-weight: 700;
+  color: #5d4037;
+  font-family: "Georgia", serif;
+  letter-spacing: -0.5px;
+  margin: 0;
+  transition: all 0.3s ease;
+}
+
+/* Menu Section */
+.sidebar-menu {
+  flex: 1;
+  padding: 24px 0;
+  overflow-y: auto;
+}
+
+.relaxplus-menu {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 16px;
+}
+
+.relaxplus-menu .ant-menu-item {
+  background: transparent !important;
+  border: none !important;
+  margin: 8px 0 !important;
+  border-radius: 12px !important;
+  height: 48px !important;
+  line-height: 48px !important;
+  padding: 0 20px !important;
+  display: flex !important;
+  align-items: center !important;
+  transition: all 0.3s ease !important;
+  color: #5d4037 !important;
+  font-weight: 500 !important;
+  font-size: 16px !important;
+}
+
+.relaxplus-menu .ant-menu-item:hover {
+  background: rgba(93, 64, 55, 0.08) !important;
+  color: #5d4037 !important;
+}
+
+.relaxplus-menu .ant-menu-item-selected {
+  background: #5d4037 !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(93, 64, 55, 0.3) !important;
+}
+
+.relaxplus-menu .ant-menu-item-selected::after {
+  display: none !important;
+}
+
+.relaxplus-menu .ant-menu-item .anticon {
+  font-size: 18px !important;
+  margin-right: 12px !important;
+  transition: all 0.3s ease !important;
+}
+
+.relaxplus-menu .ant-menu-item-selected .anticon {
+  color: #ffffff !important;
+}
+
+/* Collapsed state */
+.relaxplus-sidebar.ant-layout-sider-collapsed .relaxplus-menu .ant-menu-item {
+  padding: 0 !important;
+  justify-content: center !important;
+  text-align: center !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.relaxplus-sidebar.ant-layout-sider-collapsed
+  .relaxplus-menu
+  .ant-menu-item
+  .anticon {
+  margin-right: 0 !important;
+  font-size: 20px !important;
+  margin-left: 0 !important;
+}
+
+.relaxplus-sidebar.ant-layout-sider-collapsed
+  .relaxplus-menu
+  .ant-menu-item
+  .ant-menu-title-content {
+  display: none !important;
+}
+
+/* Ensure proper centering in collapsed state */
+.relaxplus-sidebar.ant-layout-sider-collapsed
+  .relaxplus-menu
+  .ant-menu-item-only-child {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+/* Override Ant Design's default collapsed styles */
+.relaxplus-sidebar.ant-layout-sider-collapsed .ant-menu-inline .ant-menu-item {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  text-align: center !important;
+}
+
+.relaxplus-sidebar.ant-layout-sider-collapsed
+  .ant-menu-inline
+  .ant-menu-item
+  .anticon {
+  margin: 0 auto !important;
+  display: block !important;
+  line-height: 48px !important;
+}
+
+/* Additional fix for icon positioning */
+.relaxplus-sidebar.ant-layout-sider-collapsed
+  .relaxplus-menu
+  .ant-menu-item
+  > span {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+  height: 48px !important;
+}
+
+/* Collapse Button */
+.sidebar-collapse-btn {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 36px;
+  background: #5d4037;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(93, 64, 55, 0.3);
+}
+
+.sidebar-collapse-btn:hover {
+  background: #4a2c20;
+  transform: translateX(-50%) scale(1.1);
+}
+
+.sidebar-collapse-btn .anticon {
+  color: #ffffff;
+  font-size: 14px;
+}
+
+/* src/components/common/layout.css */
+.relaxplus-layout {
+  min-height: 100vh !important;
+  background: #fafafa !important;
+}
+
+.relaxplus-layout .ant-layout {
+  margin-left: 280px !important;
+  transition: margin-left 0.3s ease !important;
+}
+
+.relaxplus-layout .ant-layout-sider-collapsed + .ant-layout {
+  margin-left: 80px !important;
+}
+
+/* Header Styles */
+.relaxplus-header {
+  background: #ffffff !important;
+  padding: 0 32px !important;
+  height: 72px !important;
+  line-height: 72px !important;
+  border-bottom: 1px solid #f0f0f0 !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08) !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 99 !important;
+}
+
+.header-left {
+  flex: 1;
+}
+
+.header-title {
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  color: #5d4037 !important;
+  margin: 0 !important;
+}
+
+.header-right {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.header-notification-btn {
+  color: #5d4037 !important;
+  border-radius: 8px !important;
+}
+
+.header-notification-btn:hover {
+  background: rgba(93, 64, 55, 0.08) !important;
+  color: #5d4037 !important;
+}
+
+.header-user-profile {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  cursor: pointer !important;
+  padding: 8px 12px !important;
+  border-radius: 12px !important;
+  transition: all 0.3s ease !important;
+}
+
+.header-user-profile:hover {
+  background: rgba(93, 64, 55, 0.08) !important;
+}
+
+.user-avatar {
+  background: #5d4037 !important;
+  width: 40px !important;
+  height: 40px !important;
+}
+
+.user-info {
+  text-align: left;
+  line-height: 1.2;
+}
+
+.user-name {
+  font-weight: 600;
+  color: #5d4037;
+  font-size: 14px;
+}
+
+.user-email {
+  font-size: 12px;
+  color: #8a8a8a;
+}
+
+/* Content Area */
+.relaxplus-content {
+  margin: 24px !important;
+  padding: 32px !important;
+  background: #ffffff !important;
+  border-radius: 16px !important;
+  box-shadow: 0 2px 12px rgba(93, 64, 55, 0.08) !important;
+  min-height: calc(100vh - 120px) !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .relaxplus-layout .ant-layout {
+    margin-left: 0 !important;
+  }
+
+  .relaxplus-sidebar {
+    transform: translateX(-100%) !important;
+    transition: transform 0.3s ease !important;
+  }
+
+  .relaxplus-sidebar.mobile-open {
+    transform: translateX(0) !important;
+  }
+
+  .relaxplus-content {
+    margin: 12px !important;
+    padding: 20px !important;
+  }
+
+  .header-title {
+    font-size: 16px !important;
+  }
+
+  .user-info {
+    display: none !important;
+  }
+}
+
+/* Custom Scrollbar for Sidebar */
+.sidebar-menu::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar-menu::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar-menu::-webkit-scrollbar-thumb {
+  background: rgba(93, 64, 55, 0.2);
+  border-radius: 2px;
+}
+
+.sidebar-menu::-webkit-scrollbar-thumb:hover {
+  background: rgba(93, 64, 55, 0.4);
+}
+
+/* Animation Classes */
+.fade-in-up {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.3s ease-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Force center alignment for collapsed sidebar - Final Fix */
+.relaxplus-sidebar.ant-layout-sider-collapsed .ant-menu-item,
+.relaxplus-sidebar.ant-layout-sider-collapsed .ant-menu-item-selected {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  text-align: center !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.relaxplus-sidebar.ant-layout-sider-collapsed .ant-menu-item .anticon,
+.relaxplus-sidebar.ant-layout-sider-collapsed .ant-menu-item-selected .anticon {
+  margin: 0 !important;
+  font-size: 20px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 20px !important;
+  height: 20px !important;
+}
+
+/* Hide text content completely in collapsed state */
+.relaxplus-sidebar.ant-layout-sider-collapsed .ant-menu-item > span:last-child,
+.relaxplus-sidebar.ant-layout-sider-collapsed
+  .ant-menu-item-selected
+  > span:last-child {
+  display: none !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Tooltip for collapsed menu items */
+.relaxplus-sidebar.ant-layout-sider-collapsed .ant-menu-item {
+  position: relative;
+}
+
+.relaxplus-sidebar.ant-layout-sider-collapsed .ant-menu-item::after {
+  content: none !important;
+}
+.relaxplus-menu .ant-menu-item:focus,
+.relaxplus-menu .ant-menu-item:active {
+  background: rgba(93, 64, 55, 0.12) !important;
+}
+
+.header-notification-btn:focus,
+.header-notification-btn:active {
+  background: rgba(93, 64, 55, 0.12) !important;
+  border-color: transparent !important;
+}
+
+/* Badge Customization */
+.ant-badge-count {
+  background: #ff6b6b !important;
+  border-color: #ff6b6b !important;
+  box-shadow: 0 2px 4px rgba(255, 107, 107, 0.4) !important;
+}

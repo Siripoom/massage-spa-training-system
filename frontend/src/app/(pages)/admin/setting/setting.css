@@ -1,0 +1,259 @@
+/* src/app/(pages)/(admin)/setting/setting.css */
+
+/* Tab customization */
+.ant-tabs {
+  border: 1px solid #f0f0f0 !important;
+}
+
+.ant-tabs-tab {
+  padding: 12px 24px !important;
+  font-weight: 500 !important;
+  border-radius: 8px 8px 0 0 !important;
+}
+
+.ant-tabs-tab.ant-tabs-tab-active {
+  background: #f8fafc !important;
+}
+
+.ant-tabs-content-holder {
+  padding: 0 !important;
+}
+
+.ant-tabs-tabpane {
+  padding: 24px !important;
+}
+
+/* Card customization for settings */
+.setting-card {
+  border-radius: 12px !important;
+  border: 1px solid #f1f5f9 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  margin-bottom: 24px !important;
+}
+
+.setting-card .ant-card-head {
+  border-bottom: 1px solid #f1f5f9 !important;
+  background: #fafbfc !important;
+  border-radius: 12px 12px 0 0 !important;
+}
+
+.setting-card .ant-card-head-title {
+  font-weight: 600 !important;
+  color: #334155 !important;
+}
+
+.setting-card .ant-card-body {
+  padding: 24px !important;
+}
+
+/* Color picker customization */
+.ant-color-picker {
+  border-radius: 8px !important;
+  border: 2px solid #e2e8f0 !important;
+  transition: all 0.3s ease !important;
+}
+
+.ant-color-picker:hover {
+  border-color: #1890ff !important;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.1) !important;
+}
+
+/* Input number customization */
+.ant-input-number {
+  border-radius: 8px !important;
+  border: 2px solid #e2e8f0 !important;
+  transition: all 0.3s ease !important;
+}
+
+.ant-input-number:hover {
+  border-color: #1890ff !important;
+}
+
+.ant-input-number:focus,
+.ant-input-number-focused {
+  border-color: #1890ff !important;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.1) !important;
+}
+
+/* Select customization */
+.ant-select {
+  border-radius: 8px !important;
+}
+
+.ant-select .ant-select-selector {
+  border: 2px solid #e2e8f0 !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+}
+
+.ant-select:hover .ant-select-selector {
+  border-color: #1890ff !important;
+}
+
+.ant-select-focused .ant-select-selector {
+  border-color: #1890ff !important;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.1) !important;
+}
+
+/* Preview section styling */
+.theme-preview {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.theme-preview::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 49%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 51%
+  );
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Section spacing */
+.space-y-4 > * + * {
+  margin-top: 16px !important;
+}
+
+.space-y-6 > * + * {
+  margin-top: 24px !important;
+}
+
+/* Button styling */
+.ant-btn {
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+}
+
+.ant-btn-primary {
+  background: #1890ff !important;
+  border-color: #1890ff !important;
+  box-shadow: 0 2px 4px rgba(24, 144, 255, 0.2) !important;
+}
+
+.ant-btn-primary:hover {
+  background: #096dd9 !important;
+  border-color: #096dd9 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(24, 144, 255, 0.3) !important;
+}
+
+.ant-btn-default {
+  border: 2px solid #e2e8f0 !important;
+}
+
+.ant-btn-default:hover {
+  border-color: #1890ff !important;
+  color: #1890ff !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Divider styling */
+.ant-divider {
+  border-color: #f1f5f9 !important;
+  margin: 24px 0 !important;
+}
+
+/* Typography improvements */
+.ant-typography {
+  color: #334155 !important;
+}
+
+.ant-typography-caption {
+  color: #64748b !important;
+  font-size: 13px !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .ant-tabs-tabpane {
+    padding: 16px !important;
+  }
+
+  .setting-card .ant-card-body {
+    padding: 16px !important;
+  }
+
+  .ant-tabs-tab {
+    padding: 8px 16px !important;
+    font-size: 14px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .ant-col {
+    margin-bottom: 16px;
+  }
+
+  .theme-preview {
+    padding: 16px !important;
+  }
+}
+
+/* Animation for theme changes */
+.theme-transition {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Focus ring for accessibility */
+.ant-color-picker:focus-visible,
+.ant-input-number:focus-visible,
+.ant-select:focus-visible {
+  outline: 2px solid #1890ff !important;
+  outline-offset: 2px !important;
+}
+
+/* Loading state */
+.ant-btn-loading {
+  pointer-events: none !important;
+}
+
+.ant-btn-loading::before {
+  background: rgba(255, 255, 255, 0.35) !important;
+}
+
+/* Icon styling within cards */
+.setting-card .anticon {
+  font-size: 18px !important;
+  vertical-align: middle !important;
+}
+
+/* Preview card specific styling */
+.preview-card {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%) !important;
+  border: 2px dashed #cbd5e1 !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.preview-card::after {
+  content: "PREVIEW" !important;
+  position: absolute !important;
+  top: 8px !important;
+  right: 8px !important;
+  background: rgba(24, 144, 255, 0.1) !important;
+  color: #1890ff !important;
+  padding: 4px 8px !important;
+  border-radius: 4px !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px !important;
+}

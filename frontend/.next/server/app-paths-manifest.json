@@ -1,0 +1,8 @@
+{
+  "/(pages)/admin/courses/page": "app/(pages)/admin/courses/page.js",
+  "/(pages)/admin/dashboard/page": "app/(pages)/admin/dashboard/page.js",
+  "/(pages)/admin/setting/page": "app/(pages)/admin/setting/page.js",
+  "/(pages)/admin/users/page": "app/(pages)/admin/users/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/page": "app/page.js"
+}

@@ -1,0 +1,507 @@
+.dashboard-action-btn {
+  background: #1890ff !important;
+  border-color: #1890ff !important;
+  border-radius: 8px !important;
+  height: 40px !important;
+  padding: 0 24px !important;
+  font-weight: 500 !important;
+}
+
+.dashboard-action-btn:hover {
+  background: #096dd9 !important;
+  border-color: #096dd9 !important;
+}
+
+.card-action-btn {
+  color: #1890ff !important;
+  font-weight: 500 !important;
+}
+
+.card-action-btn:hover {
+  color: #096dd9 !important;
+}
+
+/* Update stat card colors */
+.stat-icon {
+  font-size: 32px;
+  padding: 16px;
+  background: rgba(24, 144, 255, 0.08);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 64px;
+  height: 64px;
+}
+
+/* Update chart colors */
+.course-progress-item {
+  padding: 0;
+}
+
+.course-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.course-info {
+  flex: 1;
+}
+
+.course-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+.course-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.course-students {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.course-percentage {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+} /* src/app/(pages)/(admin)/dashboard/dashboard.css */
+
+.dashboard-container {
+  padding: 0;
+  background: transparent;
+}
+
+/* Dashboard Header */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.dashboard-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #5d4037;
+  margin: 0 0 8px 0;
+  font-family: "Georgia", serif;
+}
+
+.dashboard-subtitle {
+  font-size: 16px;
+  color: #8a8a8a;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.dashboard-action-btn {
+  background: #5d4037 !important;
+  border-color: #5d4037 !important;
+  border-radius: 8px !important;
+  height: 40px !important;
+  padding: 0 24px !important;
+  font-weight: 500 !important;
+}
+
+.dashboard-action-btn:hover {
+  background: #4a2c20 !important;
+  border-color: #4a2c20 !important;
+}
+
+/* Statistics Row */
+.stats-row {
+  margin-bottom: 32px;
+}
+
+.stat-card {
+  border: none !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 20px rgba(93, 64, 55, 0.08) !important;
+  transition: all 0.3s ease !important;
+  overflow: hidden !important;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 8px 30px rgba(93, 64, 55, 0.15) !important;
+}
+
+.stat-card .ant-card-body {
+  padding: 24px !important;
+}
+
+.stat-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.stat-icon {
+  font-size: 32px;
+  padding: 16px;
+  background: rgba(93, 64, 55, 0.08);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 64px;
+  height: 64px;
+}
+
+.stat-details {
+  flex: 1;
+}
+
+.stat-value {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.stat-title {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.stat-trend {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.trend-up {
+  color: #52c41a;
+}
+
+.trend-down {
+  color: #ff4d4f;
+}
+
+/* Content Row */
+.content-row {
+  margin-bottom: 32px;
+}
+
+.content-card {
+  border: none !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 20px rgba(93, 64, 55, 0.08) !important;
+  height: 100% !important;
+}
+
+.content-card .ant-card-head {
+  border-bottom: 1px solid #f5f5f5 !important;
+  padding: 0 24px !important;
+}
+
+.content-card .ant-card-head-title {
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  color: #5d4037 !important;
+  padding: 20px 0 !important;
+}
+
+.content-card .ant-card-body {
+  padding: 24px !important;
+}
+
+.card-action-btn {
+  color: #5d4037 !important;
+  font-weight: 500 !important;
+}
+
+.card-action-btn:hover {
+  color: #4a2c20 !important;
+}
+
+/* Course Progress */
+.course-progress-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.course-progress-item {
+  padding: 0;
+}
+
+.course-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.course-info {
+  flex: 1;
+}
+
+.course-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+.course-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.course-students {
+  font-size: 14px;
+  color: #666;
+}
+
+.course-percentage {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.course-progress-bar .ant-progress-bg {
+  border-radius: 4px !important;
+}
+
+/* Activity List */
+.activity-list .ant-list-item {
+  padding: 16px 0 !important;
+  border-bottom: 1px solid #f5f5f5 !important;
+}
+
+.activity-list .ant-list-item:last-child {
+  border-bottom: none !important;
+}
+
+.activity-item {
+  transition: all 0.2s ease;
+}
+
+.activity-item:hover {
+  background: rgba(93, 64, 55, 0.02);
+  border-radius: 8px;
+  margin: 0 -12px;
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+}
+
+.activity-avatar {
+  width: 40px !important;
+  height: 40px !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+}
+
+.activity-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.activity-description {
+  margin-top: 4px;
+}
+
+.activity-text {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+
+.activity-time {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: #999;
+}
+
+.time-icon {
+  font-size: 11px;
+}
+
+/* Exam List */
+.exam-list .ant-list-item {
+  padding: 20px 0 !important;
+  border-bottom: 1px solid #f5f5f5 !important;
+}
+
+.exam-list .ant-list-item:last-child {
+  border-bottom: none !important;
+}
+
+.exam-item {
+  transition: all 0.2s ease;
+}
+
+.exam-item:hover {
+  background: rgba(93, 64, 55, 0.02);
+  border-radius: 8px;
+  margin: 0 -16px;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+}
+
+.exam-icon {
+  font-size: 24px;
+  color: #5d4037;
+  background: rgba(93, 64, 55, 0.08);
+  padding: 12px;
+  border-radius: 8px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exam-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.exam-course-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  flex: 1;
+  margin-right: 16px;
+}
+
+.exam-tags {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.exam-details {
+  display: flex;
+  gap: 24px;
+  color: #666;
+  font-size: 14px;
+}
+
+.exam-date,
+.exam-time,
+.exam-students {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+.exam-action-btn {
+  color: #5d4037 !important;
+  font-weight: 500 !important;
+  padding: 0 !important;
+  height: auto !important;
+}
+
+.exam-action-btn:hover {
+  color: #4a2c20 !important;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .dashboard-header {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  .course-progress-list {
+    gap: 20px;
+  }
+
+  .exam-header {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .exam-course-name {
+    margin-right: 0;
+  }
+
+  .exam-details {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-title {
+    font-size: 24px;
+  }
+
+  .dashboard-subtitle {
+    font-size: 14px;
+  }
+
+  .stat-content {
+    gap: 12px;
+  }
+
+  .stat-icon {
+    min-width: 48px;
+    height: 48px;
+    font-size: 24px;
+    padding: 12px;
+  }
+
+  .stat-value {
+    font-size: 22px;
+  }
+
+  .course-header {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .course-percentage {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 576px) {
+  .stats-row {
+    margin-bottom: 24px;
+  }
+
+  .content-card .ant-card-body {
+    padding: 16px !important;
+  }
+
+  .course-progress-list {
+    gap: 16px;
+  }
+
+  .activity-item:hover,
+  .exam-item:hover {
+    margin: 0 -8px;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+}
