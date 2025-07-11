@@ -1983,7 +1983,7 @@ function SettingPage() {
         columnNumber: 5
     }, this);
 }
-_s(SettingPage, "LHIak2mmwMoz8m2KNXIDk21NDsU=", false, function() {
+_s(SettingPage, "llHsUvyyKm9/jtCRv2GGx/npK7w=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$useThemeSettings$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useThemeSettings"]
     ];

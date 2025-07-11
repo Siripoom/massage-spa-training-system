@@ -256,7 +256,7 @@ export default function AdminDashboard() {
                     percent={course.progress}
                     strokeColor={course.color}
                     trailColor="#f5f5f5"
-                    strokeWidth={8}
+                    size={8}
                     className="course-progress-bar"
                   />
                 </div>
