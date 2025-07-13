@@ -31,6 +31,7 @@ export default function StudentPage() {
 
   const [isDetailModalVisible, setIsDetailModalVisible] = useState(false);
   const [viewingStudent, setViewingStudent] = useState<Student | null>(null);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const [students, setStudents] = useState<Student[]>([
     {
@@ -62,6 +63,14 @@ export default function StudentPage() {
       status: 'ACTIVE',
     },
   ]);
+
+
+  const filteredStudents = students.filter(students =>
+    students.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    students.course.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    students.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    students.status.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   const columns = [
     {
@@ -197,6 +206,8 @@ export default function StudentPage() {
           placeholder="Search"
           prefix={<SearchOutlined className="text-gray-400" />}
           className="w-80 rounded-lg shadow-sm table-search-input"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
         <Button
           type="primary"
@@ -210,7 +221,7 @@ export default function StudentPage() {
 
       <Table
         columns={columns}
-        dataSource={students}
+        dataSource={filteredStudents}
         className="rounded-xl shadow-custom-light"
         pagination={{ pageSize: 10 }}
         bordered={false}

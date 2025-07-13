@@ -41,6 +41,7 @@ function CoursePage() {
     const [form] = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].useForm();
     const [isDetailModalVisible, setIsDetailModalVisible] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [viewingCourse, setViewingCourse] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [searchTerm, setSearchTerm] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('');
     const [courses, setCourses] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([
         {
             key: '1',
@@ -88,6 +89,7 @@ function CoursePage() {
             description: 'เรียนรู้เทคนิคการดูแลผิวหน้าและการใช้ผลิตภัณฑ์ที่เหมาะสม'
         }
     ]);
+    const filteredCourses = courses.filter((courses)=>courses.title.toLowerCase().includes(searchTerm.toLowerCase()) || courses.organization.toLowerCase().includes(searchTerm.toLowerCase()) || courses.status.toLowerCase().includes(searchTerm.toLowerCase()));
     const columns = [
         {
             title: '#',
@@ -132,7 +134,7 @@ function CoursePage() {
                     children: status
                 }, void 0, false, {
                     fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                    lineNumber: 126,
+                    lineNumber: 133,
                     columnNumber: 9
                 }, this),
             className: 'text-center'
@@ -146,33 +148,33 @@ function CoursePage() {
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
                             icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$EyeOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__EyeOutlined$3e$__["EyeOutlined"], {}, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                                lineNumber: 138,
+                                lineNumber: 145,
                                 columnNumber: 19
                             }, void 0),
                             onClick: ()=>handleView(record),
                             className: "text-gray-500 border-none shadow-none hover:bg-gray-50"
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                            lineNumber: 137,
+                            lineNumber: 144,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
                             icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$EditOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__EditOutlined$3e$__["EditOutlined"], {}, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                                lineNumber: 142,
+                                lineNumber: 149,
                                 columnNumber: 25
                             }, void 0),
                             onClick: ()=>handleEdit(record),
                             className: "text-blue-500 border-none shadow-none hover:bg-blue-50"
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                            lineNumber: 142,
+                            lineNumber: 149,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
                             icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$DeleteOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__DeleteOutlined$3e$__["DeleteOutlined"], {}, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                                lineNumber: 144,
+                                lineNumber: 151,
                                 columnNumber: 19
                             }, void 0),
                             danger: true,
@@ -180,13 +182,13 @@ function CoursePage() {
                             className: "text-red-500 border-none shadow-none hover:bg-red-50"
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                            lineNumber: 143,
+                            lineNumber: 150,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                    lineNumber: 136,
+                    lineNumber: 143,
                     columnNumber: 9
                 }, this)
         }
@@ -255,11 +257,11 @@ function CoursePage() {
                 children: "Course"
             }, void 0, false, {
                 fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                lineNumber: 220,
+                lineNumber: 227,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "flex justify-between items-center mb-6",
+                className: "flex justify-between gap-50 items-center mb-6",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$input$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Input$3e$__["Input"], {
                         placeholder: "Search",
@@ -267,13 +269,15 @@ function CoursePage() {
                             className: "text-gray-400"
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                            lineNumber: 224,
+                            lineNumber: 231,
                             columnNumber: 19
                         }, void 0),
-                        className: "w-80 rounded-lg shadow-sm table-search-input"
+                        className: "w-10 rounded-lg shadow-sm table-search-input",
+                        value: searchTerm,
+                        onChange: (e)=>setSearchTerm(e.target.value)
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                        lineNumber: 222,
+                        lineNumber: 229,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
@@ -281,25 +285,25 @@ function CoursePage() {
                         onClick: handleAdd,
                         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$PlusOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__PlusOutlined$3e$__["PlusOutlined"], {}, void 0, false, {
                             fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                            lineNumber: 230,
+                            lineNumber: 239,
                             columnNumber: 17
                         }, void 0),
                         className: "bg-orange-500 hover:bg-orange-600 text-white rounded-lg shadow-md px-6 py-3 text-base",
                         children: "เพิ่ม"
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                        lineNumber: 227,
+                        lineNumber: 236,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                lineNumber: 221,
+                lineNumber: 228,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$table$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Table$3e$__["Table"], {
                 columns: columns,
-                dataSource: courses,
+                dataSource: filteredCourses,
                 className: "rounded-xl shadow-custom-light mt-2",
                 pagination: {
                     pageSize: 10
@@ -307,7 +311,7 @@ function CoursePage() {
                 bordered: false
             }, void 0, false, {
                 fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                lineNumber: 237,
+                lineNumber: 246,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$modal$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Modal$3e$__["Modal"], {
@@ -330,7 +334,7 @@ function CoursePage() {
                                 children: "ชื่อหลักสูตร"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                                lineNumber: 261,
+                                lineNumber: 270,
                                 columnNumber: 20
                             }, void 0),
                             rules: [
@@ -344,12 +348,12 @@ function CoursePage() {
                                 className: "rounded-lg"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                                lineNumber: 264,
+                                lineNumber: 273,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                            lineNumber: 259,
+                            lineNumber: 268,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
@@ -359,7 +363,7 @@ function CoursePage() {
                                 children: "องค์กร"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                                lineNumber: 268,
+                                lineNumber: 277,
                                 columnNumber: 20
                             }, void 0),
                             rules: [
@@ -373,12 +377,12 @@ function CoursePage() {
                                 className: "rounded-lg"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                                lineNumber: 271,
+                                lineNumber: 280,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                            lineNumber: 266,
+                            lineNumber: 275,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
@@ -388,7 +392,7 @@ function CoursePage() {
                                 children: "ราคา"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                                lineNumber: 275,
+                                lineNumber: 284,
                                 columnNumber: 20
                             }, void 0),
                             rules: [
@@ -405,12 +409,12 @@ function CoursePage() {
                                 className: "rounded-lg"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                                lineNumber: 278,
+                                lineNumber: 287,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                            lineNumber: 273,
+                            lineNumber: 282,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
@@ -420,7 +424,7 @@ function CoursePage() {
                                 children: "จำนวนนักเรียนที่ลงทะเบียน"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                                lineNumber: 282,
+                                lineNumber: 291,
                                 columnNumber: 20
                             }, void 0),
                             rules: [
@@ -437,12 +441,12 @@ function CoursePage() {
                                 className: "rounded-lg"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                                lineNumber: 285,
+                                lineNumber: 294,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                            lineNumber: 280,
+                            lineNumber: 289,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
@@ -452,7 +456,7 @@ function CoursePage() {
                                 children: "สถานะ"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                                lineNumber: 289,
+                                lineNumber: 298,
                                 columnNumber: 20
                             }, void 0),
                             rules: [
@@ -470,7 +474,7 @@ function CoursePage() {
                                         children: "ACTIVE"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                                        lineNumber: 293,
+                                        lineNumber: 302,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Option, {
@@ -478,18 +482,18 @@ function CoursePage() {
                                         children: "INACTIVE"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                                        lineNumber: 294,
+                                        lineNumber: 303,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                                lineNumber: 292,
+                                lineNumber: 301,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                            lineNumber: 287,
+                            lineNumber: 296,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
@@ -499,7 +503,7 @@ function CoursePage() {
                                 children: "คำอธิบาย"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                                lineNumber: 299,
+                                lineNumber: 308,
                                 columnNumber: 20
                             }, void 0),
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$input$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Input$3e$__["Input"].TextArea, {
@@ -508,23 +512,23 @@ function CoursePage() {
                                 className: "rounded-lg"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                                lineNumber: 301,
+                                lineNumber: 310,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                            lineNumber: 297,
+                            lineNumber: 306,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                    lineNumber: 253,
+                    lineNumber: 262,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                lineNumber: 245,
+                lineNumber: 254,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$modal$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Modal$3e$__["Modal"], {
@@ -545,7 +549,7 @@ function CoursePage() {
                                     children: "ชื่อหลักสูตร:"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                                    lineNumber: 316,
+                                    lineNumber: 325,
                                     columnNumber: 33
                                 }, this),
                                 " ",
@@ -553,7 +557,7 @@ function CoursePage() {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                            lineNumber: 316,
+                            lineNumber: 325,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -564,7 +568,7 @@ function CoursePage() {
                                     children: "องค์กร:"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                                    lineNumber: 317,
+                                    lineNumber: 326,
                                     columnNumber: 33
                                 }, this),
                                 " ",
@@ -572,7 +576,7 @@ function CoursePage() {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                            lineNumber: 317,
+                            lineNumber: 326,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -583,7 +587,7 @@ function CoursePage() {
                                     children: "ราคา:"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                                    lineNumber: 318,
+                                    lineNumber: 327,
                                     columnNumber: 33
                                 }, this),
                                 " ",
@@ -592,7 +596,7 @@ function CoursePage() {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                            lineNumber: 318,
+                            lineNumber: 327,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -603,7 +607,7 @@ function CoursePage() {
                                     children: "จำนวนนักเรียนที่ลงทะเบียน:"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                                    lineNumber: 319,
+                                    lineNumber: 328,
                                     columnNumber: 33
                                 }, this),
                                 " ",
@@ -611,7 +615,7 @@ function CoursePage() {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                            lineNumber: 319,
+                            lineNumber: 328,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -622,7 +626,7 @@ function CoursePage() {
                                     children: "สถานะ:"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                                    lineNumber: 320,
+                                    lineNumber: 329,
                                     columnNumber: 33
                                 }, this),
                                 " ",
@@ -631,13 +635,13 @@ function CoursePage() {
                                     children: viewingCourse.status
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                                    lineNumber: 320,
+                                    lineNumber: 329,
                                     columnNumber: 60
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                            lineNumber: 320,
+                            lineNumber: 329,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -648,7 +652,7 @@ function CoursePage() {
                                     children: "คำอธิบาย:"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                                    lineNumber: 321,
+                                    lineNumber: 330,
                                     columnNumber: 33
                                 }, this),
                                 " ",
@@ -656,24 +660,24 @@ function CoursePage() {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                            lineNumber: 321,
+                            lineNumber: 330,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                    lineNumber: 315,
+                    lineNumber: 324,
                     columnNumber: 11
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                     children: "ไม่พบข้อมูล"
                 }, void 0, false, {
                     fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                    lineNumber: 324,
+                    lineNumber: 333,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/(pages)/admin/courses/page.tsx",
-                lineNumber: 306,
+                lineNumber: 315,
                 columnNumber: 7
             }, this)
         ]

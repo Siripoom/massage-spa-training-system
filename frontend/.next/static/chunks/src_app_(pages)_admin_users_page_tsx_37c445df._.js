@@ -43,6 +43,7 @@ function StudentPage() {
     const [form] = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].useForm();
     const [isDetailModalVisible, setIsDetailModalVisible] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [viewingStudent, setViewingStudent] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [searchTerm, setSearchTerm] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('');
     const [students, setStudents] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([
         {
             key: '1',
@@ -73,6 +74,7 @@ function StudentPage() {
             status: 'ACTIVE'
         }
     ]);
+    const filteredStudents = students.filter((students)=>students.name.toLowerCase().includes(searchTerm.toLowerCase()) || students.course.toLowerCase().includes(searchTerm.toLowerCase()) || students.email.toLowerCase().includes(searchTerm.toLowerCase()) || students.status.toLowerCase().includes(searchTerm.toLowerCase()));
     const columns = [
         {
             title: '#',
@@ -110,7 +112,7 @@ function StudentPage() {
                     children: status
                 }, void 0, false, {
                     fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                    lineNumber: 98,
+                    lineNumber: 107,
                     columnNumber: 9
                 }, this),
             className: 'text-center'
@@ -124,33 +126,33 @@ function StudentPage() {
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
                             icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$EyeOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__EyeOutlined$3e$__["EyeOutlined"], {}, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                                lineNumber: 110,
+                                lineNumber: 119,
                                 columnNumber: 19
                             }, void 0),
                             onClick: ()=>handleView(record),
                             className: "text-gray-500 border-none shadow-none hover:bg-gray-50"
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                            lineNumber: 109,
+                            lineNumber: 118,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
                             icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$EditOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__EditOutlined$3e$__["EditOutlined"], {}, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                                lineNumber: 114,
+                                lineNumber: 123,
                                 columnNumber: 25
                             }, void 0),
                             onClick: ()=>handleEdit(record),
                             className: "text-blue-500 border-none shadow-none hover:bg-blue-50"
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                            lineNumber: 114,
+                            lineNumber: 123,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
                             icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$DeleteOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__DeleteOutlined$3e$__["DeleteOutlined"], {}, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                                lineNumber: 117,
+                                lineNumber: 126,
                                 columnNumber: 19
                             }, void 0),
                             danger: true,
@@ -158,13 +160,13 @@ function StudentPage() {
                             className: "text-red-500 border-none shadow-none hover:bg-red-50"
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                            lineNumber: 116,
+                            lineNumber: 125,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                    lineNumber: 108,
+                    lineNumber: 117,
                     columnNumber: 9
                 }, this)
         }
@@ -234,7 +236,7 @@ function StudentPage() {
                 children: "Student"
             }, void 0, false, {
                 fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                lineNumber: 194,
+                lineNumber: 203,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -246,13 +248,15 @@ function StudentPage() {
                             className: "text-gray-400"
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                            lineNumber: 198,
+                            lineNumber: 207,
                             columnNumber: 19
                         }, void 0),
-                        className: "w-80 rounded-lg shadow-sm table-search-input"
+                        className: "w-80 rounded-lg shadow-sm table-search-input",
+                        value: searchTerm,
+                        onChange: (e)=>setSearchTerm(e.target.value)
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                        lineNumber: 196,
+                        lineNumber: 205,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
@@ -260,25 +264,25 @@ function StudentPage() {
                         onClick: handleAdd,
                         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$PlusOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__PlusOutlined$3e$__["PlusOutlined"], {}, void 0, false, {
                             fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                            lineNumber: 204,
+                            lineNumber: 215,
                             columnNumber: 17
                         }, void 0),
                         className: "bg-orange-500 hover:bg-orange-600 text-white rounded-lg shadow-md px-6 py-3 text-base",
                         children: "เพิ่ม"
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                        lineNumber: 201,
+                        lineNumber: 212,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                lineNumber: 195,
+                lineNumber: 204,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$table$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Table$3e$__["Table"], {
                 columns: columns,
-                dataSource: students,
+                dataSource: filteredStudents,
                 className: "rounded-xl shadow-custom-light",
                 pagination: {
                     pageSize: 10
@@ -286,7 +290,7 @@ function StudentPage() {
                 bordered: false
             }, void 0, false, {
                 fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                lineNumber: 211,
+                lineNumber: 222,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$modal$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Modal$3e$__["Modal"], {
@@ -309,7 +313,7 @@ function StudentPage() {
                                 children: "ชื่อนักเรียน"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                                lineNumber: 235,
+                                lineNumber: 246,
                                 columnNumber: 20
                             }, void 0),
                             rules: [
@@ -323,12 +327,12 @@ function StudentPage() {
                                 className: "rounded-lg"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                                lineNumber: 238,
+                                lineNumber: 249,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                            lineNumber: 233,
+                            lineNumber: 244,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
@@ -338,7 +342,7 @@ function StudentPage() {
                                 children: "อีเมล"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                                lineNumber: 242,
+                                lineNumber: 253,
                                 columnNumber: 20
                             }, void 0),
                             rules: [
@@ -353,12 +357,12 @@ function StudentPage() {
                                 className: "rounded-lg"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                                lineNumber: 245,
+                                lineNumber: 256,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                            lineNumber: 240,
+                            lineNumber: 251,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
@@ -368,7 +372,7 @@ function StudentPage() {
                                 children: "หลักสูตร"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                                lineNumber: 249,
+                                lineNumber: 260,
                                 columnNumber: 20
                             }, void 0),
                             rules: [
@@ -382,12 +386,12 @@ function StudentPage() {
                                 className: "rounded-lg"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                                lineNumber: 252,
+                                lineNumber: 263,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                            lineNumber: 247,
+                            lineNumber: 258,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
@@ -397,7 +401,7 @@ function StudentPage() {
                                 children: "สถานะ"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                                lineNumber: 256,
+                                lineNumber: 267,
                                 columnNumber: 20
                             }, void 0),
                             rules: [
@@ -415,7 +419,7 @@ function StudentPage() {
                                         children: "ACTIVE"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                                        lineNumber: 260,
+                                        lineNumber: 271,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Option, {
@@ -423,29 +427,29 @@ function StudentPage() {
                                         children: "INACTIVE"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                                        lineNumber: 261,
+                                        lineNumber: 272,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                                lineNumber: 259,
+                                lineNumber: 270,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                            lineNumber: 254,
+                            lineNumber: 265,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                    lineNumber: 227,
+                    lineNumber: 238,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                lineNumber: 219,
+                lineNumber: 230,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$modal$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Modal$3e$__["Modal"], {
@@ -466,7 +470,7 @@ function StudentPage() {
                                     children: "ชื่อนักเรียน:"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                                    lineNumber: 277,
+                                    lineNumber: 288,
                                     columnNumber: 33
                                 }, this),
                                 " ",
@@ -474,7 +478,7 @@ function StudentPage() {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                            lineNumber: 277,
+                            lineNumber: 288,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -485,7 +489,7 @@ function StudentPage() {
                                     children: "อีเมล:"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                                    lineNumber: 278,
+                                    lineNumber: 289,
                                     columnNumber: 33
                                 }, this),
                                 " ",
@@ -493,7 +497,7 @@ function StudentPage() {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                            lineNumber: 278,
+                            lineNumber: 289,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -504,7 +508,7 @@ function StudentPage() {
                                     children: "หลักสูตร:"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                                    lineNumber: 279,
+                                    lineNumber: 290,
                                     columnNumber: 33
                                 }, this),
                                 " ",
@@ -512,7 +516,7 @@ function StudentPage() {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                            lineNumber: 279,
+                            lineNumber: 290,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -523,7 +527,7 @@ function StudentPage() {
                                     children: "สถานะ:"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                                    lineNumber: 280,
+                                    lineNumber: 291,
                                     columnNumber: 33
                                 }, this),
                                 " ",
@@ -532,36 +536,36 @@ function StudentPage() {
                                     children: viewingStudent.status
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                                    lineNumber: 280,
+                                    lineNumber: 291,
                                     columnNumber: 60
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                            lineNumber: 280,
+                            lineNumber: 291,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                    lineNumber: 276,
+                    lineNumber: 287,
                     columnNumber: 11
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                     children: "ไม่พบข้อมูล"
                 }, void 0, false, {
                     fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                    lineNumber: 283,
+                    lineNumber: 294,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/(pages)/admin/users/page.tsx",
-                lineNumber: 267,
+                lineNumber: 278,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true);
 }
-_s(StudentPage, "kHaLlTaDe4BnK0c1TXmjZ67DQQQ=", false, function() {
+_s(StudentPage, "9PBVEP3T4MXh5E+suW+sHtHBKHU=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].useForm
     ];

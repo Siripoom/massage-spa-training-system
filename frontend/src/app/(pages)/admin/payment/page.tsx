@@ -71,6 +71,14 @@ export default function PaymentPage() {
     },
   ]);
 
+
+  const filteredPayments = payments.filter(payment =>
+    payment.studentName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    payment.courseTitle.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    payment.status.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    payment.paymentDate.includes(searchTerm) // ค้นหาจากวันที่ด้วย
+  );
+
   const columns = [
     {
       title: '#',
@@ -250,7 +258,7 @@ export default function PaymentPage() {
 
       <Table
         columns={columns}
-        dataSource={payments}
+        dataSource={filteredPayments}
         className="rounded-xl shadow-custom-light mt-4"
         pagination={{ pageSize: 10 }}
         bordered={false}

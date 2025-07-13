@@ -36,6 +36,7 @@ export default function CoursePage() { // เปลี่ยนชื่อ Comp
   const [isDetailModalVisible, setIsDetailModalVisible] = useState(false);
   const [viewingCourse, setViewingCourse] = useState<Course | null>(null);
 
+  const [searchTerm, setSearchTerm] = useState('');
   const [courses, setCourses] = useState<Course[]>([
     {
       key: '1',
@@ -84,6 +85,12 @@ export default function CoursePage() { // เปลี่ยนชื่อ Comp
     },
   ]);
 
+  const filteredCourses = courses.filter(courses =>
+    courses.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    courses.organization.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    courses.status.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+  
   const columns = [
     {
       title: '#',
@@ -218,11 +225,13 @@ export default function CoursePage() { // เปลี่ยนชื่อ Comp
   return (
     <>
       <h1 className="text-3xl font-bold mb-8 text-gray-800">Course</h1>
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex justify-between gap-50 items-center mb-6">
         <Input
           placeholder="Search"
           prefix={<SearchOutlined className="text-gray-400" />}
-          className="w-80 rounded-lg shadow-sm table-search-input"
+          className="w-10 rounded-lg shadow-sm table-search-input"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
         <Button
           type="primary"
@@ -236,7 +245,7 @@ export default function CoursePage() { // เปลี่ยนชื่อ Comp
 
       <Table
         columns={columns}
-        dataSource={courses}
+        dataSource={filteredCourses}
         className="rounded-xl shadow-custom-light mt-2"
         pagination={{ pageSize: 10 }}
         bordered={false}

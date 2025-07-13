@@ -48,6 +48,7 @@ function QuizPage() {
     const [evaluationForm] = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].useForm();
     const [isEvaluationDetailModalVisible, setIsEvaluationDetailModalVisible] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [viewingEvaluation, setViewingEvaluation] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [searchTermEvaluate, setSearchTermEvaluate] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('');
     const [evaluations, setEvaluations] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([
         {
             key: '1',
@@ -80,6 +81,7 @@ function QuizPage() {
     const [examForm] = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].useForm();
     const [isExamDetailModalVisible, setIsExamDetailModalVisible] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [viewingExam, setViewingExam] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [searchTermExam, setSearchTermExam] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('');
     const [exams, setExams] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([
         {
             key: '1',
@@ -234,6 +236,8 @@ function QuizPage() {
         setIsExamDetailModalVisible(false);
         setViewingExam(null);
     };
+    const filteredEvaluate = evaluations.filter((evaluations)=>evaluations.quizTitle.toLowerCase().includes(searchTermEvaluate.toLowerCase()) || evaluations.studentName.toLowerCase().includes(searchTermEvaluate.toLowerCase()) || evaluations.status.toLowerCase().includes(searchTermEvaluate.toLowerCase()) || evaluations.dateTaken.includes(searchTermEvaluate));
+    const filteredExams = exams.filter((exams)=>exams.examTitle.toLowerCase().includes(searchTermExam.toLowerCase()) || exams.course.toLowerCase().includes(searchTermExam.toLowerCase()) || exams.status.toLowerCase().includes(searchTermExam.toLowerCase()));
     // --- Columns for Evaluation Tab ---
     const evaluationColumns = [
         {
@@ -294,7 +298,7 @@ function QuizPage() {
                     children: status
                 }, void 0, false, {
                     fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                    lineNumber: 317,
+                    lineNumber: 331,
                     columnNumber: 11
                 }, this);
             },
@@ -309,33 +313,33 @@ function QuizPage() {
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
                             icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$EyeOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__EyeOutlined$3e$__["EyeOutlined"], {}, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                lineNumber: 330,
+                                lineNumber: 344,
                                 columnNumber: 19
                             }, void 0),
                             onClick: ()=>handleViewEvaluation(record),
                             className: "text-gray-500 border-none shadow-none hover:bg-gray-50"
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                            lineNumber: 329,
+                            lineNumber: 343,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
                             icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$EditOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__EditOutlined$3e$__["EditOutlined"], {}, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                lineNumber: 334,
+                                lineNumber: 348,
                                 columnNumber: 25
                             }, void 0),
                             onClick: ()=>handleEditEvaluation(record),
                             className: "text-blue-500 border-none shadow-none hover:bg-blue-50"
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                            lineNumber: 334,
+                            lineNumber: 348,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
                             icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$DeleteOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__DeleteOutlined$3e$__["DeleteOutlined"], {}, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                lineNumber: 336,
+                                lineNumber: 350,
                                 columnNumber: 19
                             }, void 0),
                             danger: true,
@@ -343,13 +347,13 @@ function QuizPage() {
                             className: "text-red-500 border-none shadow-none hover:bg-red-50"
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                            lineNumber: 335,
+                            lineNumber: 349,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                    lineNumber: 328,
+                    lineNumber: 342,
                     columnNumber: 9
                 }, this)
         }
@@ -392,7 +396,7 @@ function QuizPage() {
                     children: status
                 }, void 0, false, {
                     fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                    lineNumber: 379,
+                    lineNumber: 393,
                     columnNumber: 9
                 }, this),
             className: 'text-center'
@@ -406,33 +410,33 @@ function QuizPage() {
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
                             icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$EyeOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__EyeOutlined$3e$__["EyeOutlined"], {}, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                lineNumber: 391,
+                                lineNumber: 405,
                                 columnNumber: 19
                             }, void 0),
                             onClick: ()=>handleViewExam(record),
                             className: "text-gray-500 border-none shadow-none hover:bg-gray-50"
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                            lineNumber: 390,
+                            lineNumber: 404,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
                             icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$EditOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__EditOutlined$3e$__["EditOutlined"], {}, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                lineNumber: 395,
+                                lineNumber: 409,
                                 columnNumber: 25
                             }, void 0),
                             onClick: ()=>handleEditExam(record),
                             className: "text-blue-500 border-none shadow-none hover:bg-blue-50"
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                            lineNumber: 395,
+                            lineNumber: 409,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
                             icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$DeleteOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__DeleteOutlined$3e$__["DeleteOutlined"], {}, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                lineNumber: 397,
+                                lineNumber: 411,
                                 columnNumber: 19
                             }, void 0),
                             danger: true,
@@ -440,13 +444,13 @@ function QuizPage() {
                             className: "text-red-500 border-none shadow-none hover:bg-red-50"
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                            lineNumber: 396,
+                            lineNumber: 410,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                    lineNumber: 389,
+                    lineNumber: 403,
                     columnNumber: 9
                 }, this)
         }
@@ -466,13 +470,15 @@ function QuizPage() {
                                     className: "text-gray-400"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                    lineNumber: 416,
+                                    lineNumber: 430,
                                     columnNumber: 23
                                 }, void 0),
-                                className: "w-80 rounded-lg shadow-sm table-search-input"
+                                className: "w-80 rounded-lg shadow-sm table-search-input",
+                                value: searchTermEvaluate,
+                                onChange: (e)=>setSearchTermEvaluate(e.target.value)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                lineNumber: 414,
+                                lineNumber: 428,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
@@ -480,25 +486,25 @@ function QuizPage() {
                                 onClick: handleAddEvaluation,
                                 icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$PlusOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__PlusOutlined$3e$__["PlusOutlined"], {}, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                    lineNumber: 422,
+                                    lineNumber: 438,
                                     columnNumber: 21
                                 }, void 0),
                                 className: "bg-orange-500 hover:bg-orange-600 text-white rounded-lg shadow-md px-6 py-3 text-base",
                                 children: "เพิ่มการประเมิน"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                lineNumber: 419,
+                                lineNumber: 435,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                        lineNumber: 413,
+                        lineNumber: 427,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$table$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Table$3e$__["Table"], {
                         columns: evaluationColumns,
-                        dataSource: evaluations,
+                        dataSource: filteredEvaluate,
                         className: "rounded-xl shadow-custom-light",
                         pagination: {
                             pageSize: 10
@@ -506,7 +512,7 @@ function QuizPage() {
                         bordered: false
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                        lineNumber: 428,
+                        lineNumber: 444,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$modal$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Modal$3e$__["Modal"], {
@@ -529,7 +535,7 @@ function QuizPage() {
                                         children: "ชื่อ Quiz"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                        lineNumber: 452,
+                                        lineNumber: 468,
                                         columnNumber: 24
                                     }, void 0),
                                     rules: [
@@ -543,12 +549,12 @@ function QuizPage() {
                                         className: "rounded-lg"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                        lineNumber: 455,
+                                        lineNumber: 471,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                    lineNumber: 450,
+                                    lineNumber: 466,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
@@ -558,7 +564,7 @@ function QuizPage() {
                                         children: "ชื่อนักเรียน"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                        lineNumber: 459,
+                                        lineNumber: 475,
                                         columnNumber: 24
                                     }, void 0),
                                     rules: [
@@ -572,12 +578,12 @@ function QuizPage() {
                                         className: "rounded-lg"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                        lineNumber: 462,
+                                        lineNumber: 478,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                    lineNumber: 457,
+                                    lineNumber: 473,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
@@ -587,7 +593,7 @@ function QuizPage() {
                                         children: "คะแนน (%)"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                        lineNumber: 466,
+                                        lineNumber: 482,
                                         columnNumber: 24
                                     }, void 0),
                                     rules: [
@@ -604,12 +610,12 @@ function QuizPage() {
                                         className: "rounded-lg"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                        lineNumber: 469,
+                                        lineNumber: 485,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                    lineNumber: 464,
+                                    lineNumber: 480,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
@@ -619,7 +625,7 @@ function QuizPage() {
                                         children: "วันที่ทำแบบทดสอบ"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                        lineNumber: 473,
+                                        lineNumber: 489,
                                         columnNumber: 24
                                     }, void 0),
                                     rules: [
@@ -633,12 +639,12 @@ function QuizPage() {
                                         className: "w-full rounded-lg"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                        lineNumber: 476,
+                                        lineNumber: 492,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                    lineNumber: 471,
+                                    lineNumber: 487,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
@@ -648,7 +654,7 @@ function QuizPage() {
                                         children: "สถานะ"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                        lineNumber: 480,
+                                        lineNumber: 496,
                                         columnNumber: 24
                                     }, void 0),
                                     rules: [
@@ -666,7 +672,7 @@ function QuizPage() {
                                                 children: "Passed"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                                lineNumber: 484,
+                                                lineNumber: 500,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Option, {
@@ -674,7 +680,7 @@ function QuizPage() {
                                                 children: "Failed"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                                lineNumber: 485,
+                                                lineNumber: 501,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Option, {
@@ -682,29 +688,29 @@ function QuizPage() {
                                                 children: "Pending"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                                lineNumber: 486,
+                                                lineNumber: 502,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                        lineNumber: 483,
+                                        lineNumber: 499,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                    lineNumber: 478,
+                                    lineNumber: 494,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                            lineNumber: 444,
+                            lineNumber: 460,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                        lineNumber: 436,
+                        lineNumber: 452,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$modal$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Modal$3e$__["Modal"], {
@@ -725,7 +731,7 @@ function QuizPage() {
                                             children: "ชื่อ Quiz:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                            lineNumber: 502,
+                                            lineNumber: 518,
                                             columnNumber: 37
                                         }, this),
                                         " ",
@@ -733,7 +739,7 @@ function QuizPage() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                    lineNumber: 502,
+                                    lineNumber: 518,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -744,7 +750,7 @@ function QuizPage() {
                                             children: "ชื่อนักเรียน:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                            lineNumber: 503,
+                                            lineNumber: 519,
                                             columnNumber: 37
                                         }, this),
                                         " ",
@@ -752,7 +758,7 @@ function QuizPage() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                    lineNumber: 503,
+                                    lineNumber: 519,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -763,7 +769,7 @@ function QuizPage() {
                                             children: "คะแนน:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                            lineNumber: 504,
+                                            lineNumber: 520,
                                             columnNumber: 37
                                         }, this),
                                         " ",
@@ -772,7 +778,7 @@ function QuizPage() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                    lineNumber: 504,
+                                    lineNumber: 520,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -783,7 +789,7 @@ function QuizPage() {
                                             children: "วันที่ทำแบบทดสอบ:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                            lineNumber: 505,
+                                            lineNumber: 521,
                                             columnNumber: 37
                                         }, this),
                                         " ",
@@ -791,7 +797,7 @@ function QuizPage() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                    lineNumber: 505,
+                                    lineNumber: 521,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -802,7 +808,7 @@ function QuizPage() {
                                             children: "สถานะ:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                            lineNumber: 506,
+                                            lineNumber: 522,
                                             columnNumber: 37
                                         }, this),
                                         " ",
@@ -811,30 +817,30 @@ function QuizPage() {
                                             children: viewingEvaluation.status
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                            lineNumber: 506,
+                                            lineNumber: 522,
                                             columnNumber: 64
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                    lineNumber: 506,
+                                    lineNumber: 522,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                            lineNumber: 501,
+                            lineNumber: 517,
                             columnNumber: 15
                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                             children: "ไม่พบข้อมูล"
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                            lineNumber: 509,
+                            lineNumber: 525,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                        lineNumber: 492,
+                        lineNumber: 508,
                         columnNumber: 11
                     }, this)
                 ]
@@ -854,13 +860,15 @@ function QuizPage() {
                                     className: "text-gray-400"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                    lineNumber: 523,
+                                    lineNumber: 539,
                                     columnNumber: 23
                                 }, void 0),
-                                className: "w-80 rounded-lg shadow-sm table-search-input"
+                                className: "w-80 rounded-lg shadow-sm table-search-input",
+                                value: searchTermExam,
+                                onChange: (e)=>setSearchTermExam(e.target.value)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                lineNumber: 521,
+                                lineNumber: 537,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
@@ -868,25 +876,25 @@ function QuizPage() {
                                 onClick: handleAddExam,
                                 icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$PlusOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__PlusOutlined$3e$__["PlusOutlined"], {}, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                    lineNumber: 529,
+                                    lineNumber: 547,
                                     columnNumber: 21
                                 }, void 0),
                                 className: "bg-orange-500 hover:bg-orange-600 text-white rounded-lg shadow-md px-6 py-3 text-base",
                                 children: "สร้างข้อสอบใหม่"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                lineNumber: 526,
+                                lineNumber: 544,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                        lineNumber: 520,
+                        lineNumber: 536,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$table$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Table$3e$__["Table"], {
                         columns: examColumns,
-                        dataSource: exams,
+                        dataSource: filteredExams,
                         className: "rounded-xl shadow-custom-light",
                         pagination: {
                             pageSize: 10
@@ -894,7 +902,7 @@ function QuizPage() {
                         bordered: false
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                        lineNumber: 535,
+                        lineNumber: 553,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$modal$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Modal$3e$__["Modal"], {
@@ -917,7 +925,7 @@ function QuizPage() {
                                         children: "ชื่อข้อสอบ"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                        lineNumber: 559,
+                                        lineNumber: 577,
                                         columnNumber: 24
                                     }, void 0),
                                     rules: [
@@ -931,12 +939,12 @@ function QuizPage() {
                                         className: "rounded-lg"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                        lineNumber: 562,
+                                        lineNumber: 580,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                    lineNumber: 557,
+                                    lineNumber: 575,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
@@ -946,7 +954,7 @@ function QuizPage() {
                                         children: "หลักสูตร"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                        lineNumber: 566,
+                                        lineNumber: 584,
                                         columnNumber: 24
                                     }, void 0),
                                     rules: [
@@ -960,12 +968,12 @@ function QuizPage() {
                                         className: "rounded-lg"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                        lineNumber: 569,
+                                        lineNumber: 587,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                    lineNumber: 564,
+                                    lineNumber: 582,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
@@ -975,7 +983,7 @@ function QuizPage() {
                                         children: "จำนวนคำถาม"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                        lineNumber: 573,
+                                        lineNumber: 591,
                                         columnNumber: 24
                                     }, void 0),
                                     rules: [
@@ -992,12 +1000,12 @@ function QuizPage() {
                                         className: "rounded-lg"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                        lineNumber: 576,
+                                        lineNumber: 594,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                    lineNumber: 571,
+                                    lineNumber: 589,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
@@ -1007,7 +1015,7 @@ function QuizPage() {
                                         children: "สถานะ"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                        lineNumber: 580,
+                                        lineNumber: 598,
                                         columnNumber: 24
                                     }, void 0),
                                     rules: [
@@ -1025,7 +1033,7 @@ function QuizPage() {
                                                 children: "Draft"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                                lineNumber: 584,
+                                                lineNumber: 602,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Option, {
@@ -1033,29 +1041,29 @@ function QuizPage() {
                                                 children: "Published"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                                lineNumber: 585,
+                                                lineNumber: 603,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                        lineNumber: 583,
+                                        lineNumber: 601,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                    lineNumber: 578,
+                                    lineNumber: 596,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                            lineNumber: 551,
+                            lineNumber: 569,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                        lineNumber: 543,
+                        lineNumber: 561,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$modal$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Modal$3e$__["Modal"], {
@@ -1076,7 +1084,7 @@ function QuizPage() {
                                             children: "ชื่อข้อสอบ:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                            lineNumber: 601,
+                                            lineNumber: 619,
                                             columnNumber: 37
                                         }, this),
                                         " ",
@@ -1084,7 +1092,7 @@ function QuizPage() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                    lineNumber: 601,
+                                    lineNumber: 619,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1095,7 +1103,7 @@ function QuizPage() {
                                             children: "หลักสูตร:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                            lineNumber: 602,
+                                            lineNumber: 620,
                                             columnNumber: 37
                                         }, this),
                                         " ",
@@ -1103,7 +1111,7 @@ function QuizPage() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                    lineNumber: 602,
+                                    lineNumber: 620,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1114,7 +1122,7 @@ function QuizPage() {
                                             children: "จำนวนคำถาม:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                            lineNumber: 603,
+                                            lineNumber: 621,
                                             columnNumber: 37
                                         }, this),
                                         " ",
@@ -1122,7 +1130,7 @@ function QuizPage() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                    lineNumber: 603,
+                                    lineNumber: 621,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1133,7 +1141,7 @@ function QuizPage() {
                                             children: "สถานะ:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                            lineNumber: 604,
+                                            lineNumber: 622,
                                             columnNumber: 37
                                         }, this),
                                         " ",
@@ -1142,13 +1150,13 @@ function QuizPage() {
                                             children: viewingExam.status
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                            lineNumber: 604,
+                                            lineNumber: 622,
                                             columnNumber: 64
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                    lineNumber: 604,
+                                    lineNumber: 622,
                                     columnNumber: 17
                                 }, this),
                                 viewingExam.questions.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1159,7 +1167,7 @@ function QuizPage() {
                                             children: "คำถาม:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                            lineNumber: 608,
+                                            lineNumber: 626,
                                             columnNumber: 21
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -1171,35 +1179,35 @@ function QuizPage() {
                                                     ]
                                                 }, q.id || index, true, {
                                                     fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                                    lineNumber: 611,
+                                                    lineNumber: 629,
                                                     columnNumber: 25
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                            lineNumber: 609,
+                                            lineNumber: 627,
                                             columnNumber: 21
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                                    lineNumber: 607,
+                                    lineNumber: 625,
                                     columnNumber: 19
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                            lineNumber: 600,
+                            lineNumber: 618,
                             columnNumber: 15
                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                             children: "ไม่พบข้อมูล"
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                            lineNumber: 618,
+                            lineNumber: 636,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                        lineNumber: 591,
+                        lineNumber: 609,
                         columnNumber: 11
                     }, this)
                 ]
@@ -1213,7 +1221,7 @@ function QuizPage() {
                 children: "Quiz Management"
             }, void 0, false, {
                 fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                lineNumber: 628,
+                lineNumber: 646,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$tabs$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Tabs$3e$__["Tabs"], {
@@ -1224,7 +1232,7 @@ function QuizPage() {
                 className: "rounded-xl shadow-custom-light bg-white p-4"
             }, void 0, false, {
                 fileName: "[project]/src/app/(pages)/admin/quiz/page.tsx",
-                lineNumber: 629,
+                lineNumber: 647,
                 columnNumber: 7
             }, this)
         ]

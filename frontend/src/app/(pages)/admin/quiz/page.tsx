@@ -65,6 +65,7 @@ export default function QuizPage() {
   const [isEvaluationDetailModalVisible, setIsEvaluationDetailModalVisible] = useState(false);
   const [viewingEvaluation, setViewingEvaluation] = useState<Evaluation | null>(null);
 
+  const [searchTermEvaluate, setSearchTermEvaluate] = useState('');
   const [evaluations, setEvaluations] = useState<Evaluation[]>([
     {
       key: '1',
@@ -99,6 +100,7 @@ export default function QuizPage() {
   const [isExamDetailModalVisible, setIsExamDetailModalVisible] = useState(false);
   const [viewingExam, setViewingExam] = useState<Exam | null>(null);
 
+  const [searchTermExam, setSearchTermExam] = useState('');
   const [exams, setExams] = useState<Exam[]>([
     {
       key: '1',
@@ -258,6 +260,18 @@ export default function QuizPage() {
     setViewingExam(null);
   };
 
+  const filteredEvaluate = evaluations.filter(evaluations =>
+    evaluations.quizTitle.toLowerCase().includes(searchTermEvaluate.toLowerCase()) ||
+    evaluations.studentName.toLowerCase().includes(searchTermEvaluate.toLowerCase()) ||
+    evaluations.status.toLowerCase().includes(searchTermEvaluate.toLowerCase()) ||
+    evaluations.dateTaken.includes(searchTermEvaluate)
+  );
+
+  const filteredExams = exams.filter(exams =>
+    exams.examTitle.toLowerCase().includes(searchTermExam.toLowerCase()) ||
+    exams.course.toLowerCase().includes(searchTermExam.toLowerCase()) ||
+    exams.status.toLowerCase().includes(searchTermExam.toLowerCase())
+  );
 
   // --- Columns for Evaluation Tab ---
   const evaluationColumns = [
@@ -415,6 +429,8 @@ export default function QuizPage() {
               placeholder="Search Evaluation"
               prefix={<SearchOutlined className="text-gray-400" />}
               className="w-80 rounded-lg shadow-sm table-search-input"
+              value={searchTermEvaluate}
+              onChange={(e) => setSearchTermEvaluate(e.target.value)}
             />
             <Button
               type="primary"
@@ -427,7 +443,7 @@ export default function QuizPage() {
           </div>
           <Table
             columns={evaluationColumns}
-            dataSource={evaluations}
+            dataSource={filteredEvaluate}
             className="rounded-xl shadow-custom-light"
             pagination={{ pageSize: 10 }}
             bordered={false}
@@ -522,6 +538,8 @@ export default function QuizPage() {
               placeholder="Search Exam"
               prefix={<SearchOutlined className="text-gray-400" />}
               className="w-80 rounded-lg shadow-sm table-search-input"
+              value={searchTermExam}
+              onChange={(e) => setSearchTermExam(e.target.value)}
             />
             <Button
               type="primary"
@@ -534,7 +552,7 @@ export default function QuizPage() {
           </div>
           <Table
             columns={examColumns}
-            dataSource={exams}
+            dataSource={filteredExams}
             className="rounded-xl shadow-custom-light"
             pagination={{ pageSize: 10 }}
             bordered={false}
