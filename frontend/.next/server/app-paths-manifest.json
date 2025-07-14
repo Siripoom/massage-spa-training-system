@@ -1,7 +1,11 @@
 {
+  "/(pages)/admin/certificate/page": "app/(pages)/admin/certificate/page.js",
+  "/(pages)/admin/courses/page": "app/(pages)/admin/courses/page.js",
   "/(pages)/admin/dashboard/page": "app/(pages)/admin/dashboard/page.js",
+  "/(pages)/admin/payment/page": "app/(pages)/admin/payment/page.js",
   "/(pages)/admin/quiz/manage/page": "app/(pages)/admin/quiz/manage/page.js",
   "/(pages)/admin/quiz/page": "app/(pages)/admin/quiz/page.js",
+  "/(pages)/admin/users/page": "app/(pages)/admin/users/page.js",
   "/_not-found/page": "app/_not-found/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js"
 }

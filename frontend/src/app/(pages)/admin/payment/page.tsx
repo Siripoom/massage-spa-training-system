@@ -238,7 +238,7 @@ export default function PaymentPage() {
   return (
     <>
       <h1 className="text-3xl font-bold mb-8 text-gray-800">Payment</h1>
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex justify-between items-center mb-6 gap-25">
         <Input
           placeholder="Search"
           prefix={<SearchOutlined className="text-gray-400" />}

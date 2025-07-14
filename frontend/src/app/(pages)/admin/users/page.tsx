@@ -201,7 +201,7 @@ export default function StudentPage() {
   return (
     <>
       <h1 className="text-3xl font-bold mb-8 text-gray-800">Student</h1>
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex justify-between items-center gap-25 mb-6">
         <Input
           placeholder="Search"
           prefix={<SearchOutlined className="text-gray-400" />}

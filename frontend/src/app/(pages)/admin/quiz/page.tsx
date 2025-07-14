@@ -388,7 +388,7 @@ export default function QuizManagementPage() { // เปลี่ยนชื่
       label: 'ส่วนประเมิน',
       children: (
         <>
-          <div className="flex justify-between items-center mb-6">
+          <div className="flex justify-between items-center mb-6 gap-25">
             <Input
               placeholder="Search Evaluation"
               prefix={<SearchOutlined className="text-gray-400" />}
@@ -497,7 +497,7 @@ export default function QuizManagementPage() { // เปลี่ยนชื่
       label: 'จัดการข้อสอบ',
       children: (
         <>
-          <div className="flex justify-between items-center mb-6">
+          <div className="flex justify-between items-center mb-6 gap-25">
             <Input
               placeholder="ค้นหาข้อสอบ"
               prefix={<SearchOutlined className="text-gray-400" />}

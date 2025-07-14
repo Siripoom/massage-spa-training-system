@@ -225,7 +225,7 @@ export default function CoursePage() { // เปลี่ยนชื่อ Comp
   return (
     <>
       <h1 className="text-3xl font-bold mb-8 text-gray-800">Course</h1>
-      <div className="flex justify-between gap-50 items-center mb-6">
+      <div className="flex justify-between gap-25 items-center mb-6">
         <Input
           placeholder="Search"
           prefix={<SearchOutlined className="text-gray-400" />}
