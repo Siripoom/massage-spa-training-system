@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 2, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Admin/massage-spa-training-system/frontend/src/app/%28pages%29/admin/certificate/certificate.css"],"sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Kanit:wght@400;700&family=Prompt:wght@400;700&family=Sarabun:wght@400;700&family=Anchan:wght@400&display=swap');\r\n\r\nbody {\r\n  margin: 0;\r\n  font-family: 'Inter', sans-serif; /* Default font */\r\n}\r\n\r\n/* เพิ่ม CSS สำหรับ Ant Design Overrides หรือ Custom Styles ที่นี่ */\r\n/* ตัวอย่างการกำหนด font-family สำหรับ body หรือ elements อื่นๆ */\r\n/* body { font-family: 'Sarabun', sans-serif; } */"],"names":[],"mappings":"AAEA","debugId":null}}]
-}

@@ -1,7 +1,7 @@
 "use client";
 
 import '@ant-design/v5-patch-for-react-19';
-import React, { useState, useRef } from 'react';
+import React, { useState,useEffect, useRef } from 'react';
 // import { Layout, Form, Input, Select, Button, message, Card, Typography, Modal, DatePicker, Row, Col, Slider, Space } from 'antd';
 import { Form, Input, Select, Button, message, Card, Typography, Modal, DatePicker, Row, Col, Slider, Space } from 'antd';
 import { SaveOutlined, PrinterOutlined } from '@ant-design/icons';
@@ -17,7 +17,7 @@ const { Title: AntdTitle } = Typography;
 // Dynamically import CertificateCanvas to ensure it only runs on the client-side
 const CertificateCanvas = dynamic(() => import('./certificateCanvas'), { ssr: false });
 
-/// --- Interfaces ---
+// --- Interfaces ---
 interface School {
   key: string;
   name: string;
@@ -44,15 +44,13 @@ interface CertificateData {
   studentNamePos: { x: number; y: number };
   courseNamePos: { x: number; y: number };
 
-  // *** เพิ่ม Properties สำหรับการปรับแต่งกรอบ ***
+  // Properties สำหรับการปรับแต่งกรอบ
   mainBorderWidth: number;
   mainBorderColor: string;
   mainBorderRadius: number;
-  // mainBorderLineCap: 'butt' | 'round' | 'square'; // ลบออก
-  // mainBorderLineJoin: 'miter' | 'round' | 'bevel'; // ลบออก
-  mainBorderStyle: 'solid' | 'dashed'; // เพิ่มสไตล์เส้นกรอบหลัก
-  mainBorderDashLength: number; // ความยาวเส้นประกรอบหลัก
-  mainBorderDashGap: number; // ระยะห่างเส้นประกรอบหลัก
+  mainBorderStyle: 'solid' | 'dashed';
+  mainBorderDashLength: number;
+  mainBorderDashGap: number;
   innerBorder1Width: number;
   innerBorder1Color: string;
   innerBorder1DashLength: number;
@@ -64,6 +62,7 @@ interface CertificateData {
 export default function CertificatePage() {
   const [form] = Form.useForm<CertificateData>();
   const [isSaveModalVisible, setIsSaveModalVisible] = useState(false);
+  const [isClient, setIsClient] = useState(false); // *** เพิ่ม isClient state ***
 
   const stageRef = useRef<Konva.Stage | null>(null); 
 
@@ -78,7 +77,7 @@ export default function CertificatePage() {
     title: 'ใบประกาศนียบัตร',
     studentName: 'ชื่อนักเรียน',
     courseName: 'ชื่อหลักสูตรที่สำเร็จ',
-    issueDate: dayjs(), // กำหนด dayjs() ตั้งแต่แรกเพื่อป้องกัน Hydration Error
+    issueDate: dayjs(), 
     schoolName: dummySchools[0].name,
     schoolLogoUrl: '',
     fontFamily: 'Prompt',
@@ -97,8 +96,6 @@ export default function CertificatePage() {
     mainBorderWidth: 10,
     mainBorderColor: '#f97316',
     mainBorderRadius: 8,
-    // mainBorderLineCap: 'butt', // ลบออก
-    // mainBorderLineJoin: 'miter', // ลบออก
     mainBorderStyle: 'solid',
     mainBorderDashLength: 10,
     mainBorderDashGap: 5,
@@ -109,6 +106,11 @@ export default function CertificatePage() {
     innerBorder2Width: 2,
     innerBorder2Color: '#b8860b',
   });
+
+  // *** ใช้ useEffect เพื่อตั้งค่า isClient เป็น true เมื่อ Component mount บน Client ***
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const handleFormChange = (changedValues: Partial<CertificateData>) => {
     setCertificateData(prevData => ({
@@ -247,10 +249,11 @@ export default function CertificatePage() {
               form={form}
               layout="vertical"
               onValuesChange={handleFormChange}
-              initialValues={{
+              // *** กำหนด initialValues ก็ต่อเมื่อ isClient เป็น true เท่านั้น ***
+              initialValues={isClient ? {
                 ...certificateData,
-                issueDate: certificateData.issueDate || dayjs(),
-              }}
+                issueDate: certificateData.issueDate || dayjs(), // ตรวจสอบอีกครั้งเพื่อความแน่ใจว่า dayjs object
+              } : undefined} // ถ้ายังไม่เป็น client ให้เป็น undefined
             >
               <Form.Item
                 name="schoolName"
@@ -353,20 +356,6 @@ export default function CertificatePage() {
               <Form.Item name="mainBorderRadius" label={<span className="font-semibold text-gray-700">รัศมีมุมกรอบหลัก (px)</span>}>
                 <Slider min={0} max={20} />
               </Form.Item>
-              {/* <Form.Item name="mainBorderLineCap" label={<span className="font-semibold text-gray-700">รูปแบบปลายเส้นกรอบหลัก</span>}> // ลบออก
-                <Select className="rounded-lg">
-                  <Option value="butt">Butt</Option>
-                  <Option value="round">Round</Option>
-                  <Option value="square">Square</Option>
-                </Select>
-              </Form.Item>
-              <Form.Item name="mainBorderLineJoin" label={<span className="font-semibold text-gray-700">รูปแบบมุมเส้นกรอบหลัก</span>}> // ลบออก
-                <Select className="rounded-lg">
-                  <Option value="miter">Miter</Option>
-                  <Option value="round">Round</Option>
-                  <Option value="bevel">Bevel</Option>
-                </Select>
-              </Form.Item> */}
 
               <Form.Item name="mainBorderStyle" label={<span className="font-semibold text-gray-700">สไตล์เส้นกรอบหลัก</span>}>
                 <Select className="rounded-lg">
@@ -410,8 +399,8 @@ export default function CertificatePage() {
         </Col>
 
         {/* Certificate Preview Area (Konva Canvas) */}
-        <Col xs={24} lg={16} className="overflow-x-auto">
-          <Card className="rounded-xl shadow-custom-light p-4 flex flex-col items-center justify-center">
+        <Col xs={24} lg={16}>
+          <Card className="rounded-xl shadow-custom-light p-2 sm:p-4 flex flex-col items-center justify-center">
             <CertificateCanvas
               certificateData={certificateData}
               onPositionChange={handlePositionChange}

@@ -30,13 +30,13 @@ interface CertificateData {
   studentNamePos: { x: number; y: number };
   courseNamePos: { x: number; y: number };
 
-  // *** เพิ่ม Properties สำหรับการปรับแต่งกรอบ ***
+  // Properties สำหรับการปรับแต่งกรอบ
   mainBorderWidth: number;
   mainBorderColor: string;
   mainBorderRadius: number;
-  mainBorderStyle: 'solid' | 'dashed'; // เพิ่มสไตล์เส้นกรอบหลัก
-  mainBorderDashLength: number; // ความยาวเส้นประกรอบหลัก
-  mainBorderDashGap: number; // ระยะห่างเส้นประกรอบหลัก
+  mainBorderStyle: 'solid' | 'dashed';
+  mainBorderDashLength: number;
+  mainBorderDashGap: number;
   innerBorder1Width: number;
   innerBorder1Color: string;
   innerBorder1DashLength: number;
@@ -72,7 +72,13 @@ const CertificateCanvas: React.FC<CertificateCanvasProps> = ({ certificateData, 
   useEffect(() => {
     checkSize();
     window.addEventListener('resize', checkSize);
-    return () => window.removeEventListener('resize', checkSize);
+    // Initial check in case component mounts when window is already resized
+    // This is important for Next.js client-side rendering
+    const timeoutId = setTimeout(checkSize, 0); 
+    return () => {
+      window.removeEventListener('resize', checkSize);
+      clearTimeout(timeoutId);
+    };
   }, [checkSize]);
 
   // Handler for all draggable elements (text) drag end
@@ -89,7 +95,7 @@ const CertificateCanvas: React.FC<CertificateCanvasProps> = ({ certificateData, 
       width: '100%', 
       aspectRatio: `${DESIGN_WIDTH} / ${DESIGN_HEIGHT}`, 
       position: 'relative', 
-      overflow: 'hidden',
+      // *** แก้ไข: ลบ overflow: 'hidden' ออกจากตรงนี้ ***
     }}>
       <Stage
         width={stageWidth}
@@ -107,9 +113,6 @@ const CertificateCanvas: React.FC<CertificateCanvasProps> = ({ certificateData, 
             stroke={certificateData.mainBorderColor}
             strokeWidth={certificateData.mainBorderWidth}
             cornerRadius={certificateData.mainBorderRadius}
-            // lineCap={certificateData.mainBorderLineCap} // ลบออก
-            // lineJoin={certificateData.mainBorderLineJoin} // ลบออก
-            // Apply dash property based on mainBorderStyle
             dash={certificateData.mainBorderStyle === 'dashed' ? [certificateData.mainBorderDashLength, certificateData.mainBorderDashGap] : undefined}
           />
           {/* Inner Decorative Border (simulating a more formal look) */}
@@ -249,3 +252,4 @@ const CertificateCanvas: React.FC<CertificateCanvasProps> = ({ certificateData, 
 };
 
 export default CertificateCanvas;
+

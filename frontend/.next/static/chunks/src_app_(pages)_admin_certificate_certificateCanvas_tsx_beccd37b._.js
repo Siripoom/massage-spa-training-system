@@ -46,8 +46,14 @@ const CertificateCanvas = ({ certificateData, onPositionChange, stageRef })=>{
         "CertificateCanvas.useEffect": ()=>{
             checkSize();
             window.addEventListener('resize', checkSize);
+            // Initial check in case component mounts when window is already resized
+            // This is important for Next.js client-side rendering
+            const timeoutId = setTimeout(checkSize, 0);
             return ({
-                "CertificateCanvas.useEffect": ()=>window.removeEventListener('resize', checkSize)
+                "CertificateCanvas.useEffect": ()=>{
+                    window.removeEventListener('resize', checkSize);
+                    clearTimeout(timeoutId);
+                }
             })["CertificateCanvas.useEffect"];
         }
     }["CertificateCanvas.useEffect"], [
@@ -69,8 +75,7 @@ const CertificateCanvas = ({ certificateData, onPositionChange, stageRef })=>{
         style: {
             width: '100%',
             aspectRatio: `${DESIGN_WIDTH} / ${DESIGN_HEIGHT}`,
-            position: 'relative',
-            overflow: 'hidden'
+            position: 'relative'
         },
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$konva$2f$es$2f$ReactKonvaCore$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Stage"], {
             width: stageWidth,
@@ -87,16 +92,13 @@ const CertificateCanvas = ({ certificateData, onPositionChange, stageRef })=>{
                         stroke: certificateData.mainBorderColor,
                         strokeWidth: certificateData.mainBorderWidth,
                         cornerRadius: certificateData.mainBorderRadius,
-                        // lineCap={certificateData.mainBorderLineCap} // ลบออก
-                        // lineJoin={certificateData.mainBorderLineJoin} // ลบออก
-                        // Apply dash property based on mainBorderStyle
                         dash: certificateData.mainBorderStyle === 'dashed' ? [
                             certificateData.mainBorderDashLength,
                             certificateData.mainBorderDashGap
                         ] : undefined
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/admin/certificate/certificateCanvas.tsx",
-                        lineNumber: 101,
+                        lineNumber: 107,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$konva$2f$es$2f$ReactKonvaCore$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Rect"], {
@@ -113,7 +115,7 @@ const CertificateCanvas = ({ certificateData, onPositionChange, stageRef })=>{
                         ]
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/admin/certificate/certificateCanvas.tsx",
-                        lineNumber: 116,
+                        lineNumber: 119,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$konva$2f$es$2f$ReactKonvaCore$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Rect"], {
@@ -126,7 +128,7 @@ const CertificateCanvas = ({ certificateData, onPositionChange, stageRef })=>{
                         cornerRadius: 5
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/admin/certificate/certificateCanvas.tsx",
-                        lineNumber: 126,
+                        lineNumber: 129,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$konva$2f$es$2f$ReactKonvaCore$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Text"], {
@@ -143,7 +145,7 @@ const CertificateCanvas = ({ certificateData, onPositionChange, stageRef })=>{
                         offsetX: DESIGN_WIDTH / 2
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/admin/certificate/certificateCanvas.tsx",
-                        lineNumber: 151,
+                        lineNumber: 154,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$konva$2f$es$2f$ReactKonvaCore$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Text"], {
@@ -158,7 +160,7 @@ const CertificateCanvas = ({ certificateData, onPositionChange, stageRef })=>{
                         offsetX: DESIGN_WIDTH / 2
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/admin/certificate/certificateCanvas.tsx",
-                        lineNumber: 166,
+                        lineNumber: 169,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$konva$2f$es$2f$ReactKonvaCore$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Text"], {
@@ -175,7 +177,7 @@ const CertificateCanvas = ({ certificateData, onPositionChange, stageRef })=>{
                         offsetX: DESIGN_WIDTH / 2
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/admin/certificate/certificateCanvas.tsx",
-                        lineNumber: 179,
+                        lineNumber: 182,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$konva$2f$es$2f$ReactKonvaCore$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Text"], {
@@ -190,7 +192,7 @@ const CertificateCanvas = ({ certificateData, onPositionChange, stageRef })=>{
                         offsetX: DESIGN_WIDTH / 2
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/admin/certificate/certificateCanvas.tsx",
-                        lineNumber: 194,
+                        lineNumber: 197,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$konva$2f$es$2f$ReactKonvaCore$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Text"], {
@@ -207,7 +209,7 @@ const CertificateCanvas = ({ certificateData, onPositionChange, stageRef })=>{
                         offsetX: DESIGN_WIDTH / 2
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/admin/certificate/certificateCanvas.tsx",
-                        lineNumber: 207,
+                        lineNumber: 210,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$konva$2f$es$2f$ReactKonvaCore$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Text"], {
@@ -222,7 +224,7 @@ const CertificateCanvas = ({ certificateData, onPositionChange, stageRef })=>{
                         offsetX: DESIGN_WIDTH / 2
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/admin/certificate/certificateCanvas.tsx",
-                        lineNumber: 222,
+                        lineNumber: 225,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$konva$2f$es$2f$ReactKonvaCore$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Text"], {
@@ -236,23 +238,23 @@ const CertificateCanvas = ({ certificateData, onPositionChange, stageRef })=>{
                         width: 200
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/admin/certificate/certificateCanvas.tsx",
-                        lineNumber: 235,
+                        lineNumber: 238,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/(pages)/admin/certificate/certificateCanvas.tsx",
-                lineNumber: 99,
+                lineNumber: 105,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/src/app/(pages)/admin/certificate/certificateCanvas.tsx",
-            lineNumber: 94,
+            lineNumber: 100,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/app/(pages)/admin/certificate/certificateCanvas.tsx",
-        lineNumber: 88,
+        lineNumber: 94,
         columnNumber: 5
     }, this);
 };
