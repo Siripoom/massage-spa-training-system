@@ -427,10 +427,6 @@
     margin-right: calc(var(--spacing) * 2);
   }
 
-  .mr-5 {
-    margin-right: calc(var(--spacing) * 5);
-  }
-
   .mb-1 {
     margin-bottom: calc(var(--spacing) * 1);
   }
@@ -579,16 +575,8 @@
     gap: calc(var(--spacing) * 4);
   }
 
-  .gap-5 {
-    gap: calc(var(--spacing) * 5);
-  }
-
   .gap-25 {
     gap: calc(var(--spacing) * 25);
-  }
-
-  .gap-50 {
-    gap: calc(var(--spacing) * 50);
   }
 
   :where(.space-y-4 > :not(:last-child)) {

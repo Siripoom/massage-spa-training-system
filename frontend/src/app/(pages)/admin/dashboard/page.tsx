@@ -5,7 +5,7 @@ import {
   Row,
   Col,
   Card,
-  Statistic,
+  // Statistic,
   Progress,
   List,
   Avatar,
@@ -17,7 +17,7 @@ import {
   UserOutlined,
   BookOutlined,
   FileTextOutlined,
-  TrophyOutlined,
+  // TrophyOutlined,
   RiseOutlined,
   FallOutlined,
   ClockCircleOutlined,
@@ -239,7 +239,7 @@ export default function AdminDashboard() {
                           color={
                             course.ministry === "สาธารณสุข" ? "green" : "blue"
                           }
-                          size="small"
+                          // size="small"
                         >
                           {course.ministry}
                         </Tag>

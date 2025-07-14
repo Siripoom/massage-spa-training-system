@@ -2,7 +2,7 @@
 
 import '@ant-design/v5-patch-for-react-19';
 import React, { useState, useEffect } from 'react';
-import { Form, Input, Button, Space, Card, Typography, message, Radio, Popconfirm } from 'antd';
+import { Form, Input, Button, Space, Card, Typography, message, Radio, Popconfirm, Row, Col } from 'antd';
 import { PlusOutlined, DeleteOutlined, SaveOutlined, ArrowLeftOutlined, EditOutlined } from '@ant-design/icons';
 import { v4 as uuidv4 } from 'uuid'; // สำหรับสร้าง unique ID
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -286,228 +286,240 @@ export default function ManageQuizPage() {
         {quizId ? 'แก้ไขข้อสอบ' : 'สร้างข้อสอบใหม่'}
       </AntdTitle>
 
-      <Card className="rounded-xl shadow-custom-light p-4 mb-6">
-        <AntdTitle level={4} className="text-gray-700 mb-6">ข้อมูลข้อสอบ</AntdTitle>
-        <Form
-          form={form}
-          layout="vertical"
-          onValuesChange={handleQuizFormChange}
-        >
-          <Form.Item
-            name="title"
-            label={<span className="font-semibold text-gray-700">ชื่อข้อสอบ</span>}
-            rules={[{ required: true, message: 'กรุณากรอกชื่อข้อสอบ!' }]}
-          >
-            <Input placeholder="เช่น ข้อสอบนวดแผนไทยเบื้องต้น" className="rounded-lg" />
-          </Form.Item>
-          <Form.Item
-            name="course"
-            label={<span className="font-semibold text-gray-700">หลักสูตร</span>}
-            rules={[{ required: true, message: 'กรุณากรอกหลักสูตรที่เกี่ยวข้อง!' }]}
-          >
-            <Input placeholder="เช่น นวดแผนไทยเบื้องต้น" className="rounded-lg" />
-          </Form.Item>
-          <Form.Item
-            name="description"
-            label={<span className="font-semibold text-gray-700">คำอธิบาย</span>}
-          >
-            <TextArea rows={3} placeholder="คำอธิบายข้อสอบ (ไม่บังคับ)" className="rounded-lg" />
-          </Form.Item>
-        </Form>
-      </Card>
-
-      <Card className="rounded-xl shadow-custom-light p-4 mb-6">
-        <AntdTitle level={4} className="text-gray-700 mb-6">รายการคำถาม</AntdTitle>
-        {quiz.questions.length === 0 && (
-          <div className="text-center text-gray-500 mb-4">ยังไม่มีคำถามในข้อสอบนี้</div>
-        )}
-        <Space direction="vertical" className="w-full" size="middle">
-          {quiz.questions.map((q, index) => (
-            <Card
-              key={q.id}
-              size="small"
-              className="rounded-lg border border-gray-200"
-              extra={
-                <Space>
-                  <Button
-                    type="text"
-                    icon={<EditOutlined />}
-                    onClick={() => handleEditQuestion(index)}
-                    className="text-blue-500 hover:text-blue-700"
-                  />
-                  <Popconfirm
-                    title="ลบคำถาม"
-                    description="คุณแน่ใจหรือไม่ที่จะลบคำถามนี้?"
-                    onConfirm={() => handleRemoveQuestion(index)}
-                    okText="ใช่"
-                    cancelText="ไม่"
-                  >
-                    <Button
-                      type="text"
-                      icon={<DeleteOutlined />}
-                      danger
-                      className="text-red-500 hover:text-red-700"
-                    />
-                  </Popconfirm>
-                </Space>
-              }
+      {/* ใช้ Row และ Col เพื่อจัดระยะห่างระหว่าง Card และส่วนปุ่มสุดท้าย */}
+      <Row gutter={[0, 24]}> {/* gutter={[horizontal, vertical]} */}
+        <Col span={24}>
+          <Card className="rounded-xl shadow-custom-light p-4">
+            <AntdTitle level={4} className="text-gray-700 mb-6">ข้อมูลข้อสอบ</AntdTitle>
+            <Form
+              form={form}
+              layout="vertical"
+              onValuesChange={handleQuizFormChange}
             >
-              <Text strong>{index + 1}. {q.questionText}</Text>
-              <Radio.Group value={q.correctOptionId} className="w-full mt-2">
-                {q.options.map(opt => (
-                  <div key={opt.id} className="flex items-center mb-1">
-                    <Radio value={opt.id} disabled className="mr-2" />
-                    <Text className={opt.id === q.correctOptionId ? 'font-bold text-green-600' : ''}>
-                      {opt.text}
-                    </Text>
-                  </div>
-                ))}
-              </Radio.Group>
-            </Card>
-          ))}
-        </Space>
-        <Button
-          type="dashed"
-          onClick={handleAddQuestion}
-          block
-          icon={<PlusOutlined />}
-          className="mt-6 rounded-lg text-blue-500 border-blue-500 hover:text-blue-700 hover:border-blue-700"
-        >
-          เพิ่มคำถามใหม่
-        </Button>
-      </Card>
+              <Form.Item
+                name="title"
+                label={<span className="font-semibold text-gray-700">ชื่อข้อสอบ</span>}
+                rules={[{ required: true, message: 'กรุณากรอกชื่อข้อสอบ!' }]}
+              >
+                <Input placeholder="เช่น ข้อสอบนวดแผนไทยเบื้องต้น" className="rounded-lg" />
+              </Form.Item>
+              <Form.Item
+                name="course"
+                label={<span className="font-semibold text-gray-700">หลักสูตร</span>}
+                rules={[{ required: true, message: 'กรุณากรอกหลักสูตรที่เกี่ยวข้อง!' }]}
+              >
+                <Input placeholder="เช่น นวดแผนไทยเบื้องต้น" className="rounded-lg" />
+              </Form.Item>
+              <Form.Item
+                name="description"
+                label={<span className="font-semibold text-gray-700">คำอธิบาย</span>}
+              >
+                <TextArea rows={3} placeholder="คำอธิบายข้อสอบ (ไม่บังคับ)" className="rounded-lg" />
+              </Form.Item>
+            </Form>
+          </Card>
+        </Col>
 
-      {/* Question Creation/Edit Form */}
-      <Card id="question-form-card" className="rounded-xl shadow-custom-light p-4 mb-6">
-        <AntdTitle level={4} className="text-gray-700 mb-6">
-          {editingQuestionIndex !== null ? 'แก้ไขคำถาม' : 'เพิ่มคำถาม'}
-        </AntdTitle>
-        <Form form={currentQuestionForm} layout="vertical">
-          <Form.Item name="id" hidden>
-            <Input />
-          </Form.Item>
-          <Form.Item
-            name="questionText"
-            label={<span className="font-semibold text-gray-700">คำถาม</span>}
-            rules={[{ required: true, message: 'กรุณากรอกคำถาม!' }]}
-          >
-            <TextArea rows={2} placeholder="เช่น ข้อใดคือน้ำมันนวดที่นิยมใช้ในสปา?" className="rounded-lg" />
-          </Form.Item>
-
-          {/* Form.List for managing options (text input and delete button) */}
-          <Form.List name="options">
-            {(fields, { add, remove }) => (
-              <>
-                <AntdTitle level={5} className="text-gray-700 mb-4">ตัวเลือก</AntdTitle>
-                {fields.map(({ key, name }) => {
-                  return (
-                    <Space key={key} style={{ display: 'flex', marginBottom: 8 }} align="baseline" className="w-full">
-                      {/* Hidden Form.Item for the option's actual ID */}
-                      <Form.Item
-                        name={[name, 'id']}
-                        hidden
-                        noStyle
+        <Col span={24}>
+          <Card className="rounded-xl shadow-custom-light p-4">
+            <AntdTitle level={4} className="text-gray-700 mb-6">รายการคำถาม</AntdTitle>
+            {quiz.questions.length === 0 && (
+              <div className="text-center text-gray-500 mb-4">ยังไม่มีคำถามในข้อสอบนี้</div>
+            )}
+            <Space direction="vertical" className="w-full" size="middle">
+              {quiz.questions.map((q, index) => (
+                <Card
+                  key={q.id}
+                  size="small"
+                  className="rounded-lg border border-gray-200"
+                  extra={
+                    <Space>
+                      <Button
+                        type="text"
+                        icon={<EditOutlined />}
+                        onClick={() => handleEditQuestion(index)}
+                        className="text-blue-500 hover:text-blue-700"
+                      />
+                      <Popconfirm
+                        title="ลบคำถาม"
+                        description="คุณแน่ใจหรือไม่ที่จะลบคำถามนี้?"
+                        onConfirm={() => handleRemoveQuestion(index)}
+                        okText="ใช่"
+                        cancelText="ไม่"
                       >
-                        <Input />
-                      </Form.Item>
-
-                      {/* Input for option text */}
-                      <Form.Item
-                        name={[name, 'text']}
-                        rules={[{ required: true, message: 'กรุณากรอกตัวเลือก!' }]}
-                        className="flex-grow"
-                        noStyle
-                      >
-                        <Input
-                          placeholder={`ตัวเลือก ${name + 1}`}
-                          className="rounded-lg"
-                        />
-                      </Form.Item>
-
-                      {fields.length > 2 && (
                         <Button
                           type="text"
-                          danger
                           icon={<DeleteOutlined />}
-                          onClick={() => remove(name)}
-                          className="text-red-500 hover:text-red-700 ml-2"
+                          danger
+                          className="text-red-500 hover:text-red-700"
                         />
-                      )}
+                      </Popconfirm>
                     </Space>
-                  );
-                })}
-                <Button
-                  type="dashed"
-                  onClick={() => add({ id: uuidv4(), text: '' })}
-                  block
-                  icon={<PlusOutlined />}
-                  className="mt-4 rounded-lg text-green-500 border-green-500 hover:text-green-700 hover:border-green-700"
+                  }
                 >
-                  เพิ่มตัวเลือก
-                </Button>
-              </>
-            )}
-          </Form.List>
-
-          {/* Separate Form.Item for correctOptionId and Radio.Group */}
-          {/* This Radio.Group will display options based on currentOptions watched from the form */}
-          <Form.Item
-            name="correctOptionId"
-            label={<span className="font-semibold text-gray-700 mt-4">เลือกคำตอบที่ถูกต้อง</span>}
-            rules={[{ required: true, message: 'กรุณาเลือกคำตอบที่ถูกต้อง!' }]}
-          >
-            <Radio.Group className="w-full">
-              {/* Ensure currentOptions is not null before mapping */}
-              {currentOptions && currentOptions.map((option, index) => {
-                // Ensure option.id is a string for key and value props
-                const radioValue = option.id || `temp-${index}`; // Fallback to a temporary string if ID is undefined
-                return (
-                  <Radio key={radioValue} value={radioValue} className="block mb-2">
-                    {/* Display option text as the label for the radio button */}
-                    {option.text || `ตัวเลือก ${index + 1}`}
-                  </Radio>
-                );
-              })}
-            </Radio.Group>
-          </Form.Item>
-
-
-          <Space className="mt-6 w-full justify-end">
+                  <Text strong>{index + 1}. {q.questionText}</Text>
+                  <Radio.Group value={q.correctOptionId} className="w-full mt-2">
+                    {q.options.map(opt => (
+                      <div key={opt.id} className="flex items-center mb-1">
+                        <Radio value={opt.id} disabled className="mr-2" />
+                        <Text className={opt.id === q.correctOptionId ? 'font-bold text-green-600' : ''}>
+                          {opt.text}
+                        </Text>
+                      </div>
+                    ))}
+                  </Radio.Group>
+                </Card>
+              ))}
+            </Space>
             <Button
-              onClick={handleCancelQuestionEdit}
+              type="dashed"
+              onClick={handleAddQuestion}
+              block
+              icon={<PlusOutlined />}
+              className="mt-6 rounded-lg text-blue-500 border-blue-500 hover:text-blue-700 hover:border-blue-700"
+            >
+              เพิ่มคำถามใหม่
+            </Button>
+          </Card>
+        </Col>
+
+        {/* Question Creation/Edit Form */}
+        <Col span={24}>
+          <Card id="question-form-card" className="rounded-xl shadow-custom-light p-4">
+            <AntdTitle level={4} className="text-gray-700 mb-6">
+              {editingQuestionIndex !== null ? 'แก้ไขคำถาม' : 'เพิ่มคำถาม'}
+            </AntdTitle>
+            <Form form={currentQuestionForm} layout="vertical">
+              <Form.Item name="id" hidden>
+                <Input />
+              </Form.Item>
+              <Form.Item
+                name="questionText"
+                label={<span className="font-semibold text-gray-700">คำถาม</span>}
+                rules={[{ required: true, message: 'กรุณากรอกคำถาม!' }]}
+              >
+                <TextArea rows={2} placeholder="เช่น ข้อใดคือน้ำมันนวดที่นิยมใช้ในสปา?" className="rounded-lg" />
+              </Form.Item>
+
+              {/* Form.List for managing options (text input and delete button) */}
+              <Form.List name="options">
+                {(fields, { add, remove }) => (
+                  <>
+                    <AntdTitle level={5} className="text-gray-700 mb-4">ตัวเลือก</AntdTitle>
+                    {fields.map(({ key, name }) => {
+                      return (
+                        <Space key={key} style={{ display: 'flex', marginBottom: 8 }} align="baseline" className="w-full">
+                          {/* Hidden Form.Item for the option's actual ID */}
+                          <Form.Item
+                            name={[name, 'id']}
+                            hidden
+                            noStyle
+                          >
+                            <Input />
+                          </Form.Item>
+
+                          {/* Input for option text */}
+                          <Form.Item
+                            name={[name, 'text']}
+                            rules={[{ required: true, message: 'กรุณากรอกตัวเลือก!' }]}
+                            className="flex-grow"
+                            noStyle
+                          >
+                            <Input
+                              placeholder={`ตัวเลือก ${name + 1}`}
+                              className="rounded-lg"
+                            />
+                          </Form.Item>
+
+                          {fields.length > 2 && (
+                            <Button
+                              type="text"
+                              danger
+                              icon={<DeleteOutlined />}
+                              onClick={() => remove(name)}
+                              className="text-red-500 hover:text-red-700 ml-2"
+                            />
+                          )}
+                        </Space>
+                      );
+                    })}
+                    <Button
+                      type="dashed"
+                      onClick={() => add({ id: uuidv4(), text: '' })}
+                      block
+                      icon={<PlusOutlined />}
+                      className="mt-4 rounded-lg text-green-500 border-green-500 hover:text-green-700 hover:border-green-700"
+                    >
+                      เพิ่มตัวเลือก
+                    </Button>
+                  </>
+                )}
+              </Form.List>
+
+              {/* Separate Form.Item for correctOptionId and Radio.Group */}
+              {/* This Radio.Group will display options based on currentOptions watched from the form */}
+              <Form.Item
+                name="correctOptionId"
+                label={<span className="font-semibold text-gray-700 mt-4">เลือกคำตอบที่ถูกต้อง</span>}
+                rules={[{ required: true, message: 'กรุณาเลือกคำตอบที่ถูกต้อง!' }]}
+              >
+                <Radio.Group className="w-full">
+                  {/* Ensure currentOptions is not null before mapping */}
+                  {currentOptions && currentOptions.map((option, index) => {
+                    // Ensure option.id is a string for key and value props
+                    const radioValue = option.id || `temp-${index}`; // Fallback to a temporary string if ID is undefined
+                    return (
+                      <Radio key={radioValue} value={radioValue} className="block mb-2">
+                        {/* Display option text as the label for the radio button */}
+                        {option.text || `ตัวเลือก ${index + 1}`}
+                      </Radio>
+                    );
+                  })}
+                </Radio.Group>
+              </Form.Item>
+
+
+              <Space className="mt-6 w-full justify-end">
+                <Button
+                  onClick={handleCancelQuestionEdit}
+                  className="rounded-lg shadow-md px-6 py-3 text-base"
+                >
+                  ยกเลิก
+                </Button>
+                <Button
+                  type="primary"
+                  icon={<SaveOutlined />}
+                  onClick={handleSaveQuestion}
+                  className="bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow-md px-6 py-3 text-base"
+                >
+                  {editingQuestionIndex !== null ? 'บันทึกการแก้ไขคำถาม' : 'เพิ่มคำถามลงข้อสอบ'}
+                </Button>
+              </Space>
+            </Form>
+          </Card>
+        </Col>
+
+        {/* ปุ่มบันทึกและกลับ อยู่ใน Col แยก เพื่อให้ได้รับ gutter จาก Row หลัก */}
+        <Col span={24}>
+          <Space className="w-full justify-center">
+            <Button
+              icon={<ArrowLeftOutlined />}
+              onClick={handleCancel}
               className="rounded-lg shadow-md px-6 py-3 text-base"
             >
-              ยกเลิก
+              กลับ
             </Button>
             <Button
               type="primary"
               icon={<SaveOutlined />}
-              onClick={handleSaveQuestion}
-              className="bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow-md px-6 py-3 text-base"
+              onClick={handleSaveQuiz}
+              className="bg-orange-500 hover:bg-orange-600 text-white rounded-lg shadow-md px-6 py-3 text-base"
             >
-              {editingQuestionIndex !== null ? 'บันทึกการแก้ไขคำถาม' : 'เพิ่มคำถามลงข้อสอบ'}
+              บันทึกข้อสอบ
             </Button>
           </Space>
-        </Form>
-      </Card>
-
-      <Space className="mt-6 w-full justify-end">
-        <Button
-          icon={<ArrowLeftOutlined />}
-          onClick={handleCancel}
-          className="rounded-lg shadow-md px-6 py-3 text-base"
-        >
-          กลับ
-        </Button>
-        <Button
-          type="primary"
-          icon={<SaveOutlined />}
-          onClick={handleSaveQuiz}
-          className="bg-orange-500 hover:bg-orange-600 text-white rounded-lg shadow-md px-6 py-3 text-base"
-        >
-          บันทึกข้อสอบ
-        </Button>
-      </Space>
+        </Col>
+      </Row>
     </div>
   );
 }
