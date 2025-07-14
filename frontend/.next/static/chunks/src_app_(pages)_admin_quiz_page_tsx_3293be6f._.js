@@ -11,7 +11,7 @@
   "static/chunks/node_modules_rc-tree_es_d885700e._.js",
   "static/chunks/node_modules_rc-select_es_b53f2576._.js",
   "static/chunks/node_modules_rc-picker_es_d9388a88._.js",
-  "static/chunks/node_modules_7cc39eb7._.js",
+  "static/chunks/node_modules_2b3b3e74._.js",
   "static/chunks/src_app_(pages)_admin_quiz_page_tsx_9d0bc698._.js"
 ],
     source: "dynamic"

@@ -2,18 +2,46 @@
 "use client";
 
 import '@ant-design/v5-patch-for-react-19';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react'; // Import useEffect
 import { Tabs, Table, Button, Space, Modal, Form, Input, message, Tag, Select, Typography, DatePicker } from 'antd';
 import { EditOutlined, EyeOutlined, PlusOutlined, SearchOutlined, DeleteOutlined } from '@ant-design/icons';
 import type { TabsProps } from 'antd';
 import dayjs from 'dayjs';
+import Link from 'next/link'; // Import Link for navigation
+
+dayjs.locale('th'); // Set default locale to Thai for date display
 
 const { Option } = Select;
 const { Text } = Typography;
 
+// --- Standardized Interfaces (ต้องเหมือนกับใน manage/page.tsx) ---
+interface Option {
+  id: string;
+  text: string;
+}
+
+interface Question {
+  id: string;
+  questionText: string;
+  options: Option[];
+  correctOptionId: string; // ID ของตัวเลือกที่ถูกต้อง
+}
+
+interface Quiz {
+  id: string;
+  title: string; // ชื่อข้อสอบ
+  description: string; // คำอธิบายทั่วไปของข้อสอบ
+  course: string; // หลักสูตรที่เกี่ยวข้อง
+  numQuestions: number; // จำนวนคำถามในข้อสอบ (จะถูกคำนวณจาก questions.length)
+  status: 'draft' | 'published'; // สถานะของข้อสอบ
+  questions: Question[];
+  createdAt: string;
+  updatedAt: string;
+}
+
 // --- Interfaces for Evaluation Tab ---
 interface Evaluation {
-  key: string;
+  key: string; // ใช้ key เพื่อความเข้ากันได้กับ Ant Design Table
   quizTitle: string;
   studentName: string;
   score: number;
@@ -29,34 +57,9 @@ interface EvaluationFormValues {
   status: 'Passed' | 'Failed' | 'Pending';
 }
 
-// --- Interfaces for Create Exam Tab ---
-interface ExamQuestion {
-  id: string;
-  questionText: string;
-  options: string[];
-  correctAnswer: string;
-}
 
-interface Exam {
-  key: string;
-  examTitle: string;
-  course: string;
-  numQuestions: number;
-  status: 'Draft' | 'Published';
-  questions: ExamQuestion[]; // Store questions within the exam
-}
-
-interface ExamFormValues {
-  examTitle: string;
-  course: string;
-  numQuestions: number;
-  status: 'Draft' | 'Published';
-}
-
-
-export default function QuizPage() {
-  // *** แก้ไข: ใช้ activeTab เป็น activeKey ของ Tabs component ***
-  const [activeTab, setActiveTab] = useState('evaluation'); // State สำหรับควบคุม Tab ที่ Active
+export default function QuizManagementPage() { // เปลี่ยนชื่อ Component
+  const [activeTab, setActiveTab] = useState('evaluation');
 
   // --- State for Evaluation Tab ---
   const [isEvaluationModalVisible, setIsEvaluationModalVisible] = useState(false);
@@ -64,8 +67,8 @@ export default function QuizPage() {
   const [evaluationForm] = Form.useForm<EvaluationFormValues>();
   const [isEvaluationDetailModalVisible, setIsEvaluationDetailModalVisible] = useState(false);
   const [viewingEvaluation, setViewingEvaluation] = useState<Evaluation | null>(null);
+  const [searchTermEvaluation, setSearchTermEvaluation] = useState(''); // Search term for evaluation tab
 
-  const [searchTermEvaluate, setSearchTermEvaluate] = useState('');
   const [evaluations, setEvaluations] = useState<Evaluation[]>([
     {
       key: '1',
@@ -89,38 +92,21 @@ export default function QuizPage() {
       studentName: 'มานะ พากเพียร',
       score: 70,
       dateTaken: '2023-07-10',
-      status: 'Pending', // สมมติว่ายังไม่ตรวจ
+      status: 'Pending',
     },
   ]);
 
-  // --- State for Create Exam Tab ---
-  const [isExamModalVisible, setIsExamModalVisible] = useState(false);
-  const [editingExam, setEditingExam] = useState<Exam | null>(null);
-  const [examForm] = Form.useForm<ExamFormValues>();
-  const [isExamDetailModalVisible, setIsExamDetailModalVisible] = useState(false);
-  const [viewingExam, setViewingExam] = useState<Exam | null>(null);
+  // --- State for Quiz Management Tab (formerly Create Exam) ---
+  const [quizzes, setQuizzes] = useState<Quiz[]>([]); // ใช้ quizzes state
+  const [isQuizDetailModalVisible, setIsQuizDetailModalVisible] = useState(false); // สำหรับ Modal แสดงรายละเอียด Quiz
+  const [viewingQuiz, setViewingQuiz] = useState<Quiz | null>(null); // สำหรับ Quiz ที่กำลังดูรายละเอียด
+  const [searchTermQuiz, setSearchTermQuiz] = useState(''); // Search term for quiz tab
 
-  const [searchTermExam, setSearchTermExam] = useState('');
-  const [exams, setExams] = useState<Exam[]>([
-    {
-      key: '1',
-      examTitle: 'แบบทดสอบบทที่ 1: พื้นฐานนวด',
-      course: 'นวดแผนไทยเบื้องต้น',
-      numQuestions: 10,
-      status: 'Published',
-      questions: [
-        { id: 'q1', questionText: 'ข้อใดคือท่าพื้นฐานการนวดไทย?', options: ['กดจุด', 'คลึง', 'ยืด', 'ถูกทุกข้อ'], correctAnswer: 'ถูกทุกข้อ' }
-      ]
-    },
-    {
-      key: '2',
-      examTitle: 'แบบทดสอบกลางภาค: สปา',
-      course: 'สปาเพื่อสุขภาพ',
-      numQuestions: 20,
-      status: 'Draft',
-      questions: []
-    },
-  ]);
+  // Load quizzes from localStorage on component mount
+  useEffect(() => {
+    const storedQuizzes = JSON.parse(localStorage.getItem('quizzes') || '[]') as Quiz[];
+    setQuizzes(storedQuizzes);
+  }, []);
 
   // --- Evaluation Tab Handlers ---
   const handleAddEvaluation = () => {
@@ -194,83 +180,44 @@ export default function QuizPage() {
     setViewingEvaluation(null);
   };
 
-  // --- Create Exam Tab Handlers ---
-  const handleAddExam = () => {
-    setEditingExam(null);
-    examForm.resetFields();
-    setIsExamModalVisible(true);
-  };
-
-  const handleEditExam = (record: Exam) => {
-    setEditingExam(record);
-    examForm.setFieldsValue(record);
-    setIsExamModalVisible(true);
-  };
-
-  const handleDeleteExam = (keyToDelete: string) => {
+  // --- Quiz Management Tab Handlers ---
+  const handleDeleteQuiz = (idToDelete: string) => {
     Modal.confirm({
       title: 'ยืนยันการลบ',
-      content: 'คุณแน่ใจหรือไม่ว่าต้องการลบข้อสอบนี้?',
+      content: 'คุณแน่ใจหรือไม่ว่าต้องการลบข้อสอบนี้? การดำเนินการนี้ไม่สามารถย้อนกลับได้',
       okText: 'ลบ',
-      cancelText: 'ยกเลิก',
+      cancelText: 'ไม่',
       onOk() {
-        setExams(prevExams => prevExams.filter(exam => exam.key !== keyToDelete));
-        message.success('ลบข้อสอบสำเร็จ!');
+        const updatedQuizzes = quizzes.filter(quiz => quiz.id !== idToDelete);
+        localStorage.setItem('quizzes', JSON.stringify(updatedQuizzes));
+        setQuizzes(updatedQuizzes);
+        message.success('ลบข้อสอบเรียบร้อย!');
       },
     });
   };
 
-  const handleExamOk = () => {
-    examForm.validateFields()
-      .then((values: ExamFormValues) => {
-        if (editingExam) {
-          setExams(prevExams =>
-            prevExams.map(exam =>
-              exam.key === editingExam.key ? { ...exam, ...values } : exam
-            )
-          );
-          message.success('อัปเดตข้อสอบสำเร็จ!');
-        } else {
-          const newExam: Exam = {
-            key: (exams.length + 1).toString(),
-            ...values,
-            questions: [], // ข้อสอบใหม่เริ่มต้นด้วยคำถามว่างเปล่า
-          };
-          setExams(prevExams => [...prevExams, newExam]);
-          message.success('เพิ่มข้อสอบสำเร็จ!');
-        }
-        setIsExamModalVisible(false);
-      })
-      .catch(info => {
-        console.log('Validate Failed:', info);
-      });
+  const handleViewQuiz = (record: Quiz) => {
+    setViewingQuiz(record);
+    setIsQuizDetailModalVisible(true);
   };
 
-  const handleExamCancel = () => {
-    setIsExamModalVisible(false);
+  const handleQuizDetailModalCancel = () => {
+    setIsQuizDetailModalVisible(false);
+    setViewingQuiz(null);
   };
 
-  const handleViewExam = (record: Exam) => {
-    setViewingExam(record);
-    setIsExamDetailModalVisible(true);
-  };
-
-  const handleExamDetailModalCancel = () => {
-    setIsExamDetailModalVisible(false);
-    setViewingExam(null);
-  };
-
-  const filteredEvaluate = evaluations.filter(evaluations =>
-    evaluations.quizTitle.toLowerCase().includes(searchTermEvaluate.toLowerCase()) ||
-    evaluations.studentName.toLowerCase().includes(searchTermEvaluate.toLowerCase()) ||
-    evaluations.status.toLowerCase().includes(searchTermEvaluate.toLowerCase()) ||
-    evaluations.dateTaken.includes(searchTermEvaluate)
+  // --- Filtered Data ---
+  const filteredEvaluations = evaluations.filter(evalItem =>
+    evalItem.quizTitle.toLowerCase().includes(searchTermEvaluation.toLowerCase()) ||
+    evalItem.studentName.toLowerCase().includes(searchTermEvaluation.toLowerCase()) ||
+    evalItem.status.toLowerCase().includes(searchTermEvaluation.toLowerCase()) ||
+    evalItem.dateTaken.includes(searchTermEvaluation)
   );
 
-  const filteredExams = exams.filter(exams =>
-    exams.examTitle.toLowerCase().includes(searchTermExam.toLowerCase()) ||
-    exams.course.toLowerCase().includes(searchTermExam.toLowerCase()) ||
-    exams.status.toLowerCase().includes(searchTermExam.toLowerCase())
+  const filteredQuizzes = quizzes.filter(quiz =>
+    quiz.title.toLowerCase().includes(searchTermQuiz.toLowerCase()) ||
+    quiz.course.toLowerCase().includes(searchTermQuiz.toLowerCase()) ||
+    quiz.status.toLowerCase().includes(searchTermQuiz.toLowerCase())
   );
 
   // --- Columns for Evaluation Tab ---
@@ -357,20 +304,20 @@ export default function QuizPage() {
     },
   ];
 
-  // --- Columns for Create Exam Tab ---
-  const examColumns = [
+  // --- Columns for Quiz Management Tab ---
+  const quizColumns = [ // เปลี่ยนชื่อจาก examColumns เป็น quizColumns
     {
       title: '#',
-      dataIndex: 'key',
-      key: 'key',
-      render: (text: string) => parseInt(text),
+      dataIndex: 'id', // ใช้ id แทน key
+      key: 'id',
+      render: (text: string) => parseInt(text.split('-')[0] || '0'), // อาจจะต้องปรับการ render id
       width: 50,
       className: 'text-gray-600',
     },
     {
-      title: 'EXAM TITLE',
-      dataIndex: 'examTitle',
-      key: 'examTitle',
+      title: 'QUIZ TITLE', // เปลี่ยนเป็น QUIZ TITLE
+      dataIndex: 'title', // ใช้ title แทน examTitle
+      key: 'title',
       className: 'font-medium text-gray-900',
     },
     {
@@ -381,7 +328,7 @@ export default function QuizPage() {
     },
     {
       title: 'QUESTIONS',
-      dataIndex: 'numQuestions',
+      dataIndex: 'numQuestions', // ใช้ numQuestions
       key: 'numQuestions',
       className: 'text-gray-700',
     },
@@ -389,28 +336,45 @@ export default function QuizPage() {
       title: 'STATUS',
       dataIndex: 'status',
       key: 'status',
-      render: (status: 'Draft' | 'Published') => (
-        <Tag color={status === 'Published' ? 'green' : 'blue'} className="rounded-full px-3 py-1 text-xs font-semibold">
-          {status}
+      render: (status: 'draft' | 'published') => ( // ใช้ status แบบ lowercase
+        <Tag color={status === 'published' ? 'green' : 'blue'} className="rounded-full px-3 py-1 text-xs font-semibold">
+          {status === 'published' ? 'เผยแพร่แล้ว' : 'ฉบับร่าง'}
         </Tag>
       ),
       className: 'text-center',
     },
     {
+      title: 'CREATED AT',
+      dataIndex: 'createdAt',
+      key: 'createdAt',
+      render: (date: string) => dayjs(date).format('D MMMM YYYY, HH:mm'),
+      className: 'text-gray-700',
+    },
+    {
+      title: 'UPDATED AT',
+      dataIndex: 'updatedAt',
+      key: 'updatedAt',
+      render: (date: string) => dayjs(date).format('D MMMM YYYY, HH:mm'),
+      className: 'text-gray-700',
+    },
+    {
       title: 'ACTIONS',
       key: 'actions',
-      render: (_text: string, record: Exam) => (
+      render: (_text: string, record: Quiz) => (
         <Space size="middle">
           <Button
             icon={<EyeOutlined />}
-            onClick={() => handleViewExam(record)}
+            onClick={() => handleViewQuiz(record)}
             className="text-gray-500 border-none shadow-none hover:bg-gray-50"
           />
-          <Button icon={<EditOutlined />} onClick={() => handleEditExam(record)} className="text-blue-500 border-none shadow-none hover:bg-blue-50" />
+          {/* *** เปลี่ยนเป็น Link ไปยัง manage/page.tsx สำหรับแก้ไข *** */}
+          <Link href={`/admin/quiz/manage?id=${record.id}`}>
+            <Button icon={<EditOutlined />} className="text-blue-500 border-none shadow-none hover:bg-blue-50" />
+          </Link>
           <Button
             icon={<DeleteOutlined />}
             danger
-            onClick={() => handleDeleteExam(record.key)}
+            onClick={() => handleDeleteQuiz(record.id)} // ใช้ record.id
             className="text-red-500 border-none shadow-none hover:bg-red-50"
           />
         </Space>
@@ -429,8 +393,8 @@ export default function QuizPage() {
               placeholder="Search Evaluation"
               prefix={<SearchOutlined className="text-gray-400" />}
               className="w-80 rounded-lg shadow-sm table-search-input"
-              value={searchTermEvaluate}
-              onChange={(e) => setSearchTermEvaluate(e.target.value)}
+              value={searchTermEvaluation}
+              onChange={(e) => setSearchTermEvaluation(e.target.value)}
             />
             <Button
               type="primary"
@@ -443,7 +407,7 @@ export default function QuizPage() {
           </div>
           <Table
             columns={evaluationColumns}
-            dataSource={filteredEvaluate}
+            dataSource={filteredEvaluations}
             className="rounded-xl shadow-custom-light"
             pagination={{ pageSize: 10 }}
             bordered={false}
@@ -529,107 +493,77 @@ export default function QuizPage() {
       ),
     },
     {
-      key: 'create-exam',
-      label: 'ส่วนสร้างข้อสอบ',
+      key: 'quiz-management', // เปลี่ยน key และ label
+      label: 'จัดการข้อสอบ',
       children: (
         <>
           <div className="flex justify-between items-center mb-6">
             <Input
-              placeholder="Search Exam"
+              placeholder="ค้นหาข้อสอบ"
               prefix={<SearchOutlined className="text-gray-400" />}
               className="w-80 rounded-lg shadow-sm table-search-input"
-              value={searchTermExam}
-              onChange={(e) => setSearchTermExam(e.target.value)}
+              value={searchTermQuiz}
+              onChange={(e) => setSearchTermQuiz(e.target.value)}
             />
-            <Button
-              type="primary"
-              onClick={handleAddExam}
-              icon={<PlusOutlined />}
-              className="bg-orange-500 hover:bg-orange-600 text-white rounded-lg shadow-md px-6 py-3 text-base"
-            >
-              สร้างข้อสอบใหม่
-            </Button>
+            {/* *** เปลี่ยนเป็น Link ไปยัง manage/page.tsx สำหรับสร้างข้อสอบใหม่ *** */}
+            <Link href="/admin/quiz/manage">
+              <Button
+                type="primary"
+                icon={<PlusOutlined />}
+                className="bg-orange-500 hover:bg-orange-600 text-white rounded-lg shadow-md px-6 py-3 text-base"
+              >
+                สร้างข้อสอบใหม่
+              </Button>
+            </Link>
           </div>
           <Table
-            columns={examColumns}
-            dataSource={filteredExams}
+            columns={quizColumns} // ใช้ quizColumns
+            dataSource={filteredQuizzes} // ใช้ filteredQuizzes
+            rowKey="id" // ใช้ id เป็น rowKey
             className="rounded-xl shadow-custom-light"
             pagination={{ pageSize: 10 }}
             bordered={false}
           />
-          {/* Modal for Add/Edit Exam */}
-          <Modal
-            title={editingExam ? 'แก้ไขข้อสอบ' : 'สร้างข้อสอบใหม่'}
-            open={isExamModalVisible}
-            onOk={handleExamOk}
-            onCancel={handleExamCancel}
-            className="rounded-xl"
-            centered
-          >
-            <Form
-              form={examForm}
-              layout="vertical"
-              name="exam_form"
-              className="p-4"
-            >
-              <Form.Item
-                name="examTitle"
-                label={<span className="font-semibold text-gray-700">ชื่อข้อสอบ</span>}
-                rules={[{ required: true, message: 'กรุณากรอกชื่อข้อสอบ!' }]}
-              >
-                <Input placeholder="เช่น แบบทดสอบกลางภาค" className="rounded-lg" />
-              </Form.Item>
-              <Form.Item
-                name="course"
-                label={<span className="font-semibold text-gray-700">หลักสูตร</span>}
-                rules={[{ required: true, message: 'กรุณากรอกหลักสูตรที่เกี่ยวข้อง!' }]}
-              >
-                <Input placeholder="เช่น สปาเพื่อสุขภาพ" className="rounded-lg" />
-              </Form.Item>
-              <Form.Item
-                name="numQuestions"
-                label={<span className="font-semibold text-gray-700">จำนวนคำถาม</span>}
-                rules={[{ required: true, message: 'กรุณากรอกจำนวนคำถาม!', type: 'number', transform: (value) => Number(value) || 0 }]}
-              >
-                <Input type="number" placeholder="เช่น 20" className="rounded-lg" />
-              </Form.Item>
-              <Form.Item
-                name="status"
-                label={<span className="font-semibold text-gray-700">สถานะ</span>}
-                rules={[{ required: true, message: 'กรุณาเลือกสถานะ!' }]}
-              >
-                <Select<ExamFormValues['status']> placeholder="เลือกสถานะ" className="rounded-lg">
-                  <Option value="Draft">Draft</Option>
-                  <Option value="Published">Published</Option>
-                </Select>
-              </Form.Item>
-            </Form>
-          </Modal>
-          {/* Modal for Viewing Exam Details */}
+          {/* Modal for Viewing Quiz Details */}
           <Modal
             title="รายละเอียดข้อสอบ"
-            open={isExamDetailModalVisible}
-            onCancel={handleExamDetailModalCancel}
+            open={isQuizDetailModalVisible}
+            onCancel={handleQuizDetailModalCancel}
             footer={null}
             className="rounded-xl"
             centered
           >
-            {viewingExam ? (
+            {viewingQuiz ? (
               <div className="p-4">
-                <p className="mb-2"><Text strong>ชื่อข้อสอบ:</Text> {viewingExam.examTitle}</p>
-                <p className="mb-2"><Text strong>หลักสูตร:</Text> {viewingExam.course}</p>
-                <p className="mb-2"><Text strong>จำนวนคำถาม:</Text> {viewingExam.numQuestions}</p>
-                <p className="mb-2"><Text strong>สถานะ:</Text> <Tag color={viewingExam.status === 'Published' ? 'green' : 'blue'}>{viewingExam.status}</Tag></p>
-                {/* สามารถแสดงรายการคำถามได้ที่นี่ในอนาคต */}
-                {viewingExam.questions.length > 0 && (
+                <p className="mb-2"><Text strong>ชื่อข้อสอบ:</Text> {viewingQuiz.title}</p>
+                <p className="mb-2"><Text strong>หลักสูตร:</Text> {viewingQuiz.course}</p>
+                <p className="mb-2"><Text strong>จำนวนคำถาม:</Text> {viewingQuiz.numQuestions}</p>
+                <p className="mb-2"><Text strong>สถานะ:</Text> <Tag color={viewingQuiz.status === 'published' ? 'green' : 'blue'}>{viewingQuiz.status === 'published' ? 'เผยแพร่แล้ว' : 'ฉบับร่าง'}</Tag></p>
+                <p className="mb-2"><Text strong>สร้างเมื่อ:</Text> {dayjs(viewingQuiz.createdAt).format('D MMMM YYYY, HH:mm')}</p>
+                <p className="mb-2"><Text strong>อัปเดตล่าสุด:</Text> {dayjs(viewingQuiz.updatedAt).format('D MMMM YYYY, HH:mm')}</p>
+                {viewingQuiz.description && <p className="mb-2"><Text strong>คำอธิบาย:</Text> {viewingQuiz.description}</p>}
+
+                {viewingQuiz.questions.length > 0 && (
                   <div className="mt-4">
-                    <Text strong>คำถาม:</Text>
-                    <ul>
-                      {viewingExam.questions.map((q, index) => (
-                        <li key={q.id || index}>{index + 1}. {q.questionText}</li>
+                    <Text strong className="text-lg">รายการคำถาม:</Text>
+                    <ul className="list-disc list-inside ml-4">
+                      {viewingQuiz.questions.map((q, index) => (
+                        <li key={q.id || index} className="mb-2">
+                          <Text strong>{index + 1}. {q.questionText}</Text>
+                          <ul className="list-circle list-inside ml-4">
+                            {q.options.map(opt => (
+                              <li key={opt.id} className={opt.id === q.correctOptionId ? 'text-green-600 font-medium' : ''}>
+                                {opt.text} {opt.id === q.correctOptionId && <Text type="success">(Correct)</Text>}
+                              </li>
+                            ))}
+                          </ul>
+                        </li>
                       ))}
                     </ul>
                   </div>
+                )}
+                {viewingQuiz.questions.length === 0 && (
+                  <p className="text-gray-500 mt-4">ยังไม่มีคำถามสำหรับข้อสอบนี้</p>
                 )}
               </div>
             ) : (
@@ -648,7 +582,7 @@ export default function QuizPage() {
         defaultActiveKey="evaluation"
         items={items}
         onChange={setActiveTab}
-        activeKey={activeTab} // *** แก้ไข: เพิ่ม activeKey prop เพื่อใช้งาน activeTab ***
+        activeKey={activeTab}
         className="rounded-xl shadow-custom-light bg-white p-4"
       />
     </>
