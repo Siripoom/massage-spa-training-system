@@ -353,6 +353,10 @@
     position: absolute;
   }
 
+  .fixed {
+    position: fixed;
+  }
+
   .relative {
     position: relative;
   }
@@ -479,12 +483,20 @@
     height: calc(var(--spacing) * 10);
   }
 
-  .h-screen {
-    height: 100vh;
+  .h-12 {
+    height: calc(var(--spacing) * 12);
   }
 
-  .max-h-\[calc\(100vh-200px\)\] {
-    max-height: calc(100vh - 200px);
+  .h-40 {
+    height: calc(var(--spacing) * 40);
+  }
+
+  .h-full {
+    height: 100%;
+  }
+
+  .h-screen {
+    height: 100vh;
   }
 
   .min-h-screen {
@@ -571,12 +583,8 @@
     gap: calc(var(--spacing) * 3);
   }
 
-  .gap-4 {
-    gap: calc(var(--spacing) * 4);
-  }
-
-  .gap-25 {
-    gap: calc(var(--spacing) * 25);
+  .gap-10 {
+    gap: calc(var(--spacing) * 10);
   }
 
   :where(.space-y-4 > :not(:last-child)) {
@@ -593,10 +601,6 @@
 
   .overflow-hidden {
     overflow: hidden;
-  }
-
-  .overflow-y-auto {
-    overflow-y: auto;
   }
 
   .rounded {
@@ -654,10 +658,6 @@
     background-color: var(--color-blue-100);
   }
 
-  .bg-blue-500 {
-    background-color: var(--color-blue-500);
-  }
-
   .bg-green-500 {
     background-color: var(--color-green-500);
   }
@@ -668,14 +668,6 @@
 
   .bg-white {
     background-color: var(--color-white);
-  }
-
-  .p-1 {
-    padding: calc(var(--spacing) * 1);
-  }
-
-  .p-2 {
-    padding: calc(var(--spacing) * 2);
   }
 
   .p-3 {
@@ -850,10 +842,6 @@
     color: var(--color-white);
   }
 
-  .lowercase {
-    text-transform: lowercase;
-  }
-
   .shadow {
     --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, #0000001a), 0 1px 2px -1px var(--tw-shadow-color, #0000001a);
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
@@ -911,12 +899,6 @@
   }
 
   @media (hover: hover) {
-    .hover\:bg-blue-600:hover {
-      background-color: var(--color-blue-600);
-    }
-  }
-
-  @media (hover: hover) {
     .hover\:bg-gray-50:hover {
       background-color: var(--color-gray-50);
     }
@@ -962,12 +944,6 @@
     .hover\:shadow-md:hover {
       --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, #0000001a), 0 2px 4px -2px var(--tw-shadow-color, #0000001a);
       box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-    }
-  }
-
-  @media (width >= 40rem) {
-    .sm\:p-4 {
-      padding: calc(var(--spacing) * 4);
     }
   }
 

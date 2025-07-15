@@ -11,26 +11,27 @@ __turbopack_context__.s({
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$v5$2d$patch$2d$for$2d$react$2d$19$2f$es$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@ant-design/v5-patch-for-react-19/es/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
-// import { Layout, Form, Input, Select, Button, message, Card, Typography, Modal, DatePicker, Row, Col, Slider, Space } from 'antd';
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__ = __turbopack_context__.i("[project]/node_modules/antd/es/form/index.js [app-client] (ecmascript) <export default as Form>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$input$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Input$3e$__ = __turbopack_context__.i("[project]/node_modules/antd/es/input/index.js [app-client] (ecmascript) <export default as Input>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$select$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Select$3e$__ = __turbopack_context__.i("[project]/node_modules/antd/es/select/index.js [app-client] (ecmascript) <export default as Select>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$tabs$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Tabs$3e$__ = __turbopack_context__.i("[project]/node_modules/antd/es/tabs/index.js [app-client] (ecmascript) <export default as Tabs>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$table$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Table$3e$__ = __turbopack_context__.i("[project]/node_modules/antd/es/table/index.js [app-client] (ecmascript) <export default as Table>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__ = __turbopack_context__.i("[project]/node_modules/antd/es/button/index.js [app-client] (ecmascript) <locals> <export default as Button>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__ = __turbopack_context__.i("[project]/node_modules/antd/es/message/index.js [app-client] (ecmascript) <export default as message>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$card$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Card$3e$__ = __turbopack_context__.i("[project]/node_modules/antd/es/card/index.js [app-client] (ecmascript) <export default as Card>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$typography$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__ = __turbopack_context__.i("[project]/node_modules/antd/es/typography/index.js [app-client] (ecmascript) <export default as Typography>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$modal$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Modal$3e$__ = __turbopack_context__.i("[project]/node_modules/antd/es/modal/index.js [app-client] (ecmascript) <export default as Modal>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$date$2d$picker$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__DatePicker$3e$__ = __turbopack_context__.i("[project]/node_modules/antd/es/date-picker/index.js [app-client] (ecmascript) <export default as DatePicker>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$row$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Row$3e$__ = __turbopack_context__.i("[project]/node_modules/antd/es/row/index.js [app-client] (ecmascript) <export default as Row>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__ = __turbopack_context__.i("[project]/node_modules/antd/es/col/index.js [app-client] (ecmascript) <export default as Col>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$slider$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Slider$3e$__ = __turbopack_context__.i("[project]/node_modules/antd/es/slider/index.js [app-client] (ecmascript) <export default as Slider>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$space$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Space$3e$__ = __turbopack_context__.i("[project]/node_modules/antd/es/space/index.js [app-client] (ecmascript) <locals> <export default as Space>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$SaveOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__SaveOutlined$3e$__ = __turbopack_context__.i("[project]/node_modules/@ant-design/icons/es/icons/SaveOutlined.js [app-client] (ecmascript) <export default as SaveOutlined>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$PrinterOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__PrinterOutlined$3e$__ = __turbopack_context__.i("[project]/node_modules/@ant-design/icons/es/icons/PrinterOutlined.js [app-client] (ecmascript) <export default as PrinterOutlined>");
-// import type { UploadFile, UploadChangeParam } from 'antd/lib/upload/interface'; // ยังคง import ไว้เผื่อใช้ในอนาคต
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$modal$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Modal$3e$__ = __turbopack_context__.i("[project]/node_modules/antd/es/modal/index.js [app-client] (ecmascript) <export default as Modal>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$input$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Input$3e$__ = __turbopack_context__.i("[project]/node_modules/antd/es/input/index.js [app-client] (ecmascript) <export default as Input>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__ = __turbopack_context__.i("[project]/node_modules/antd/es/message/index.js [app-client] (ecmascript) <export default as message>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$tag$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Tag$3e$__ = __turbopack_context__.i("[project]/node_modules/antd/es/tag/index.js [app-client] (ecmascript) <export default as Tag>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$typography$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__ = __turbopack_context__.i("[project]/node_modules/antd/es/typography/index.js [app-client] (ecmascript) <export default as Typography>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$breadcrumb$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Breadcrumb$3e$__ = __turbopack_context__.i("[project]/node_modules/antd/es/breadcrumb/index.js [app-client] (ecmascript) <export default as Breadcrumb>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$card$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Card$3e$__ = __turbopack_context__.i("[project]/node_modules/antd/es/card/index.js [app-client] (ecmascript) <export default as Card>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$EditOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__EditOutlined$3e$__ = __turbopack_context__.i("[project]/node_modules/@ant-design/icons/es/icons/EditOutlined.js [app-client] (ecmascript) <export default as EditOutlined>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$EyeOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__EyeOutlined$3e$__ = __turbopack_context__.i("[project]/node_modules/@ant-design/icons/es/icons/EyeOutlined.js [app-client] (ecmascript) <export default as EyeOutlined>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$PlusOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__PlusOutlined$3e$__ = __turbopack_context__.i("[project]/node_modules/@ant-design/icons/es/icons/PlusOutlined.js [app-client] (ecmascript) <export default as PlusOutlined>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$SearchOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__SearchOutlined$3e$__ = __turbopack_context__.i("[project]/node_modules/@ant-design/icons/es/icons/SearchOutlined.js [app-client] (ecmascript) <export default as SearchOutlined>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$DeleteOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__DeleteOutlined$3e$__ = __turbopack_context__.i("[project]/node_modules/@ant-design/icons/es/icons/DeleteOutlined.js [app-client] (ecmascript) <export default as DeleteOutlined>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$HomeOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__HomeOutlined$3e$__ = __turbopack_context__.i("[project]/node_modules/@ant-design/icons/es/icons/HomeOutlined.js [app-client] (ecmascript) <export default as HomeOutlined>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$TrophyOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__TrophyOutlined$3e$__ = __turbopack_context__.i("[project]/node_modules/@ant-design/icons/es/icons/TrophyOutlined.js [app-client] (ecmascript) <export default as TrophyOutlined>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$dayjs$2f$dayjs$2e$min$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/dayjs/dayjs.min.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$shared$2f$lib$2f$app$2d$dynamic$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/shared/lib/app-dynamic.js [app-client] (ecmascript)");
-;
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$dayjs$2f$locale$2f$th$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/dayjs/locale/th.js [app-client] (ecmascript)"); // Import Thai locale for dayjs
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$uuid$2f$dist$2f$esm$2d$browser$2f$v4$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__v4$3e$__ = __turbopack_context__.i("[project]/node_modules/uuid/dist/esm-browser/v4.js [app-client] (ecmascript) <export default as v4>"); // For generating unique IDs
 ;
 var _s = __turbopack_context__.k.signature();
 "use client";
@@ -40,1075 +41,1412 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
-// const { Content } = Layout;
-const { Option } = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$select$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Select$3e$__["Select"];
-const { Title: AntdTitle } = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$typography$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"];
-// Dynamically import CertificateCanvas to ensure it only runs on the client-side
-const CertificateCanvas = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$shared$2f$lib$2f$app$2d$dynamic$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])(()=>__turbopack_context__.r("[project]/src/app/(pages)/admin/certificate/certificateCanvas.tsx [app-client] (ecmascript, next/dynamic entry, async loader)")(__turbopack_context__.i), {
-    loadableGenerated: {
-        modules: [
-            "[project]/src/app/(pages)/admin/certificate/certificateCanvas.tsx [app-client] (ecmascript, next/dynamic entry)"
-        ]
-    },
-    ssr: false
-});
-_c = CertificateCanvas;
+;
+__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$dayjs$2f$dayjs$2e$min$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].locale('th');
+const { Text, Title: AntdTitle } = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$typography$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"];
 function CertificatePage() {
     _s();
-    const [form] = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].useForm();
-    const [isSaveModalVisible, setIsSaveModalVisible] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    const [isClient, setIsClient] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false); // *** เพิ่ม isClient state ***
-    const stageRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
-    const dummySchools = [
+    const [activeTab, setActiveTab] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('templates'); // Default to templates tab
+    // --- State for Certificate Templates Tab ---
+    const [certificateTemplates, setCertificateTemplates] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [searchTermTemplates, setSearchTermTemplates] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('');
+    const [isTemplateDetailModalVisible, setIsTemplateDetailModalVisible] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [viewingTemplate, setViewingTemplate] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [hasLoadedTemplates, setHasLoadedTemplates] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false); // New state for hydration
+    // --- State for Issued Certificates Tab ---
+    const [issuedCertificates, setIssuedCertificates] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([
         {
-            key: '1',
-            name: 'โรงเรียนสาธิต ม.เกษตรศาสตร์',
-            address: 'กรุงเทพมหานคร',
-            contact: '02-123-4567',
-            logoUrl: ''
+            id: (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$uuid$2f$dist$2f$esm$2d$browser$2f$v4$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__v4$3e$__["v4"])(),
+            templateName: 'ใบประกาศนวดแผนไทย',
+            studentName: 'สมชาย ใจดี',
+            courseTitle: 'หลักสูตรนวดแผนไทยเบื้องต้น',
+            issueDate: '2023-07-15',
+            status: 'Issued'
         },
         {
-            key: '2',
-            name: 'โรงเรียนเตรียมอุดมศึกษา',
-            address: 'กรุงเทพมหานคร',
-            contact: '02-765-4321',
-            logoUrl: ''
+            id: (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$uuid$2f$dist$2f$esm$2d$browser$2f$v4$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__v4$3e$__["v4"])(),
+            templateName: 'ประกาศนียบัตรสปา',
+            studentName: 'สมหญิง รักเรียน',
+            courseTitle: 'หลักสูตรสปาเพื่อสุขภาพ',
+            issueDate: '2023-07-20',
+            status: 'Issued'
         },
         {
-            key: '3',
-            name: 'โรงเรียนบดินทรเดชา',
-            address: 'กรุงเทพมหานคร',
-            contact: '02-987-6543',
-            logoUrl: ''
+            id: (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$uuid$2f$dist$2f$esm$2d$browser$2f$v4$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__v4$3e$__["v4"])(),
+            templateName: 'ใบรับรองอโรมาเธอราพี',
+            studentName: 'มานะ พากเพียร',
+            courseTitle: 'หลักสูตรอโรมาเธอราพี',
+            issueDate: '2023-07-25',
+            status: 'Revoked'
         }
-    ];
-    // กำหนดค่าเริ่มต้นของ certificateData
-    const [certificateData, setCertificateData] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({
-        title: 'ใบประกาศนียบัตร',
-        studentName: 'ชื่อนักเรียน',
-        courseName: 'ชื่อหลักสูตรที่สำเร็จ',
-        issueDate: (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$dayjs$2f$dayjs$2e$min$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])(),
-        schoolName: dummySchools[0].name,
-        schoolLogoUrl: '',
-        fontFamily: 'Prompt',
-        fontSize: 16,
-        textColor: '#000000',
-        bgColor: '#FFFFFF',
-        signatureLine1: 'ผู้อำนวยการ',
-        signatureLine2: 'โรงเรียนสาธิต ม.เกษตรศาสตร์',
-        // Initial positions in pixels, representing the TOP-LEFT of the element's bounding box
-        // DESIGN_WIDTH = 720, DESIGN_HEIGHT = 508.5 (จาก CertificateCanvas.tsx)
-        titlePos: {
-            x: 720 / 2,
-            y: 108
-        },
-        studentNamePos: {
-            x: 720 / 2,
-            y: 252
-        },
-        courseNamePos: {
-            x: 720 / 2,
-            y: 322
-        },
-        // *** ค่าเริ่มต้นสำหรับกรอบ ***
-        mainBorderWidth: 10,
-        mainBorderColor: '#f97316',
-        mainBorderRadius: 8,
-        mainBorderStyle: 'solid',
-        mainBorderDashLength: 10,
-        mainBorderDashGap: 5,
-        innerBorder1Width: 4,
-        innerBorder1Color: '#d4af37',
-        innerBorder1DashLength: 10,
-        innerBorder1DashGap: 5,
-        innerBorder2Width: 2,
-        innerBorder2Color: '#b8860b'
-    });
-    // *** ใช้ useEffect เพื่อตั้งค่า isClient เป็น true เมื่อ Component mount บน Client ***
+    ]);
+    const [searchTermIssued, setSearchTermIssued] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('');
+    const [isIssuedDetailModalVisible, setIsIssuedDetailModalVisible] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [viewingIssued, setViewingIssued] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [hasLoadedIssued, setHasLoadedIssued] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false); // New state for hydration for issued
+    // Load certificate templates from localStorage on component mount (client-side only)
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "CertificatePage.useEffect": ()=>{
-            setIsClient(true);
+            const loadTemplates = {
+                "CertificatePage.useEffect.loadTemplates": ()=>{
+                    try {
+                        const storedTemplates = JSON.parse(localStorage.getItem('certificateTemplates') || '[]');
+                        setCertificateTemplates(storedTemplates);
+                        setHasLoadedTemplates(true); // Mark templates as loaded
+                    } catch (error) {
+                        console.error("Failed to parse certificateTemplates from localStorage", error);
+                        setCertificateTemplates([]);
+                        setHasLoadedTemplates(true); // Still mark as loaded to proceed
+                    }
+                }
+            }["CertificatePage.useEffect.loadTemplates"];
+            loadTemplates();
+            // Add event listener for 'storage' to update when localStorage changes from other tabs
+            const handleStorageChange = {
+                "CertificatePage.useEffect.handleStorageChange": (event)=>{
+                    if (event.key === 'certificateTemplates') {
+                        loadTemplates();
+                    }
+                }
+            }["CertificatePage.useEffect.handleStorageChange"];
+            window.addEventListener('storage', handleStorageChange);
+            return ({
+                "CertificatePage.useEffect": ()=>{
+                    window.removeEventListener('storage', handleStorageChange);
+                }
+            })["CertificatePage.useEffect"];
         }
     }["CertificatePage.useEffect"], []);
-    const handleFormChange = (changedValues)=>{
-        setCertificateData((prevData)=>({
-                ...prevData,
-                ...changedValues
-            }));
+    // --- Certificate Templates Handlers ---
+    const handleCreateTemplate = ()=>{
+        window.location.href = '/admin/certificate/manage';
     };
-    const handleSchoolSelect = (value)=>{
-        const selectedSchool = dummySchools.find((school)=>school.key === value);
-        if (selectedSchool) {
-            setCertificateData((prevData)=>({
-                    ...prevData,
-                    schoolName: selectedSchool.name,
-                    schoolLogoUrl: '',
-                    signatureLine2: selectedSchool.name
-                }));
-            form.setFieldsValue({
-                schoolName: selectedSchool.name,
-                schoolLogoUrl: '',
-                signatureLine2: selectedSchool.name
-            });
-        }
+    const handleEditTemplate = (templateId)=>{
+        window.location.href = `/admin/certificate/manage?id=${templateId}`;
     };
-    const handleSaveDesign = ()=>{
-        form.validateFields().then(()=>{
-            setIsSaveModalVisible(true);
-        }).catch((info)=>{
-            console.log('Validate Failed:', info);
-            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__["message"].error('กรุณากรอกข้อมูลที่จำเป็นให้ครบถ้วน');
-        });
-    };
-    const handleConfirmSave = ()=>{
-        console.log('Saving Certificate Design:', {
-            ...certificateData,
-            issueDate: certificateData.issueDate ? certificateData.issueDate.format('YYYY-MM-DD') : null
-        });
-        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__["message"].success('บันทึกการออกแบบใบประกาศสำเร็จ!');
-        setIsSaveModalVisible(false);
-    };
-    const handlePositionChange = (elementName, newPos)=>{
-        setCertificateData((prevData)=>{
-            switch(elementName){
-                case 'title':
-                    return {
-                        ...prevData,
-                        titlePos: newPos
-                    };
-                case 'studentName':
-                    return {
-                        ...prevData,
-                        studentNamePos: newPos
-                    };
-                case 'courseName':
-                    return {
-                        ...prevData,
-                        courseNamePos: newPos
-                    };
-                default:
-                    return prevData;
-            }
-        });
-    };
-    const handlePrintCertificate = async ()=>{
-        if (stageRef.current) {
-            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__["message"].loading('กำลังสร้างใบประกาศสำหรับการพิมพ์...', 0);
-            try {
-                const dataURL = stageRef.current.toDataURL({
-                    mimeType: 'image/png',
-                    quality: 1,
-                    pixelRatio: 2
+    const handleDeleteTemplate = (templateId)=>{
+        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$modal$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Modal$3e$__["Modal"].confirm({
+            title: 'Confirm Deletion',
+            content: 'Are you sure you want to delete this certificate template? This action cannot be undone.',
+            okText: 'Delete',
+            cancelText: 'Cancel',
+            onOk () {
+                setCertificateTemplates((prevTemplates)=>{
+                    const updatedTemplates = prevTemplates.filter((template)=>template.id !== templateId);
+                    localStorage.setItem('certificateTemplates', JSON.stringify(updatedTemplates));
+                    __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__["message"].success('Certificate template deleted successfully!');
+                    return updatedTemplates;
                 });
-                const printWindow = window.open('', '_blank');
-                if (printWindow) {
-                    printWindow.document.write(`
-            <html>
-              <head>
-                <title>Print Certificate</title>
-                <style>
-                  body { margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #f0f2f5; }
-                  img { max-width: 100%; height: auto; display: block; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-                  @media print {
-                    body { background: none; }
-                    img { box-shadow: none; }
-                  }
-                </style>
-              </head>
-              <body>
-                <img src="${dataURL}" onload="window.print(); window.close();" />
-              </body>
-            </html>
-          `);
-                    printWindow.document.close();
-                } else {
-                    __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__["message"].error('ไม่สามารถเปิดหน้าต่างสำหรับพิมพ์ได้ กรุณาตรวจสอบ Pop-up Blocker');
-                }
-            } catch (error) {
-                console.error('Error generating image from Konva Stage:', error);
-                __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__["message"].error('เกิดข้อผิดพลาดในการสร้างใบประกาศ');
-            } finally{
-                __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__["message"].destroy();
             }
-        } else {
-            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__["message"].error('ไม่พบส่วนแสดงตัวอย่างใบประกาศ');
-        }
+        });
     };
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8",
-        children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(AntdTitle, {
-                level: 1,
-                className: "text-3xl font-bold mb-8 text-gray-800",
-                children: "ออกแบบใบประกาศ"
-            }, void 0, false, {
-                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                lineNumber: 221,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "flex justify-end items-center mb-6",
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$space$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Space$3e$__["Space"], {
+    const handleViewTemplate = (record)=>{
+        setViewingTemplate(record);
+        setIsTemplateDetailModalVisible(true);
+    };
+    const handleTemplateDetailModalCancel = ()=>{
+        setIsTemplateDetailModalVisible(false);
+        setViewingTemplate(null);
+    };
+    // --- Issued Certificates Handlers ---
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "CertificatePage.useEffect": ()=>{
+            setHasLoadedIssued(true);
+        }
+    }["CertificatePage.useEffect"], []);
+    const handleViewIssued = (record)=>{
+        setViewingIssued(record);
+        setIsIssuedDetailModalVisible(true);
+    };
+    const handleIssuedDetailModalCancel = ()=>{
+        setIsIssuedDetailModalVisible(false);
+        setViewingIssued(null);
+    };
+    const handleDeleteIssued = (issuedId)=>{
+        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$modal$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Modal$3e$__["Modal"].confirm({
+            title: 'Confirm Deletion',
+            content: 'Are you sure you want to delete this issued certificate record? This action cannot be undone.',
+            okText: 'Delete',
+            cancelText: 'Cancel',
+            onOk () {
+                setIssuedCertificates((prevIssued)=>{
+                    const updatedIssued = prevIssued.filter((issued)=>issued.id !== issuedId);
+                    __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__["message"].success('Issued certificate record deleted successfully!');
+                    return updatedIssued;
+                });
+            }
+        });
+    };
+    // --- Filtered Data ---
+    const filteredTemplates = certificateTemplates.filter((template)=>template.templateName.toLowerCase().includes(searchTermTemplates.toLowerCase()) || template.description.toLowerCase().includes(searchTermTemplates.toLowerCase()) || template.status.toLowerCase().includes(searchTermTemplates.toLowerCase()));
+    const filteredIssued = issuedCertificates.filter((issued)=>issued.templateName.toLowerCase().includes(searchTermIssued.toLowerCase()) || issued.studentName.toLowerCase().includes(searchTermIssued.toLowerCase()) || issued.courseTitle.toLowerCase().includes(searchTermIssued.toLowerCase()) || issued.issueDate.includes(searchTermIssued) || issued.status.toLowerCase().includes(searchTermIssued.toLowerCase()));
+    // --- Columns for Certificate Templates Tab ---
+    const templateColumns = [
+        {
+            title: '#',
+            render: (_, __, index)=>index + 1,
+            width: 50,
+            className: 'text-gray-600'
+        },
+        {
+            title: 'TEMPLATE NAME',
+            dataIndex: 'templateName',
+            key: 'templateName',
+            className: 'font-medium text-gray-900'
+        },
+        {
+            title: 'DESCRIPTION',
+            dataIndex: 'description',
+            key: 'description',
+            ellipsis: true,
+            className: 'text-gray-700'
+        },
+        {
+            title: 'STATUS',
+            dataIndex: 'status',
+            key: 'status',
+            render: (status)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$tag$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Tag$3e$__["Tag"], {
+                    color: status === 'Published' ? 'green' : 'blue',
+                    className: "rounded-full px-3 py-1 text-xs font-semibold",
+                    children: status
+                }, void 0, false, {
+                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                    lineNumber: 254,
+                    columnNumber: 9
+                }, this),
+            className: 'text-center'
+        },
+        {
+            title: 'CREATED AT',
+            dataIndex: 'createdAt',
+            key: 'createdAt',
+            render: (date)=>(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$dayjs$2f$dayjs$2e$min$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])(date).format('DD/MM/YYYY, HH:mm'),
+            className: 'text-gray-700'
+        },
+        {
+            title: 'UPDATED AT',
+            dataIndex: 'updatedAt',
+            key: 'updatedAt',
+            render: (date)=>(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$dayjs$2f$dayjs$2e$min$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])(date).format('DD/MM/YYYY, HH:mm'),
+            className: 'text-gray-700'
+        },
+        {
+            title: 'ACTIONS',
+            key: 'actions',
+            render: (_, record)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$space$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Space$3e$__["Space"], {
                     size: "middle",
-                    className: "gap-4",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
-                            type: "primary",
-                            icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$SaveOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__SaveOutlined$3e$__["SaveOutlined"], {}, void 0, false, {
+                            icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$EyeOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__EyeOutlined$3e$__["EyeOutlined"], {}, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                lineNumber: 227,
+                                lineNumber: 280,
                                 columnNumber: 19
                             }, void 0),
-                            onClick: handleSaveDesign,
-                            className: "bg-green-500 hover:bg-green-600 text-white rounded-lg shadow-md px-6 py-3 text-base",
-                            children: "บันทึกการออกแบบ"
+                            onClick: ()=>handleViewTemplate(record),
+                            className: "text-gray-500 border-none shadow-none hover:bg-gray-50"
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                            lineNumber: 225,
+                            lineNumber: 279,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
-                            icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$PrinterOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__PrinterOutlined$3e$__["PrinterOutlined"], {}, void 0, false, {
+                            icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$EditOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__EditOutlined$3e$__["EditOutlined"], {}, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                lineNumber: 234,
-                                columnNumber: 19
+                                lineNumber: 284,
+                                columnNumber: 25
                             }, void 0),
-                            onClick: handlePrintCertificate,
-                            className: "bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow-md px-6 py-3 text-base",
-                            children: "พิมพ์ใบประกาศ"
+                            onClick: ()=>handleEditTemplate(record.id),
+                            className: "text-blue-500 border-none shadow-none hover:bg-blue-50"
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                            lineNumber: 233,
+                            lineNumber: 284,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
+                            icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$DeleteOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__DeleteOutlined$3e$__["DeleteOutlined"], {}, void 0, false, {
+                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                lineNumber: 286,
+                                columnNumber: 19
+                            }, void 0),
+                            danger: true,
+                            onClick: ()=>handleDeleteTemplate(record.id),
+                            className: "text-red-500 border-none shadow-none hover:bg-red-50"
+                        }, void 0, false, {
+                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                            lineNumber: 285,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                    lineNumber: 224,
+                    lineNumber: 278,
                     columnNumber: 9
                 }, this)
-            }, void 0, false, {
-                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                lineNumber: 223,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$row$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Row$3e$__["Row"], {
-                gutter: [
-                    24,
-                    24
-                ],
+        }
+    ];
+    // --- Columns for Issued Certificates Tab ---
+    const issuedColumns = [
+        {
+            title: '#',
+            render: (_, __, index)=>index + 1,
+            width: 50,
+            className: 'text-gray-600'
+        },
+        {
+            title: 'TEMPLATE',
+            dataIndex: 'templateName',
+            key: 'templateName',
+            className: 'font-medium text-gray-900'
+        },
+        {
+            title: 'STUDENT NAME',
+            dataIndex: 'studentName',
+            key: 'studentName',
+            className: 'text-gray-700'
+        },
+        {
+            title: 'COURSE TITLE',
+            dataIndex: 'courseTitle',
+            key: 'courseTitle',
+            className: 'text-gray-700'
+        },
+        {
+            title: 'ISSUE DATE',
+            dataIndex: 'issueDate',
+            key: 'issueDate',
+            render: (date)=>(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$dayjs$2f$dayjs$2e$min$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])(date).format('DD/MM/YYYY'),
+            className: 'text-gray-700'
+        },
+        {
+            title: 'STATUS',
+            dataIndex: 'status',
+            key: 'status',
+            render: (status)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$tag$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Tag$3e$__["Tag"], {
+                    color: status === 'Issued' ? 'green' : 'red',
+                    className: "rounded-full px-3 py-1 text-xs font-semibold",
+                    children: status
+                }, void 0, false, {
+                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                    lineNumber: 334,
+                    columnNumber: 9
+                }, this),
+            className: 'text-center'
+        },
+        {
+            title: 'ACTIONS',
+            key: 'actions',
+            render: (_, record)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$space$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Space$3e$__["Space"], {
+                    size: "middle",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
+                            icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$EyeOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__EyeOutlined$3e$__["EyeOutlined"], {}, void 0, false, {
+                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                lineNumber: 346,
+                                columnNumber: 19
+                            }, void 0),
+                            onClick: ()=>handleViewIssued(record),
+                            className: "text-gray-500 border-none shadow-none hover:bg-gray-50"
+                        }, void 0, false, {
+                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                            lineNumber: 345,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
+                            icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$DeleteOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__DeleteOutlined$3e$__["DeleteOutlined"], {}, void 0, false, {
+                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                lineNumber: 351,
+                                columnNumber: 19
+                            }, void 0),
+                            danger: true,
+                            onClick: ()=>handleDeleteIssued(record.id),
+                            className: "text-red-500 border-none shadow-none hover:bg-red-50"
+                        }, void 0, false, {
+                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                            lineNumber: 350,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                    lineNumber: 344,
+                    columnNumber: 9
+                }, this)
+        }
+    ];
+    const items = [
+        {
+            key: 'templates',
+            label: 'จัดการแม่แบบเกียรติบัตร',
+            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$card$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Card$3e$__["Card"], {
+                className: "rounded-xl shadow-custom-light p-4",
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
-                        xs: 24,
-                        lg: 8,
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$card$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Card$3e$__["Card"], {
-                            className: "rounded-xl shadow-custom-light p-4 max-h-[calc(100vh-200px)] overflow-y-auto",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(AntdTitle, {
-                                    level: 4,
-                                    className: "text-gray-700 mb-6",
-                                    children: "ตั้งค่าใบประกาศ"
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "flex justify-between items-center mb-6",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$input$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Input$3e$__["Input"], {
+                                placeholder: "Search Templates",
+                                prefix: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$SearchOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__SearchOutlined$3e$__["SearchOutlined"], {
+                                    className: "text-gray-400"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                    lineNumber: 247,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"], {
-                                    form: form,
-                                    layout: "vertical",
-                                    onValuesChange: handleFormChange,
-                                    // *** กำหนด initialValues ก็ต่อเมื่อ isClient เป็น true เท่านั้น ***
-                                    initialValues: isClient ? {
-                                        ...certificateData,
-                                        issueDate: certificateData.issueDate || (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$dayjs$2f$dayjs$2e$min$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])()
-                                    } : undefined,
+                                    lineNumber: 370,
+                                    columnNumber: 23
+                                }, void 0),
+                                className: "w-80 rounded-lg shadow-sm table-search-input",
+                                value: searchTermTemplates,
+                                onChange: (e)=>setSearchTermTemplates(e.target.value)
+                            }, void 0, false, {
+                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                lineNumber: 368,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
+                                type: "primary",
+                                onClick: handleCreateTemplate,
+                                icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$PlusOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__PlusOutlined$3e$__["PlusOutlined"], {}, void 0, false, {
+                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                    lineNumber: 378,
+                                    columnNumber: 21
+                                }, void 0),
+                                className: "bg-orange-500 hover:bg-orange-600 text-white rounded-lg shadow-md px-6 py-3 text-base",
+                                children: "สร้างแม่แบบใหม่"
+                            }, void 0, false, {
+                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                lineNumber: 375,
+                                columnNumber: 13
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                        lineNumber: 367,
+                        columnNumber: 11
+                    }, this),
+                    hasLoadedTemplates ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$table$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Table$3e$__["Table"], {
+                        columns: templateColumns,
+                        dataSource: filteredTemplates,
+                        rowKey: "id",
+                        className: "rounded-xl shadow-custom-light",
+                        pagination: {
+                            pageSize: 10
+                        },
+                        bordered: false
+                    }, void 0, false, {
+                        fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                        lineNumber: 385,
+                        columnNumber: 13
+                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "flex justify-center items-center h-40",
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                            children: "กำลังโหลดแม่แบบเกียรติบัตร..."
+                        }, void 0, false, {
+                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                            lineNumber: 395,
+                            columnNumber: 15
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                        lineNumber: 394,
+                        columnNumber: 13
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$modal$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Modal$3e$__["Modal"], {
+                        title: "Certificate Template Details",
+                        open: isTemplateDetailModalVisible,
+                        onCancel: handleTemplateDetailModalCancel,
+                        footer: null,
+                        className: "rounded-xl",
+                        centered: true,
+                        children: viewingTemplate ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "p-4",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    className: "mb-2",
                                     children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
-                                            name: "schoolName",
-                                            label: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "font-semibold text-gray-700",
-                                                children: "เลือกโรงเรียน"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 260,
-                                                columnNumber: 24
-                                            }, void 0),
-                                            rules: [
-                                                {
-                                                    required: true,
-                                                    message: 'กรุณาเลือกโรงเรียน!'
-                                                }
-                                            ],
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$select$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Select$3e$__["Select"], {
-                                                placeholder: "เลือกโรงเรียน",
-                                                className: "rounded-lg",
-                                                onChange: handleSchoolSelect,
-                                                children: dummySchools.map((school)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Option, {
-                                                        value: school.key,
-                                                        children: school.name
-                                                    }, school.key, false, {
-                                                        fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                        lineNumber: 269,
-                                                        columnNumber: 21
-                                                    }, this))
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 263,
-                                                columnNumber: 17
-                                            }, this)
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                            strong: true,
+                                            children: "Template Name:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                            lineNumber: 258,
-                                            columnNumber: 15
+                                            lineNumber: 410,
+                                            columnNumber: 37
                                         }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
-                                            name: "title",
-                                            label: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "font-semibold text-gray-700",
-                                                children: "หัวข้อใบประกาศ"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 276,
-                                                columnNumber: 24
-                                            }, void 0),
-                                            rules: [
-                                                {
-                                                    required: true,
-                                                    message: 'กรุณากรอกหัวข้อใบประกาศ!'
-                                                }
-                                            ],
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$input$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Input$3e$__["Input"], {
-                                                placeholder: "เช่น ใบประกาศนียบัตร",
-                                                className: "rounded-lg"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 279,
-                                                columnNumber: 17
-                                            }, this)
+                                        " ",
+                                        viewingTemplate.templateName
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                    lineNumber: 410,
+                                    columnNumber: 17
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    className: "mb-2",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                            strong: true,
+                                            children: "Description:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                            lineNumber: 274,
-                                            columnNumber: 15
+                                            lineNumber: 411,
+                                            columnNumber: 37
                                         }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
-                                            name: "studentName",
-                                            label: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "font-semibold text-gray-700",
-                                                children: "ชื่อนักเรียน"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 283,
-                                                columnNumber: 24
-                                            }, void 0),
-                                            rules: [
-                                                {
-                                                    required: true,
-                                                    message: 'กรุณากรอกชื่อนักเรียน!'
-                                                }
-                                            ],
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$input$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Input$3e$__["Input"], {
-                                                placeholder: "เช่น นายสมชาย ใจดี",
-                                                className: "rounded-lg"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 286,
-                                                columnNumber: 17
-                                            }, this)
+                                        " ",
+                                        viewingTemplate.description
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                    lineNumber: 411,
+                                    columnNumber: 17
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    className: "mb-2",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                            strong: true,
+                                            children: "Status:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                            lineNumber: 281,
-                                            columnNumber: 15
+                                            lineNumber: 412,
+                                            columnNumber: 37
                                         }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
-                                            name: "courseName",
-                                            label: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "font-semibold text-gray-700",
-                                                children: "ชื่อหลักสูตร"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 290,
-                                                columnNumber: 24
-                                            }, void 0),
-                                            rules: [
-                                                {
-                                                    required: true,
-                                                    message: 'กรุณากรอกหลักสูตร!'
-                                                }
-                                            ],
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$input$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Input$3e$__["Input"], {
-                                                placeholder: "เช่น หลักสูตรนวดแผนไทยเบื้องต้น",
-                                                className: "rounded-lg"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 293,
-                                                columnNumber: 17
-                                            }, this)
+                                        " ",
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$tag$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Tag$3e$__["Tag"], {
+                                            color: viewingTemplate.status === 'Published' ? 'green' : 'blue',
+                                            children: viewingTemplate.status
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                            lineNumber: 288,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
-                                            name: "issueDate",
-                                            label: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "font-semibold text-gray-700",
-                                                children: "วันที่ออกใบประกาศ"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 297,
-                                                columnNumber: 24
-                                            }, void 0),
-                                            rules: [
-                                                {
-                                                    required: true,
-                                                    message: 'กรุณาเลือกวันที่!'
-                                                }
-                                            ],
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$date$2d$picker$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__DatePicker$3e$__["DatePicker"], {
-                                                format: "YYYY-MM-DD",
-                                                className: "w-full rounded-lg"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 300,
-                                                columnNumber: 17
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                            lineNumber: 295,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
-                                            name: "fontFamily",
-                                            label: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "font-semibold text-gray-700",
-                                                children: "รูปแบบตัวอักษร"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 304,
-                                                columnNumber: 24
-                                            }, void 0),
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$select$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Select$3e$__["Select"], {
-                                                placeholder: "เลือกฟอนต์",
-                                                className: "rounded-lg",
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Option, {
-                                                        value: "Inter",
-                                                        children: "Inter (Default)"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                        lineNumber: 307,
-                                                        columnNumber: 19
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Option, {
-                                                        value: "Arial",
-                                                        children: "Arial"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                        lineNumber: 308,
-                                                        columnNumber: 19
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Option, {
-                                                        value: "Sarabun",
-                                                        children: "Sarabun"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                        lineNumber: 309,
-                                                        columnNumber: 19
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Option, {
-                                                        value: "Kanit",
-                                                        children: "Kanit"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                        lineNumber: 310,
-                                                        columnNumber: 19
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Option, {
-                                                        value: "Prompt",
-                                                        children: "Prompt"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                        lineNumber: 311,
-                                                        columnNumber: 19
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Option, {
-                                                        value: "Anchan",
-                                                        children: "Anchan"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                        lineNumber: 312,
-                                                        columnNumber: 19
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 306,
-                                                columnNumber: 17
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                            lineNumber: 302,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
-                                            name: "fontSize",
-                                            label: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "font-semibold text-gray-700",
-                                                children: "ขนาดตัวอักษร (px)"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 317,
-                                                columnNumber: 24
-                                            }, void 0),
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$slider$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Slider$3e$__["Slider"], {
-                                                min: 12,
-                                                max: 72
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 319,
-                                                columnNumber: 17
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                            lineNumber: 315,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
-                                            name: "textColor",
-                                            label: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "font-semibold text-gray-700",
-                                                children: "สีตัวอักษร"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 323,
-                                                columnNumber: 24
-                                            }, void 0),
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$input$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Input$3e$__["Input"], {
-                                                type: "color",
-                                                className: "rounded-lg h-10 p-1"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 325,
-                                                columnNumber: 17
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                            lineNumber: 321,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
-                                            name: "bgColor",
-                                            label: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "font-semibold text-gray-700",
-                                                children: "สีพื้นหลังใบประกาศ"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 329,
-                                                columnNumber: 24
-                                            }, void 0),
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$input$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Input$3e$__["Input"], {
-                                                type: "color",
-                                                className: "rounded-lg h-10 p-1"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 331,
-                                                columnNumber: 17
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                            lineNumber: 327,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
-                                            name: "signatureLine1",
-                                            label: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "font-semibold text-gray-700",
-                                                children: "ตำแหน่งผู้ลงนาม"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 335,
-                                                columnNumber: 24
-                                            }, void 0),
-                                            rules: [
-                                                {
-                                                    required: true,
-                                                    message: 'กรุณากรอกตำแหน่งผู้ลงนาม!'
-                                                }
-                                            ],
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$input$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Input$3e$__["Input"], {
-                                                placeholder: "เช่น ผู้อำนวยการ",
-                                                className: "rounded-lg"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 338,
-                                                columnNumber: 17
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                            lineNumber: 333,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
-                                            name: "signatureLine2",
-                                            label: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "font-semibold text-gray-700",
-                                                children: "ชื่อองค์กรผู้ลงนาม"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 342,
-                                                columnNumber: 24
-                                            }, void 0),
-                                            rules: [
-                                                {
-                                                    required: true,
-                                                    message: 'กรุณากรอกชื่อองค์กรผู้ลงนาม!'
-                                                }
-                                            ],
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$input$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Input$3e$__["Input"], {
-                                                placeholder: "เช่น โรงเรียนสาธิต ม.เกษตรศาสตร์",
-                                                className: "rounded-lg"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 345,
-                                                columnNumber: 17
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                            lineNumber: 340,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(AntdTitle, {
-                                            level: 5,
-                                            className: "text-gray-700 mt-8 mb-4",
-                                            children: "ตั้งค่ากรอบ"
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                            lineNumber: 349,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
-                                            name: "mainBorderWidth",
-                                            label: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "font-semibold text-gray-700",
-                                                children: "ความกว้างกรอบหลัก (px)"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 350,
-                                                columnNumber: 56
-                                            }, void 0),
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$slider$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Slider$3e$__["Slider"], {
-                                                min: 0,
-                                                max: 20
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 351,
-                                                columnNumber: 17
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                            lineNumber: 350,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
-                                            name: "mainBorderColor",
-                                            label: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "font-semibold text-gray-700",
-                                                children: "สีกรอบหลัก"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 353,
-                                                columnNumber: 56
-                                            }, void 0),
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$input$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Input$3e$__["Input"], {
-                                                type: "color",
-                                                className: "rounded-lg h-10 p-1"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 354,
-                                                columnNumber: 17
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                            lineNumber: 353,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
-                                            name: "mainBorderRadius",
-                                            label: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "font-semibold text-gray-700",
-                                                children: "รัศมีมุมกรอบหลัก (px)"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 356,
-                                                columnNumber: 57
-                                            }, void 0),
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$slider$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Slider$3e$__["Slider"], {
-                                                min: 0,
-                                                max: 20
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 357,
-                                                columnNumber: 17
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                            lineNumber: 356,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
-                                            name: "mainBorderStyle",
-                                            label: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "font-semibold text-gray-700",
-                                                children: "สไตล์เส้นกรอบหลัก"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 360,
-                                                columnNumber: 56
-                                            }, void 0),
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$select$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Select$3e$__["Select"], {
-                                                className: "rounded-lg",
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Option, {
-                                                        value: "solid",
-                                                        children: "Solid"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                        lineNumber: 362,
-                                                        columnNumber: 19
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Option, {
-                                                        value: "dashed",
-                                                        children: "Dashed"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                        lineNumber: 363,
-                                                        columnNumber: 19
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 361,
-                                                columnNumber: 17
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                            lineNumber: 360,
-                                            columnNumber: 15
-                                        }, this),
-                                        certificateData.mainBorderStyle === 'dashed' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
-                                                    name: "mainBorderDashLength",
-                                                    label: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        className: "font-semibold text-gray-700",
-                                                        children: "ความยาวเส้นประกรอบหลัก (px)"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                        lineNumber: 369,
-                                                        columnNumber: 65
-                                                    }, void 0),
-                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$slider$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Slider$3e$__["Slider"], {
-                                                        min: 0,
-                                                        max: 30
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                        lineNumber: 370,
-                                                        columnNumber: 21
-                                                    }, this)
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                    lineNumber: 369,
-                                                    columnNumber: 19
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
-                                                    name: "mainBorderDashGap",
-                                                    label: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        className: "font-semibold text-gray-700",
-                                                        children: "ระยะห่างเส้นประกรอบหลัก (px)"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                        lineNumber: 372,
-                                                        columnNumber: 62
-                                                    }, void 0),
-                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$slider$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Slider$3e$__["Slider"], {
-                                                        min: 0,
-                                                        max: 30
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                        lineNumber: 373,
-                                                        columnNumber: 21
-                                                    }, this)
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                    lineNumber: 372,
-                                                    columnNumber: 19
-                                                }, this)
-                                            ]
-                                        }, void 0, true),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
-                                            name: "innerBorder1Width",
-                                            label: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "font-semibold text-gray-700",
-                                                children: "ความกว้างกรอบใน 1 (px)"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 378,
-                                                columnNumber: 58
-                                            }, void 0),
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$slider$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Slider$3e$__["Slider"], {
-                                                min: 0,
-                                                max: 10
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 379,
-                                                columnNumber: 17
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                            lineNumber: 378,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
-                                            name: "innerBorder1Color",
-                                            label: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "font-semibold text-gray-700",
-                                                children: "สีกรอบใน 1"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 381,
-                                                columnNumber: 58
-                                            }, void 0),
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$input$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Input$3e$__["Input"], {
-                                                type: "color",
-                                                className: "rounded-lg h-10 p-1"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 382,
-                                                columnNumber: 17
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                            lineNumber: 381,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
-                                            name: "innerBorder1DashLength",
-                                            label: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "font-semibold text-gray-700",
-                                                children: "ความยาวเส้นประกรอบใน 1 (px)"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 384,
-                                                columnNumber: 63
-                                            }, void 0),
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$slider$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Slider$3e$__["Slider"], {
-                                                min: 0,
-                                                max: 30
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 385,
-                                                columnNumber: 17
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                            lineNumber: 384,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
-                                            name: "innerBorder1DashGap",
-                                            label: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "font-semibold text-gray-700",
-                                                children: "ระยะห่างเส้นประกรอบใน 1 (px)"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 387,
-                                                columnNumber: 60
-                                            }, void 0),
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$slider$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Slider$3e$__["Slider"], {
-                                                min: 0,
-                                                max: 30
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 388,
-                                                columnNumber: 17
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                            lineNumber: 387,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
-                                            name: "innerBorder2Width",
-                                            label: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "font-semibold text-gray-700",
-                                                children: "ความกว้างกรอบใน 2 (px)"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 391,
-                                                columnNumber: 58
-                                            }, void 0),
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$slider$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Slider$3e$__["Slider"], {
-                                                min: 0,
-                                                max: 10
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 392,
-                                                columnNumber: 17
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                            lineNumber: 391,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
-                                            name: "innerBorder2Color",
-                                            label: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "font-semibold text-gray-700",
-                                                children: "สีกรอบใน 2"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 394,
-                                                columnNumber: 58
-                                            }, void 0),
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$input$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Input$3e$__["Input"], {
-                                                type: "color",
-                                                className: "rounded-lg h-10 p-1"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                                lineNumber: 395,
-                                                columnNumber: 17
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                            lineNumber: 394,
-                                            columnNumber: 15
+                                            lineNumber: 412,
+                                            columnNumber: 65
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                    lineNumber: 248,
-                                    columnNumber: 13
+                                    lineNumber: 412,
+                                    columnNumber: 17
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    className: "mb-2",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                            strong: true,
+                                            children: "Created At:"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                            lineNumber: 413,
+                                            columnNumber: 37
+                                        }, this),
+                                        " ",
+                                        (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$dayjs$2f$dayjs$2e$min$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])(viewingTemplate.createdAt).format('DD/MM/YYYY, HH:mm')
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                    lineNumber: 413,
+                                    columnNumber: 17
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    className: "mb-2",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                            strong: true,
+                                            children: "Updated At:"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                            lineNumber: 414,
+                                            columnNumber: 37
+                                        }, this),
+                                        " ",
+                                        (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$dayjs$2f$dayjs$2e$min$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])(viewingTemplate.updatedAt).format('DD/MM/YYYY, HH:mm')
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                    lineNumber: 414,
+                                    columnNumber: 17
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "mt-4",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                            strong: true,
+                                            className: "text-lg",
+                                            children: "Design Elements:"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                            lineNumber: 417,
+                                            columnNumber: 19
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
+                                            className: "list-disc list-inside ml-4",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                                            strong: true,
+                                                            children: "Background Color:"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                            lineNumber: 419,
+                                                            columnNumber: 25
+                                                        }, this),
+                                                        " ",
+                                                        viewingTemplate.designElements?.backgroundColor ?? 'N/A'
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                    lineNumber: 419,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                                            strong: true,
+                                                            children: "Text Color:"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                            lineNumber: 420,
+                                                            columnNumber: 25
+                                                        }, this),
+                                                        " ",
+                                                        viewingTemplate.designElements?.textColor ?? 'N/A'
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                    lineNumber: 420,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                                            strong: true,
+                                                            children: "Font Family:"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                            lineNumber: 421,
+                                                            columnNumber: 25
+                                                        }, this),
+                                                        " ",
+                                                        viewingTemplate.designElements?.fontFamily ?? 'N/A'
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                    lineNumber: 421,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                                            strong: true,
+                                                            children: "Font Size:"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                            lineNumber: 422,
+                                                            columnNumber: 25
+                                                        }, this),
+                                                        " ",
+                                                        viewingTemplate.designElements?.fontSize ?? 'N/A'
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                    lineNumber: 422,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                                            strong: true,
+                                                            children: "Title Text:"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                            lineNumber: 423,
+                                                            columnNumber: 25
+                                                        }, this),
+                                                        " ",
+                                                        viewingTemplate.designElements?.titleText ?? 'N/A'
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                    lineNumber: 423,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                                            strong: true,
+                                                            children: "Student Name Placeholder:"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                            lineNumber: 424,
+                                                            columnNumber: 25
+                                                        }, this),
+                                                        " ",
+                                                        viewingTemplate.designElements?.studentNamePlaceholder ?? 'N/A'
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                    lineNumber: 424,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                                            strong: true,
+                                                            children: "Course Name Placeholder:"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                            lineNumber: 425,
+                                                            columnNumber: 25
+                                                        }, this),
+                                                        " ",
+                                                        viewingTemplate.designElements?.courseNamePlaceholder ?? 'N/A'
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                    lineNumber: 425,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                                            strong: true,
+                                                            children: "Issue Date Placeholder:"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                            lineNumber: 426,
+                                                            columnNumber: 25
+                                                        }, this),
+                                                        " ",
+                                                        viewingTemplate.designElements?.issueDatePlaceholder ?? 'N/A'
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                    lineNumber: 426,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                                            strong: true,
+                                                            children: "Signature Text:"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                            lineNumber: 427,
+                                                            columnNumber: 25
+                                                        }, this),
+                                                        " ",
+                                                        viewingTemplate.designElements?.signatureText ?? 'N/A'
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                    lineNumber: 427,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                                            strong: true,
+                                                            children: "Signature Line 2:"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                            lineNumber: 428,
+                                                            columnNumber: 25
+                                                        }, this),
+                                                        " ",
+                                                        viewingTemplate.designElements?.signatureLine2 ?? 'N/A'
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                    lineNumber: 428,
+                                                    columnNumber: 21
+                                                }, this),
+                                                viewingTemplate.designElements?.logoUrl && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                                            strong: true,
+                                                            children: "Logo URL:"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                            lineNumber: 431,
+                                                            columnNumber: 25
+                                                        }, this),
+                                                        " ",
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                                            href: viewingTemplate.designElements.logoUrl,
+                                                            target: "_blank",
+                                                            rel: "noopener noreferrer",
+                                                            children: viewingTemplate.designElements.logoUrl
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                            lineNumber: 431,
+                                                            columnNumber: 55
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                                            src: viewingTemplate.designElements.logoUrl,
+                                                            alt: "Logo Preview",
+                                                            className: "h-12 mt-2 border border-gray-200",
+                                                            onError: (e)=>{
+                                                                e.currentTarget.onerror = null;
+                                                                e.currentTarget.src = 'https://placehold.co/100x50/cccccc/ffffff?text=Logo';
+                                                            }
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                            lineNumber: 433,
+                                                            columnNumber: 25
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                    lineNumber: 430,
+                                                    columnNumber: 23
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                                            strong: true,
+                                                            children: "Title Pos:"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                            lineNumber: 436,
+                                                            columnNumber: 25
+                                                        }, this),
+                                                        " (",
+                                                        viewingTemplate.designElements?.titlePosX?.toFixed(0) ?? 'N/A',
+                                                        ", ",
+                                                        viewingTemplate.designElements?.titlePosY?.toFixed(0) ?? 'N/A',
+                                                        ")"
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                    lineNumber: 436,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                                            strong: true,
+                                                            children: "Student Name Pos:"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                            lineNumber: 437,
+                                                            columnNumber: 25
+                                                        }, this),
+                                                        " (",
+                                                        viewingTemplate.designElements?.studentNamePosX?.toFixed(0) ?? 'N/A',
+                                                        ", ",
+                                                        viewingTemplate.designElements?.studentNamePosY?.toFixed(0) ?? 'N/A',
+                                                        ")"
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                    lineNumber: 437,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                                            strong: true,
+                                                            children: "Course Name Pos:"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                            lineNumber: 438,
+                                                            columnNumber: 25
+                                                        }, this),
+                                                        " (",
+                                                        viewingTemplate.designElements?.courseNamePosX?.toFixed(0) ?? 'N/A',
+                                                        ", ",
+                                                        viewingTemplate.designElements?.courseNamePosY?.toFixed(0) ?? 'N/A',
+                                                        ")"
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                    lineNumber: 438,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                                            strong: true,
+                                                            children: "Issue Date Text Pos:"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                            lineNumber: 439,
+                                                            columnNumber: 25
+                                                        }, this),
+                                                        " (",
+                                                        viewingTemplate.designElements?.issueDateTextPosX?.toFixed(0) ?? 'N/A',
+                                                        ", ",
+                                                        viewingTemplate.designElements?.issueDateTextPosY?.toFixed(0) ?? 'N/A',
+                                                        ")"
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                    lineNumber: 439,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                                            strong: true,
+                                                            children: "Issue Date Value Pos:"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                            lineNumber: 440,
+                                                            columnNumber: 25
+                                                        }, this),
+                                                        " (",
+                                                        viewingTemplate.designElements?.issueDateValuePosX?.toFixed(0) ?? 'N/A',
+                                                        ", ",
+                                                        viewingTemplate.designElements?.issueDateValuePosY?.toFixed(0) ?? 'N/A',
+                                                        ")"
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                    lineNumber: 440,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                                            strong: true,
+                                                            children: "Signature Block Pos:"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                            lineNumber: 441,
+                                                            columnNumber: 25
+                                                        }, this),
+                                                        " (",
+                                                        viewingTemplate.designElements?.signatureBlockPosX?.toFixed(0) ?? 'N/A',
+                                                        ", ",
+                                                        viewingTemplate.designElements?.signatureBlockPosY?.toFixed(0) ?? 'N/A',
+                                                        ")"
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                    lineNumber: 441,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                                            strong: true,
+                                                            children: "Main Border Width:"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                            lineNumber: 442,
+                                                            columnNumber: 25
+                                                        }, this),
+                                                        " ",
+                                                        viewingTemplate.designElements?.mainBorderWidth ?? 'N/A'
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                    lineNumber: 442,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                                            strong: true,
+                                                            children: "Main Border Color:"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                            lineNumber: 443,
+                                                            columnNumber: 25
+                                                        }, this),
+                                                        " ",
+                                                        viewingTemplate.designElements?.mainBorderColor ?? 'N/A'
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                    lineNumber: 443,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                                            strong: true,
+                                                            children: "Main Border Radius:"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                            lineNumber: 444,
+                                                            columnNumber: 25
+                                                        }, this),
+                                                        " ",
+                                                        viewingTemplate.designElements?.mainBorderRadius ?? 'N/A'
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                    lineNumber: 444,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                                            strong: true,
+                                                            children: "Main Border Style:"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                            lineNumber: 445,
+                                                            columnNumber: 25
+                                                        }, this),
+                                                        " ",
+                                                        viewingTemplate.designElements?.mainBorderStyle ?? 'N/A'
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                    lineNumber: 445,
+                                                    columnNumber: 21
+                                                }, this),
+                                                viewingTemplate.designElements?.mainBorderStyle === 'dashed' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                                                    strong: true,
+                                                                    children: "Main Border Dash Length:"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                                    lineNumber: 448,
+                                                                    columnNumber: 29
+                                                                }, this),
+                                                                " ",
+                                                                viewingTemplate.designElements?.mainBorderDashLength ?? 'N/A'
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                            lineNumber: 448,
+                                                            columnNumber: 25
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                                                    strong: true,
+                                                                    children: "Main Border Dash Gap:"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                                    lineNumber: 449,
+                                                                    columnNumber: 29
+                                                                }, this),
+                                                                " ",
+                                                                viewingTemplate.designElements?.mainBorderDashGap ?? 'N/A'
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                            lineNumber: 449,
+                                                            columnNumber: 25
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                                            strong: true,
+                                                            children: "Inner Border 1 Width:"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                            lineNumber: 452,
+                                                            columnNumber: 25
+                                                        }, this),
+                                                        " ",
+                                                        viewingTemplate.designElements?.innerBorder1Width ?? 'N/A'
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                    lineNumber: 452,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                                            strong: true,
+                                                            children: "Inner Border 1 Color:"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                            lineNumber: 453,
+                                                            columnNumber: 25
+                                                        }, this),
+                                                        " ",
+                                                        viewingTemplate.designElements?.innerBorder1Color ?? 'N/A'
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                    lineNumber: 453,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                                            strong: true,
+                                                            children: "Inner Border 1 Dash Length:"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                            lineNumber: 454,
+                                                            columnNumber: 25
+                                                        }, this),
+                                                        " ",
+                                                        viewingTemplate.designElements?.innerBorder1DashLength ?? 'N/A'
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                    lineNumber: 454,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                                            strong: true,
+                                                            children: "Inner Border 1 Dash Gap:"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                            lineNumber: 455,
+                                                            columnNumber: 25
+                                                        }, this),
+                                                        " ",
+                                                        viewingTemplate.designElements?.innerBorder1DashGap ?? 'N/A'
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                    lineNumber: 455,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                                            strong: true,
+                                                            children: "Inner Border 2 Width:"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                            lineNumber: 456,
+                                                            columnNumber: 25
+                                                        }, this),
+                                                        " ",
+                                                        viewingTemplate.designElements?.innerBorder2Width ?? 'N/A'
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                    lineNumber: 456,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                                            strong: true,
+                                                            children: "Inner Border 2 Color:"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                            lineNumber: 457,
+                                                            columnNumber: 25
+                                                        }, this),
+                                                        " ",
+                                                        viewingTemplate.designElements?.innerBorder2Color ?? 'N/A'
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                                    lineNumber: 457,
+                                                    columnNumber: 21
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                            lineNumber: 418,
+                                            columnNumber: 19
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                    lineNumber: 416,
+                                    columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                            lineNumber: 246,
-                            columnNumber: 11
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                        lineNumber: 245,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
-                        xs: 24,
-                        lg: 16,
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$card$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Card$3e$__["Card"], {
-                            className: "rounded-xl shadow-custom-light p-2 sm:p-4 flex flex-col items-center justify-center",
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(CertificateCanvas, {
-                                certificateData: certificateData,
-                                onPositionChange: handlePositionChange,
-                                stageRef: stageRef
-                            }, void 0, false, {
-                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                lineNumber: 404,
-                                columnNumber: 13
-                            }, this)
+                            lineNumber: 409,
+                            columnNumber: 15
+                        }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                            children: "No data found"
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                            lineNumber: 403,
-                            columnNumber: 11
+                            lineNumber: 462,
+                            columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                        lineNumber: 402,
-                        columnNumber: 9
+                        lineNumber: 400,
+                        columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                lineNumber: 243,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$modal$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Modal$3e$__["Modal"], {
-                title: "บันทึกการออกแบบใบประกาศ",
-                open: isSaveModalVisible,
-                onOk: handleConfirmSave,
-                onCancel: ()=>setIsSaveModalVisible(false),
-                okText: "บันทึก",
-                cancelText: "ยกเลิก",
-                className: "rounded-xl",
-                centered: true,
+                lineNumber: 366,
+                columnNumber: 9
+            }, this)
+        },
+        {
+            key: 'issued',
+            label: 'เกียรติบัตรที่ออกแล้ว',
+            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$card$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Card$3e$__["Card"], {
+                className: "rounded-xl shadow-custom-light p-4",
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        children: "คุณต้องการบันทึกการออกแบบใบประกาศนี้หรือไม่?"
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "flex justify-between items-center mb-6",
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$input$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Input$3e$__["Input"], {
+                            placeholder: "Search Issued Certificates",
+                            prefix: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$SearchOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__SearchOutlined$3e$__["SearchOutlined"], {
+                                className: "text-gray-400"
+                            }, void 0, false, {
+                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                lineNumber: 476,
+                                columnNumber: 23
+                            }, void 0),
+                            className: "w-80 rounded-lg shadow-sm table-search-input",
+                            value: searchTermIssued,
+                            onChange: (e)=>setSearchTermIssued(e.target.value)
+                        }, void 0, false, {
+                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                            lineNumber: 474,
+                            columnNumber: 13
+                        }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                        lineNumber: 424,
-                        columnNumber: 9
+                        lineNumber: 473,
+                        columnNumber: 11
                     }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        children: [
-                            "ข้อมูลที่บันทึก: ",
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
-                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                lineNumber: 425,
-                                columnNumber: 29
-                            }, this),
-                            "หัวข้อ: ",
-                            certificateData.title,
-                            " ",
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
-                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                lineNumber: 426,
-                                columnNumber: 44
-                            }, this),
-                            "ชื่อนักเรียน: ",
-                            certificateData.studentName,
-                            " ",
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
-                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                lineNumber: 427,
-                                columnNumber: 56
-                            }, this),
-                            "หลักสูตร: ",
-                            certificateData.courseName,
-                            " ",
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
-                                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                                lineNumber: 428,
-                                columnNumber: 51
-                            }, this),
-                            "วันที่ออก: ",
-                            certificateData.issueDate ? certificateData.issueDate.format('YYYY-MM-DD') : ''
-                        ]
-                    }, void 0, true, {
+                    hasLoadedIssued ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$table$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Table$3e$__["Table"], {
+                        columns: issuedColumns,
+                        dataSource: filteredIssued,
+                        rowKey: "id",
+                        className: "rounded-xl shadow-custom-light",
+                        pagination: {
+                            pageSize: 10
+                        },
+                        bordered: false
+                    }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                        lineNumber: 425,
-                        columnNumber: 9
+                        lineNumber: 483,
+                        columnNumber: 13
+                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "flex justify-center items-center h-40",
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                            children: "กำลังโหลดเกียรติบัตรที่ออกแล้ว..."
+                        }, void 0, false, {
+                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                            lineNumber: 493,
+                            columnNumber: 15
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                        lineNumber: 492,
+                        columnNumber: 13
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$modal$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Modal$3e$__["Modal"], {
+                        title: "Issued Certificate Details",
+                        open: isIssuedDetailModalVisible,
+                        onCancel: handleIssuedDetailModalCancel,
+                        footer: null,
+                        className: "rounded-xl",
+                        centered: true,
+                        children: viewingIssued ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "p-4",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    className: "mb-2",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                            strong: true,
+                                            children: "Template Name:"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                            lineNumber: 507,
+                                            columnNumber: 37
+                                        }, this),
+                                        " ",
+                                        viewingIssued.templateName
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                    lineNumber: 507,
+                                    columnNumber: 17
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    className: "mb-2",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                            strong: true,
+                                            children: "Student Name:"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                            lineNumber: 508,
+                                            columnNumber: 37
+                                        }, this),
+                                        " ",
+                                        viewingIssued.studentName
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                    lineNumber: 508,
+                                    columnNumber: 17
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    className: "mb-2",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                            strong: true,
+                                            children: "Course Title:"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                            lineNumber: 509,
+                                            columnNumber: 37
+                                        }, this),
+                                        " ",
+                                        viewingIssued.courseTitle
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                    lineNumber: 509,
+                                    columnNumber: 17
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    className: "mb-2",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                            strong: true,
+                                            children: "Issue Date:"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                            lineNumber: 510,
+                                            columnNumber: 37
+                                        }, this),
+                                        " ",
+                                        (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$dayjs$2f$dayjs$2e$min$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])(viewingIssued.issueDate).format('DD/MM/YYYY')
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                    lineNumber: 510,
+                                    columnNumber: 17
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    className: "mb-2",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
+                                            strong: true,
+                                            children: "Status:"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                            lineNumber: 511,
+                                            columnNumber: 37
+                                        }, this),
+                                        " ",
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$tag$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Tag$3e$__["Tag"], {
+                                            color: viewingIssued.status === 'Issued' ? 'green' : 'red',
+                                            children: viewingIssued.status
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                            lineNumber: 511,
+                                            columnNumber: 65
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                                    lineNumber: 511,
+                                    columnNumber: 17
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                            lineNumber: 506,
+                            columnNumber: 15
+                        }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                            children: "No data found"
+                        }, void 0, false, {
+                            fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                            lineNumber: 514,
+                            columnNumber: 15
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                        lineNumber: 497,
+                        columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-                lineNumber: 414,
+                lineNumber: 472,
+                columnNumber: 9
+            }, this)
+        }
+    ];
+    const breadcrumbItems = [
+        {
+            title: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                href: "/admin/dashboard",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$HomeOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__HomeOutlined$3e$__["HomeOutlined"], {}, void 0, false, {
+                        fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                        lineNumber: 524,
+                        columnNumber: 41
+                    }, this),
+                    " หน้าหลัก"
+                ]
+            }, void 0, true, {
+                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                lineNumber: 524,
+                columnNumber: 14
+            }, this)
+        },
+        {
+            title: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$TrophyOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__TrophyOutlined$3e$__["TrophyOutlined"], {}, void 0, false, {
+                        fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                        lineNumber: 527,
+                        columnNumber: 16
+                    }, this),
+                    " เกียรติบัตร"
+                ]
+            }, void 0, true)
+        },
+        {
+            title: activeTab === 'templates' ? 'จัดการแม่แบบเกียรติบัตร' : 'เกียรติบัตรที่ออกแล้ว'
+        }
+    ];
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8",
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$breadcrumb$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Breadcrumb$3e$__["Breadcrumb"], {
+                className: "mb-6",
+                items: breadcrumbItems
+            }, void 0, false, {
+                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                lineNumber: 537,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(AntdTitle, {
+                level: 1,
+                className: "text-3xl font-bold mb-8 text-gray-800",
+                children: "Certificate Management"
+            }, void 0, false, {
+                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                lineNumber: 539,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$tabs$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Tabs$3e$__["Tabs"], {
+                defaultActiveKey: "templates",
+                items: items,
+                onChange: setActiveTab,
+                activeKey: activeTab,
+                className: "rounded-xl shadow-custom-light bg-white"
+            }, void 0, false, {
+                fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
+                lineNumber: 541,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/(pages)/admin/certificate/page.tsx",
-        lineNumber: 220,
+        lineNumber: 535,
         columnNumber: 5
     }, this);
 }
-_s(CertificatePage, "NtTadRh+vnwLmw7Q2ZszuHwZ7m0=", false, function() {
-    return [
-        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].useForm
-    ];
-});
-_c1 = CertificatePage;
-var _c, _c1;
-__turbopack_context__.k.register(_c, "CertificateCanvas");
-__turbopack_context__.k.register(_c1, "CertificatePage");
+_s(CertificatePage, "4+OViS1lKSbl+IJmfLD0p1mILLM=");
+_c = CertificatePage;
+var _c;
+__turbopack_context__.k.register(_c, "CertificatePage");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
 }

@@ -3,11 +3,11 @@
 
 import '@ant-design/v5-patch-for-react-19';
 import React, { useState } from 'react';
-import { Table, Button, Space, Modal, Form, Input, message, Tag, Select, Typography } from 'antd';
-import { EditOutlined, EyeOutlined, PlusOutlined, SearchOutlined, DeleteOutlined } from '@ant-design/icons'; // เพิ่ม DeleteOutlined
+import { Table, Button, Space, Modal, Form, Input, message, Tag, Select, Typography, Breadcrumb  } from 'antd';
+import { EditOutlined, EyeOutlined, PlusOutlined, SearchOutlined, DeleteOutlined, HomeOutlined, UserOutlined } from '@ant-design/icons'; // เพิ่ม DeleteOutlined
 
 const { Option } = Select;
-const { Text } = Typography;
+const { Text, Title: AntdTitle } = Typography;
 
 interface Student {
   key: string;
@@ -198,10 +198,35 @@ export default function StudentPage() {
     setViewingStudent(null);
   };
 
+  // กำหนด items สำหรับ Breadcrumb
+  const breadcrumbItems = [
+    {
+      title: (
+        <a href="/admin/dashboard">
+          <HomeOutlined /> หน้าหลัก
+        </a>
+      ),
+    },
+    {
+      title: (
+        <>
+          <UserOutlined /> จัดการนักเรียน
+        </>
+      ),
+    },
+  ];
+
   return (
-    <>
-      <h1 className="text-3xl font-bold mb-8 text-gray-800">Student</h1>
-      <div className="flex justify-between items-center gap-25 mb-6">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      {/* Breadcrumbs ใช้ items prop */}
+      <Breadcrumb items={breadcrumbItems} className="mb-6" />
+
+      {/* เปลี่ยน h1 เป็น AntdTitle */}
+      <AntdTitle level={1} className="text-3xl font-bold mb-8 text-gray-800">
+        Student
+      </AntdTitle>
+
+      <div className="flex justify-between items-center gap-10 mb-6">
         <Input
           placeholder="Search"
           prefix={<SearchOutlined className="text-gray-400" />}
@@ -294,6 +319,6 @@ export default function StudentPage() {
           <p>ไม่พบข้อมูล</p>
         )}
       </Modal>
-    </>
+    </div>
   );
 }

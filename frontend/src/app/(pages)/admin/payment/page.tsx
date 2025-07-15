@@ -1,14 +1,13 @@
 // src/app/(pages)/(admin)/payment/page.tsx
 "use client";
 
-import '@ant-design/v5-patch-for-react-19';
 import React, { useState } from 'react';
-import { Table, Button, Space, Modal, Form, Input, message, Tag, DatePicker, Select, Typography } from 'antd';
-import { EditOutlined, EyeOutlined, SearchOutlined, PlusOutlined, DeleteOutlined } from '@ant-design/icons'; // เพิ่ม DeleteOutlined
+import { Table, Button, Space, Modal, Form, Input, message, Tag, DatePicker, Select, Typography, Breadcrumb } from 'antd'; // Added Breadcrumb, Card
+import { EditOutlined, EyeOutlined, SearchOutlined, PlusOutlined, DeleteOutlined, HomeOutlined, DollarCircleOutlined } from '@ant-design/icons'; // Added HomeOutlined, DollarCircleOutlined
 import dayjs from 'dayjs';
 
 const { Option } = Select;
-const { Text } = Typography;
+const { Text, Title: AntdTitle } = Typography; // Renamed Title to AntdTitle for clarity
 
 interface Payment {
   key: string;
@@ -235,14 +234,37 @@ export default function PaymentPage() {
     setViewingPayment(null);
   };
 
+  // กำหนด items สำหรับ Breadcrumb
+  const breadcrumbItems = [
+    {
+      title: (
+        <a href="/admin/dashboard">
+          <HomeOutlined /> หน้าหลัก
+        </a>
+      ),
+    },
+    {
+      title: (
+        <>
+          <DollarCircleOutlined /> จัดการการชำระเงิน
+        </>
+      ),
+    },
+  ];
+
   return (
-    <>
-      <h1 className="text-3xl font-bold mb-8 text-gray-800">Payment</h1>
-      <div className="flex justify-between items-center mb-6 gap-25">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      {/* Breadcrumbs ใช้ items prop */}
+      <Breadcrumb items={breadcrumbItems} className="mb-6" />
+
+      {/* เปลี่ยน h1 เป็น AntdTitle */}
+      <AntdTitle level={1} className="text-3xl font-bold mb-8 text-gray-800">Payment</AntdTitle>
+
+      <div className="flex justify-between items-center mb-6 gap-10">
         <Input
           placeholder="Search"
           prefix={<SearchOutlined className="text-gray-400" />}
-          className="w-80 rounded-lg shadow-sm table-search-input"
+          className="w-80 rounded-lg shadow-sm table-search-input" // Adjusted width
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
@@ -340,6 +362,6 @@ export default function PaymentPage() {
           <p>ไม่พบข้อมูล</p>
         )}
       </Modal>
-    </>
+    </div>
   );
 }

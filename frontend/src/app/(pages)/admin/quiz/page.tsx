@@ -3,8 +3,8 @@
 
 import '@ant-design/v5-patch-for-react-19';
 import React, { useState, useEffect } from 'react'; // Import useEffect
-import { Tabs, Table, Button, Space, Modal, Form, Input, message, Tag, Select, Typography, DatePicker } from 'antd';
-import { EditOutlined, EyeOutlined, PlusOutlined, SearchOutlined, DeleteOutlined } from '@ant-design/icons';
+import { Tabs, Table, Button, Space, Modal, Form, Input, message, Tag, Select, Typography, DatePicker, Breadcrumb, Card } from 'antd';
+import { EditOutlined, EyeOutlined, PlusOutlined, SearchOutlined, DeleteOutlined, HomeOutlined, FileTextOutlined } from '@ant-design/icons';
 import type { TabsProps } from 'antd';
 import dayjs from 'dayjs';
 import Link from 'next/link'; // Import Link for navigation
@@ -12,7 +12,8 @@ import Link from 'next/link'; // Import Link for navigation
 dayjs.locale('th'); // Set default locale to Thai for date display
 
 const { Option } = Select;
-const { Text } = Typography;
+const { Text, Title: AntdTitle } = Typography;
+
 
 // --- Standardized Interfaces (ต้องเหมือนกับใน manage/page.tsx) ---
 interface Option {
@@ -58,7 +59,7 @@ interface EvaluationFormValues {
 }
 
 
-export default function QuizManagementPage() { // เปลี่ยนชื่อ Component
+export default function QuizManagementPage() {
   const [activeTab, setActiveTab] = useState('evaluation');
 
   // --- State for Evaluation Tab ---
@@ -97,16 +98,38 @@ export default function QuizManagementPage() { // เปลี่ยนชื่
   ]);
 
   // --- State for Quiz Management Tab (formerly Create Exam) ---
+  // Renamed setIsQuizDetailModal to setIsQuizDetailModalVisible for consistency
+  const [isQuizDetailModalVisible, setIsQuizDetailModalVisible] = useState(false);
   const [quizzes, setQuizzes] = useState<Quiz[]>([]); // ใช้ quizzes state
-  const [isQuizDetailModalVisible, setIsQuizDetailModalVisible] = useState(false); // สำหรับ Modal แสดงรายละเอียด Quiz
-  const [viewingQuiz, setViewingQuiz] = useState<Quiz | null>(null); // สำหรับ Quiz ที่กำลังดูรายละเอียด
-  const [searchTermQuiz, setSearchTermQuiz] = useState(''); // Search term for quiz tab
 
   // Load quizzes from localStorage on component mount
   useEffect(() => {
-    const storedQuizzes = JSON.parse(localStorage.getItem('quizzes') || '[]') as Quiz[];
-    setQuizzes(storedQuizzes);
+    const loadQuizzes = () => {
+      try {
+        const storedQuizzes = JSON.parse(localStorage.getItem('quizzes') || '[]') as Quiz[];
+        setQuizzes(storedQuizzes);
+      } catch (error) {
+        console.error("Failed to parse quizzes from localStorage", error);
+        setQuizzes([]);
+      }
+    };
+    loadQuizzes();
+
+    // Add event listener for 'storage' to update when localStorage changes from other tabs
+    const handleStorageChange = (event: StorageEvent) => {
+      if (event.key === 'quizzes') {
+        loadQuizzes();
+      }
+    };
+    window.addEventListener('storage', handleStorageChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
   }, []);
+
+  const [viewingQuiz, setViewingQuiz] = useState<Quiz | null>(null); // สำหรับ Quiz ที่กำลังดูรายละเอียด
+  const [searchTermQuiz, setSearchTermQuiz] = useState(''); // Search term for quiz tab
 
   // --- Evaluation Tab Handlers ---
   const handleAddEvaluation = () => {
@@ -198,11 +221,11 @@ export default function QuizManagementPage() { // เปลี่ยนชื่
 
   const handleViewQuiz = (record: Quiz) => {
     setViewingQuiz(record);
-    setIsQuizDetailModalVisible(true);
+    setIsQuizDetailModalVisible(true); // Corrected: use setIsQuizDetailModalVisible
   };
 
   const handleQuizDetailModalCancel = () => {
-    setIsQuizDetailModalVisible(false);
+    setIsQuizDetailModalVisible(false); // Corrected: use setIsQuizDetailModalVisible
     setViewingQuiz(null);
   };
 
@@ -305,18 +328,17 @@ export default function QuizManagementPage() { // เปลี่ยนชื่
   ];
 
   // --- Columns for Quiz Management Tab ---
-  const quizColumns = [ // เปลี่ยนชื่อจาก examColumns เป็น quizColumns
+  const quizColumns = [
     {
       title: '#',
-      dataIndex: 'id', // ใช้ id แทน key
-      key: 'id',
-      render: (text: string) => parseInt(text.split('-')[0] || '0'), // อาจจะต้องปรับการ render id
+      // Use index + 1 for display order
+      render: (_: unknown, __: unknown, index: number) => index + 1, // Changed any to unknown
       width: 50,
       className: 'text-gray-600',
     },
     {
-      title: 'QUIZ TITLE', // เปลี่ยนเป็น QUIZ TITLE
-      dataIndex: 'title', // ใช้ title แทน examTitle
+      title: 'QUIZ TITLE',
+      dataIndex: 'title',
       key: 'title',
       className: 'font-medium text-gray-900',
     },
@@ -328,7 +350,7 @@ export default function QuizManagementPage() { // เปลี่ยนชื่
     },
     {
       title: 'QUESTIONS',
-      dataIndex: 'numQuestions', // ใช้ numQuestions
+      dataIndex: 'numQuestions',
       key: 'numQuestions',
       className: 'text-gray-700',
     },
@@ -336,9 +358,10 @@ export default function QuizManagementPage() { // เปลี่ยนชื่
       title: 'STATUS',
       dataIndex: 'status',
       key: 'status',
-      render: (status: 'draft' | 'published') => ( // ใช้ status แบบ lowercase
+      render: (status: 'draft' | 'published') => (
         <Tag color={status === 'published' ? 'green' : 'blue'} className="rounded-full px-3 py-1 text-xs font-semibold">
-          {status === 'published' ? 'เผยแพร่แล้ว' : 'ฉบับร่าง'}
+          {/* Change status text to English */}
+          {status === 'published' ? 'Published' : 'Draft'}
         </Tag>
       ),
       className: 'text-center',
@@ -347,14 +370,16 @@ export default function QuizManagementPage() { // เปลี่ยนชื่
       title: 'CREATED AT',
       dataIndex: 'createdAt',
       key: 'createdAt',
-      render: (date: string) => dayjs(date).format('D MMMM YYYY, HH:mm'),
+      // Format date to DD/MM/YYYY, HH:mm
+      render: (date: string) => dayjs(date).format('DD/MM/YYYY, HH:mm'),
       className: 'text-gray-700',
     },
     {
       title: 'UPDATED AT',
       dataIndex: 'updatedAt',
       key: 'updatedAt',
-      render: (date: string) => dayjs(date).format('D MMMM YYYY, HH:mm'),
+      // Format date to DD/MM/YYYY, HH:mm
+      render: (date: string) => dayjs(date).format('DD/MM/YYYY, HH:mm'),
       className: 'text-gray-700',
     },
     {
@@ -367,14 +392,13 @@ export default function QuizManagementPage() { // เปลี่ยนชื่
             onClick={() => handleViewQuiz(record)}
             className="text-gray-500 border-none shadow-none hover:bg-gray-50"
           />
-          {/* *** เปลี่ยนเป็น Link ไปยัง manage/page.tsx สำหรับแก้ไข *** */}
           <Link href={`/admin/quiz/manage?id=${record.id}`}>
             <Button icon={<EditOutlined />} className="text-blue-500 border-none shadow-none hover:bg-blue-50" />
           </Link>
           <Button
             icon={<DeleteOutlined />}
             danger
-            onClick={() => handleDeleteQuiz(record.id)} // ใช้ record.id
+            onClick={() => handleDeleteQuiz(record.id)}
             className="text-red-500 border-none shadow-none hover:bg-red-50"
           />
         </Space>
@@ -387,8 +411,8 @@ export default function QuizManagementPage() { // เปลี่ยนชื่
       key: 'evaluation',
       label: 'ส่วนประเมิน',
       children: (
-        <>
-          <div className="flex justify-between items-center mb-6 gap-25">
+        <Card className="rounded-xl shadow-custom-light p-4">
+          <div className="flex justify-between items-center mb-6">
             <Input
               placeholder="Search Evaluation"
               prefix={<SearchOutlined className="text-gray-400" />}
@@ -489,15 +513,15 @@ export default function QuizManagementPage() { // เปลี่ยนชื่
               <p>ไม่พบข้อมูล</p>
             )}
           </Modal>
-        </>
+        </Card>
       ),
     },
     {
-      key: 'quiz-management', // เปลี่ยน key และ label
+      key: 'quiz-management',
       label: 'จัดการข้อสอบ',
       children: (
-        <>
-          <div className="flex justify-between items-center mb-6 gap-25">
+        <Card className="rounded-xl shadow-custom-light p-4">
+          <div className="flex justify-between items-center mb-6">
             <Input
               placeholder="ค้นหาข้อสอบ"
               prefix={<SearchOutlined className="text-gray-400" />}
@@ -505,7 +529,6 @@ export default function QuizManagementPage() { // เปลี่ยนชื่
               value={searchTermQuiz}
               onChange={(e) => setSearchTermQuiz(e.target.value)}
             />
-            {/* *** เปลี่ยนเป็น Link ไปยัง manage/page.tsx สำหรับสร้างข้อสอบใหม่ *** */}
             <Link href="/admin/quiz/manage">
               <Button
                 type="primary"
@@ -517,9 +540,9 @@ export default function QuizManagementPage() { // เปลี่ยนชื่
             </Link>
           </div>
           <Table
-            columns={quizColumns} // ใช้ quizColumns
-            dataSource={filteredQuizzes} // ใช้ filteredQuizzes
-            rowKey="id" // ใช้ id เป็น rowKey
+            columns={quizColumns}
+            dataSource={filteredQuizzes}
+            rowKey="id"
             className="rounded-xl shadow-custom-light"
             pagination={{ pageSize: 10 }}
             bordered={false}
@@ -527,7 +550,7 @@ export default function QuizManagementPage() { // เปลี่ยนชื่
           {/* Modal for Viewing Quiz Details */}
           <Modal
             title="รายละเอียดข้อสอบ"
-            open={isQuizDetailModalVisible}
+            open={isQuizDetailModalVisible} // Corrected: use isQuizDetailModalVisible
             onCancel={handleQuizDetailModalCancel}
             footer={null}
             className="rounded-xl"
@@ -538,9 +561,9 @@ export default function QuizManagementPage() { // เปลี่ยนชื่
                 <p className="mb-2"><Text strong>ชื่อข้อสอบ:</Text> {viewingQuiz.title}</p>
                 <p className="mb-2"><Text strong>หลักสูตร:</Text> {viewingQuiz.course}</p>
                 <p className="mb-2"><Text strong>จำนวนคำถาม:</Text> {viewingQuiz.numQuestions}</p>
-                <p className="mb-2"><Text strong>สถานะ:</Text> <Tag color={viewingQuiz.status === 'published' ? 'green' : 'blue'}>{viewingQuiz.status === 'published' ? 'เผยแพร่แล้ว' : 'ฉบับร่าง'}</Tag></p>
-                <p className="mb-2"><Text strong>สร้างเมื่อ:</Text> {dayjs(viewingQuiz.createdAt).format('D MMMM YYYY, HH:mm')}</p>
-                <p className="mb-2"><Text strong>อัปเดตล่าสุด:</Text> {dayjs(viewingQuiz.updatedAt).format('D MMMM YYYY, HH:mm')}</p>
+                <p className="mb-2"><Text strong>สถานะ:</Text> <Tag color={viewingQuiz.status === 'published' ? 'green' : 'blue'}>{viewingQuiz.status === 'published' ? 'Published' : 'Draft'}</Tag></p>
+                <p className="mb-2"><Text strong>สร้างเมื่อ:</Text> {dayjs(viewingQuiz.createdAt).format('DD/MM/YYYY, HH:mm')}</p>
+                <p className="mb-2"><Text strong>อัปเดตล่าสุด:</Text> {dayjs(viewingQuiz.updatedAt).format('DD/MM/YYYY, HH:mm')}</p>
                 {viewingQuiz.description && <p className="mb-2"><Text strong>คำอธิบาย:</Text> {viewingQuiz.description}</p>}
 
                 {viewingQuiz.questions.length > 0 && (
@@ -570,21 +593,37 @@ export default function QuizManagementPage() { // เปลี่ยนชื่
               <p>ไม่พบข้อมูล</p>
             )}
           </Modal>
-        </>
+        </Card>
       ),
     },
   ];
 
+  const breadcrumbItems = [
+    {
+      title: <a href="/admin/dashboard"><HomeOutlined /> หน้าหลัก</a>,
+    },
+    {
+      title: <><FileTextOutlined /> แบบทดสอบ</>,
+    },
+    {
+      title: activeTab === 'evaluation' ? 'ส่วนประเมิน' : 'จัดการข้อสอบ',
+    },
+  ];
+
   return (
-    <>
-      <h1 className="text-3xl font-bold mb-8 text-gray-800">Quiz Management</h1>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      {/* Breadcrumbs */}
+      <Breadcrumb className="mb-6" items={breadcrumbItems} />
+
+      <AntdTitle level={1} className="text-3xl font-bold mb-8 text-gray-800">Quiz Management</AntdTitle>
+
       <Tabs
         defaultActiveKey="evaluation"
         items={items}
         onChange={setActiveTab}
         activeKey={activeTab}
-        className="rounded-xl shadow-custom-light bg-white p-4"
+        className="rounded-xl shadow-custom-light bg-white"
       />
-    </>
+    </div>
   );
 }

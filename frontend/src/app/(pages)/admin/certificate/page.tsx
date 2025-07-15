@@ -1,434 +1,550 @@
 "use client";
 
+
 import '@ant-design/v5-patch-for-react-19';
-import React, { useState,useEffect, useRef } from 'react';
-// import { Layout, Form, Input, Select, Button, message, Card, Typography, Modal, DatePicker, Row, Col, Slider, Space } from 'antd';
-import { Form, Input, Select, Button, message, Card, Typography, Modal, DatePicker, Row, Col, Slider, Space } from 'antd';
-import { SaveOutlined, PrinterOutlined } from '@ant-design/icons';
-// import type { UploadFile, UploadChangeParam } from 'antd/lib/upload/interface'; // ยังคง import ไว้เผื่อใช้ในอนาคต
+import React, { useState, useEffect } from 'react';
+import { Tabs, Table, Button, Space, Modal, Input, message, Tag, Typography, Breadcrumb, Card } from 'antd';
+import { EditOutlined, EyeOutlined, PlusOutlined, SearchOutlined, DeleteOutlined, HomeOutlined, TrophyOutlined } from '@ant-design/icons';
+import type { TabsProps } from 'antd';
 import dayjs from 'dayjs';
-import dynamic from 'next/dynamic';
-import Konva from 'konva';
+import 'dayjs/locale/th'; // Import Thai locale for dayjs
+import { v4 as uuidv4 } from 'uuid'; // For generating unique IDs
 
-// const { Content } = Layout;
-const { Option } = Select;
-const { Title: AntdTitle } = Typography;
+dayjs.locale('th');
 
-// Dynamically import CertificateCanvas to ensure it only runs on the client-side
-const CertificateCanvas = dynamic(() => import('./certificateCanvas'), { ssr: false });
+const { Text, Title: AntdTitle } = Typography;
 
-// --- Interfaces ---
-interface School {
-  key: string;
-  name: string;
-  address: string;
-  contact: string;
-  logoUrl?: string;
+// --- Interfaces for Certificate Templates ---
+interface CertificateTemplate {
+  id: string;
+  templateName: string;
+  description: string;
+  status: 'Draft' | 'Published';
+  createdAt: string;
+  updatedAt: string;
+  designElements: { // Added this to match manage page, though not fully used here
+    backgroundColor: string;
+    textColor: string;
+    fontFamily: string;
+    fontSize: number;
+    titleText: string;
+    studentNamePlaceholder: string;
+    courseNamePlaceholder: string;
+    issueDatePlaceholder: string;
+    signatureText: string;
+    signatureLine2: string;
+    logoUrl?: string;
+
+    titlePosX: number;
+    titlePosY: number;
+    studentNamePosX: number;
+    studentNamePosY: number;
+    courseNamePosX: number;
+    courseNamePosY: number;
+    issueDateTextPosX: number;
+    issueDateTextPosY: number;
+    issueDateValuePosX: number;
+    issueDateValuePosY: number;
+    signatureBlockPosX: number;
+    signatureBlockPosY: number;
+
+    mainBorderWidth: number;
+    mainBorderColor: string;
+    mainBorderRadius: number;
+    mainBorderStyle: 'solid' | 'dashed';
+    mainBorderDashLength: number;
+    mainBorderDashGap: number;
+    innerBorder1Width: number;
+    innerBorder1Color: string;
+    innerBorder1DashLength: number;
+    innerBorder1DashGap: number;
+    innerBorder2Width: number;
+    innerBorder2Color: string;
+  };
 }
 
-interface CertificateData {
-  title: string;
+// --- Interfaces for Issued Certificates ---
+interface IssuedCertificate {
+  id: string;
+  templateName: string;
   studentName: string;
-  courseName: string;
-  issueDate: dayjs.Dayjs | null;
-  schoolName: string;
-  schoolLogoUrl: string;
-  fontFamily: string;
-  fontSize: number;
-  textColor: string;
-  bgColor: string;
-  signatureLine1: string;
-  signatureLine2: string;
-  // Positions for Konva shapes (all in pixels, representing the TOP-LEFT of the element's bounding box)
-  titlePos: { x: number; y: number };
-  studentNamePos: { x: number; y: number };
-  courseNamePos: { x: number; y: number };
-
-  // Properties สำหรับการปรับแต่งกรอบ
-  mainBorderWidth: number;
-  mainBorderColor: string;
-  mainBorderRadius: number;
-  mainBorderStyle: 'solid' | 'dashed';
-  mainBorderDashLength: number;
-  mainBorderDashGap: number;
-  innerBorder1Width: number;
-  innerBorder1Color: string;
-  innerBorder1DashLength: number;
-  innerBorder1DashGap: number;
-  innerBorder2Width: number;
-  innerBorder2Color: string;
+  courseTitle: string;
+  issueDate: string; // YYYY-MM-DD
+  status: 'Issued' | 'Revoked';
 }
 
 export default function CertificatePage() {
-  const [form] = Form.useForm<CertificateData>();
-  const [isSaveModalVisible, setIsSaveModalVisible] = useState(false);
-  const [isClient, setIsClient] = useState(false); // *** เพิ่ม isClient state ***
+  const [activeTab, setActiveTab] = useState('templates'); // Default to templates tab
 
-  const stageRef = useRef<Konva.Stage | null>(null); 
+  // --- State for Certificate Templates Tab ---
+  const [certificateTemplates, setCertificateTemplates] = useState<CertificateTemplate[]>([]);
+  const [searchTermTemplates, setSearchTermTemplates] = useState('');
+  const [isTemplateDetailModalVisible, setIsTemplateDetailModalVisible] = useState(false);
+  const [viewingTemplate, setViewingTemplate] = useState<CertificateTemplate | null>(null);
+  const [hasLoadedTemplates, setHasLoadedTemplates] = useState(false); // New state for hydration
 
-  const dummySchools: School[] = [
-    { key: '1', name: 'โรงเรียนสาธิต ม.เกษตรศาสตร์', address: 'กรุงเทพมหานคร', contact: '02-123-4567', logoUrl: '' },
-    { key: '2', name: 'โรงเรียนเตรียมอุดมศึกษา', address: 'กรุงเทพมหานคร', contact: '02-765-4321', logoUrl: '' },
-    { key: '3', name: 'โรงเรียนบดินทรเดชา', address: 'กรุงเทพมหานคร', contact: '02-987-6543', logoUrl: '' },
-  ];
+  // --- State for Issued Certificates Tab ---
+  const [issuedCertificates, setIssuedCertificates] = useState<IssuedCertificate[]>([
+    {
+      id: uuidv4(),
+      templateName: 'ใบประกาศนวดแผนไทย',
+      studentName: 'สมชาย ใจดี',
+      courseTitle: 'หลักสูตรนวดแผนไทยเบื้องต้น',
+      issueDate: '2023-07-15',
+      status: 'Issued',
+    },
+    {
+      id: uuidv4(),
+      templateName: 'ประกาศนียบัตรสปา',
+      studentName: 'สมหญิง รักเรียน',
+      courseTitle: 'หลักสูตรสปาเพื่อสุขภาพ',
+      issueDate: '2023-07-20',
+      status: 'Issued',
+    },
+    {
+      id: uuidv4(),
+      templateName: 'ใบรับรองอโรมาเธอราพี',
+      studentName: 'มานะ พากเพียร',
+      courseTitle: 'หลักสูตรอโรมาเธอราพี',
+      issueDate: '2023-07-25',
+      status: 'Revoked',
+    },
+  ]);
+  const [searchTermIssued, setSearchTermIssued] = useState('');
+  const [isIssuedDetailModalVisible, setIsIssuedDetailModalVisible] = useState(false);
+  const [viewingIssued, setViewingIssued] = useState<IssuedCertificate | null>(null);
+  const [hasLoadedIssued, setHasLoadedIssued] = useState(false); // New state for hydration for issued
 
-  // กำหนดค่าเริ่มต้นของ certificateData
-  const [certificateData, setCertificateData] = useState<CertificateData>({
-    title: 'ใบประกาศนียบัตร',
-    studentName: 'ชื่อนักเรียน',
-    courseName: 'ชื่อหลักสูตรที่สำเร็จ',
-    issueDate: dayjs(), 
-    schoolName: dummySchools[0].name,
-    schoolLogoUrl: '',
-    fontFamily: 'Prompt',
-    fontSize: 16,
-    textColor: '#000000',
-    bgColor: '#FFFFFF',
-    signatureLine1: 'ผู้อำนวยการ',
-    signatureLine2: 'โรงเรียนสาธิต ม.เกษตรศาสตร์',
-    // Initial positions in pixels, representing the TOP-LEFT of the element's bounding box
-    // DESIGN_WIDTH = 720, DESIGN_HEIGHT = 508.5 (จาก CertificateCanvas.tsx)
-    titlePos: { x: 720 / 2, y: 108 }, 
-    studentNamePos: { x: 720 / 2, y: 252 }, 
-    courseNamePos: { x: 720 / 2, y: 322 }, 
-
-    // *** ค่าเริ่มต้นสำหรับกรอบ ***
-    mainBorderWidth: 10,
-    mainBorderColor: '#f97316',
-    mainBorderRadius: 8,
-    mainBorderStyle: 'solid',
-    mainBorderDashLength: 10,
-    mainBorderDashGap: 5,
-    innerBorder1Width: 4,
-    innerBorder1Color: '#d4af37',
-    innerBorder1DashLength: 10,
-    innerBorder1DashGap: 5,
-    innerBorder2Width: 2,
-    innerBorder2Color: '#b8860b',
-  });
-
-  // *** ใช้ useEffect เพื่อตั้งค่า isClient เป็น true เมื่อ Component mount บน Client ***
+  // Load certificate templates from localStorage on component mount (client-side only)
   useEffect(() => {
-    setIsClient(true);
+    const loadTemplates = () => {
+      try {
+        const storedTemplates = JSON.parse(localStorage.getItem('certificateTemplates') || '[]') as CertificateTemplate[];
+        setCertificateTemplates(storedTemplates);
+        setHasLoadedTemplates(true); // Mark templates as loaded
+      } catch (error) {
+        console.error("Failed to parse certificateTemplates from localStorage", error);
+        setCertificateTemplates([]);
+        setHasLoadedTemplates(true); // Still mark as loaded to proceed
+      }
+    };
+    loadTemplates();
+
+    // Add event listener for 'storage' to update when localStorage changes from other tabs
+    const handleStorageChange = (event: StorageEvent) => {
+      if (event.key === 'certificateTemplates') {
+        loadTemplates();
+      }
+    };
+    window.addEventListener('storage', handleStorageChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
   }, []);
 
-  const handleFormChange = (changedValues: Partial<CertificateData>) => {
-    setCertificateData(prevData => ({
-      ...prevData,
-      ...changedValues,
-    }));
+  // --- Certificate Templates Handlers ---
+  const handleCreateTemplate = () => {
+    window.location.href = '/admin/certificate/manage';
   };
 
-  const handleSchoolSelect = (value: string) => {
-    const selectedSchool = dummySchools.find(school => school.key === value);
-    if (selectedSchool) {
-      setCertificateData(prevData => ({
-        ...prevData,
-        schoolName: selectedSchool.name,
-        schoolLogoUrl: '',
-        signatureLine2: selectedSchool.name,
-      }));
-      form.setFieldsValue({
-        schoolName: selectedSchool.name,
-        schoolLogoUrl: '',
-        signatureLine2: selectedSchool.name,
-      });
-    }
+  const handleEditTemplate = (templateId: string) => {
+    window.location.href = `/admin/certificate/manage?id=${templateId}`;
   };
 
-  const handleSaveDesign = () => {
-    form.validateFields()
-      .then(() => {
-        setIsSaveModalVisible(true);
-      })
-      .catch(info => {
-        console.log('Validate Failed:', info);
-        message.error('กรุณากรอกข้อมูลที่จำเป็นให้ครบถ้วน');
-      });
-  };
-
-  const handleConfirmSave = () => {
-    console.log('Saving Certificate Design:', {
-      ...certificateData,
-      issueDate: certificateData.issueDate ? certificateData.issueDate.format('YYYY-MM-DD') : null,
-    });
-    message.success('บันทึกการออกแบบใบประกาศสำเร็จ!');
-    setIsSaveModalVisible(false);
-  };
-
-  const handlePositionChange = (elementName: string, newPos: { x: number; y: number }) => {
-    setCertificateData(prevData => {
-      switch (elementName) {
-        case 'title':
-          return { ...prevData, titlePos: newPos };
-        case 'studentName':
-          return { ...prevData, studentNamePos: newPos };
-        case 'courseName':
-          return { ...prevData, courseNamePos: newPos };
-        default:
-          return prevData;
-      }
-    });
-  };
-
-  const handlePrintCertificate = async () => {
-    if (stageRef.current) {
-      message.loading('กำลังสร้างใบประกาศสำหรับการพิมพ์...', 0);
-      try {
-        const dataURL = stageRef.current.toDataURL({
-          mimeType: 'image/png',
-          quality: 1,
-          pixelRatio: 2, // Export at 2x resolution for better print quality
+  const handleDeleteTemplate = (templateId: string) => {
+    Modal.confirm({
+      title: 'Confirm Deletion',
+      content: 'Are you sure you want to delete this certificate template? This action cannot be undone.',
+      okText: 'Delete',
+      cancelText: 'Cancel',
+      onOk() {
+        setCertificateTemplates(prevTemplates => {
+          const updatedTemplates = prevTemplates.filter(template => template.id !== templateId);
+          localStorage.setItem('certificateTemplates', JSON.stringify(updatedTemplates));
+          message.success('Certificate template deleted successfully!');
+          return updatedTemplates;
         });
-
-        const printWindow = window.open('', '_blank');
-        if (printWindow) {
-          printWindow.document.write(`
-            <html>
-              <head>
-                <title>Print Certificate</title>
-                <style>
-                  body { margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #f0f2f5; }
-                  img { max-width: 100%; height: auto; display: block; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-                  @media print {
-                    body { background: none; }
-                    img { box-shadow: none; }
-                  }
-                </style>
-              </head>
-              <body>
-                <img src="${dataURL}" onload="window.print(); window.close();" />
-              </body>
-            </html>
-          `);
-          printWindow.document.close();
-        } else {
-          message.error('ไม่สามารถเปิดหน้าต่างสำหรับพิมพ์ได้ กรุณาตรวจสอบ Pop-up Blocker');
-        }
-      } catch (error) {
-        console.error('Error generating image from Konva Stage:', error);
-        message.error('เกิดข้อผิดพลาดในการสร้างใบประกาศ');
-      } finally {
-        message.destroy();
-      }
-    } else {
-      message.error('ไม่พบส่วนแสดงตัวอย่างใบประกาศ');
-    }
+      },
+    });
   };
+
+  const handleViewTemplate = (record: CertificateTemplate) => {
+    setViewingTemplate(record);
+    setIsTemplateDetailModalVisible(true);
+  };
+
+  const handleTemplateDetailModalCancel = () => {
+    setIsTemplateDetailModalVisible(false);
+    setViewingTemplate(null);
+  };
+
+  // --- Issued Certificates Handlers ---
+  useEffect(() => {
+    setHasLoadedIssued(true);
+  }, []);
+
+  const handleViewIssued = (record: IssuedCertificate) => {
+    setViewingIssued(record);
+    setIsIssuedDetailModalVisible(true);
+  };
+
+  const handleIssuedDetailModalCancel = () => {
+    setIsIssuedDetailModalVisible(false);
+    setViewingIssued(null);
+  };
+
+  const handleDeleteIssued = (issuedId: string) => {
+    Modal.confirm({
+      title: 'Confirm Deletion',
+      content: 'Are you sure you want to delete this issued certificate record? This action cannot be undone.',
+      okText: 'Delete',
+      cancelText: 'Cancel',
+      onOk() {
+        setIssuedCertificates(prevIssued => {
+          const updatedIssued = prevIssued.filter(issued => issued.id !== issuedId);
+          message.success('Issued certificate record deleted successfully!');
+          return updatedIssued;
+        });
+      },
+    });
+  };
+
+  // --- Filtered Data ---
+  const filteredTemplates = certificateTemplates.filter(template =>
+    template.templateName.toLowerCase().includes(searchTermTemplates.toLowerCase()) ||
+    template.description.toLowerCase().includes(searchTermTemplates.toLowerCase()) ||
+    template.status.toLowerCase().includes(searchTermTemplates.toLowerCase())
+  );
+
+  const filteredIssued = issuedCertificates.filter(issued =>
+    issued.templateName.toLowerCase().includes(searchTermIssued.toLowerCase()) ||
+    issued.studentName.toLowerCase().includes(searchTermIssued.toLowerCase()) ||
+    issued.courseTitle.toLowerCase().includes(searchTermIssued.toLowerCase()) ||
+    issued.issueDate.includes(searchTermIssued) ||
+    issued.status.toLowerCase().includes(searchTermIssued.toLowerCase())
+  );
+
+  // --- Columns for Certificate Templates Tab ---
+  const templateColumns = [
+    {
+      title: '#',
+      render: (_: unknown, __: unknown, index: number) => index + 1,
+      width: 50,
+      className: 'text-gray-600',
+    },
+    {
+      title: 'TEMPLATE NAME',
+      dataIndex: 'templateName',
+      key: 'templateName',
+      className: 'font-medium text-gray-900',
+    },
+    {
+      title: 'DESCRIPTION',
+      dataIndex: 'description',
+      key: 'description',
+      ellipsis: true,
+      className: 'text-gray-700',
+    },
+    {
+      title: 'STATUS',
+      dataIndex: 'status',
+      key: 'status',
+      render: (status: 'Draft' | 'Published') => (
+        <Tag color={status === 'Published' ? 'green' : 'blue'} className="rounded-full px-3 py-1 text-xs font-semibold">
+          {status}
+        </Tag>
+      ),
+      className: 'text-center',
+    },
+    {
+      title: 'CREATED AT',
+      dataIndex: 'createdAt',
+      key: 'createdAt',
+      render: (date: string) => dayjs(date).format('DD/MM/YYYY, HH:mm'),
+      className: 'text-gray-700',
+    },
+    {
+      title: 'UPDATED AT',
+      dataIndex: 'updatedAt',
+      key: 'updatedAt',
+      render: (date: string) => dayjs(date).format('DD/MM/YYYY, HH:mm'),
+      className: 'text-gray-700',
+    },
+    {
+      title: 'ACTIONS',
+      key: 'actions',
+      render: (_: unknown, record: CertificateTemplate) => (
+        <Space size="middle">
+          <Button
+            icon={<EyeOutlined />}
+            onClick={() => handleViewTemplate(record)}
+            className="text-gray-500 border-none shadow-none hover:bg-gray-50"
+          />
+          <Button icon={<EditOutlined />} onClick={() => handleEditTemplate(record.id)} className="text-blue-500 border-none shadow-none hover:bg-blue-50" />
+          <Button
+            icon={<DeleteOutlined />}
+            danger
+            onClick={() => handleDeleteTemplate(record.id)}
+            className="text-red-500 border-none shadow-none hover:bg-red-50"
+          />
+        </Space>
+      ),
+    },
+  ];
+
+  // --- Columns for Issued Certificates Tab ---
+  const issuedColumns = [
+    {
+      title: '#',
+      render: (_: unknown, __: unknown, index: number) => index + 1,
+      width: 50,
+      className: 'text-gray-600',
+    },
+    {
+      title: 'TEMPLATE',
+      dataIndex: 'templateName',
+      key: 'templateName',
+      className: 'font-medium text-gray-900',
+    },
+    {
+      title: 'STUDENT NAME',
+      dataIndex: 'studentName',
+      key: 'studentName',
+      className: 'text-gray-700',
+    },
+    {
+      title: 'COURSE TITLE',
+      dataIndex: 'courseTitle',
+      key: 'courseTitle',
+      className: 'text-gray-700',
+    },
+    {
+      title: 'ISSUE DATE',
+      dataIndex: 'issueDate',
+      key: 'issueDate',
+      render: (date: string) => dayjs(date).format('DD/MM/YYYY'),
+      className: 'text-gray-700',
+    },
+    {
+      title: 'STATUS',
+      dataIndex: 'status',
+      key: 'status',
+      render: (status: 'Issued' | 'Revoked') => (
+        <Tag color={status === 'Issued' ? 'green' : 'red'} className="rounded-full px-3 py-1 text-xs font-semibold">
+          {status}
+        </Tag>
+      ),
+      className: 'text-center',
+    },
+    {
+      title: 'ACTIONS',
+      key: 'actions',
+      render: (_: unknown, record: IssuedCertificate) => (
+        <Space size="middle">
+          <Button
+            icon={<EyeOutlined />}
+            onClick={() => handleViewIssued(record)}
+            className="text-gray-500 border-none shadow-none hover:bg-gray-50"
+          />
+          <Button
+            icon={<DeleteOutlined />}
+            danger
+            onClick={() => handleDeleteIssued(record.id)}
+            className="text-red-500 border-none shadow-none hover:bg-red-50"
+          />
+        </Space>
+      ),
+    },
+  ];
+
+  const items: TabsProps['items'] = [
+    {
+      key: 'templates',
+      label: 'จัดการแม่แบบเกียรติบัตร',
+      children: (
+        <Card className="rounded-xl shadow-custom-light p-4">
+          <div className="flex justify-between items-center mb-6">
+            <Input
+              placeholder="Search Templates"
+              prefix={<SearchOutlined className="text-gray-400" />}
+              className="w-80 rounded-lg shadow-sm table-search-input"
+              value={searchTermTemplates}
+              onChange={(e) => setSearchTermTemplates(e.target.value)}
+            />
+            <Button
+              type="primary"
+              onClick={handleCreateTemplate}
+              icon={<PlusOutlined />}
+              className="bg-orange-500 hover:bg-orange-600 text-white rounded-lg shadow-md px-6 py-3 text-base"
+            >
+              สร้างแม่แบบใหม่
+            </Button>
+          </div>
+          {hasLoadedTemplates ? (
+            <Table
+              columns={templateColumns}
+              dataSource={filteredTemplates}
+              rowKey="id"
+              className="rounded-xl shadow-custom-light"
+              pagination={{ pageSize: 10 }}
+              bordered={false}
+            />
+          ) : (
+            <div className="flex justify-center items-center h-40">
+              <Text>กำลังโหลดแม่แบบเกียรติบัตร...</Text>
+            </div>
+          )}
+
+          {/* Modal for Viewing Template Details */}
+          <Modal
+            title="Certificate Template Details"
+            open={isTemplateDetailModalVisible}
+            onCancel={handleTemplateDetailModalCancel}
+            footer={null}
+            className="rounded-xl"
+            centered
+          >
+            {viewingTemplate ? (
+              <div className="p-4">
+                <p className="mb-2"><Text strong>Template Name:</Text> {viewingTemplate.templateName}</p>
+                <p className="mb-2"><Text strong>Description:</Text> {viewingTemplate.description}</p>
+                <p className="mb-2"><Text strong>Status:</Text> <Tag color={viewingTemplate.status === 'Published' ? 'green' : 'blue'}>{viewingTemplate.status}</Tag></p>
+                <p className="mb-2"><Text strong>Created At:</Text> {dayjs(viewingTemplate.createdAt).format('DD/MM/YYYY, HH:mm')}</p>
+                <p className="mb-2"><Text strong>Updated At:</Text> {dayjs(viewingTemplate.updatedAt).format('DD/MM/YYYY, HH:mm')}</p>
+                {/* Display design elements in a structured way with safe access */}
+                <div className="mt-4">
+                  <Text strong className="text-lg">Design Elements:</Text>
+                  <ul className="list-disc list-inside ml-4">
+                    <li><Text strong>Background Color:</Text> {viewingTemplate.designElements?.backgroundColor ?? 'N/A'}</li>
+                    <li><Text strong>Text Color:</Text> {viewingTemplate.designElements?.textColor ?? 'N/A'}</li>
+                    <li><Text strong>Font Family:</Text> {viewingTemplate.designElements?.fontFamily ?? 'N/A'}</li>
+                    <li><Text strong>Font Size:</Text> {viewingTemplate.designElements?.fontSize ?? 'N/A'}</li>
+                    <li><Text strong>Title Text:</Text> {viewingTemplate.designElements?.titleText ?? 'N/A'}</li>
+                    <li><Text strong>Student Name Placeholder:</Text> {viewingTemplate.designElements?.studentNamePlaceholder ?? 'N/A'}</li>
+                    <li><Text strong>Course Name Placeholder:</Text> {viewingTemplate.designElements?.courseNamePlaceholder ?? 'N/A'}</li>
+                    <li><Text strong>Issue Date Placeholder:</Text> {viewingTemplate.designElements?.issueDatePlaceholder ?? 'N/A'}</li>
+                    <li><Text strong>Signature Text:</Text> {viewingTemplate.designElements?.signatureText ?? 'N/A'}</li>
+                    <li><Text strong>Signature Line 2:</Text> {viewingTemplate.designElements?.signatureLine2 ?? 'N/A'}</li>
+                    {viewingTemplate.designElements?.logoUrl && (
+                      <li>
+                        <Text strong>Logo URL:</Text> <a href={viewingTemplate.designElements.logoUrl} target="_blank" rel="noopener noreferrer">{viewingTemplate.designElements.logoUrl}</a>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={viewingTemplate.designElements.logoUrl} alt="Logo Preview" className="h-12 mt-2 border border-gray-200" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = 'https://placehold.co/100x50/cccccc/ffffff?text=Logo'; }} />
+                      </li>
+                    )}
+                    <li><Text strong>Title Pos:</Text> ({viewingTemplate.designElements?.titlePosX?.toFixed(0) ?? 'N/A'}, {viewingTemplate.designElements?.titlePosY?.toFixed(0) ?? 'N/A'})</li>
+                    <li><Text strong>Student Name Pos:</Text> ({viewingTemplate.designElements?.studentNamePosX?.toFixed(0) ?? 'N/A'}, {viewingTemplate.designElements?.studentNamePosY?.toFixed(0) ?? 'N/A'})</li>
+                    <li><Text strong>Course Name Pos:</Text> ({viewingTemplate.designElements?.courseNamePosX?.toFixed(0) ?? 'N/A'}, {viewingTemplate.designElements?.courseNamePosY?.toFixed(0) ?? 'N/A'})</li>
+                    <li><Text strong>Issue Date Text Pos:</Text> ({viewingTemplate.designElements?.issueDateTextPosX?.toFixed(0) ?? 'N/A'}, {viewingTemplate.designElements?.issueDateTextPosY?.toFixed(0) ?? 'N/A'})</li>
+                    <li><Text strong>Issue Date Value Pos:</Text> ({viewingTemplate.designElements?.issueDateValuePosX?.toFixed(0) ?? 'N/A'}, {viewingTemplate.designElements?.issueDateValuePosY?.toFixed(0) ?? 'N/A'})</li>
+                    <li><Text strong>Signature Block Pos:</Text> ({viewingTemplate.designElements?.signatureBlockPosX?.toFixed(0) ?? 'N/A'}, {viewingTemplate.designElements?.signatureBlockPosY?.toFixed(0) ?? 'N/A'})</li>
+                    <li><Text strong>Main Border Width:</Text> {viewingTemplate.designElements?.mainBorderWidth ?? 'N/A'}</li>
+                    <li><Text strong>Main Border Color:</Text> {viewingTemplate.designElements?.mainBorderColor ?? 'N/A'}</li>
+                    <li><Text strong>Main Border Radius:</Text> {viewingTemplate.designElements?.mainBorderRadius ?? 'N/A'}</li>
+                    <li><Text strong>Main Border Style:</Text> {viewingTemplate.designElements?.mainBorderStyle ?? 'N/A'}</li>
+                    {viewingTemplate.designElements?.mainBorderStyle === 'dashed' && (
+                      <>
+                        <li><Text strong>Main Border Dash Length:</Text> {viewingTemplate.designElements?.mainBorderDashLength ?? 'N/A'}</li>
+                        <li><Text strong>Main Border Dash Gap:</Text> {viewingTemplate.designElements?.mainBorderDashGap ?? 'N/A'}</li>
+                      </>
+                    )}
+                    <li><Text strong>Inner Border 1 Width:</Text> {viewingTemplate.designElements?.innerBorder1Width ?? 'N/A'}</li>
+                    <li><Text strong>Inner Border 1 Color:</Text> {viewingTemplate.designElements?.innerBorder1Color ?? 'N/A'}</li>
+                    <li><Text strong>Inner Border 1 Dash Length:</Text> {viewingTemplate.designElements?.innerBorder1DashLength ?? 'N/A'}</li>
+                    <li><Text strong>Inner Border 1 Dash Gap:</Text> {viewingTemplate.designElements?.innerBorder1DashGap ?? 'N/A'}</li>
+                    <li><Text strong>Inner Border 2 Width:</Text> {viewingTemplate.designElements?.innerBorder2Width ?? 'N/A'}</li>
+                    <li><Text strong>Inner Border 2 Color:</Text> {viewingTemplate.designElements?.innerBorder2Color ?? 'N/A'}</li>
+                  </ul>
+                </div>
+              </div>
+            ) : (
+              <p>No data found</p>
+            )}
+          </Modal>
+        </Card>
+      ),
+    },
+    {
+      key: 'issued',
+      label: 'เกียรติบัตรที่ออกแล้ว',
+      children: (
+        <Card className="rounded-xl shadow-custom-light p-4">
+          <div className="flex justify-between items-center mb-6">
+            <Input
+              placeholder="Search Issued Certificates"
+              prefix={<SearchOutlined className="text-gray-400" />}
+              className="w-80 rounded-lg shadow-sm table-search-input"
+              value={searchTermIssued}
+              onChange={(e) => setSearchTermIssued(e.target.value)}
+            />
+          </div>
+          {hasLoadedIssued ? (
+            <Table
+              columns={issuedColumns}
+              dataSource={filteredIssued}
+              rowKey="id"
+              className="rounded-xl shadow-custom-light"
+              pagination={{ pageSize: 10 }}
+              bordered={false}
+            />
+          ) : (
+            <div className="flex justify-center items-center h-40">
+              <Text>กำลังโหลดเกียรติบัตรที่ออกแล้ว...</Text>
+            </div>
+          )}
+          {/* Modal for Viewing Issued Certificate Details */}
+          <Modal
+            title="Issued Certificate Details"
+            open={isIssuedDetailModalVisible}
+            onCancel={handleIssuedDetailModalCancel}
+            footer={null}
+            className="rounded-xl"
+            centered
+          >
+            {viewingIssued ? (
+              <div className="p-4">
+                <p className="mb-2"><Text strong>Template Name:</Text> {viewingIssued.templateName}</p>
+                <p className="mb-2"><Text strong>Student Name:</Text> {viewingIssued.studentName}</p>
+                <p className="mb-2"><Text strong>Course Title:</Text> {viewingIssued.courseTitle}</p>
+                <p className="mb-2"><Text strong>Issue Date:</Text> {dayjs(viewingIssued.issueDate).format('DD/MM/YYYY')}</p>
+                <p className="mb-2"><Text strong>Status:</Text> <Tag color={viewingIssued.status === 'Issued' ? 'green' : 'red'}>{viewingIssued.status}</Tag></p>
+              </div>
+            ) : (
+              <p>No data found</p>
+            )}
+          </Modal>
+        </Card>
+      ),
+    },
+  ];
+
+  const breadcrumbItems = [
+    {
+      title: <a href="/admin/dashboard"><HomeOutlined /> หน้าหลัก</a>,
+    },
+    {
+      title: <><TrophyOutlined /> เกียรติบัตร</>,
+    },
+    {
+      title: activeTab === 'templates' ? 'จัดการแม่แบบเกียรติบัตร' : 'เกียรติบัตรที่ออกแล้ว',
+    },
+  ];
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <AntdTitle level={1} className="text-3xl font-bold mb-8 text-gray-800">ออกแบบใบประกาศ</AntdTitle>
-      
-      <div className="flex justify-end items-center mb-6">
-        <Space size="middle" className="gap-4">
-          <Button
-            type="primary"
-            icon={<SaveOutlined />}
-            onClick={handleSaveDesign}
-            className="bg-green-500 hover:bg-green-600 text-white rounded-lg shadow-md px-6 py-3 text-base"
-          >
-            บันทึกการออกแบบ
-          </Button>
-          <Button
-            icon={<PrinterOutlined />}
-            onClick={handlePrintCertificate}
-            className="bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow-md px-6 py-3 text-base"
-          >
-            พิมพ์ใบประกาศ
-          </Button>
-        </Space>
-      </div>
+      {/* Breadcrumbs */}
+      <Breadcrumb className="mb-6" items={breadcrumbItems} />
 
-      <Row gutter={[24, 24]}>
-        {/* Controls Panel */}
-        <Col xs={24} lg={8}>
-          <Card className="rounded-xl shadow-custom-light p-4 max-h-[calc(100vh-200px)] overflow-y-auto">
-            <AntdTitle level={4} className="text-gray-700 mb-6">ตั้งค่าใบประกาศ</AntdTitle>
-            <Form
-              form={form}
-              layout="vertical"
-              onValuesChange={handleFormChange}
-              // *** กำหนด initialValues ก็ต่อเมื่อ isClient เป็น true เท่านั้น ***
-              initialValues={isClient ? {
-                ...certificateData,
-                issueDate: certificateData.issueDate || dayjs(), // ตรวจสอบอีกครั้งเพื่อความแน่ใจว่า dayjs object
-              } : undefined} // ถ้ายังไม่เป็น client ให้เป็น undefined
-            >
-              <Form.Item
-                name="schoolName"
-                label={<span className="font-semibold text-gray-700">เลือกโรงเรียน</span>}
-                rules={[{ required: true, message: 'กรุณาเลือกโรงเรียน!' }]}
-              >
-                <Select
-                  placeholder="เลือกโรงเรียน"
-                  className="rounded-lg"
-                  onChange={handleSchoolSelect}
-                >
-                  {dummySchools.map(school => (
-                    <Option key={school.key} value={school.key}>{school.name}</Option>
-                  ))}
-                </Select>
-              </Form.Item>
+      <AntdTitle level={1} className="text-3xl font-bold mb-8 text-gray-800">Certificate Management</AntdTitle>
 
-              <Form.Item
-                name="title"
-                label={<span className="font-semibold text-gray-700">หัวข้อใบประกาศ</span>}
-                rules={[{ required: true, message: 'กรุณากรอกหัวข้อใบประกาศ!' }]}
-              >
-                <Input placeholder="เช่น ใบประกาศนียบัตร" className="rounded-lg" />
-              </Form.Item>
-              <Form.Item
-                name="studentName"
-                label={<span className="font-semibold text-gray-700">ชื่อนักเรียน</span>}
-                rules={[{ required: true, message: 'กรุณากรอกชื่อนักเรียน!' }]}
-              >
-                <Input placeholder="เช่น นายสมชาย ใจดี" className="rounded-lg" />
-              </Form.Item>
-              <Form.Item
-                name="courseName"
-                label={<span className="font-semibold text-gray-700">ชื่อหลักสูตร</span>}
-                rules={[{ required: true, message: 'กรุณากรอกหลักสูตร!' }]}
-              >
-                <Input placeholder="เช่น หลักสูตรนวดแผนไทยเบื้องต้น" className="rounded-lg" />
-              </Form.Item>
-              <Form.Item
-                name="issueDate"
-                label={<span className="font-semibold text-gray-700">วันที่ออกใบประกาศ</span>}
-                rules={[{ required: true, message: 'กรุณาเลือกวันที่!' }]}
-              >
-                <DatePicker format="YYYY-MM-DD" className="w-full rounded-lg" />
-              </Form.Item>
-              <Form.Item
-                name="fontFamily"
-                label={<span className="font-semibold text-gray-700">รูปแบบตัวอักษร</span>}
-              >
-                <Select placeholder="เลือกฟอนต์" className="rounded-lg">
-                  <Option value="Inter">Inter (Default)</Option>
-                  <Option value="Arial">Arial</Option>
-                  <Option value="Sarabun">Sarabun</Option>
-                  <Option value="Kanit">Kanit</Option>
-                  <Option value="Prompt">Prompt</Option>
-                  <Option value="Anchan">Anchan</Option>
-                </Select>
-              </Form.Item>
-              <Form.Item
-                name="fontSize"
-                label={<span className="font-semibold text-gray-700">ขนาดตัวอักษร (px)</span>}
-              >
-                <Slider min={12} max={72} />
-              </Form.Item>
-              <Form.Item
-                name="textColor"
-                label={<span className="font-semibold text-gray-700">สีตัวอักษร</span>}
-              >
-                <Input type="color" className="rounded-lg h-10 p-1" />
-              </Form.Item>
-              <Form.Item
-                name="bgColor"
-                label={<span className="font-semibold text-gray-700">สีพื้นหลังใบประกาศ</span>}
-              >
-                <Input type="color" className="rounded-lg h-10 p-1" />
-              </Form.Item>
-              <Form.Item
-                name="signatureLine1"
-                label={<span className="font-semibold text-gray-700">ตำแหน่งผู้ลงนาม</span>}
-                rules={[{ required: true, message: 'กรุณากรอกตำแหน่งผู้ลงนาม!' }]}
-              >
-                <Input placeholder="เช่น ผู้อำนวยการ" className="rounded-lg" />
-              </Form.Item>
-              <Form.Item
-                name="signatureLine2"
-                label={<span className="font-semibold text-gray-700">ชื่อองค์กรผู้ลงนาม</span>}
-                rules={[{ required: true, message: 'กรุณากรอกชื่อองค์กรผู้ลงนาม!' }]}
-              >
-                <Input placeholder="เช่น โรงเรียนสาธิต ม.เกษตรศาสตร์" className="rounded-lg" />
-              </Form.Item>
-
-              {/* *** ส่วนควบคุมการปรับแต่งกรอบ *** */}
-              <AntdTitle level={5} className="text-gray-700 mt-8 mb-4">ตั้งค่ากรอบ</AntdTitle>
-              <Form.Item name="mainBorderWidth" label={<span className="font-semibold text-gray-700">ความกว้างกรอบหลัก (px)</span>}>
-                <Slider min={0} max={20} />
-              </Form.Item>
-              <Form.Item name="mainBorderColor" label={<span className="font-semibold text-gray-700">สีกรอบหลัก</span>}>
-                <Input type="color" className="rounded-lg h-10 p-1" />
-              </Form.Item>
-              <Form.Item name="mainBorderRadius" label={<span className="font-semibold text-gray-700">รัศมีมุมกรอบหลัก (px)</span>}>
-                <Slider min={0} max={20} />
-              </Form.Item>
-
-              <Form.Item name="mainBorderStyle" label={<span className="font-semibold text-gray-700">สไตล์เส้นกรอบหลัก</span>}>
-                <Select className="rounded-lg">
-                  <Option value="solid">Solid</Option>
-                  <Option value="dashed">Dashed</Option>
-                </Select>
-              </Form.Item>
-
-              {certificateData.mainBorderStyle === 'dashed' && (
-                <>
-                  <Form.Item name="mainBorderDashLength" label={<span className="font-semibold text-gray-700">ความยาวเส้นประกรอบหลัก (px)</span>}>
-                    <Slider min={0} max={30} />
-                  </Form.Item>
-                  <Form.Item name="mainBorderDashGap" label={<span className="font-semibold text-gray-700">ระยะห่างเส้นประกรอบหลัก (px)</span>}>
-                    <Slider min={0} max={30} />
-                  </Form.Item>
-                </>
-              )}
-
-              <Form.Item name="innerBorder1Width" label={<span className="font-semibold text-gray-700">ความกว้างกรอบใน 1 (px)</span>}>
-                <Slider min={0} max={10} />
-              </Form.Item>
-              <Form.Item name="innerBorder1Color" label={<span className="font-semibold text-gray-700">สีกรอบใน 1</span>}>
-                <Input type="color" className="rounded-lg h-10 p-1" />
-              </Form.Item>
-              <Form.Item name="innerBorder1DashLength" label={<span className="font-semibold text-gray-700">ความยาวเส้นประกรอบใน 1 (px)</span>}>
-                <Slider min={0} max={30} />
-              </Form.Item>
-              <Form.Item name="innerBorder1DashGap" label={<span className="font-semibold text-gray-700">ระยะห่างเส้นประกรอบใน 1 (px)</span>}>
-                <Slider min={0} max={30} />
-              </Form.Item>
-
-              <Form.Item name="innerBorder2Width" label={<span className="font-semibold text-gray-700">ความกว้างกรอบใน 2 (px)</span>}>
-                <Slider min={0} max={10} />
-              </Form.Item>
-              <Form.Item name="innerBorder2Color" label={<span className="font-semibold text-gray-700">สีกรอบใน 2</span>}>
-                <Input type="color" className="rounded-lg h-10 p-1" />
-              </Form.Item>
-            </Form>
-          </Card>
-        </Col>
-
-        {/* Certificate Preview Area (Konva Canvas) */}
-        <Col xs={24} lg={16}>
-          <Card className="rounded-xl shadow-custom-light p-2 sm:p-4 flex flex-col items-center justify-center">
-            <CertificateCanvas
-              certificateData={certificateData}
-              onPositionChange={handlePositionChange}
-              stageRef={stageRef}
-            />
-          </Card>
-        </Col>
-      </Row>
-
-      {/* Modal for Save Confirmation */}
-      <Modal
-        title="บันทึกการออกแบบใบประกาศ"
-        open={isSaveModalVisible}
-        onOk={handleConfirmSave}
-        onCancel={() => setIsSaveModalVisible(false)}
-        okText="บันทึก"
-        cancelText="ยกเลิก"
-        className="rounded-xl"
-        centered
-      >
-        <p>คุณต้องการบันทึกการออกแบบใบประกาศนี้หรือไม่?</p>
-        <p>ข้อมูลที่บันทึก: <br/>
-           หัวข้อ: {certificateData.title} <br/>
-           ชื่อนักเรียน: {certificateData.studentName} <br/>
-           หลักสูตร: {certificateData.courseName} <br/>
-           วันที่ออก: {certificateData.issueDate ? certificateData.issueDate.format('YYYY-MM-DD') : ''}
-        </p>
-      </Modal>
+      <Tabs
+        defaultActiveKey="templates"
+        items={items}
+        onChange={setActiveTab}
+        activeKey={activeTab}
+        className="rounded-xl shadow-custom-light bg-white"
+      />
     </div>
   );
 }
