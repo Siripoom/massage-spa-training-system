@@ -2,7 +2,7 @@
 
 
 import '@ant-design/v5-patch-for-react-19';
-import React, { useRef, useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { Stage, Layer, Text, Rect, Image as KonvaImage } from 'react-konva';
 import Konva from 'konva';
 import dayjs from 'dayjs';
@@ -53,42 +53,29 @@ interface CertificateData {
 
 interface CertificateCanvasProps {
   certificateData: CertificateData;
+  // onPositionChange will be a no-op function for preview,
+  // and an actual function for editing. This helps conditionally enable dragging.
   onPositionChange: (elementName: string, newPos: { x: number; y: number }) => void;
   stageRef: React.RefObject<Konva.Stage | null>;
+  scale?: number; // Optional scale prop, defaults to 1
 }
 
-const CertificateCanvas: React.FC<CertificateCanvasProps> = ({ certificateData, stageRef }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [stageWidth, setStageWidth] = useState(DESIGN_WIDTH);
-  const [stageHeight, setStageHeight] = useState(DESIGN_HEIGHT);
-  const [scale, setScale] = useState(1);
+const CertificateCanvas: React.FC<CertificateCanvasProps> = ({ certificateData, onPositionChange, stageRef, scale = 1 }) => {
   const [logoKonvaImage, setLogoKonvaImage] = useState<HTMLImageElement | null>(null);
 
-  const checkSize = useCallback(() => {
-    if (containerRef.current) {
-      const containerWidth = containerRef.current.offsetWidth;
-      const newScale = containerWidth / DESIGN_WIDTH;
-      setStageWidth(containerWidth);
-      setStageHeight(DESIGN_HEIGHT * newScale);
-      setScale(newScale);
-    }
-  }, []);
+  // Determine if dragging should be enabled (only if onPositionChange is not the no-op function)
+  const isDraggable = useCallback(() => {
+    // Check if onPositionChange is a function and not the exact no-op reference
+    // This is a common pattern to enable/disable features based on prop existence/value
+    return typeof onPositionChange === 'function' && onPositionChange.toString() !== (() => {}).toString();
+  }, [onPositionChange]);
 
-  useEffect(() => {
-    checkSize();
-    window.addEventListener('resize', checkSize);
-    const timeoutId = setTimeout(checkSize, 0);
-    return () => {
-      window.removeEventListener('resize', checkSize);
-      clearTimeout(timeoutId);
-    };
-  }, [checkSize]);
 
   useEffect(() => {
     if (certificateData.logoUrl) {
       const img = new window.Image();
       img.src = certificateData.logoUrl;
-      img.crossOrigin = 'Anonymous';
+      img.crossOrigin = 'Anonymous'; // Important for CORS if image is external
       img.onload = () => {
         setLogoKonvaImage(img);
       };
@@ -101,36 +88,24 @@ const CertificateCanvas: React.FC<CertificateCanvasProps> = ({ certificateData, 
     }
   }, [certificateData.logoUrl]);
 
-  // Function to render text with common properties (no dragging)
-  const renderTextElement = (
-    text: string,
-    x: number,
-    y: number,
-    fontSize: number,
-    align: Konva.Text['attrs']['align'] = 'center',
-    width?: number // Optional width for alignment
-  ) => (
-    <Text
-      text={text}
-      x={x * scale}
-      y={y * scale}
-      fontSize={fontSize * scale}
-      fontFamily={certificateData.fontFamily}
-      fill={certificateData.textColor}
-      align={align}
-      width={width ? width * scale : undefined}
-    />
-  );
+  // Function to handle drag end for elements
+  const handleDragEnd = (e: Konva.KonvaEventObject<DragEvent>, elementName: string) => {
+    const node = e.target;
+    // Pass unscaled new positions back to the parent
+    const newPosX = node.x() / scale;
+    const newPosY = node.y() / scale;
+    onPositionChange(elementName, { x: newPosX, y: newPosY });
+  };
 
   return (
-    <div ref={containerRef} style={{
-      width: '100%',
-      aspectRatio: `${DESIGN_WIDTH} / ${DESIGN_HEIGHT}`,
+    <div style={{
+      width: `${DESIGN_WIDTH * scale}px`,
+      height: `${DESIGN_HEIGHT * scale}px`,
       position: 'relative',
     }}>
       <Stage
-        width={stageWidth}
-        height={stageHeight}
+        width={DESIGN_WIDTH * scale}
+        height={DESIGN_HEIGHT * scale}
         ref={stageRef}
       >
         <Layer>
@@ -138,13 +113,13 @@ const CertificateCanvas: React.FC<CertificateCanvasProps> = ({ certificateData, 
           <Rect
             x={0}
             y={0}
-            width={DESIGN_WIDTH}
-            height={DESIGN_HEIGHT}
+            width={DESIGN_WIDTH * scale}
+            height={DESIGN_HEIGHT * scale}
             fill={certificateData.backgroundColor}
             stroke={certificateData.mainBorderColor}
-            strokeWidth={certificateData.mainBorderWidth}
-            cornerRadius={certificateData.mainBorderRadius}
-            dash={certificateData.mainBorderStyle === 'dashed' ? [certificateData.mainBorderDashLength, certificateData.mainBorderDashGap] : undefined}
+            strokeWidth={certificateData.mainBorderWidth * scale}
+            cornerRadius={certificateData.mainBorderRadius * scale}
+            dash={certificateData.mainBorderStyle === 'dashed' ? [certificateData.mainBorderDashLength * scale, certificateData.mainBorderDashGap * scale] : undefined}
           />
           <Rect
             x={20 * scale}
@@ -152,9 +127,9 @@ const CertificateCanvas: React.FC<CertificateCanvasProps> = ({ certificateData, 
             width={DESIGN_WIDTH * scale - 40 * scale}
             height={DESIGN_HEIGHT * scale - 40 * scale}
             stroke={certificateData.innerBorder1Color}
-            strokeWidth={certificateData.innerBorder1Width}
+            strokeWidth={certificateData.innerBorder1Width * scale}
             cornerRadius={6 * scale}
-            dash={[certificateData.innerBorder1DashLength, certificateData.innerBorder1DashGap]}
+            dash={[certificateData.innerBorder1DashLength * scale, certificateData.innerBorder1DashGap * scale]}
           />
           <Rect
             x={25 * scale}
@@ -162,7 +137,7 @@ const CertificateCanvas: React.FC<CertificateCanvasProps> = ({ certificateData, 
             width={DESIGN_WIDTH * scale - 50 * scale}
             height={DESIGN_HEIGHT * scale - 50 * scale}
             stroke={certificateData.innerBorder2Color}
-            strokeWidth={certificateData.innerBorder2Width}
+            strokeWidth={certificateData.innerBorder2Width * scale}
             cornerRadius={5 * scale}
           />
 
@@ -174,86 +149,116 @@ const CertificateCanvas: React.FC<CertificateCanvasProps> = ({ certificateData, 
               y={20 * scale}
               width={100 * scale}
               height={100 * scale}
+              draggable={isDraggable()} // Enable dragging conditionally
+              onDragEnd={(e) => handleDragEnd(e, 'logo')}
             />
           )}
 
           {/* Title */}
-          {renderTextElement(
-            certificateData.titleText,
-            0, // Set x to 0 for center alignment
-            certificateData.titlePosY,
-            certificateData.fontSize + 10,
-            'center',
-            DESIGN_WIDTH // Ensure width is DESIGN_WIDTH for center alignment
-          )}
+          <Text
+            text={certificateData.titleText}
+            x={0} // Centered: x=0, width=DESIGN_WIDTH, align="center"
+            y={certificateData.titlePosY * scale}
+            fontSize={(certificateData.fontSize + 10) * scale}
+            fontFamily={certificateData.fontFamily}
+            fill={certificateData.textColor}
+            align="center"
+            width={DESIGN_WIDTH * scale} // Use scaled width for centering
+            draggable={isDraggable()}
+            onDragEnd={(e) => handleDragEnd(e, 'title')}
+          />
 
           {/* "มอบให้แก่" - Fixed text, centered */}
-          {renderTextElement(
-            "มอบให้แก่",
-            0, // Set x to 0 for center alignment
-            DESIGN_HEIGHT * 0.30,
-            certificateData.fontSize,
-            'center',
-            DESIGN_WIDTH // Ensure width is DESIGN_WIDTH for center alignment
-          )}
+          <Text
+            text="มอบให้แก่"
+            x={0} // Centered
+            y={DESIGN_HEIGHT * 0.30 * scale}
+            fontSize={certificateData.fontSize * scale}
+            fontFamily={certificateData.fontFamily}
+            fill={certificateData.textColor}
+            align="center"
+            width={DESIGN_WIDTH * scale}
+          />
 
           {/* Student Name */}
-          {renderTextElement(
-            certificateData.studentNamePlaceholder,
-            0, // Set x to 0 for center alignment
-            certificateData.studentNamePosY,
-            certificateData.fontSize + 6,
-            'center',
-            DESIGN_WIDTH // Ensure width is DESIGN_WIDTH for center alignment
-          )}
+          <Text
+            text={certificateData.studentNamePlaceholder}
+            x={0} // Centered
+            y={certificateData.studentNamePosY * scale}
+            fontSize={(certificateData.fontSize + 6) * scale}
+            fontFamily={certificateData.fontFamily}
+            fill={certificateData.textColor}
+            align="center"
+            width={DESIGN_WIDTH * scale}
+            draggable={isDraggable()}
+            onDragEnd={(e) => handleDragEnd(e, 'studentName')}
+          />
 
           {/* "เพื่อแสดงว่าได้สำเร็จหลักสูตร" - Fixed text, centered */}
-          {renderTextElement(
-            "เพื่อแสดงว่าได้สำเร็จหลักสูตร",
-            0, // Set x to 0 for center alignment
-            DESIGN_HEIGHT * 0.55,
-            certificateData.fontSize,
-            'center',
-            DESIGN_WIDTH // Ensure width is DESIGN_WIDTH for center alignment
-          )}
+          <Text
+            text="เพื่อแสดงว่าได้สำเร็จหลักสูตร"
+            x={0} // Centered
+            y={DESIGN_HEIGHT * 0.55 * scale}
+            fontSize={certificateData.fontSize * scale}
+            fontFamily={certificateData.fontFamily}
+            fill={certificateData.textColor}
+            align="center"
+            width={DESIGN_WIDTH * scale}
+          />
 
           {/* Course Name */}
-          {renderTextElement(
-            certificateData.courseNamePlaceholder,
-            0, // Set x to 0 for center alignment
-            certificateData.courseNamePosY,
-            certificateData.fontSize + 6,
-            'center',
-            DESIGN_WIDTH // Ensure width is DESIGN_WIDTH for center alignment
-          )}
+          <Text
+            text={certificateData.courseNamePlaceholder}
+            x={0} // Centered
+            y={certificateData.courseNamePosY * scale}
+            fontSize={(certificateData.fontSize + 6) * scale}
+            fontFamily={certificateData.fontFamily}
+            fill={certificateData.textColor}
+            align="center"
+            width={DESIGN_WIDTH * scale}
+            draggable={isDraggable()}
+            onDragEnd={(e) => handleDragEnd(e, 'courseName')}
+          />
 
           {/* "ณ วันที่" - Text, left-aligned relative to its X */}
-          {renderTextElement(
-            "ณ วันที่",
-            certificateData.issueDateTextPosX,
-            certificateData.issueDateTextPosY,
-            certificateData.fontSize - 8,
-            'left'
-          )}
+          <Text
+            text="ณ วันที่"
+            x={certificateData.issueDateTextPosX * scale}
+            y={certificateData.issueDateTextPosY * scale}
+            fontSize={(certificateData.fontSize - 8) * scale}
+            fontFamily={certificateData.fontFamily}
+            fill={certificateData.textColor}
+            align='left'
+            draggable={isDraggable()}
+            onDragEnd={(e) => handleDragEnd(e, 'issueDateText')}
+          />
 
           {/* Issue Date Value - Text, left-aligned relative to its X */}
-          {renderTextElement(
-            certificateData.issueDatePlaceholder || dayjs().format('DD MMMM YYYY'), // Use placeholder or current date
-            certificateData.issueDateValuePosX,
-            certificateData.issueDateValuePosY,
-            certificateData.fontSize - 8,
-            'left'
-          )}
+          <Text
+            text={certificateData.issueDatePlaceholder || dayjs().format('DD MMMM YYYY')}
+            x={certificateData.issueDateValuePosX * scale}
+            y={certificateData.issueDateValuePosY * scale}
+            fontSize={(certificateData.fontSize - 8) * scale}
+            fontFamily={certificateData.fontFamily}
+            fill={certificateData.textColor}
+            align='left'
+            draggable={isDraggable()}
+            onDragEnd={(e) => handleDragEnd(e, 'issueDateValue')}
+          />
 
           {/* Signature Lines - Text block, right-aligned relative to its X */}
-          {renderTextElement(
-            `(_________________________)\n\n${certificateData.signatureText}\n${certificateData.signatureLine2}`,
-            certificateData.signatureBlockPosX,
-            certificateData.signatureBlockPosY,
-            certificateData.fontSize - 12,
-            'right',
-            200 // Fixed width for signature block
-          )}
+          <Text
+            text={`(_________________________)\n\n${certificateData.signatureText}\n${certificateData.signatureLine2}`}
+            x={certificateData.signatureBlockPosX * scale}
+            y={certificateData.signatureBlockPosY * scale}
+            fontSize={(certificateData.fontSize - 12) * scale}
+            fontFamily={certificateData.fontFamily}
+            fill={certificateData.textColor}
+            align='right'
+            width={200 * scale} // Fixed width for signature block, scaled
+            draggable={isDraggable()}
+            onDragEnd={(e) => handleDragEnd(e, 'signatureBlock')}
+          />
         </Layer>
       </Stage>
     </div>

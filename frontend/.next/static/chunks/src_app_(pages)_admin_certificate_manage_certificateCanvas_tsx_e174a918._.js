@@ -24,45 +24,27 @@ var _s = __turbopack_context__.k.signature();
 // Base dimensions for the certificate design (A4 landscape ratio)
 const DESIGN_WIDTH = 720;
 const DESIGN_HEIGHT = 508.5;
-const CertificateCanvas = ({ certificateData, stageRef })=>{
+const CertificateCanvas = ({ certificateData, onPositionChange, stageRef, scale = 1 })=>{
     _s();
-    const containerRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
-    const [stageWidth, setStageWidth] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(DESIGN_WIDTH);
-    const [stageHeight, setStageHeight] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(DESIGN_HEIGHT);
-    const [scale, setScale] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(1);
     const [logoKonvaImage, setLogoKonvaImage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
-    const checkSize = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
-        "CertificateCanvas.useCallback[checkSize]": ()=>{
-            if (containerRef.current) {
-                const containerWidth = containerRef.current.offsetWidth;
-                const newScale = containerWidth / DESIGN_WIDTH;
-                setStageWidth(containerWidth);
-                setStageHeight(DESIGN_HEIGHT * newScale);
-                setScale(newScale);
-            }
+    // Determine if dragging should be enabled (only if onPositionChange is not the no-op function)
+    const isDraggable = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
+        "CertificateCanvas.useCallback[isDraggable]": ()=>{
+            // Check if onPositionChange is a function and not the exact no-op reference
+            // This is a common pattern to enable/disable features based on prop existence/value
+            return typeof onPositionChange === 'function' && onPositionChange.toString() !== ({
+                "CertificateCanvas.useCallback[isDraggable]": ()=>{}
+            })["CertificateCanvas.useCallback[isDraggable]"].toString();
         }
-    }["CertificateCanvas.useCallback[checkSize]"], []);
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "CertificateCanvas.useEffect": ()=>{
-            checkSize();
-            window.addEventListener('resize', checkSize);
-            const timeoutId = setTimeout(checkSize, 0);
-            return ({
-                "CertificateCanvas.useEffect": ()=>{
-                    window.removeEventListener('resize', checkSize);
-                    clearTimeout(timeoutId);
-                }
-            })["CertificateCanvas.useEffect"];
-        }
-    }["CertificateCanvas.useEffect"], [
-        checkSize
+    }["CertificateCanvas.useCallback[isDraggable]"], [
+        onPositionChange
     ]);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "CertificateCanvas.useEffect": ()=>{
             if (certificateData.logoUrl) {
                 const img = new window.Image();
                 img.src = certificateData.logoUrl;
-                img.crossOrigin = 'Anonymous';
+                img.crossOrigin = 'Anonymous'; // Important for CORS if image is external
                 img.onload = ({
                     "CertificateCanvas.useEffect": ()=>{
                         setLogoKonvaImage(img);
@@ -81,51 +63,45 @@ const CertificateCanvas = ({ certificateData, stageRef })=>{
     }["CertificateCanvas.useEffect"], [
         certificateData.logoUrl
     ]);
-    // Function to render text with common properties (no dragging)
-    const renderTextElement = (text, x, y, fontSize, align = 'center', width // Optional width for alignment
-    )=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$konva$2f$es$2f$ReactKonvaCore$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Text"], {
-            text: text,
-            x: x * scale,
-            y: y * scale,
-            fontSize: fontSize * scale,
-            fontFamily: certificateData.fontFamily,
-            fill: certificateData.textColor,
-            align: align,
-            width: width ? width * scale : undefined
-        }, void 0, false, {
-            fileName: "[project]/src/app/(pages)/admin/certificate/manage/certificateCanvas.tsx",
-            lineNumber: 113,
-            columnNumber: 5
-        }, this);
+    // Function to handle drag end for elements
+    const handleDragEnd = (e, elementName)=>{
+        const node = e.target;
+        // Pass unscaled new positions back to the parent
+        const newPosX = node.x() / scale;
+        const newPosY = node.y() / scale;
+        onPositionChange(elementName, {
+            x: newPosX,
+            y: newPosY
+        });
+    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        ref: containerRef,
         style: {
-            width: '100%',
-            aspectRatio: `${DESIGN_WIDTH} / ${DESIGN_HEIGHT}`,
+            width: `${DESIGN_WIDTH * scale}px`,
+            height: `${DESIGN_HEIGHT * scale}px`,
             position: 'relative'
         },
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$konva$2f$es$2f$ReactKonvaCore$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Stage"], {
-            width: stageWidth,
-            height: stageHeight,
+            width: DESIGN_WIDTH * scale,
+            height: DESIGN_HEIGHT * scale,
             ref: stageRef,
             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$konva$2f$es$2f$ReactKonvaCore$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Layer"], {
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$konva$2f$es$2f$ReactKonvaCore$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Rect"], {
                         x: 0,
                         y: 0,
-                        width: DESIGN_WIDTH,
-                        height: DESIGN_HEIGHT,
+                        width: DESIGN_WIDTH * scale,
+                        height: DESIGN_HEIGHT * scale,
                         fill: certificateData.backgroundColor,
                         stroke: certificateData.mainBorderColor,
-                        strokeWidth: certificateData.mainBorderWidth,
-                        cornerRadius: certificateData.mainBorderRadius,
+                        strokeWidth: certificateData.mainBorderWidth * scale,
+                        cornerRadius: certificateData.mainBorderRadius * scale,
                         dash: certificateData.mainBorderStyle === 'dashed' ? [
-                            certificateData.mainBorderDashLength,
-                            certificateData.mainBorderDashGap
+                            certificateData.mainBorderDashLength * scale,
+                            certificateData.mainBorderDashGap * scale
                         ] : undefined
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/admin/certificate/manage/certificateCanvas.tsx",
-                        lineNumber: 138,
+                        lineNumber: 113,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$konva$2f$es$2f$ReactKonvaCore$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Rect"], {
@@ -134,15 +110,15 @@ const CertificateCanvas = ({ certificateData, stageRef })=>{
                         width: DESIGN_WIDTH * scale - 40 * scale,
                         height: DESIGN_HEIGHT * scale - 40 * scale,
                         stroke: certificateData.innerBorder1Color,
-                        strokeWidth: certificateData.innerBorder1Width,
+                        strokeWidth: certificateData.innerBorder1Width * scale,
                         cornerRadius: 6 * scale,
                         dash: [
-                            certificateData.innerBorder1DashLength,
-                            certificateData.innerBorder1DashGap
+                            certificateData.innerBorder1DashLength * scale,
+                            certificateData.innerBorder1DashGap * scale
                         ]
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/admin/certificate/manage/certificateCanvas.tsx",
-                        lineNumber: 149,
+                        lineNumber: 124,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$konva$2f$es$2f$ReactKonvaCore$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Rect"], {
@@ -151,11 +127,11 @@ const CertificateCanvas = ({ certificateData, stageRef })=>{
                         width: DESIGN_WIDTH * scale - 50 * scale,
                         height: DESIGN_HEIGHT * scale - 50 * scale,
                         stroke: certificateData.innerBorder2Color,
-                        strokeWidth: certificateData.innerBorder2Width,
+                        strokeWidth: certificateData.innerBorder2Width * scale,
                         cornerRadius: 5 * scale
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/admin/certificate/manage/certificateCanvas.tsx",
-                        lineNumber: 159,
+                        lineNumber: 134,
                         columnNumber: 11
                     }, this),
                     logoKonvaImage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$konva$2f$es$2f$ReactKonvaCore$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Image"], {
@@ -163,44 +139,154 @@ const CertificateCanvas = ({ certificateData, stageRef })=>{
                         x: 20 * scale,
                         y: 20 * scale,
                         width: 100 * scale,
-                        height: 100 * scale
+                        height: 100 * scale,
+                        draggable: isDraggable(),
+                        onDragEnd: (e)=>handleDragEnd(e, 'logo')
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/admin/certificate/manage/certificateCanvas.tsx",
-                        lineNumber: 171,
+                        lineNumber: 146,
                         columnNumber: 13
                     }, this),
-                    renderTextElement(certificateData.titleText, 0, certificateData.titlePosY, certificateData.fontSize + 10, 'center', DESIGN_WIDTH // Ensure width is DESIGN_WIDTH for center alignment
-                    ),
-                    renderTextElement("มอบให้แก่", 0, DESIGN_HEIGHT * 0.30, certificateData.fontSize, 'center', DESIGN_WIDTH // Ensure width is DESIGN_WIDTH for center alignment
-                    ),
-                    renderTextElement(certificateData.studentNamePlaceholder, 0, certificateData.studentNamePosY, certificateData.fontSize + 6, 'center', DESIGN_WIDTH // Ensure width is DESIGN_WIDTH for center alignment
-                    ),
-                    renderTextElement("เพื่อแสดงว่าได้สำเร็จหลักสูตร", 0, DESIGN_HEIGHT * 0.55, certificateData.fontSize, 'center', DESIGN_WIDTH // Ensure width is DESIGN_WIDTH for center alignment
-                    ),
-                    renderTextElement(certificateData.courseNamePlaceholder, 0, certificateData.courseNamePosY, certificateData.fontSize + 6, 'center', DESIGN_WIDTH // Ensure width is DESIGN_WIDTH for center alignment
-                    ),
-                    renderTextElement("ณ วันที่", certificateData.issueDateTextPosX, certificateData.issueDateTextPosY, certificateData.fontSize - 8, 'left'),
-                    renderTextElement(certificateData.issueDatePlaceholder || (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$dayjs$2f$dayjs$2e$min$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])().format('DD MMMM YYYY'), certificateData.issueDateValuePosX, certificateData.issueDateValuePosY, certificateData.fontSize - 8, 'left'),
-                    renderTextElement(`(_________________________)\n\n${certificateData.signatureText}\n${certificateData.signatureLine2}`, certificateData.signatureBlockPosX, certificateData.signatureBlockPosY, certificateData.fontSize - 12, 'right', 200 // Fixed width for signature block
-                    )
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$konva$2f$es$2f$ReactKonvaCore$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Text"], {
+                        text: certificateData.titleText,
+                        x: 0,
+                        y: certificateData.titlePosY * scale,
+                        fontSize: (certificateData.fontSize + 10) * scale,
+                        fontFamily: certificateData.fontFamily,
+                        fill: certificateData.textColor,
+                        align: "center",
+                        width: DESIGN_WIDTH * scale,
+                        draggable: isDraggable(),
+                        onDragEnd: (e)=>handleDragEnd(e, 'title')
+                    }, void 0, false, {
+                        fileName: "[project]/src/app/(pages)/admin/certificate/manage/certificateCanvas.tsx",
+                        lineNumber: 158,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$konva$2f$es$2f$ReactKonvaCore$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Text"], {
+                        text: "มอบให้แก่",
+                        x: 0,
+                        y: DESIGN_HEIGHT * 0.30 * scale,
+                        fontSize: certificateData.fontSize * scale,
+                        fontFamily: certificateData.fontFamily,
+                        fill: certificateData.textColor,
+                        align: "center",
+                        width: DESIGN_WIDTH * scale
+                    }, void 0, false, {
+                        fileName: "[project]/src/app/(pages)/admin/certificate/manage/certificateCanvas.tsx",
+                        lineNumber: 172,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$konva$2f$es$2f$ReactKonvaCore$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Text"], {
+                        text: certificateData.studentNamePlaceholder,
+                        x: 0,
+                        y: certificateData.studentNamePosY * scale,
+                        fontSize: (certificateData.fontSize + 6) * scale,
+                        fontFamily: certificateData.fontFamily,
+                        fill: certificateData.textColor,
+                        align: "center",
+                        width: DESIGN_WIDTH * scale,
+                        draggable: isDraggable(),
+                        onDragEnd: (e)=>handleDragEnd(e, 'studentName')
+                    }, void 0, false, {
+                        fileName: "[project]/src/app/(pages)/admin/certificate/manage/certificateCanvas.tsx",
+                        lineNumber: 184,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$konva$2f$es$2f$ReactKonvaCore$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Text"], {
+                        text: "เพื่อแสดงว่าได้สำเร็จหลักสูตร",
+                        x: 0,
+                        y: DESIGN_HEIGHT * 0.55 * scale,
+                        fontSize: certificateData.fontSize * scale,
+                        fontFamily: certificateData.fontFamily,
+                        fill: certificateData.textColor,
+                        align: "center",
+                        width: DESIGN_WIDTH * scale
+                    }, void 0, false, {
+                        fileName: "[project]/src/app/(pages)/admin/certificate/manage/certificateCanvas.tsx",
+                        lineNumber: 198,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$konva$2f$es$2f$ReactKonvaCore$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Text"], {
+                        text: certificateData.courseNamePlaceholder,
+                        x: 0,
+                        y: certificateData.courseNamePosY * scale,
+                        fontSize: (certificateData.fontSize + 6) * scale,
+                        fontFamily: certificateData.fontFamily,
+                        fill: certificateData.textColor,
+                        align: "center",
+                        width: DESIGN_WIDTH * scale,
+                        draggable: isDraggable(),
+                        onDragEnd: (e)=>handleDragEnd(e, 'courseName')
+                    }, void 0, false, {
+                        fileName: "[project]/src/app/(pages)/admin/certificate/manage/certificateCanvas.tsx",
+                        lineNumber: 210,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$konva$2f$es$2f$ReactKonvaCore$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Text"], {
+                        text: "ณ วันที่",
+                        x: certificateData.issueDateTextPosX * scale,
+                        y: certificateData.issueDateTextPosY * scale,
+                        fontSize: (certificateData.fontSize - 8) * scale,
+                        fontFamily: certificateData.fontFamily,
+                        fill: certificateData.textColor,
+                        align: "left",
+                        draggable: isDraggable(),
+                        onDragEnd: (e)=>handleDragEnd(e, 'issueDateText')
+                    }, void 0, false, {
+                        fileName: "[project]/src/app/(pages)/admin/certificate/manage/certificateCanvas.tsx",
+                        lineNumber: 224,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$konva$2f$es$2f$ReactKonvaCore$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Text"], {
+                        text: certificateData.issueDatePlaceholder || (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$dayjs$2f$dayjs$2e$min$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])().format('DD MMMM YYYY'),
+                        x: certificateData.issueDateValuePosX * scale,
+                        y: certificateData.issueDateValuePosY * scale,
+                        fontSize: (certificateData.fontSize - 8) * scale,
+                        fontFamily: certificateData.fontFamily,
+                        fill: certificateData.textColor,
+                        align: "left",
+                        draggable: isDraggable(),
+                        onDragEnd: (e)=>handleDragEnd(e, 'issueDateValue')
+                    }, void 0, false, {
+                        fileName: "[project]/src/app/(pages)/admin/certificate/manage/certificateCanvas.tsx",
+                        lineNumber: 237,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$konva$2f$es$2f$ReactKonvaCore$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Text"], {
+                        text: `(_________________________)\n\n${certificateData.signatureText}\n${certificateData.signatureLine2}`,
+                        x: certificateData.signatureBlockPosX * scale,
+                        y: certificateData.signatureBlockPosY * scale,
+                        fontSize: (certificateData.fontSize - 12) * scale,
+                        fontFamily: certificateData.fontFamily,
+                        fill: certificateData.textColor,
+                        align: "right",
+                        width: 200 * scale,
+                        draggable: isDraggable(),
+                        onDragEnd: (e)=>handleDragEnd(e, 'signatureBlock')
+                    }, void 0, false, {
+                        fileName: "[project]/src/app/(pages)/admin/certificate/manage/certificateCanvas.tsx",
+                        lineNumber: 250,
+                        columnNumber: 11
+                    }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/(pages)/admin/certificate/manage/certificateCanvas.tsx",
-                lineNumber: 136,
+                lineNumber: 111,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/src/app/(pages)/admin/certificate/manage/certificateCanvas.tsx",
-            lineNumber: 131,
+            lineNumber: 106,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/app/(pages)/admin/certificate/manage/certificateCanvas.tsx",
-        lineNumber: 126,
+        lineNumber: 101,
         columnNumber: 5
     }, this);
 };
-_s(CertificateCanvas, "uFQOhJBMnPk8Y/M4o5iz69tnyAk=");
+_s(CertificateCanvas, "OAN/UZ3FllcLdqE7QoAnC62TBkk=");
 _c = CertificateCanvas;
 const __TURBOPACK__default__export__ = CertificateCanvas;
 var _c;

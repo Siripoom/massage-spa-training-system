@@ -17,7 +17,6 @@ const { Text, Title: AntdTitle } = Typography;
 const { TextArea } = Input;
 
 // Dynamically import CertificateCanvas to ensure it's client-side rendered
-// THIS IS THE CRUCIAL CHANGE FOR ERROR 1 & 2
 const DynamicCertificateCanvas = dynamic(
   () => import('./certificateCanvas'),
   { ssr: false }
@@ -189,12 +188,18 @@ export default function ManageCertificateTemplatePage() {
     initializeTemplate();
   }, [templateId, form, router]);
 
-  // This function is still here in case we want to programmatically change positions
-  // but it's no longer triggered by user dragging on the canvas.
+  // This function is now called by draggable elements in CertificateCanvas
   const handlePositionChange = (elementName: string, newPos: { x: number; y: number }) => {
     setCertificateTemplate(prev => {
       const updatedDesignElements = { ...prev.designElements };
       switch (elementName) {
+        case 'logo': // Added logo
+          // For logo, if you want to store its position, you'd need logoPosX/logoPosY in DesignElements
+          // For now, we're just handling the drag event, but not persisting position for logo
+          // If you want to persist logo position, uncomment and add logoPosX/logoPosY to DesignElements
+          // updatedDesignElements.logoPosX = newPos.x;
+          // updatedDesignElements.logoPosY = newPos.y;
+          break;
         case 'title':
           updatedDesignElements.titlePosX = newPos.x;
           updatedDesignElements.titlePosY = newPos.y;
@@ -528,6 +533,7 @@ export default function ManageCertificateTemplatePage() {
                 certificateData={certificateTemplate.designElements}
                 onPositionChange={handlePositionChange}
                 stageRef={stageRef}
+                // No 'scale' prop here, so it defaults to 1 (full size)
               />
             </div>
           </Card>
@@ -535,7 +541,7 @@ export default function ManageCertificateTemplatePage() {
       </Row>
 
       {/* Buttons wrapped in Row and Col with adjusted margin-top and gap */}
-      <Row justify="end" gutter={[16, 16]} className="mt-8 w-full"> {/* Added w-full and mt-8 for consistent margin */}
+      <Row justify="end" gutter={[16, 16]} className="mt-8 w-full">
         <Col xs={24} sm={8} md={6} lg={4}>
           <Button
             icon={<ArrowLeftOutlined />}
@@ -557,7 +563,8 @@ export default function ManageCertificateTemplatePage() {
         </Col>
         <Col xs={24} sm={8} md={6} lg={4}>
           <Button
-            type="primary"
+            // Removed type="primary" to allow Tailwind CSS to fully control the color
+            type='primary'
             icon={<SaveOutlined />}
             onClick={() => handleSaveTemplate('Published')}
             className="bg-green-500 hover:bg-green-600 text-white rounded-lg shadow-md px-6 py-3 text-base w-full"

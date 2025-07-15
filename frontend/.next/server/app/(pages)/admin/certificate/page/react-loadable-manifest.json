@@ -1,1 +1,10 @@
-{}
+{
+  "[project]/src/app/(pages)/admin/certificate/manage/certificateCanvas.tsx [app-client] (ecmascript, next/dynamic entry)": {
+    "id": "[project]/src/app/(pages)/admin/certificate/manage/certificateCanvas.tsx [app-client] (ecmascript, next/dynamic entry)",
+    "files": [
+      "static/chunks/node_modules_8563122b._.js",
+      "static/chunks/src_app_(pages)_admin_certificate_manage_certificateCanvas_tsx_e174a918._.js",
+      "static/chunks/src_app_(pages)_admin_certificate_manage_certificateCanvas_tsx_550111c4._.js"
+    ]
+  }
+}

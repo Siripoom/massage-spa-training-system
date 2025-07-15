@@ -6,11 +6,15 @@ const nextConfig: NextConfig = {
     domains: ['placehold.co'], // *** ตรวจสอบให้แน่ใจว่าบรรทัดนี้มีอยู่และถูกต้อง ***
   },
   webpack: (config, { isServer }) => {
-    // แก้ไขปัญหา Module not found: Can't resolve 'canvas' สำหรับ Konva ใน SSR environment
-    if (isServer) {
-      config.externals = {
-        ...config.externals,
-        canvas: 'commonjs canvas', // หรือจะใช้ 'commonjs2 canvas' หรือ 'amd canvas' ก็ได้ตามโครงสร้างโปรเจกต์
+    // This log will appear in your terminal when Next.js builds
+    console.log(`[next.config.js] Webpack config running. isServer: ${isServer}`);
+
+    // Only apply the fallback for client-side builds
+    if (!isServer) {
+      console.log("[next.config.js] Applying canvas fallback for client-side bundle.");
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        canvas: false, // Explicitly ignore 'canvas' module
       };
     }
     return config;
