@@ -697,7 +697,7 @@ export default function CertificatePage() {
       label: 'จัดการแม่แบบเกียรติบัตร',
       children: (
         <Card className="rounded-xl shadow-custom-light p-4">
-          <div className="flex justify-between items-center mb-6">
+          <div className="flex justify-between items-center mb-6 gap-10">
             <Input
               placeholder="ค้นหาแม่แบบ"
               prefix={<SearchOutlined className="text-gray-400" />}

@@ -1,4 +1,3 @@
-// src/app/(pages)/(admin)/certificate/manage/page.tsx
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
@@ -111,11 +110,11 @@ const defaultDesignElements: DesignElements = {
   studentNamePosY: DESIGN_HEIGHT * 0.45,
   courseNamePosX: DESIGN_WIDTH / 2, // Centered
   courseNamePosY: DESIGN_HEIGHT * 0.65,
-  issueDateTextPosX: DESIGN_WIDTH * 0.36, // Left-aligned
+  issueDateTextPosX: DESIGN_WIDTH * 0.36, // Adjusted to be closer to left edge
   issueDateTextPosY: DESIGN_HEIGHT * 0.75,
-  issueDateValuePosX: DESIGN_WIDTH * 0.44, // Adjusted to be near "ณ วันที่"
+  issueDateValuePosX: DESIGN_WIDTH * 0.44, // Adjusted to be aligned with issueDateText
   issueDateValuePosY: DESIGN_HEIGHT * 0.75,
-  signatureBlockPosX: DESIGN_WIDTH * 0.65, // Right-aligned block
+  signatureBlockPosX: DESIGN_WIDTH * 0.65, // Adjusted to be further from right edge
   signatureBlockPosY: DESIGN_HEIGHT - 80,
 
   // Default border properties for a formal Thai look
@@ -156,6 +155,9 @@ export default function ManageCertificateTemplatePage() {
   const [isEditMode, setIsEditMode] = useState(false);
 
   const stageRef = useRef<Konva.Stage | null>(null);
+
+  // No longer using containerRef and currentScale for responsive scaling,
+  // instead, we'll use overflow-x-auto for scrolling.
 
   useEffect(() => {
     const initializeTemplate = () => {
@@ -302,277 +304,278 @@ export default function ManageCertificateTemplatePage() {
       <AntdTitle level={1} className="text-3xl font-bold mb-8 text-gray-800">
         {templateId ? 'แก้ไขแม่แบบเกียรติบัตร' : 'สร้างแม่แบบเกียรติบัตรใหม่'}
       </AntdTitle>
+      <div className="flex flex-col gap-10"> {/* Added this div for consistent gap */}
+        <Row gutter={[24, 24]} className="h-full">
+          {/* Left Column: Template Data (35%) */}
+          <Col xs={24} lg={8}>
+            <Card className="rounded-xl shadow-custom-light p-4 mb-8 h-full">
+              <AntdTitle level={4} className="text-gray-700 mb-6">ข้อมูลแม่แบบ</AntdTitle>
+              {/* Adjusted maxHeight and added padding-bottom */}
+              <div style={{ maxHeight: 'calc(100vh - 250px)', overflowY: 'auto', paddingRight: '10px', paddingBottom: '20px' }}>
+                <Form
+                  form={form}
+                  layout="vertical"
+                  name="certificate_template_form"
+                  initialValues={certificateTemplate}
+                  onValuesChange={(_, allValues) => {
+                    setCertificateTemplate(prev => ({
+                      ...prev,
+                      ...allValues,
+                      designElements: {
+                        ...prev.designElements,
+                        ...allValues.designElements,
+                      },
+                      updatedAt: dayjs().toISOString(),
+                    }));
+                  }}
+                >
+                  <Form.Item
+                    name="templateName"
+                    label={<span className="font-semibold text-gray-700">ชื่อแม่แบบ</span>}
+                    rules={[{ required: true, message: 'กรุณากรอกชื่อแม่แบบ!' }]}
+                  >
+                    <Input placeholder="เช่น ใบประกาศนวดแผนไทย" className="rounded-lg" />
+                  </Form.Item>
+                  <Form.Item
+                    name="description"
+                    label={<span className="font-semibold text-gray-700">คำอธิบาย</span>}
+                  >
+                    <TextArea rows={3} placeholder="คำอธิบายแม่แบบเกียรติบัตร" className="rounded-lg" />
+                  </Form.Item>
 
-      <Row gutter={[24, 24]}>
-        {/* Left Column: Template Data (35%) */}
-        <Col xs={24} lg={8}>
-          <Card className="rounded-xl shadow-custom-light p-4 mb-8 h-full">
-            <AntdTitle level={4} className="text-gray-700 mb-6">ข้อมูลแม่แบบ</AntdTitle>
-            {/* Adjusted maxHeight and added padding-bottom */}
-            <div style={{ maxHeight: 'calc(100vh - 250px)', overflowY: 'auto', paddingRight: '10px', paddingBottom: '20px' }}>
-              <Form
-                form={form}
-                layout="vertical"
-                name="certificate_template_form"
-                initialValues={certificateTemplate}
-                onValuesChange={(_, allValues) => {
-                  setCertificateTemplate(prev => ({
-                    ...prev,
-                    ...allValues,
-                    designElements: {
-                      ...prev.designElements,
-                      ...allValues.designElements,
-                    },
-                    updatedAt: dayjs().toISOString(),
-                  }));
-                }}
-              >
-                <Form.Item
-                  name="templateName"
-                  label={<span className="font-semibold text-gray-700">ชื่อแม่แบบ</span>}
-                  rules={[{ required: true, message: 'กรุณากรอกชื่อแม่แบบ!' }]}
-                >
-                  <Input placeholder="เช่น ใบประกาศนวดแผนไทย" className="rounded-lg" />
-                </Form.Item>
-                <Form.Item
-                  name="description"
-                  label={<span className="font-semibold text-gray-700">คำอธิบาย</span>}
-                >
-                  <TextArea rows={3} placeholder="คำอธิบายแม่แบบเกียรติบัตร" className="rounded-lg" />
-                </Form.Item>
+                  <AntdTitle level={5} className="text-gray-700 mt-6 mb-4">การออกแบบเกียรติบัตร</AntdTitle>
+                  <Form.Item
+                    name={['designElements', 'backgroundColor']}
+                    label={<span className="font-semibold text-gray-700">สีพื้นหลัง</span>}
+                    rules={[{ required: true, message: 'กรุณาเลือกสีพื้นหลัง!' }]}
+                  >
+                    <Input type="color" className="w-full h-10 rounded-lg" />
+                  </Form.Item>
+                  <Form.Item
+                    name={['designElements', 'textColor']}
+                    label={<span className="font-semibold text-gray-700">สีข้อความ</span>}
+                    rules={[{ required: true, message: 'กรุณาเลือกสีข้อความ!' }]}
+                  >
+                    <Input type="color" className="w-full h-10 rounded-lg" />
+                  </Form.Item>
+                  <Form.Item
+                    name={['designElements', 'fontFamily']}
+                    label={<span className="font-semibold text-gray-700">รูปแบบตัวอักษร</span>}
+                    rules={[{ required: true, message: 'กรุณาเลือกรูปแบบตัวอักษร!' }]}
+                  >
+                    <Select className="rounded-lg" placeholder="เลือกรูปแบบตัวอักษร">
+                      {FONT_OPTIONS.map(font => (
+                        <Option key={font} value={font}>{font}</Option>
+                      ))}
+                    </Select>
+                  </Form.Item>
+                  <Form.Item
+                    name={['designElements', 'fontSize']}
+                    label={<span className="font-semibold text-gray-700">ขนาดตัวอักษรพื้นฐาน</span>}
+                    rules={[{ required: true, message: 'กรุณากรอกขนาดตัวอักษร!', type: 'number', min: 10, max: 72 }]}
+                  >
+                    <InputNumber min={10} max={72} className="w-full rounded-lg" />
+                  </Form.Item>
+                  <Form.Item
+                    name={['designElements', 'titleText']}
+                    label={<span className="font-semibold text-gray-700">ข้อความหัวเรื่อง</span>}
+                    rules={[{ required: true, message: 'กรุณากรอกข้อความหัวเรื่อง!' }]}
+                  >
+                    <Input placeholder="เช่น ประกาศนียบัตร" className="rounded-lg" />
+                  </Form.Item>
+                  <Form.Item
+                    name={['designElements', 'studentNamePlaceholder']}
+                    label={<span className="font-semibold text-gray-700">ชื่อนักเรียน</span>}
+                    tooltip="ใช้สำหรับระบุตำแหน่งชื่อนักเรียนในเกียรติบัตร"
+                    rules={[{ required: true, message: 'กรุณากรอก Placeholder สำหรับชื่อนักเรียน!' }]}
+                  >
+                    <Input placeholder="เช่น นายสมชาย ใจดี" className="rounded-lg" />
+                  </Form.Item>
+                  <Form.Item
+                    name={['designElements', 'courseNamePlaceholder']}
+                    label={<span className="font-semibold text-gray-700">ชื่อหลักสูตร</span>}
+                    tooltip="ใช้สำหรับระบุตำแหน่งชื่อหลักสูตรในเกียรติบัตร"
+                    rules={[{ required: true, message: 'กรุณากรอก Placeholder สำหรับชื่อหลักสูตร!' }]}
+                  >
+                    <Input placeholder="เช่น หลักสูตรนวดแผนไทยเบื้องต้น" className="rounded-lg" />
+                  </Form.Item>
+                  <Form.Item
+                    name={['designElements', 'issueDatePlaceholder']}
+                    label={<span className="font-semibold text-gray-700">วันที่ออก</span>}
+                    tooltip="ใช้สำหรับระบุตำแหน่งวันที่ออกเกียรติบัตร"
+                    rules={[{ required: true, message: 'กรุณากรอก Placeholder สำหรับวันที่ออก!' }]}
+                  >
+                    <Input placeholder="เช่น 15 กรกฎาคม 2568" className="rounded-lg" />
+                  </Form.Item>
+                  <Form.Item
+                    name={['designElements', 'signatureText']}
+                    label={<span className="font-semibold text-gray-700">ข้อความลายเซ็น 1</span>}
+                    rules={[{ required: true, message: 'กรุณากรอกข้อความลายเซ็น!' }]}
+                  >
+                    <Input placeholder="เช่น ชื่อผู้บริหาร" className="rounded-lg" />
+                  </Form.Item>
+                  <Form.Item
+                    name={['designElements', 'signatureLine2']}
+                    label={<span className="font-semibold text-gray-700">ข้อความลายเซ็น 2 (ไม่บังคับ)</span>}
+                  >
+                    <Input placeholder="เช่น โรงเรียนนวดแผนไทย" className="rounded-lg" />
+                  </Form.Item>
+                  <Form.Item
+                    name={['designElements', 'logoUrl']}
+                    label={<span className="font-semibold text-gray-700">URL โลโก้ (ไม่บังคับ)</span>}
+                  >
+                    <Input placeholder="URL รูปภาพโลโก้" className="rounded-lg" />
+                  </Form.Item>
 
-                <AntdTitle level={5} className="text-gray-700 mt-6 mb-4">การออกแบบเกียรติบัตร</AntdTitle>
-                <Form.Item
-                  name={['designElements', 'backgroundColor']}
-                  label={<span className="font-semibold text-gray-700">สีพื้นหลัง</span>}
-                  rules={[{ required: true, message: 'กรุณาเลือกสีพื้นหลัง!' }]}
-                >
-                  <Input type="color" className="w-full h-10 rounded-lg" />
-                </Form.Item>
-                <Form.Item
-                  name={['designElements', 'textColor']}
-                  label={<span className="font-semibold text-gray-700">สีข้อความ</span>}
-                  rules={[{ required: true, message: 'กรุณาเลือกสีข้อความ!' }]}
-                >
-                  <Input type="color" className="w-full h-10 rounded-lg" />
-                </Form.Item>
-                <Form.Item
-                  name={['designElements', 'fontFamily']}
-                  label={<span className="font-semibold text-gray-700">รูปแบบตัวอักษร</span>}
-                  rules={[{ required: true, message: 'กรุณาเลือกรูปแบบตัวอักษร!' }]}
-                >
-                  <Select className="rounded-lg" placeholder="เลือกรูปแบบตัวอักษร">
-                    {FONT_OPTIONS.map(font => (
-                      <Option key={font} value={font}>{font}</Option>
-                    ))}
-                  </Select>
-                </Form.Item>
-                <Form.Item
-                  name={['designElements', 'fontSize']}
-                  label={<span className="font-semibold text-gray-700">ขนาดตัวอักษรพื้นฐาน</span>}
-                  rules={[{ required: true, message: 'กรุณากรอกขนาดตัวอักษร!', type: 'number', min: 10, max: 72 }]}
-                >
-                  <InputNumber min={10} max={72} className="w-full rounded-lg" />
-                </Form.Item>
-                <Form.Item
-                  name={['designElements', 'titleText']}
-                  label={<span className="font-semibold text-gray-700">ข้อความหัวเรื่อง</span>}
-                  rules={[{ required: true, message: 'กรุณากรอกข้อความหัวเรื่อง!' }]}
-                >
-                  <Input placeholder="เช่น ประกาศนียบัตร" className="rounded-lg" />
-                </Form.Item>
-                <Form.Item
-                  name={['designElements', 'studentNamePlaceholder']}
-                  label={<span className="font-semibold text-gray-700">ชื่อนักเรียน</span>}
-                  tooltip="ใช้สำหรับระบุตำแหน่งชื่อนักเรียนในเกียรติบัตร"
-                  rules={[{ required: true, message: 'กรุณากรอก Placeholder สำหรับชื่อนักเรียน!' }]}
-                >
-                  <Input placeholder="เช่น นายสมชาย ใจดี" className="rounded-lg" />
-                </Form.Item>
-                <Form.Item
-                  name={['designElements', 'courseNamePlaceholder']}
-                  label={<span className="font-semibold text-gray-700">ชื่อหลักสูตร</span>}
-                  tooltip="ใช้สำหรับระบุตำแหน่งชื่อหลักสูตรในเกียรติบัตร"
-                  rules={[{ required: true, message: 'กรุณากรอก Placeholder สำหรับชื่อหลักสูตร!' }]}
-                >
-                  <Input placeholder="เช่น หลักสูตรนวดแผนไทยเบื้องต้น" className="rounded-lg" />
-                </Form.Item>
-                <Form.Item
-                  name={['designElements', 'issueDatePlaceholder']}
-                  label={<span className="font-semibold text-gray-700">วันที่ออก</span>}
-                  tooltip="ใช้สำหรับระบุตำแหน่งวันที่ออกเกียรติบัตร"
-                  rules={[{ required: true, message: 'กรุณากรอก Placeholder สำหรับวันที่ออก!' }]}
-                >
-                  <Input placeholder="เช่น 15 กรกฎาคม 2568" className="rounded-lg" />
-                </Form.Item>
-                <Form.Item
-                  name={['designElements', 'signatureText']}
-                  label={<span className="font-semibold text-gray-700">ข้อความลายเซ็น 1</span>}
-                  rules={[{ required: true, message: 'กรุณากรอกข้อความลายเซ็น!' }]}
-                >
-                  <Input placeholder="เช่น ชื่อผู้บริหาร" className="rounded-lg" />
-                </Form.Item>
-                <Form.Item
-                  name={['designElements', 'signatureLine2']}
-                  label={<span className="font-semibold text-gray-700">ข้อความลายเซ็น 2 (ไม่บังคับ)</span>}
-                >
-                  <Input placeholder="เช่น โรงเรียนนวดแผนไทย" className="rounded-lg" />
-                </Form.Item>
-                <Form.Item
-                  name={['designElements', 'logoUrl']}
-                  label={<span className="font-semibold text-gray-700">URL โลโก้ (ไม่บังคับ)</span>}
-                >
-                  <Input placeholder="URL รูปภาพโลโก้" className="rounded-lg" />
-                </Form.Item>
+                  <AntdTitle level={5} className="text-gray-700 mt-6 mb-4">การตั้งค่ากรอบ</AntdTitle>
+                  <Form.Item
+                    name={['designElements', 'mainBorderWidth']}
+                    label={<span className="font-semibold text-gray-700">ความหนาขอบนอก</span>}
+                    rules={[{ required: true, message: 'กรุณากรอกความหนาขอบนอก!', type: 'number', min: 0 }]}
+                  >
+                    <InputNumber min={0} className="w-full rounded-lg" />
+                  </Form.Item>
+                  <Form.Item
+                    name={['designElements', 'mainBorderColor']}
+                    label={<span className="font-semibold text-gray-700">สีขอบนอก</span>}
+                    rules={[{ required: true, message: 'กรุณาเลือกสีขอบนอก!' }]}
+                  >
+                    <Input type="color" className="w-full h-10 rounded-lg" />
+                  </Form.Item>
+                  <Form.Item
+                    name={['designElements', 'mainBorderRadius']}
+                    label={<span className="font-semibold text-gray-700">รัศมีขอบนอก</span>}
+                    rules={[{ required: true, message: 'กรุณากรอกรัศมีขอบนอก!', type: 'number', min: 0 }]}
+                  >
+                    <InputNumber min={0} className="w-full rounded-lg" />
+                  </Form.Item>
+                  <Form.Item
+                    name={['designElements', 'mainBorderStyle']}
+                    label={<span className="font-semibold text-gray-700">รูปแบบขอบนอก</span>}
+                    rules={[{ required: true, message: 'กรุณาเลือกรูปแบบขอบนอก!' }]}
+                  >
+                    <Select className="rounded-lg">
+                      <Option value="solid">Solid</Option>
+                      <Option value="dashed">Dashed</Option>
+                    </Select>
+                  </Form.Item>
+                  {currentMainBorderStyle === 'dashed' && (
+                    <>
+                      <Form.Item
+                        name={['designElements', 'mainBorderDashLength']}
+                        label={<span className="font-semibold text-gray-700">ความยาว Dash ขอบนอก</span>}
+                        rules={[{ required: true, message: 'กรุณากรอกความยาว Dash!', type: 'number', min: 0 }]}
+                      >
+                        <InputNumber min={0} className="w-full rounded-lg" />
+                      </Form.Item>
+                      <Form.Item
+                        name={['designElements', 'mainBorderDashGap']}
+                        label={<span className="font-semibold text-gray-700">ช่องว่าง Dash ขอบนอก</span>}
+                        rules={[{ required: true, message: 'กรุณากรอกช่องว่าง Dash!', type: 'number', min: 0 }]}
+                      >
+                        <InputNumber min={0} className="w-full rounded-lg" />
+                      </Form.Item>
+                    </>
+                  )}
 
-                <AntdTitle level={5} className="text-gray-700 mt-6 mb-4">การตั้งค่ากรอบ</AntdTitle>
-                <Form.Item
-                  name={['designElements', 'mainBorderWidth']}
-                  label={<span className="font-semibold text-gray-700">ความหนาขอบนอก</span>}
-                  rules={[{ required: true, message: 'กรุณากรอกความหนาขอบนอก!', type: 'number', min: 0 }]}
-                >
-                  <InputNumber min={0} className="w-full rounded-lg" />
-                </Form.Item>
-                <Form.Item
-                  name={['designElements', 'mainBorderColor']}
-                  label={<span className="font-semibold text-gray-700">สีขอบนอก</span>}
-                  rules={[{ required: true, message: 'กรุณาเลือกสีขอบนอก!' }]}
-                >
-                  <Input type="color" className="w-full h-10 rounded-lg" />
-                </Form.Item>
-                <Form.Item
-                  name={['designElements', 'mainBorderRadius']}
-                  label={<span className="font-semibold text-gray-700">รัศมีขอบนอก</span>}
-                  rules={[{ required: true, message: 'กรุณากรอกรัศมีขอบนอก!', type: 'number', min: 0 }]}
-                >
-                  <InputNumber min={0} className="w-full rounded-lg" />
-                </Form.Item>
-                <Form.Item
-                  name={['designElements', 'mainBorderStyle']}
-                  label={<span className="font-semibold text-gray-700">รูปแบบขอบนอก</span>}
-                  rules={[{ required: true, message: 'กรุณาเลือกรูปแบบขอบนอก!' }]}
-                >
-                  <Select className="rounded-lg">
-                    <Option value="solid">Solid</Option>
-                    <Option value="dashed">Dashed</Option>
-                  </Select>
-                </Form.Item>
-                {currentMainBorderStyle === 'dashed' && (
-                  <>
-                    <Form.Item
-                      name={['designElements', 'mainBorderDashLength']}
-                      label={<span className="font-semibold text-gray-700">ความยาว Dash ขอบนอก</span>}
-                      rules={[{ required: true, message: 'กรุณากรอกความยาว Dash!', type: 'number', min: 0 }]}
-                    >
-                      <InputNumber min={0} className="w-full rounded-lg" />
-                    </Form.Item>
-                    <Form.Item
-                      name={['designElements', 'mainBorderDashGap']}
-                      label={<span className="font-semibold text-gray-700">ช่องว่าง Dash ขอบนอก</span>}
-                      rules={[{ required: true, message: 'กรุณากรอกช่องว่าง Dash!', type: 'number', min: 0 }]}
-                    >
-                      <InputNumber min={0} className="w-full rounded-lg" />
-                    </Form.Item>
-                  </>
-                )}
+                  <Form.Item
+                    name={['designElements', 'innerBorder1Width']}
+                    label={<span className="font-semibold text-gray-700">ความหนาขอบใน 1</span>}
+                    rules={[{ required: true, message: 'กรุณากรอกความหนาขอบใน 1!', type: 'number', min: 0 }]}
+                  >
+                    <InputNumber min={0} className="w-full rounded-lg" />
+                  </Form.Item>
+                  <Form.Item
+                    name={['designElements', 'innerBorder1Color']}
+                    label={<span className="font-semibold text-gray-700">สีขอบใน 1</span>}
+                    rules={[{ required: true, message: 'กรุณาเลือกสีขอบใน 1!' }]}
+                  >
+                    <Input type="color" className="w-full h-10 rounded-lg" />
+                  </Form.Item>
+                  <Form.Item
+                    name={['designElements', 'innerBorder1DashLength']}
+                    label={<span className="font-semibold text-gray-700">ความยาว Dash ขอบใน 1</span>}
+                    rules={[{ required: true, message: 'กรุณากรอกความยาว Dash!', type: 'number', min: 0 }]}
+                  >
+                    <InputNumber min={0} className="w-full rounded-lg" />
+                  </Form.Item>
+                  <Form.Item
+                    name={['designElements', 'innerBorder1DashGap']}
+                    label={<span className="font-semibold text-gray-700">ช่องว่าง Dash ขอบใน 1</span>}
+                    rules={[{ required: true, message: 'กรุณากรอกช่องว่าง Dash!', type: 'number', min: 0 }]}
+                  >
+                    <InputNumber min={0} className="w-full rounded-lg" />
+                  </Form.Item>
 
-                <Form.Item
-                  name={['designElements', 'innerBorder1Width']}
-                  label={<span className="font-semibold text-gray-700">ความหนาขอบใน 1</span>}
-                  rules={[{ required: true, message: 'กรุณากรอกความหนาขอบใน 1!', type: 'number', min: 0 }]}
-                >
-                  <InputNumber min={0} className="w-full rounded-lg" />
-                </Form.Item>
-                <Form.Item
-                  name={['designElements', 'innerBorder1Color']}
-                  label={<span className="font-semibold text-gray-700">สีขอบใน 1</span>}
-                  rules={[{ required: true, message: 'กรุณาเลือกสีขอบใน 1!' }]}
-                >
-                  <Input type="color" className="w-full h-10 rounded-lg" />
-                </Form.Item>
-                <Form.Item
-                  name={['designElements', 'innerBorder1DashLength']}
-                  label={<span className="font-semibold text-gray-700">ความยาว Dash ขอบใน 1</span>}
-                  rules={[{ required: true, message: 'กรุณากรอกความยาว Dash!', type: 'number', min: 0 }]}
-                >
-                  <InputNumber min={0} className="w-full rounded-lg" />
-                </Form.Item>
-                <Form.Item
-                  name={['designElements', 'innerBorder1DashGap']}
-                  label={<span className="font-semibold text-gray-700">ช่องว่าง Dash ขอบใน 1</span>}
-                  rules={[{ required: true, message: 'กรุณากรอกช่องว่าง Dash!', type: 'number', min: 0 }]}
-                >
-                  <InputNumber min={0} className="w-full rounded-lg" />
-                </Form.Item>
+                  <Form.Item
+                    name={['designElements', 'innerBorder2Width']}
+                    label={<span className="font-semibold text-gray-700">ความหนาขอบใน 2</span>}
+                    rules={[{ required: true, message: 'กรุณากรอกความหนาขอบใน 2!', type: 'number', min: 0 }]}
+                  >
+                    <InputNumber min={0} className="w-full rounded-lg" />
+                  </Form.Item>
+                  <Form.Item
+                    name={['designElements', 'innerBorder2Color']}
+                    label={<span className="font-semibold text-gray-700">สีขอบใน 2</span>}
+                    rules={[{ required: true, message: 'กรุณาเลือกสีขอบใน 2!' }]}
+                  >
+                    <Input type="color" className="w-full h-10 rounded-lg" />
+                  </Form.Item>
+                </Form>
+              </div>
+            </Card>
+          </Col>
 
-                <Form.Item
-                  name={['designElements', 'innerBorder2Width']}
-                  label={<span className="font-semibold text-gray-700">ความหนาขอบใน 2</span>}
-                  rules={[{ required: true, message: 'กรุณากรอกความหนาขอบใน 2!', type: 'number', min: 0 }]}
-                >
-                  <InputNumber min={0} className="w-full rounded-lg" />
-                </Form.Item>
-                <Form.Item
-                  name={['designElements', 'innerBorder2Color']}
-                  label={<span className="font-semibold text-gray-700">สีขอบใน 2</span>}
-                  rules={[{ required: true, message: 'กรุณาเลือกสีขอบใน 2!' }]}
-                >
-                  <Input type="color" className="w-full h-10 rounded-lg" />
-                </Form.Item>
-              </Form>
-            </div>
-          </Card>
-        </Col>
+          {/* Right Column: Certificate Preview (65%) */}
+          <Col xs={24} lg={16} className="h-full">
+            <Card className="rounded-xl shadow-custom-light p-4 h-full flex flex-col">
+              <AntdTitle level={4} className="text-gray-700 mb-6">ตัวอย่างเกียรติบัตร</AntdTitle>
+              {/* Added overflow-x-auto for horizontal scrollbar */}
+              <div className="flex-grow flex justify-center items-center min-h-[400px] w-full overflow-x-auto">
+                <DynamicCertificateCanvas
+                  certificateData={certificateTemplate.designElements}
+                  onPositionChange={handlePositionChange}
+                  stageRef={stageRef}
+                  scale={0.95} // Explicitly set scale to 1 for fixed size, let overflow handle it
+                />
+              </div>
+            </Card>
+          </Col>
+        </Row>
 
-        {/* Right Column: Certificate Preview (65%) */}
-        <Col xs={24} lg={16}>
-          <Card className="rounded-xl shadow-custom-light p-4 h-full flex flex-col">
-            <AntdTitle level={4} className="text-gray-700 mb-6">ตัวอย่างเกียรติบัตร</AntdTitle>
-            <div className="flex-grow flex justify-center items-center">
-              <DynamicCertificateCanvas
-                certificateData={certificateTemplate.designElements}
-                onPositionChange={handlePositionChange}
-                stageRef={stageRef}
-                // No 'scale' prop here, so it defaults to 1 (full size)
-              />
-            </div>
-          </Card>
-        </Col>
-      </Row>
-
-      {/* Buttons wrapped in Row and Col with adjusted margin-top and gap */}
-      <Row justify="end" gutter={[16, 16]} className="mt-8 w-full">
-        <Col xs={24} sm={8} md={6} lg={4}>
-          <Button
-            icon={<ArrowLeftOutlined />}
-            onClick={handleCancel}
-            className="rounded-lg shadow-md px-6 py-3 text-base w-full"
-          >
-            กลับ
-          </Button>
-        </Col>
-        <Col xs={24} sm={8} md={6} lg={4}>
-          <Button
-            type="primary"
-            icon={<SaveOutlined />}
-            onClick={() => handleSaveTemplate('Draft')}
-            className="bg-orange-500 hover:bg-orange-600 text-white rounded-lg shadow-md px-6 py-3 text-base w-full"
-          >
-            บันทึกฉบับร่าง
-          </Button>
-        </Col>
-        <Col xs={24} sm={8} md={6} lg={4}>
-          <Button
-            // Removed type="primary" to allow Tailwind CSS to fully control the color
-            type='primary'
-            icon={<SaveOutlined />}
-            onClick={() => handleSaveTemplate('Published')}
-            className="bg-green-500 hover:bg-green-600 text-white rounded-lg shadow-md px-6 py-3 text-base w-full"
-          >
-            เผยแพร่แม่แบบ
-          </Button>
-        </Col>
-      </Row>
+        {/* Buttons wrapped in Row and Col with adjusted margin-top and gap */}
+        <Row justify="end" gutter={[16, 16]} className="mt-8 w-full">
+          <Col xs={24} sm={8} md={6} lg={4}>
+            <Button
+              icon={<ArrowLeftOutlined />}
+              onClick={handleCancel}
+              className="rounded-lg shadow-md px-6 py-3 text-base w-full"
+            >
+              กลับ
+            </Button>
+          </Col>
+          <Col xs={24} sm={8} md={6} lg={4}>
+            <Button
+              type="primary"
+              icon={<SaveOutlined />}
+              onClick={() => handleSaveTemplate('Draft')}
+              className="bg-orange-500 hover:bg-orange-600 text-white rounded-lg shadow-md px-6 py-3 text-base w-full"
+            >
+              บันทึกฉบับร่าง
+            </Button>
+          </Col>
+          <Col xs={24} sm={8} md={6} lg={4}>
+            <Button
+              type='primary'
+              icon={<SaveOutlined />}
+              onClick={() => handleSaveTemplate('Published')}
+              className="bg-green-500 hover:bg-green-600 text-white rounded-lg shadow-md px-6 py-3 text-base w-full"
+            >
+              เผยแพร่แม่แบบ
+            </Button>
+          </Col>
+        </Row>
+      </div>
     </div>
   );
 }
