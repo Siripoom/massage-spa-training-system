@@ -14,6 +14,8 @@
     "@ant-design/v5-patch-for-react-19": "^1.0.3",
     "@hookform/resolvers": "^5.1.1",
     "@react-pdf/renderer": "^4.3.0",
+    "@tiptap/react": "^3.0.6",
+    "@tiptap/starter-kit": "^3.0.6",
     "@types/uuid": "^10.0.0",
     "antd": "^5.26.2",
     "axios": "^1.10.0",
