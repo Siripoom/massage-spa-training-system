@@ -2,5 +2,6 @@
   "/(pages)/admin/courses/manage/page": "app/(pages)/admin/courses/manage/page.js",
   "/(pages)/admin/courses/page": "app/(pages)/admin/courses/page.js",
   "/(pages)/admin/dashboard/page": "app/(pages)/admin/dashboard/page.js",
+  "/(pages)/admin/users/page": "app/(pages)/admin/users/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js"
 }
