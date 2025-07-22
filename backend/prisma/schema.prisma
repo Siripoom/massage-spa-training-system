@@ -8,19 +8,20 @@ datasource db {
 }
 
 model User {
-  id          String       @id @default(uuid())
-  firstName   String
-  lastName    String
-  role        Role         @default(STUDENT)
-  phone       String       @unique
-  imageUrl    String?
-  birthDate   DateTime?
-  email       String       @unique
-  password    String
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
-  address     Address?
-  enrollments Enrollment[]
+  id           String        @id @default(uuid())
+  firstName    String
+  lastName     String
+  role         Role          @default(STUDENT)
+  phone        String        @unique
+  imageUrl     String?
+  birthDate    DateTime?
+  email        String        @unique
+  password     String
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  address      Address?
+  certificates Certificate[]
+  enrollments  Enrollment[]
 }
 
 model Address {
@@ -34,6 +35,17 @@ model Address {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Schedules {
+  id        String   @id @default(uuid())
+  courseId  String
+  startTime DateTime
+  endTime   DateTime
+  location  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  course    Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
 }
 
 model Course {
@@ -51,6 +63,7 @@ model Course {
   updatedAt         DateTime       @updatedAt
   enrollments       Enrollment[]
   organizations     Organization[]
+  schedules         Schedules[]
 }
 
 model Organization {
@@ -63,38 +76,33 @@ model Organization {
 }
 
 model Enrollment {
-  id            String        @id @default(uuid())
-  userId        String
-  courseId      String
-  status        String        @default("PENDING")
-  createdAt     DateTime      @default(now())
-  updatedAt     DateTime      @updatedAt
-  course        Course        @relation(fields: [courseId], references: [id], onDelete: Cascade)
-  user          User          @relation(fields: [userId], references: [id], onDelete: Cascade)
-  paymentPlans  PaymentPlan[]
-  payments      Payment[]
+  id           String        @id @default(uuid())
+  userId       String
+  courseId     String
+  status       String        @default("PENDING")
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  course       Course        @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  payments     Payment[]
+  paymentPlans PaymentPlan[]
 
   @@unique([userId, courseId])
 }
 
-enum Role {
-  STUDENT
-  ADMIN
-}
-
 model PaymentPlan {
-  id            String      @id @default(uuid())
-  enrollmentId  String
-  installments  Int
-  amount        Float
-  status        String      @default("PENDING") // PENDING, ACTIVE, COMPLETED
-  dueDate       DateTime
-  paidAmount    Float       @default(0)
-  paidDate      DateTime?
-  createdAt     DateTime    @default(now())
-  updatedAt     DateTime    @updatedAt
-  enrollment    Enrollment  @relation(fields: [enrollmentId], references: [id], onDelete: Cascade)
-  payments      Payment[]
+  id           String     @id @default(uuid())
+  enrollmentId String
+  installments Int
+  amount       Float
+  status       String     @default("PENDING")
+  dueDate      DateTime
+  paidAmount   Float      @default(0)
+  paidDate     DateTime?
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  payments     Payment[]
+  enrollment   Enrollment @relation(fields: [enrollmentId], references: [id], onDelete: Cascade)
 }
 
 model Payment {
@@ -102,15 +110,85 @@ model Payment {
   enrollmentId      String
   paymentPlanId     String
   amount            Float
-  status            String      @default("PENDING") // PENDING, COMPLETED, REJECTED
-  paymentType       String      // FULL, INSTALLMENT
+  status            String      @default("PENDING")
+  paymentType       String
   installmentNumber Int
   slipUrl           String[]
   transferDate      DateTime?
   receiptUrl        String?
   createdAt         DateTime    @default(now())
   updatedAt         DateTime    @updatedAt
- 
   enrollment        Enrollment  @relation(fields: [enrollmentId], references: [id], onDelete: Cascade)
   paymentPlan       PaymentPlan @relation(fields: [paymentPlanId], references: [id], onDelete: Cascade)
+}
+
+model Bank {
+  id            String   @id @default(uuid())
+  name          String
+  accountHolder String
+  accountNo     String   @unique
+  qrCodeUrl     String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model ThemeSettings {
+  id              String   @id @default(uuid())
+  name            String
+  primaryColor    String
+  secondaryColor  String
+  backgroundColor String
+  textColor       String
+  fontFamily      String
+  fontSize        Int
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model CertificateTemplate {
+  id           String               @id @default(uuid())
+  name         String
+  templateUrl  String
+  layoutData   Json
+  createdAt    DateTime             @default(now())
+  updatedAt    DateTime             @updatedAt
+  certificates Certificate[]
+  elements     CertificateElement[]
+}
+
+model CertificateElement {
+  id         String              @id @default(uuid())
+  templateId String
+  type       String
+  elementKey String
+  content    String
+  positionX  Int
+  positionY  Int
+  width      Int
+  height     Int
+  fontSize   Int
+  fontFamily String
+  color      String
+  createdAt  DateTime            @default(now())
+  updatedAt  DateTime            @updatedAt
+  template   CertificateTemplate @relation(fields: [templateId], references: [id], onDelete: Cascade)
+}
+
+model Certificate {
+  id         String              @id @default(uuid())
+  userId     String
+  courseId   String
+  templateId String
+  certUrl    String
+  issueDate  DateTime
+  status     String              @default("PENDING")
+  createdAt  DateTime            @default(now())
+  updatedAt  DateTime            @updatedAt
+  template   CertificateTemplate @relation(fields: [templateId], references: [id], onDelete: Cascade)
+  user       User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+enum Role {
+  STUDENT
+  ADMIN
 }

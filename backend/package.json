@@ -7,9 +7,11 @@
     "start": "node src/server.js",
     "migrate": "npx prisma migrate dev --name init",
     "generate": "npx prisma generate",
+    "studio": "npx prisma studio",
     "db-seed": "npx prisma db seed",
     "db-pull": "npx prisma db pull",
     "db-push": "npx prisma db push"
+    
   },
   "keywords": [],
   "author": "",

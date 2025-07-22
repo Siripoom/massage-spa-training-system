@@ -29,12 +29,28 @@ const userRoutes = require("./routes/user");
 const organizationRoutes = require("./routes/organization");
 const courseRoutes = require("./routes/course");
 const enrollmentRoutes = require("./routes/enrollment");
+const paymentPlanRoutes = require("./routes/paymentPlan");
+const paymentRoutes = require("./routes/payment");
+const schedulesRoutes = require("./routes/schedules");
+const bankRoutes = require("./routes/bank");
+const themeSettingsRoutes = require("./routes/themeSettings");
+const certificateTemplateRoutes = require("./routes/certificateTemplate");
+const certificateElementRoutes = require("./routes/certificateElement");
+const certificateRoutes = require("./routes/certificate");
 
 // Use routes
 app.use("/api/users", userRoutes);
 app.use("/api/organizations", organizationRoutes);
 app.use("/api/courses", courseRoutes);
 app.use("/api/enrollments", enrollmentRoutes);
+app.use("/api/payment-plans", paymentPlanRoutes);
+app.use("/api/payments", paymentRoutes);
+app.use("/api/schedules", schedulesRoutes);
+app.use("/api/banks", bankRoutes);
+app.use("/api/theme-settings", themeSettingsRoutes);
+app.use("/api/certificate-templates", certificateTemplateRoutes);
+app.use("/api/certificate-elements", certificateElementRoutes);
+app.use("/api/certificates", certificateRoutes);
 
 // Global error handling middleware
 app.use((err, req, res, next) => {
