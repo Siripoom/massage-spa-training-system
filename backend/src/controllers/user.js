@@ -103,7 +103,7 @@ const getAllUsers = async (req, res) => {
             updatedAt: true,
           },
         },
-        password: false, // Exclude password
+        password: false,
       },
     });
 
