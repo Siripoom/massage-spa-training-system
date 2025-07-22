@@ -26,9 +26,15 @@ app.get("/health", (req, res) => {
 
 // Import routes
 const userRoutes = require("./routes/user");
+const organizationRoutes = require("./routes/organization");
+const courseRoutes = require("./routes/course");
+const enrollmentRoutes = require("./routes/enrollment");
 
 // Use routes
 app.use("/api/users", userRoutes);
+app.use("/api/organizations", organizationRoutes);
+app.use("/api/courses", courseRoutes);
+app.use("/api/enrollments", enrollmentRoutes);
 
 // Global error handling middleware
 app.use((err, req, res, next) => {

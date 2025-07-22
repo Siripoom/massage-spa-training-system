@@ -7,24 +7,20 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum Role {
-  STUDENT
-  ADMIN
-}
-
 model User {
-  id        String    @id @default(uuid())
-  firstName String
-  lastName  String
-  role      Role      @default(STUDENT)
-  phone     String    @unique
-  imageUrl  String?
-  birthDate DateTime?
-  email     String    @unique
-  password  String
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  address   Address?
+  id          String       @id @default(uuid())
+  firstName   String
+  lastName    String
+  role        Role         @default(STUDENT)
+  phone       String       @unique
+  imageUrl    String?
+  birthDate   DateTime?
+  email       String       @unique
+  password    String
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  address     Address?
+  enrollments Enrollment[]
 }
 
 model Address {
@@ -41,11 +37,80 @@ model Address {
 }
 
 model Course {
-  id          String   @id @default(uuid())
-  title       String
-  description String?
-  imageUrl    String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  
+  id                String         @id @default(uuid())
+  title             String
+  description       String?
+  imageUrl          String?
+  price             Float
+  duration          Int
+  requirements      String?
+  status            String         @default("INACTIVE")
+  registrationStart DateTime?
+  registrationEnd   DateTime?
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+  enrollments       Enrollment[]
+  organizations     Organization[]
+}
+
+model Organization {
+  id        String   @id @default(uuid())
+  name      String
+  courseId  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  course    Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+}
+
+model Enrollment {
+  id            String        @id @default(uuid())
+  userId        String
+  courseId      String
+  status        String        @default("PENDING")
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  course        Course        @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  user          User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  paymentPlans  PaymentPlan[]
+  payments      Payment[]
+
+  @@unique([userId, courseId])
+}
+
+enum Role {
+  STUDENT
+  ADMIN
+}
+
+model PaymentPlan {
+  id            String      @id @default(uuid())
+  enrollmentId  String
+  installments  Int
+  amount        Float
+  status        String      @default("PENDING") // PENDING, ACTIVE, COMPLETED
+  dueDate       DateTime
+  paidAmount    Float       @default(0)
+  paidDate      DateTime?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  enrollment    Enrollment  @relation(fields: [enrollmentId], references: [id], onDelete: Cascade)
+  payments      Payment[]
+}
+
+model Payment {
+  id                String      @id @default(uuid())
+  enrollmentId      String
+  paymentPlanId     String
+  amount            Float
+  status            String      @default("PENDING") // PENDING, COMPLETED, REJECTED
+  paymentType       String      // FULL, INSTALLMENT
+  installmentNumber Int
+  slipUrl           String[]
+  transferDate      DateTime?
+  receiptUrl        String?
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+ 
+  enrollment        Enrollment  @relation(fields: [enrollmentId], references: [id], onDelete: Cascade)
+  paymentPlan       PaymentPlan @relation(fields: [paymentPlanId], references: [id], onDelete: Cascade)
 }
