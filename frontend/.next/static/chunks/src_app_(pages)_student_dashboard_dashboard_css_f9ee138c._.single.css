@@ -1,0 +1,65 @@
+/* [project]/src/app/(pages)/student/dashboard/dashboard.css [app-client] (css) */
+.dashboard-title {
+  color: #5d4037 !important;
+}
+
+.dashboard-subtitle {
+  color: #666 !important;
+}
+
+.dashboard-container {
+  background: none;
+  padding: 0;
+}
+
+.course-progress-item .course-meta {
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  display: flex;
+}
+
+.activity-list {
+  padding: 0;
+}
+
+.activity-item {
+  border-bottom: 1px solid #f5f5f5;
+  margin-bottom: 0;
+}
+
+.activity-item:last-child {
+  border-bottom: none;
+}
+
+.activity-item:hover {
+  background: #5d403705;
+  border-radius: 8px;
+  margin: 0 -12px;
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+}
+
+.content-card .ant-card-body {
+  text-align: left;
+}
+
+.dashboard-action-btn {
+  background: #5d4037 !important;
+  border-color: #5d4037 !important;
+}
+
+.dashboard-action-btn:hover {
+  background: #4a2c20 !important;
+  border-color: #4a2c20 !important;
+}
+
+.card-action-btn {
+  color: #5d4037 !important;
+}
+
+.card-action-btn:hover {
+  color: #4a2c20 !important;
+}
+
+/*# sourceMappingURL=src_app_%28pages%29_student_dashboard_dashboard_css_f9ee138c._.single.css.map*/

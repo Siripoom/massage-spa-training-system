@@ -1,0 +1,71 @@
+/* Student Dashboard - Using Admin Theme */
+@import url('../../admin/dashboard/dashboard.css');
+
+/* Student-specific customizations while maintaining admin theme */
+.dashboard-title {
+  color: #5d4037 !important;
+}
+
+.dashboard-subtitle {
+  color: #666 !important;
+}
+
+/* Ensure consistent spacing */
+.dashboard-container {
+  padding: 0;
+  background: transparent;
+}
+
+/* Course progress adjustments for student view */
+.course-progress-item .course-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Activity list styling for certificates */
+.activity-list {
+  padding: 0;
+}
+
+.activity-item {
+  border-bottom: 1px solid #f5f5f5;
+  margin-bottom: 0;
+}
+
+.activity-item:last-child {
+  border-bottom: none;
+}
+
+.activity-item:hover {
+  background: rgba(93, 64, 55, 0.02);
+  border-radius: 8px;
+  margin: 0 -12px;
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+}
+
+/* Profile card center alignment */
+.content-card .ant-card-body {
+  text-align: left;
+}
+
+/* Button styling consistency */
+.dashboard-action-btn {
+  background: #5d4037 !important;
+  border-color: #5d4037 !important;
+}
+
+.dashboard-action-btn:hover {
+  background: #4a2c20 !important;
+  border-color: #4a2c20 !important;
+}
+
+.card-action-btn {
+  color: #5d4037 !important;
+}
+
+.card-action-btn:hover {
+  color: #4a2c20 !important;
+}

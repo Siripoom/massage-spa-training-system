@@ -1,0 +1,30 @@
+{
+  "pages": {
+    "/(pages)/student/courses/page": [
+      "static/chunks/node_modules_next_dist_1a6ee436._.js",
+      "static/chunks/src_app_favicon_ico_mjs_65a2b8d0._.js",
+      "static/chunks/[root-of-the-server]__9a168d68._.css",
+      "static/chunks/node_modules_d3631179._.js",
+      "static/chunks/src_app_layout_tsx_ea9287a8._.js",
+      "static/chunks/node_modules_antd_es_2822a297._.js",
+      "static/chunks/node_modules_34c9482a._.js",
+      "static/chunks/node_modules_rc-field-form_es_4fb5d7cb._.js",
+      "static/chunks/node_modules_rc-menu_es_d0fe5480._.js",
+      "static/chunks/node_modules_0cdb479f._.js",
+      "static/chunks/src_f6ee1cbf._.js",
+      "static/chunks/src_components_layout_998a1372._.css",
+      "static/chunks/src_app_(pages)_student_layout_tsx_b9561871._.js",
+      "static/chunks/node_modules_8b7dce6a._.js",
+      "static/chunks/src_app_(pages)_student_courses_page_tsx_195a9caf._.js",
+      "static/chunks/src_app_(pages)_da136dd5._.css",
+      "static/chunks/src_app_(pages)_student_courses_page_tsx_a0aa1642._.js",
+      "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_c20f642f._.js",
+      "static/chunks/node_modules_next_dist_compiled_2ce9398a._.js",
+      "static/chunks/node_modules_next_dist_client_8f19e6fb._.js",
+      "static/chunks/node_modules_next_dist_2ecbf5fa._.js",
+      "static/chunks/ed0b0_@swc_helpers_cjs_d9e50ee1._.js",
+      "static/chunks/_e69f0d32._.js",
+      "static/chunks/_b581757f._.js"
+    ]
+  }
+}

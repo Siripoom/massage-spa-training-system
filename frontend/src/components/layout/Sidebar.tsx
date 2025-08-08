@@ -21,56 +21,117 @@ const { Sider } = Layout;
 interface SidebarProps {
   collapsed: boolean;
   onCollapse: (collapsed: boolean) => void;
+  userRole?: 'admin' | 'teacher' | 'student';
 }
 
-export default function Sidebar({ collapsed, onCollapse }: SidebarProps) {
+export default function Sidebar({ collapsed, onCollapse, userRole = 'admin' }: SidebarProps) {
   const router = useRouter();
   const pathname = usePathname();
 
-  const menuItems: MenuProps["items"] = [
-    {
-      key: "/admin/dashboard",
-      icon: <DashboardOutlined />,
-      label: "Dashboard",
-      className: "sidebar-menu-item",
-    },
-    {
-      key: "/admin/courses",
-      icon: <BookOutlined />,
-      label: "Course",
-      className: "sidebar-menu-item",
-    },
-    {
-      key: "/admin/users",
-      icon: <UserOutlined />,
-      label: "Student",
-      className: "sidebar-menu-item",
-    },
-    {
-      key: "/admin/quiz",
-      icon: <EditOutlined />,
-      label: "Quiz",
-      className: "sidebar-menu-item",
-    },
-    {
-      key: "/admin/payment",
-      icon: <DollarOutlined />,
-      label: "Payment",
-      className: "sidebar-menu-item",
-    },
-    {
-      key: "/admin/certificate",
-      icon: <FileTextOutlined />,
-      label: "Certificate",
-      className: "sidebar-menu-item",
-    },
-    {
-      key: "/admin/setting",
-      icon: <SettingOutlined />,
-      label: "Setting",
-      className: "sidebar-menu-item",
-    },
-  ];
+  const getMenuItems = (): MenuProps["items"] => {
+    switch (userRole) {
+      case 'admin':
+        return [
+          {
+            key: "/admin/dashboard",
+            icon: <DashboardOutlined />,
+            label: "Dashboard",
+            className: "sidebar-menu-item",
+          },
+          {
+            key: "/admin/courses",
+            icon: <BookOutlined />,
+            label: "Course",
+            className: "sidebar-menu-item",
+          },
+          {
+            key: "/admin/users",
+            icon: <UserOutlined />,
+            label: "Student",
+            className: "sidebar-menu-item",
+          },
+          {
+            key: "/admin/quiz",
+            icon: <EditOutlined />,
+            label: "Quiz",
+            className: "sidebar-menu-item",
+          },
+          {
+            key: "/admin/payment",
+            icon: <DollarOutlined />,
+            label: "Payment",
+            className: "sidebar-menu-item",
+          },
+          {
+            key: "/admin/certificate",
+            icon: <FileTextOutlined />,
+            label: "Certificate",
+            className: "sidebar-menu-item",
+          },
+          {
+            key: "/admin/setting",
+            icon: <SettingOutlined />,
+            label: "Setting",
+            className: "sidebar-menu-item",
+          },
+        ];
+      
+      case 'teacher':
+        return [
+          {
+            key: "/teacher/dashboard",
+            icon: <DashboardOutlined />,
+            label: "Dashboard",
+            className: "sidebar-menu-item",
+          },
+          {
+            key: "/teacher/students",
+            icon: <UserOutlined />,
+            label: "Students",
+            className: "sidebar-menu-item",
+          },
+          {
+            key: "/teacher/evaluations",
+            icon: <EditOutlined />,
+            label: "Evaluations",
+            className: "sidebar-menu-item",
+          },
+        ];
+      
+      case 'student':
+        return [
+          {
+            key: "/student/dashboard",
+            icon: <DashboardOutlined />,
+            label: "Dashboard",
+            className: "sidebar-menu-item",
+          },
+          {
+            key: "/student/courses",
+            icon: <BookOutlined />,
+            label: "My Courses",
+            className: "sidebar-menu-item",
+          },
+          {
+            key: "/student/exams",
+            icon: <EditOutlined />,
+            label: "Exams",
+            className: "sidebar-menu-item",
+          },
+          {
+            key: "/student/certificates",
+            icon: <FileTextOutlined />,
+            label: "Certificates",
+            className: "sidebar-menu-item",
+          },
+        ];
+      
+      default:
+        return [];
+    }
+  };
+
+  const menuItems = getMenuItems();
 
   const handleMenuClick: MenuProps["onClick"] = (e) => {
     if (e.key.startsWith("/")) {

@@ -10,9 +10,10 @@ const { Content } = Layout;
 
 interface AppLayoutProps {
   children: React.ReactNode;
+  userRole?: 'admin' | 'teacher' | 'student';
 }
 
-export default function AppLayout({ children }: AppLayoutProps) {
+export default function AppLayout({ children, userRole = 'admin' }: AppLayoutProps) {
   const [collapsed, setCollapsed] = useState(false);
 
   const handleCollapse = (collapsed: boolean) => {
@@ -21,10 +22,10 @@ export default function AppLayout({ children }: AppLayoutProps) {
 
   return (
     <Layout className="relaxplus-layout">
-      <Sidebar collapsed={collapsed} onCollapse={handleCollapse} />
+      <Sidebar collapsed={collapsed} onCollapse={handleCollapse} userRole={userRole} />
 
       <Layout>
-        <Header collapsed={collapsed} />
+        <Header collapsed={collapsed} userRole={userRole} />
 
         <Content className="relaxplus-content">{children}</Content>
       </Layout>

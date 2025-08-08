@@ -1,0 +1,231 @@
+/* [project]/src/app/(pages)/admin/setting/setting.css [app-client] (css) */
+.ant-tabs {
+  border: 1px solid #f0f0f0 !important;
+}
+
+.ant-tabs-tab {
+  border-radius: 8px 8px 0 0 !important;
+  padding: 12px 24px !important;
+  font-weight: 500 !important;
+}
+
+.ant-tabs-tab.ant-tabs-tab-active {
+  background: #f8fafc !important;
+}
+
+.ant-tabs-content-holder {
+  padding: 0 !important;
+}
+
+.ant-tabs-tabpane {
+  padding: 24px !important;
+}
+
+.setting-card {
+  border: 1px solid #f1f5f9 !important;
+  border-radius: 12px !important;
+  margin-bottom: 24px !important;
+  box-shadow: 0 1px 3px #0000001a !important;
+}
+
+.setting-card .ant-card-head {
+  background: #fafbfc !important;
+  border-bottom: 1px solid #f1f5f9 !important;
+  border-radius: 12px 12px 0 0 !important;
+}
+
+.setting-card .ant-card-head-title {
+  color: #334155 !important;
+  font-weight: 600 !important;
+}
+
+.setting-card .ant-card-body {
+  padding: 24px !important;
+}
+
+.ant-color-picker {
+  border: 2px solid #e2e8f0 !important;
+  border-radius: 8px !important;
+  transition: all .3s !important;
+}
+
+.ant-color-picker:hover {
+  border-color: #1890ff !important;
+  box-shadow: 0 0 0 2px #1890ff1a !important;
+}
+
+.ant-input-number {
+  border: 2px solid #e2e8f0 !important;
+  border-radius: 8px !important;
+  transition: all .3s !important;
+}
+
+.ant-input-number:hover {
+  border-color: #1890ff !important;
+}
+
+.ant-input-number:focus, .ant-input-number-focused {
+  border-color: #1890ff !important;
+  box-shadow: 0 0 0 2px #1890ff1a !important;
+}
+
+.ant-select {
+  border-radius: 8px !important;
+}
+
+.ant-select .ant-select-selector {
+  border: 2px solid #e2e8f0 !important;
+  border-radius: 8px !important;
+  transition: all .3s !important;
+}
+
+.ant-select:hover .ant-select-selector {
+  border-color: #1890ff !important;
+}
+
+.ant-select-focused .ant-select-selector {
+  border-color: #1890ff !important;
+  box-shadow: 0 0 0 2px #1890ff1a !important;
+}
+
+.theme-preview {
+  transition: all .3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-preview:before {
+  content: "";
+  background: linear-gradient(45deg, #0000 49%, #ffffff1a 50%, #0000 51%);
+  animation: 2s infinite shimmer;
+  position: absolute;
+  inset: 0;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.space-y-4 > * + * {
+  margin-top: 16px !important;
+}
+
+.space-y-6 > * + * {
+  margin-top: 24px !important;
+}
+
+.ant-btn {
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  transition: all .3s !important;
+}
+
+.ant-btn-primary {
+  background: #1890ff !important;
+  border-color: #1890ff !important;
+  box-shadow: 0 2px 4px #1890ff33 !important;
+}
+
+.ant-btn-primary:hover {
+  background: #096dd9 !important;
+  border-color: #096dd9 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px #1890ff4d !important;
+}
+
+.ant-btn-default {
+  border: 2px solid #e2e8f0 !important;
+}
+
+.ant-btn-default:hover {
+  color: #1890ff !important;
+  border-color: #1890ff !important;
+  transform: translateY(-1px) !important;
+}
+
+.ant-divider {
+  border-color: #f1f5f9 !important;
+  margin: 24px 0 !important;
+}
+
+.ant-typography {
+  color: #334155 !important;
+}
+
+.ant-typography-caption {
+  color: #64748b !important;
+  font-size: 13px !important;
+}
+
+@media (width <= 768px) {
+  .ant-tabs-tabpane, .setting-card .ant-card-body {
+    padding: 16px !important;
+  }
+
+  .ant-tabs-tab {
+    padding: 8px 16px !important;
+    font-size: 14px !important;
+  }
+}
+
+@media (width <= 576px) {
+  .ant-col {
+    margin-bottom: 16px;
+  }
+
+  .theme-preview {
+    padding: 16px !important;
+  }
+}
+
+.theme-transition {
+  transition: all .3s cubic-bezier(.4, 0, .2, 1) !important;
+}
+
+.ant-color-picker:focus-visible, .ant-input-number:focus-visible, .ant-select:focus-visible {
+  outline-offset: 2px !important;
+  outline: 2px solid #1890ff !important;
+}
+
+.ant-btn-loading {
+  pointer-events: none !important;
+}
+
+.ant-btn-loading:before {
+  background: #ffffff59 !important;
+}
+
+.setting-card .anticon {
+  vertical-align: middle !important;
+  font-size: 18px !important;
+}
+
+.preview-card {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%) !important;
+  border: 2px dashed #cbd5e1 !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.preview-card:after {
+  content: "PREVIEW" !important;
+  color: #1890ff !important;
+  letter-spacing: .5px !important;
+  background: #1890ff1a !important;
+  border-radius: 4px !important;
+  padding: 4px 8px !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  position: absolute !important;
+  top: 8px !important;
+  right: 8px !important;
+}
+
+
+/*# sourceMappingURL=src_app_%28pages%29_admin_setting_setting_3ad26e32.css.map*/
