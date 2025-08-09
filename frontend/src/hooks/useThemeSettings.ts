@@ -29,7 +29,6 @@ const defaultSettings: AppSettings = {
 
 export function useThemeSettings() {
   const [settings, setSettings] = useState<AppSettings>(defaultSettings);
-  const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
 
   // Load settings from localStorage on mount
@@ -160,7 +159,6 @@ export function useThemeSettings() {
 
   return {
     settings,
-    loading,
     saving,
     updateSettings,
     saveSettings,

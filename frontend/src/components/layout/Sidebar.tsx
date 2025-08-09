@@ -11,6 +11,9 @@ import {
   FileTextOutlined,
   SettingOutlined,
   LeftOutlined,
+  TeamOutlined,
+  FormOutlined,
+  ClockCircleOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { useRouter, usePathname } from "next/navigation";
@@ -42,6 +45,18 @@ export default function Sidebar({ collapsed, onCollapse, userRole = 'admin' }: S
             key: "/admin/courses",
             icon: <BookOutlined />,
             label: "Course",
+            className: "sidebar-menu-item",
+          },
+          {
+            key: "/admin/batches",
+            icon: <TeamOutlined />,
+            label: "Batches",
+            className: "sidebar-menu-item",
+          },
+          {
+            key: "/admin/attendance",
+            icon: <ClockCircleOutlined />,
+            label: "Attendance",
             className: "sidebar-menu-item",
           },
           {
@@ -104,6 +119,12 @@ export default function Sidebar({ collapsed, onCollapse, userRole = 'admin' }: S
             key: "/student/dashboard",
             icon: <DashboardOutlined />,
             label: "Dashboard",
+            className: "sidebar-menu-item",
+          },
+          {
+            key: "/student/application",
+            icon: <FormOutlined />,
+            label: "Apply Course",
             className: "sidebar-menu-item",
           },
           {

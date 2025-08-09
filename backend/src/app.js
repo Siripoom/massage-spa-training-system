@@ -38,6 +38,10 @@ const themeSettingsRoutes = require("./routes/themeSettings");
 const certificateTemplateRoutes = require("./routes/certificateTemplate");
 const certificateElementRoutes = require("./routes/certificateElement");
 const certificateRoutes = require("./routes/certificate");
+// New routes based on old system analysis
+const batchRoutes = require("./routes/batch");
+const attendanceRoutes = require("./routes/attendance");
+const studentApplicationRoutes = require("./routes/studentApplication");
 
 // Use routes
 app.use("/api/auth", authRoutes);
@@ -53,6 +57,10 @@ app.use("/api/theme-settings", themeSettingsRoutes);
 app.use("/api/certificate-templates", certificateTemplateRoutes);
 app.use("/api/certificate-elements", certificateElementRoutes);
 app.use("/api/certificates", certificateRoutes);
+// New routes
+app.use("/api/batches", batchRoutes);
+app.use("/api/attendance", attendanceRoutes);
+app.use("/api/student-applications", studentApplicationRoutes);
 
 // Global error handling middleware
 app.use((err, req, res, next) => {

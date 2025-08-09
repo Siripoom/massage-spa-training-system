@@ -11,6 +11,7 @@ import {
   QuestionCircleOutlined
 } from '@ant-design/icons';
 import '../dashboard/dashboard.css';
+import '@ant-design/v5-patch-for-react-19';
 
 const { Title, Text } = Typography;
 

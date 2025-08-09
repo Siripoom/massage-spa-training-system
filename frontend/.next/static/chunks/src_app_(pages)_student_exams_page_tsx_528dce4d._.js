@@ -28,9 +28,11 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$des
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$TrophyOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__TrophyOutlined$3e$__ = __turbopack_context__.i("[project]/node_modules/@ant-design/icons/es/icons/TrophyOutlined.js [app-client] (ecmascript) <export default as TrophyOutlined>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$CalendarOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__CalendarOutlined$3e$__ = __turbopack_context__.i("[project]/node_modules/@ant-design/icons/es/icons/CalendarOutlined.js [app-client] (ecmascript) <export default as CalendarOutlined>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$QuestionCircleOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__QuestionCircleOutlined$3e$__ = __turbopack_context__.i("[project]/node_modules/@ant-design/icons/es/icons/QuestionCircleOutlined.js [app-client] (ecmascript) <export default as QuestionCircleOutlined>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$v5$2d$patch$2d$for$2d$react$2d$19$2f$es$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@ant-design/v5-patch-for-react-19/es/index.js [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 "use client";
+;
 ;
 ;
 ;
@@ -237,17 +239,17 @@ const StudentExamsPage = ()=>{
                                 children: option
                             }, index, false, {
                                 fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                lineNumber: 213,
+                                lineNumber: 214,
                                 columnNumber: 17
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                        lineNumber: 211,
+                        lineNumber: 212,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                    lineNumber: 206,
+                    lineNumber: 207,
                     columnNumber: 11
                 }, this);
             case 'multiple-select':
@@ -270,17 +272,17 @@ const StudentExamsPage = ()=>{
                                 children: option
                             }, index, false, {
                                 fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                lineNumber: 230,
+                                lineNumber: 231,
                                 columnNumber: 17
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                        lineNumber: 228,
+                        lineNumber: 229,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                    lineNumber: 223,
+                    lineNumber: 224,
                     columnNumber: 11
                 }, this);
             case 'true-false':
@@ -304,7 +306,7 @@ const StudentExamsPage = ()=>{
                                 children: "True"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                lineNumber: 246,
+                                lineNumber: 247,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$radio$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Radio$3e$__["Radio"], {
@@ -315,18 +317,18 @@ const StudentExamsPage = ()=>{
                                 children: "False"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                lineNumber: 247,
+                                lineNumber: 248,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                        lineNumber: 245,
+                        lineNumber: 246,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                    lineNumber: 240,
+                    lineNumber: 241,
                     columnNumber: 11
                 }, this);
             default:
@@ -360,7 +362,7 @@ const StudentExamsPage = ()=>{
                                             children: selectedExam.title
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                            lineNumber: 267,
+                                            lineNumber: 268,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
@@ -373,13 +375,13 @@ const StudentExamsPage = ()=>{
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                            lineNumber: 270,
+                                            lineNumber: 271,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                    lineNumber: 266,
+                                    lineNumber: 267,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
@@ -398,7 +400,7 @@ const StudentExamsPage = ()=>{
                                                         }
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                                        lineNumber: 277,
+                                                        lineNumber: 278,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -410,13 +412,13 @@ const StudentExamsPage = ()=>{
                                                         children: formatTime(timeLeft)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                                        lineNumber: 278,
+                                                        lineNumber: 279,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                                lineNumber: 276,
+                                                lineNumber: 277,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$progress$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Progress$3e$__["Progress"], {
@@ -426,24 +428,24 @@ const StudentExamsPage = ()=>{
                                                 format: ()=>`${currentQuestionIndex + 1}/${mockQuestions.length}`
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                                lineNumber: 282,
+                                                lineNumber: 283,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                        lineNumber: 275,
+                                        lineNumber: 276,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                    lineNumber: 274,
+                                    lineNumber: 275,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                            lineNumber: 265,
+                            lineNumber: 266,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$progress$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Progress$3e$__["Progress"], {
@@ -458,13 +460,13 @@ const StudentExamsPage = ()=>{
                             }
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                            lineNumber: 292,
+                            lineNumber: 293,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                    lineNumber: 264,
+                    lineNumber: 265,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$card$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Card$3e$__["Card"], {
@@ -493,19 +495,19 @@ const StudentExamsPage = ()=>{
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                            lineNumber: 308,
+                                            lineNumber: 309,
                                             columnNumber: 19
                                         }, this),
                                         currentQuestion.question
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                    lineNumber: 307,
+                                    lineNumber: 308,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                lineNumber: 306,
+                                lineNumber: 307,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -518,7 +520,7 @@ const StudentExamsPage = ()=>{
                                 children: renderQuestion(currentQuestion)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                lineNumber: 313,
+                                lineNumber: 314,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$row$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Row$3e$__["Row"], {
@@ -537,12 +539,12 @@ const StudentExamsPage = ()=>{
                                             children: "ก่อนหน้า"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                            lineNumber: 321,
+                                            lineNumber: 322,
                                             columnNumber: 21
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                        lineNumber: 319,
+                                        lineNumber: 320,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
@@ -558,7 +560,7 @@ const StudentExamsPage = ()=>{
                                                 children: "ถัดไป"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                                lineNumber: 333,
+                                                lineNumber: 334,
                                                 columnNumber: 23
                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
                                                 type: "primary",
@@ -573,34 +575,34 @@ const StudentExamsPage = ()=>{
                                                 children: "ส่งข้อสอบ"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                                lineNumber: 343,
+                                                lineNumber: 344,
                                                 columnNumber: 23
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                            lineNumber: 331,
+                                            lineNumber: 332,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                        lineNumber: 330,
+                                        lineNumber: 331,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                lineNumber: 318,
+                                lineNumber: 319,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                        lineNumber: 305,
+                        lineNumber: 306,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                    lineNumber: 304,
+                    lineNumber: 305,
                     columnNumber: 11
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$card$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Card$3e$__["Card"], {
@@ -615,7 +617,7 @@ const StudentExamsPage = ()=>{
                             children: "การนำทางคำถาม"
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                            lineNumber: 361,
+                            lineNumber: 362,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$space$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Space$3e$__["Space"], {
@@ -638,12 +640,12 @@ const StudentExamsPage = ()=>{
                                     children: index + 1
                                 }, index, false, {
                                     fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                    lineNumber: 366,
+                                    lineNumber: 367,
                                     columnNumber: 17
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                            lineNumber: 364,
+                            lineNumber: 365,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -658,44 +660,44 @@ const StudentExamsPage = ()=>{
                                         children: "🔵 คำถามปัจจุบัน"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                        lineNumber: 385,
+                                        lineNumber: 386,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: "🟢 ตอบแล้ว"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                        lineNumber: 386,
+                                        lineNumber: 387,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: "⚪ ยังไม่ตอบ"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                        lineNumber: 387,
+                                        lineNumber: 388,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                lineNumber: 384,
+                                lineNumber: 385,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                            lineNumber: 383,
+                            lineNumber: 384,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                    lineNumber: 360,
+                    lineNumber: 361,
                     columnNumber: 11
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-            lineNumber: 262,
+            lineNumber: 263,
             columnNumber: 7
         }, this);
     }
@@ -712,7 +714,7 @@ const StudentExamsPage = ()=>{
                                 children: "แบบทดสอบของฉัน"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                lineNumber: 400,
+                                lineNumber: 401,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -720,13 +722,13 @@ const StudentExamsPage = ()=>{
                                 children: "เข้าสอบเพื่อทดสอบความรู้และรับเกียรติบัตร"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                lineNumber: 401,
+                                lineNumber: 402,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                        lineNumber: 399,
+                        lineNumber: 400,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -740,23 +742,23 @@ const StudentExamsPage = ()=>{
                                 }
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                lineNumber: 407,
+                                lineNumber: 408,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                            lineNumber: 406,
+                            lineNumber: 407,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                        lineNumber: 405,
+                        lineNumber: 406,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                lineNumber: 398,
+                lineNumber: 399,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$row$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Row$3e$__["Row"], {
@@ -786,7 +788,7 @@ const StudentExamsPage = ()=>{
                                         }
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                        lineNumber: 417,
+                                        lineNumber: 418,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -796,7 +798,7 @@ const StudentExamsPage = ()=>{
                                                 children: "แบบทดสอบทั้งหมด"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                                lineNumber: 419,
+                                                lineNumber: 420,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Title, {
@@ -808,29 +810,29 @@ const StudentExamsPage = ()=>{
                                                 children: mockExams.length
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                                lineNumber: 420,
+                                                lineNumber: 421,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                        lineNumber: 418,
+                                        lineNumber: 419,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                lineNumber: 416,
+                                lineNumber: 417,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                            lineNumber: 415,
+                            lineNumber: 416,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                        lineNumber: 414,
+                        lineNumber: 415,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
@@ -851,7 +853,7 @@ const StudentExamsPage = ()=>{
                                         }
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                        lineNumber: 428,
+                                        lineNumber: 429,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -861,7 +863,7 @@ const StudentExamsPage = ()=>{
                                                 children: "สำเร็จแล้ว"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                                lineNumber: 430,
+                                                lineNumber: 431,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Title, {
@@ -873,29 +875,29 @@ const StudentExamsPage = ()=>{
                                                 children: mockExams.filter((exam)=>exam.status === 'completed').length
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                                lineNumber: 431,
+                                                lineNumber: 432,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                        lineNumber: 429,
+                                        lineNumber: 430,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                lineNumber: 427,
+                                lineNumber: 428,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                            lineNumber: 426,
+                            lineNumber: 427,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                        lineNumber: 425,
+                        lineNumber: 426,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
@@ -916,7 +918,7 @@ const StudentExamsPage = ()=>{
                                         }
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                        lineNumber: 441,
+                                        lineNumber: 442,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -926,7 +928,7 @@ const StudentExamsPage = ()=>{
                                                 children: "พร้อมสอบ"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                                lineNumber: 443,
+                                                lineNumber: 444,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Title, {
@@ -938,35 +940,35 @@ const StudentExamsPage = ()=>{
                                                 children: mockExams.filter((exam)=>exam.status === 'available').length
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                                lineNumber: 444,
+                                                lineNumber: 445,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                        lineNumber: 442,
+                                        lineNumber: 443,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                lineNumber: 440,
+                                lineNumber: 441,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                            lineNumber: 439,
+                            lineNumber: 440,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                        lineNumber: 438,
+                        lineNumber: 439,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                lineNumber: 413,
+                lineNumber: 414,
                 columnNumber: 9
             }, this),
             mockExams.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$empty$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Empty$3e$__["Empty"], {
@@ -974,7 +976,7 @@ const StudentExamsPage = ()=>{
                     className: "text-6xl text-gray-300"
                 }, void 0, false, {
                     fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                    lineNumber: 456,
+                    lineNumber: 457,
                     columnNumber: 20
                 }, void 0),
                 description: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -985,7 +987,7 @@ const StudentExamsPage = ()=>{
                             children: "ยังไม่มีแบบทดสอบ"
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                            lineNumber: 459,
+                            lineNumber: 460,
                             columnNumber: 17
                         }, void 0),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
@@ -993,18 +995,18 @@ const StudentExamsPage = ()=>{
                             children: "เรียนหลักสูตรเพื่อเข้าสอบ"
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                            lineNumber: 460,
+                            lineNumber: 461,
                             columnNumber: 17
                         }, void 0)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                    lineNumber: 458,
+                    lineNumber: 459,
                     columnNumber: 15
                 }, void 0)
             }, void 0, false, {
                 fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                lineNumber: 455,
+                lineNumber: 456,
                 columnNumber: 11
             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$row$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Row$3e$__["Row"], {
                 gutter: [
@@ -1039,7 +1041,7 @@ const StudentExamsPage = ()=>{
                                         }
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                        lineNumber: 489,
+                                        lineNumber: 490,
                                         columnNumber: 23
                                     }, void 0),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1061,18 +1063,18 @@ const StudentExamsPage = ()=>{
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                            lineNumber: 491,
+                                            lineNumber: 492,
                                             columnNumber: 25
                                         }, void 0)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                        lineNumber: 490,
+                                        lineNumber: 491,
                                         columnNumber: 23
                                     }, void 0)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                lineNumber: 474,
+                                lineNumber: 475,
                                 columnNumber: 21
                             }, void 0),
                             actions: [
@@ -1081,7 +1083,7 @@ const StudentExamsPage = ()=>{
                                     className: "dashboard-action-btn",
                                     icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$PlayCircleOutlined$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__PlayCircleOutlined$3e$__["PlayCircleOutlined"], {}, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                        lineNumber: 511,
+                                        lineNumber: 512,
                                         columnNumber: 31
                                     }, void 0),
                                     onClick: ()=>startExam(exam),
@@ -1092,7 +1094,7 @@ const StudentExamsPage = ()=>{
                                     children: "เริ่มทำข้อสอบ"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                    lineNumber: 508,
+                                    lineNumber: 509,
                                     columnNumber: 23
                                 }, void 0) : exam.status === 'completed' ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
                                     type: "default",
@@ -1107,7 +1109,7 @@ const StudentExamsPage = ()=>{
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                    lineNumber: 519,
+                                    lineNumber: 520,
                                     columnNumber: 23
                                 }, void 0) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
                                     type: "default",
@@ -1118,7 +1120,7 @@ const StudentExamsPage = ()=>{
                                     children: getStatusText(exam.status)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                    lineNumber: 527,
+                                    lineNumber: 528,
                                     columnNumber: 23
                                 }, void 0)
                             ],
@@ -1133,7 +1135,7 @@ const StudentExamsPage = ()=>{
                                     children: exam.title
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                    lineNumber: 539,
+                                    lineNumber: 540,
                                     columnNumber: 23
                                 }, void 0),
                                 description: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1149,7 +1151,7 @@ const StudentExamsPage = ()=>{
                                             children: exam.description
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                            lineNumber: 545,
+                                            lineNumber: 546,
                                             columnNumber: 25
                                         }, void 0),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$space$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Space$3e$__["Space"], {
@@ -1185,7 +1187,7 @@ const StudentExamsPage = ()=>{
                                                                                 }
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                                                                lineNumber: 554,
+                                                                                lineNumber: 555,
                                                                                 columnNumber: 35
                                                                             }, void 0),
                                                                             exam.duration,
@@ -1193,7 +1195,7 @@ const StudentExamsPage = ()=>{
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                                                        lineNumber: 553,
+                                                                        lineNumber: 554,
                                                                         columnNumber: 33
                                                                     }, void 0),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
@@ -1208,7 +1210,7 @@ const StudentExamsPage = ()=>{
                                                                                 }
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                                                                lineNumber: 558,
+                                                                                lineNumber: 559,
                                                                                 columnNumber: 35
                                                                             }, void 0),
                                                                             exam.passingScore,
@@ -1216,18 +1218,18 @@ const StudentExamsPage = ()=>{
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                                                        lineNumber: 557,
+                                                                        lineNumber: 558,
                                                                         columnNumber: 33
                                                                     }, void 0)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                                                lineNumber: 552,
+                                                                lineNumber: 553,
                                                                 columnNumber: 31
                                                             }, void 0)
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                                            lineNumber: 551,
+                                                            lineNumber: 552,
                                                             columnNumber: 29
                                                         }, void 0),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
@@ -1250,14 +1252,14 @@ const StudentExamsPage = ()=>{
                                                                                 }
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                                                                lineNumber: 566,
+                                                                                lineNumber: 567,
                                                                                 columnNumber: 35
                                                                             }, void 0),
                                                                             exam.deadline
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                                                        lineNumber: 565,
+                                                                        lineNumber: 566,
                                                                         columnNumber: 33
                                                                     }, void 0),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
@@ -1270,24 +1272,24 @@ const StudentExamsPage = ()=>{
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                                                        lineNumber: 569,
+                                                                        lineNumber: 570,
                                                                         columnNumber: 33
                                                                     }, void 0)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                                                lineNumber: 564,
+                                                                lineNumber: 565,
                                                                 columnNumber: 31
                                                             }, void 0)
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                                            lineNumber: 563,
+                                                            lineNumber: 564,
                                                             columnNumber: 29
                                                         }, void 0)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                                    lineNumber: 550,
+                                                    lineNumber: 551,
                                                     columnNumber: 27
                                                 }, void 0),
                                                 exam.status === 'completed' && exam.score && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$progress$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Progress$3e$__["Progress"], {
@@ -1299,45 +1301,45 @@ const StudentExamsPage = ()=>{
                                                     }
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                                    lineNumber: 577,
+                                                    lineNumber: 578,
                                                     columnNumber: 29
                                                 }, void 0)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                            lineNumber: 549,
+                                            lineNumber: 550,
                                             columnNumber: 25
                                         }, void 0)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                    lineNumber: 544,
+                                    lineNumber: 545,
                                     columnNumber: 23
                                 }, void 0)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                                lineNumber: 537,
+                                lineNumber: 538,
                                 columnNumber: 19
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                            lineNumber: 470,
+                            lineNumber: 471,
                             columnNumber: 17
                         }, this)
                     }, exam.id, false, {
                         fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                        lineNumber: 469,
+                        lineNumber: 470,
                         columnNumber: 15
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-                lineNumber: 467,
+                lineNumber: 468,
                 columnNumber: 11
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/(pages)/student/exams/page.tsx",
-        lineNumber: 396,
+        lineNumber: 397,
         columnNumber: 5
     }, this);
 };

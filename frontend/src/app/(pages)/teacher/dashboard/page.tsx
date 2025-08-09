@@ -1,8 +1,10 @@
 // src/app/(pages)/teacher/dashboard/page.tsx
 "use client";
 
+import '@ant-design/v5-patch-for-react-19';
 import React, { useState, useEffect } from 'react';
-import { Card, Typography, Row, Col, Button, Badge, Progress, List, Avatar, Tag, message } from 'antd';
+import { Card, Typography, Row, Col, Button, Badge, Progress, List, Avatar, Tag, message, Spin } from 'antd';
+import './dashboard.css';
 import { 
   BookOutlined, 
   UserOutlined, 
@@ -10,15 +12,13 @@ import {
   ClockCircleOutlined,
   TrophyOutlined,
   EyeOutlined,
-  CalendarOutlined,
   FileTextOutlined,
-  RiseOutlined,
   MessageOutlined
 } from '@ant-design/icons';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
-import '../../admin/dashboard/dashboard.css';
 
+import '@ant-design/v5-patch-for-react-19';
 dayjs.extend(relativeTime);
 
 const { Text } = Typography;
@@ -120,90 +120,96 @@ const mockCourses: Course[] = [
   }
 ];
 
-const mockStudents: Student[] = [
-  {
-    id: 'std-001',
-    firstName: 'สมชาย',
-    lastName: 'ดีใจ',
-    courseId: 'course-1',
-    progress: 85,
-    lastActivity: dayjs().subtract(2, 'hour').toISOString(),
-    status: 'active',
-    avatar: 'https://placehold.co/40x40/1890ff/ffffff?text=ส'
-  },
-  {
-    id: 'std-002',
-    firstName: 'สมหญิง',
-    lastName: 'สวยงาม',
-    courseId: 'course-1',
-    progress: 92,
-    lastActivity: dayjs().subtract(4, 'hour').toISOString(),
-    status: 'active',
-    avatar: 'https://placehold.co/40x40/52c41a/ffffff?text=ส'
-  },
-  {
-    id: 'std-003',
-    firstName: 'วิทย์',
-    lastName: 'เก่งมาก',
-    courseId: 'course-2',
-    progress: 100,
-    lastActivity: dayjs().subtract(1, 'day').toISOString(),
-    status: 'completed',
-    avatar: 'https://placehold.co/40x40/faad14/ffffff?text=ว'
-  }
-];
-
-const mockAssignments: Assignment[] = [
-  {
-    id: 'assign-001',
-    title: 'แบบทดสอบท้ายบทที่ 1',
-    courseId: 'course-1',
-    courseName: 'หลักสูตรการนวดแผนไทยพื้นฐาน',
-    dueDate: dayjs().add(3, 'day').toISOString(),
-    submitted: 18,
-    total: 25,
-    status: 'pending'
-  },
-  {
-    id: 'assign-002',
-    title: 'การปฏิบัติการนวดอโรม่า',
-    courseId: 'course-2',
-    courseName: 'หลักสูตรการนวดอโรม่า',
-    dueDate: dayjs().add(1, 'week').toISOString(),
-    submitted: 12,
-    total: 18,
-    status: 'grading'
-  }
-];
-
-const mockRecentActivities: RecentActivity[] = [
-  {
-    id: 'act-001',
-    type: 'completion',
-    title: 'นักเรียนเรียนจบบทเรียน',
-    description: 'วิทย์ เก่งมาก เรียนจบบทเรียน "การผสมน้ำมันหอมระเหย"',
-    time: dayjs().subtract(30, 'minute').toISOString(),
-    studentName: 'วิทย์ เก่งมาก',
-    courseName: 'หลักสูตรการนวดอโรม่า'
-  },
-  {
-    id: 'act-002',
-    type: 'question',
-    title: 'คำถามจากนักเรียน',
-    description: 'สมชาย ดีใจ ถามเกี่ยวกับเทคนิคการกดจุดสำคัญ',
-    time: dayjs().subtract(2, 'hour').toISOString(),
-    studentName: 'สมชาย ดีใจ',
-    courseName: 'หลักสูตรการนวดแผนไทยพื้นฐาน'
-  },
-  {
-    id: 'act-003',
-    type: 'assignment',
-    title: 'งานที่ต้องตรวจ',
-    description: 'มีงานการปฏิบัติการนวดอโรม่า 5 ชิ้น รอการตรวจสอบ',
-    time: dayjs().subtract(4, 'hour').toISOString(),
-    courseName: 'หลักสูตรการนวดอโรม่า'
-  }
-];
+// Mock data with static dates to prevent hydration mismatches
+const generateMockData = () => {
+  // Use fixed timestamps for consistency
+  const baseTime = new Date('2024-08-09T10:00:00Z').getTime();
+  
+  return {
+    students: [
+      {
+        id: 'std-001',
+        firstName: 'สมชาย',
+        lastName: 'ดีใจ',
+        courseId: 'course-1',
+        progress: 85,
+        lastActivity: new Date(baseTime - 2 * 60 * 60 * 1000).toISOString(), // 2 hours ago
+        status: 'active' as const,
+        avatar: 'https://placehold.co/40x40/1890ff/ffffff?text=ส'
+      },
+      {
+        id: 'std-002',
+        firstName: 'สมหญิง',
+        lastName: 'สวยงาม',
+        courseId: 'course-1',
+        progress: 92,
+        lastActivity: new Date(baseTime - 4 * 60 * 60 * 1000).toISOString(), // 4 hours ago
+        status: 'active' as const,
+        avatar: 'https://placehold.co/40x40/52c41a/ffffff?text=ส'
+      },
+      {
+        id: 'std-003',
+        firstName: 'วิทย์',
+        lastName: 'เก่งมาก',
+        courseId: 'course-2',
+        progress: 100,
+        lastActivity: new Date(baseTime - 24 * 60 * 60 * 1000).toISOString(), // 1 day ago
+        status: 'completed' as const,
+        avatar: 'https://placehold.co/40x40/faad14/ffffff?text=ว'
+      }
+    ],
+    assignments: [
+      {
+        id: 'assign-001',
+        title: 'แบบทดสอบท้ายบทที่ 1',
+        courseId: 'course-1',
+        courseName: 'หลักสูตรการนวดแผนไทยพื้นฐาน',
+        dueDate: new Date(baseTime + 3 * 24 * 60 * 60 * 1000).toISOString(), // 3 days from base
+        submitted: 18,
+        total: 25,
+        status: 'pending' as const
+      },
+      {
+        id: 'assign-002',
+        title: 'การปฏิบัติการนวดอโรม่า',
+        courseId: 'course-2',
+        courseName: 'หลักสูตรการนวดอโรม่า',
+        dueDate: new Date(baseTime + 7 * 24 * 60 * 60 * 1000).toISOString(), // 1 week from base
+        submitted: 12,
+        total: 18,
+        status: 'grading' as const
+      }
+    ],
+    recentActivities: [
+      {
+        id: 'act-001',
+        type: 'completion' as const,
+        title: 'นักเรียนเรียนจบบทเรียน',
+        description: 'วิทย์ เก่งมาก เรียนจบบทเรียน "การผสมน้ำมันหอมระเหย"',
+        time: new Date(baseTime - 30 * 60 * 1000).toISOString(), // 30 minutes ago
+        studentName: 'วิทย์ เก่งมาก',
+        courseName: 'หลักสูตรการนวดอโรม่า'
+      },
+      {
+        id: 'act-002',
+        type: 'question' as const,
+        title: 'คำถามจากนักเรียน',
+        description: 'สมชาย ดีใจ ถามเกี่ยวกับเทคนิคการกดจุดสำคัญ',
+        time: new Date(baseTime - 2 * 60 * 60 * 1000).toISOString(), // 2 hours ago
+        studentName: 'สมชาย ดีใจ',
+        courseName: 'หลักสูตรการนวดแผนไทยพื้นฐาน'
+      },
+      {
+        id: 'act-003',
+        type: 'assignment' as const,
+        title: 'งานที่ต้องตรวจ',
+        description: 'มีงานการปฏิบัติการนวดอโรม่า 5 ชิ้น รอการตรวจสอบ',
+        time: new Date(baseTime - 4 * 60 * 60 * 1000).toISOString(), // 4 hours ago
+        courseName: 'หลักสูตรการนวดอโรม่า'
+      }
+    ]
+  };
+};
 
 export default function TeacherDashboardPage() {
   const [teacher, setTeacher] = useState<Teacher | null>(null);
@@ -211,15 +217,28 @@ export default function TeacherDashboardPage() {
   const [students, setStudents] = useState<Student[]>([]);
   const [assignments, setAssignments] = useState<Assignment[]>([]);
   const [recentActivities, setRecentActivities] = useState<RecentActivity[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Use client-side data generation to prevent hydration mismatch
+    const mockData = generateMockData();
+    
     // Simulate loading data
     setTeacher(mockTeacher);
     setCourses(mockCourses);
-    setStudents(mockStudents);
-    setAssignments(mockAssignments);
-    setRecentActivities(mockRecentActivities);
+    setStudents(mockData.students);
+    setAssignments(mockData.assignments);
+    setRecentActivities(mockData.recentActivities);
+    setIsLoading(false);
   }, []);
+
+  if (isLoading) {
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50vh' }}>
+        <Spin size="large" />
+      </div>
+    );
+  }
 
   const getActivityIcon = (type: string) => {
     switch (type) {
@@ -232,121 +251,185 @@ export default function TeacherDashboardPage() {
   };
 
   const handleViewCourse = (courseId: string) => {
-    message.info(`ดูรายละเอียดหลักสูตร: ${courseId}`);
-    console.log('View course:', courseId);
+    try {
+      if (!courseId || courseId.trim() === '') {
+        message.error('รหัสหลักสูตรไม่ถูกต้อง');
+        return;
+      }
+      
+      const course = courses.find(c => c.id === courseId);
+      if (!course) {
+        message.error('ไม่พบหลักสูตรที่เลือก');
+        return;
+      }
+      
+      message.info(`ดูรายละเอียดหลักสูตร: ${course.courseName}`);
+      console.log('View course:', courseId);
+      // TODO: Navigate to course details page
+      // router.push(`/teacher/courses/${courseId}`);
+    } catch (error) {
+      console.error('Error viewing course:', error);
+      message.error('เกิดข้อผิดพลาดในการดูรายละเอียดหลักสูตร');
+    }
   };
 
   const handleViewStudent = (studentId: string) => {
-    message.info(`ดูข้อมูลนักเรียน: ${studentId}`);
-    console.log('View student:', studentId);
+    try {
+      if (!studentId || studentId.trim() === '') {
+        message.error('รหัสนักเรียนไม่ถูกต้อง');
+        return;
+      }
+      
+      const student = students.find(s => s.id === studentId);
+      if (!student) {
+        message.error('ไม่พบนักเรียนที่เลือก');
+        return;
+      }
+      
+      message.info(`ดูข้อมูลนักเรียน: ${student.firstName} ${student.lastName}`);
+      console.log('View student:', studentId);
+      // TODO: Navigate to student details page
+      // router.push(`/teacher/students/${studentId}`);
+    } catch (error) {
+      console.error('Error viewing student:', error);
+      message.error('เกิดข้อผิดพลาดในการดูข้อมูลนักเรียน');
+    }
   };
 
   const handleGradeAssignment = (assignmentId: string) => {
-    message.info(`ตรวจงาน: ${assignmentId}`);
-    console.log('Grade assignment:', assignmentId);
+    try {
+      if (!assignmentId || assignmentId.trim() === '') {
+        message.error('รหัสงานไม่ถูกต้อง');
+        return;
+      }
+      
+      const assignment = assignments.find(a => a.id === assignmentId);
+      if (!assignment) {
+        message.error('ไม่พบงานที่เลือก');
+        return;
+      }
+      
+      message.info(`ตรวจงาน: ${assignment.title}`);
+      console.log('Grade assignment:', assignmentId);
+      // TODO: Navigate to grading page
+      // router.push(`/teacher/assignments/${assignmentId}/grade`);
+    } catch (error) {
+      console.error('Error grading assignment:', error);
+      message.error('เกิดข้อผิดพลาดในการตรวจงาน');
+    }
   };
 
-  const totalStudents = courses.reduce((acc, course) => acc + course.enrolledStudents, 0);
+  const handleViewAllCourses = () => {
+    try {
+      message.info('กำลังไปยังหน้าหลักสูตรทั้งหมด...');
+      // TODO: Navigate to all courses page
+      // router.push('/teacher/courses');
+    } catch (error) {
+      console.error('Error navigating to courses:', error);
+      message.error('เกิดข้อผิดพลาดในการเปิดหน้าหลักสูตร');
+    }
+  };
+
+  const handleViewAllActivities = () => {
+    try {
+      message.info('กำลังไปยังหน้ากิจกรรมทั้งหมด...');
+      // TODO: Navigate to all activities page
+      // router.push('/teacher/activities');
+    } catch (error) {
+      console.error('Error navigating to activities:', error);
+      message.error('เกิดข้อผิดพลาดในการเปิดหน้ากิจกรรม');
+    }
+  };
+
+  const handleViewAllStudents = () => {
+    try {
+      message.info('กำลังไปยังหน้านักเรียนทั้งหมด...');
+      // TODO: Navigate to all students page
+      // router.push('/teacher/students');
+    } catch (error) {
+      console.error('Error navigating to students:', error);
+      message.error('เกิดข้อผิดพลาดในการเปิดหน้านักเรียน');
+    }
+  };
+
+  const handleViewAllAssignments = () => {
+    try {
+      message.info('กำลังไปยังหน้างานทั้งหมด...');
+      // TODO: Navigate to all assignments page
+      // router.push('/teacher/assignments');
+    } catch (error) {
+      console.error('Error navigating to assignments:', error);
+      message.error('เกิดข้อผิดพลาดในการเปิดหน้างาน');
+    }
+  };
+
   const activeCourses = courses.filter(c => c.status === 'active').length;
   const completedStudents = students.filter(s => s.status === 'completed').length;
   const pendingAssignments = assignments.filter(a => a.status === 'pending' || a.status === 'grading').length;
+  
+  // Fix division by zero and improve calculation
+  const successRate = students.length > 0 ? ((completedStudents / students.length) * 100) : 0;
+  const totalStudentsEnrolled = courses.reduce((sum, course) => sum + course.enrolledStudents, 0);
 
   return (
-    <div className="dashboard-container">
+    <div className="dashboard-container fade-in-up">
       {/* Page Header */}
       <div className="dashboard-header">
         <div>
-          <h1 className="dashboard-title">แดชบอร์ดอาจารย์</h1>
+          <h1 className="dashboard-title">สวัสดี, {teacher?.firstName}</h1>
           <p className="dashboard-subtitle">
-            ภาพรวมการสอนและการจัดการหลักสูตร - สวัสดี, {teacher?.firstName}! 👨‍🏫
+            ยินดีต้อนรับสู่แดชบอร์ดอาจารย์ - จัดการหลักสูตรและนักเรียนของคุณ
           </p>
         </div>
-        <div className="hidden md:block">
-          <span className="text-gray-600 text-sm">
-            <CalendarOutlined className="text-orange-500 mr-2" />
-            {dayjs().format('dddd, LL')}
-          </span>
-        </div>
+        <Button type="primary" className="dashboard-action-btn" onClick={handleViewAllCourses}>
+          ดูหลักสูตรทั้งหมด
+        </Button>
       </div>
 
       {/* Statistics Cards */}
       <Row gutter={[24, 24]} className="stats-row">
-        <Col xs={24} sm={6}>
-          <Card className="stat-card">
-            <div className="stat-content">
-              <div className="stat-icon" style={{ color: '#5d4037' }}>
-                <BookOutlined />
-              </div>
-              <div className="stat-details">
-                <div className="stat-value" style={{ color: '#5d4037' }}>
-                  {activeCourses}
+        {[
+          {
+            title: "หลักสูตรที่สอน",
+            value: activeCourses,
+            prefix: <BookOutlined />,
+            color: "#5d4037",
+          },
+          {
+            title: "นักเรียนทั้งหมด",
+            value: totalStudentsEnrolled,
+            prefix: <UserOutlined />,
+            color: "#8d6e63",
+          },
+          {
+            title: "งานที่ต้องตรวจ",
+            value: pendingAssignments,
+            prefix: <FileTextOutlined />,
+            color: "#a1887f",
+          },
+          {
+            title: "อัตราความสำเร็จ",
+            value: `${successRate.toFixed(0)}%`,
+            prefix: <TrophyOutlined />,
+            color: "#6d4c41",
+          },
+        ].map((stat, index) => (
+          <Col xs={24} sm={12} lg={6} key={index}>
+            <Card className="stat-card">
+              <div className="stat-content">
+                <div className="stat-icon" style={{ color: stat.color }}>
+                  {stat.prefix}
                 </div>
-                <div className="stat-title">หลักสูตรที่สอน</div>
-                <div className="stat-trend">
-                  <RiseOutlined className="trend-up" />
-                  <span className="trend-up">ทั้งหมด {courses.length} หลักสูตร</span>
-                </div>
-              </div>
-            </div>
-          </Card>
-        </Col>
-        
-        <Col xs={24} sm={6}>
-          <Card className="stat-card">
-            <div className="stat-content">
-              <div className="stat-icon" style={{ color: '#1890ff' }}>
-                <UserOutlined />
-              </div>
-              <div className="stat-details">
-                <div className="stat-value" style={{ color: '#1890ff' }}>
-                  {totalStudents}
-                </div>
-                <div className="stat-title">นักเรียนทั้งหมด</div>
-                <div className="stat-trend">
-                  <span className="trend-up">กำลังเรียนอยู่</span>
-                </div>
-              </div>
-            </div>
-          </Card>
-        </Col>
-
-        <Col xs={24} sm={6}>
-          <Card className="stat-card">
-            <div className="stat-content">
-              <div className="stat-icon" style={{ color: '#52c41a' }}>
-                <TrophyOutlined />
-              </div>
-              <div className="stat-details">
-                <div className="stat-value" style={{ color: '#52c41a' }}>
-                  {completedStudents}
-                </div>
-                <div className="stat-title">จบการศึกษา</div>
-                <div className="stat-trend">
-                  <span className="trend-up">สำเร็จการศึกษา</span>
+                <div className="stat-details">
+                  <div className="stat-value" style={{ color: stat.color }}>
+                    {stat.value}
+                  </div>
+                  <div className="stat-title">{stat.title}</div>
                 </div>
               </div>
-            </div>
-          </Card>
-        </Col>
-
-        <Col xs={24} sm={6}>
-          <Card className="stat-card">
-            <div className="stat-content">
-              <div className="stat-icon" style={{ color: '#faad14' }}>
-                <FileTextOutlined />
-              </div>
-              <div className="stat-details">
-                <div className="stat-value" style={{ color: '#faad14' }}>
-                  {pendingAssignments}
-                </div>
-                <div className="stat-title">งานที่ต้องตรวจ</div>
-                <div className="stat-trend">
-                  <span className="trend-up">รออนุมัติ</span>
-                </div>
-              </div>
-            </div>
-          </Card>
-        </Col>
+            </Card>
+          </Col>
+        ))}
       </Row>
 
       <Row gutter={[24, 24]} className="content-row">
@@ -356,7 +439,7 @@ export default function TeacherDashboardPage() {
             title="หลักสูตรที่สอน"
             className="content-card"
             extra={
-              <Button type="link" className="card-action-btn">
+              <Button type="link" className="card-action-btn" onClick={handleViewAllCourses}>
                 ดูทั้งหมด
               </Button>
             }
@@ -386,8 +469,8 @@ export default function TeacherDashboardPage() {
                     </Button>
                   </div>
                   <Progress 
-                    percent={Math.round((course.enrolledStudents / 30) * 100)} 
-                    strokeColor="#1890ff"
+                    percent={Math.min(Math.round((course.enrolledStudents / Math.max(course.enrolledStudents, 30)) * 100), 100)} 
+                    strokeColor="#5d4037"
                     trailColor="#f5f5f5"
                     size={8}
                     className="course-progress-bar"
@@ -404,7 +487,7 @@ export default function TeacherDashboardPage() {
             title="กิจกรรมล่าสุด"
             className="content-card"
             extra={
-              <Button type="link" className="card-action-btn">
+              <Button type="link" className="card-action-btn" onClick={handleViewAllActivities}>
                 ดูทั้งหมด
               </Button>
             }
@@ -444,7 +527,7 @@ export default function TeacherDashboardPage() {
             title="ความก้าวหน้าของนักเรียน"
             className="content-card"
             extra={
-              <Button type="link" className="card-action-btn">
+              <Button type="link" className="card-action-btn" onClick={handleViewAllStudents}>
                 ดูทั้งหมด
               </Button>
             }
@@ -498,7 +581,7 @@ export default function TeacherDashboardPage() {
             title="งานที่ต้องตรวจสอบ"
             className="content-card"
             extra={
-              <Button type="link" className="card-action-btn">
+              <Button type="link" className="card-action-btn" onClick={handleViewAllAssignments}>
                 ดูทั้งหมด
               </Button>
             }
@@ -538,7 +621,7 @@ export default function TeacherDashboardPage() {
                         <Progress 
                           percent={Math.round((assignment.submitted / assignment.total) * 100)} 
                           size="small" 
-                          strokeColor={assignment.submitted === assignment.total ? '#52c41a' : '#1890ff'}
+                          strokeColor={assignment.submitted === assignment.total ? '#52c41a' : '#5d4037'}
                         />
                       </div>
                     }

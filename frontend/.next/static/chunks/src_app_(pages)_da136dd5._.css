@@ -435,6 +435,91 @@
   padding: 0;
 }
 
+.course-card {
+  border-radius: 24px !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  transition: all .4s cubic-bezier(.4, 0, .2, 1) !important;
+  display: flex !important;
+  overflow: hidden !important;
+}
+
+.course-card:hover {
+  transform: translateY(-8px) !important;
+  box-shadow: 0 20px 64px #667eea26 !important;
+}
+
+.course-card .ant-card-body {
+  flex-direction: column !important;
+  flex: 1 !important;
+  padding: 0 !important;
+  display: flex !important;
+}
+
+.course-card .ant-card-meta, .course-card .ant-card-meta-detail {
+  flex-direction: column !important;
+  flex: 1 !important;
+  display: flex !important;
+}
+
+.course-card .ant-card-meta-description {
+  flex: 1 !important;
+}
+
+.ant-input-search .ant-input-group .ant-input {
+  border: 2px solid #f0f0f0 !important;
+  border-radius: 12px 0 0 12px !important;
+  transition: all .3s !important;
+}
+
+.ant-input-search .ant-input-group .ant-input:focus {
+  border-color: #667eea !important;
+  box-shadow: 0 0 0 2px #667eea1a !important;
+}
+
+.ant-tabs-tab {
+  border-radius: 16px !important;
+  margin: 4px !important;
+  transition: all .3s !important;
+}
+
+.ant-tabs-tab-active {
+  color: #fff !important;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+}
+
+.ant-tabs-tab:hover {
+  color: #667eea !important;
+}
+
+.ant-tabs-content-holder {
+  padding: 0 !important;
+}
+
+.ant-select-selector {
+  border: 2px solid #f0f0f0 !important;
+  border-radius: 12px !important;
+  transition: all .3s !important;
+}
+
+.ant-select-focused .ant-select-selector {
+  border-color: #667eea !important;
+  box-shadow: 0 0 0 2px #667eea1a !important;
+}
+
+.ant-progress-bg {
+  border-radius: 8px !important;
+}
+
+.ant-btn-primary {
+  transition: all .3s cubic-bezier(.4, 0, .2, 1) !important;
+}
+
+.ant-btn-primary:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px #667eea66 !important;
+}
+
 .course-progress-item .course-meta {
   justify-content: space-between;
   align-items: center;
@@ -449,6 +534,7 @@
 .activity-item {
   border-bottom: 1px solid #f5f5f5;
   margin-bottom: 0;
+  transition: all .2s;
 }
 
 .activity-item:last-child {
@@ -483,6 +569,112 @@
 
 .card-action-btn:hover {
   color: #4a2c20 !important;
+}
+
+.ant-empty-description {
+  color: #666 !important;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px #5d40371f !important;
+}
+
+.ant-row {
+  flex-wrap: wrap;
+  display: flex;
+}
+
+.ant-col {
+  display: flex;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.course-card {
+  animation: .6s ease-out fadeInUp !important;
+}
+
+.course-card:first-child {
+  animation-delay: .1s !important;
+}
+
+.course-card:nth-child(2) {
+  animation-delay: .2s !important;
+}
+
+.course-card:nth-child(3) {
+  animation-delay: .3s !important;
+}
+
+.course-card:nth-child(4) {
+  animation-delay: .4s !important;
+}
+
+.course-card:nth-child(5) {
+  animation-delay: .5s !important;
+}
+
+.course-card:nth-child(6) {
+  animation-delay: .6s !important;
+}
+
+@media (width >= 992px) {
+  .course-card {
+    min-height: 600px;
+  }
+}
+
+@media (width <= 768px) {
+  .course-card .ant-card-body {
+    padding: 16px !important;
+  }
+
+  .activity-item:hover {
+    margin: 0 -8px;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+
+  .course-card {
+    min-height: auto !important;
+  }
+
+  .dashboard-container > div:first-child {
+    padding: 32px 20px !important;
+  }
+
+  .dashboard-container > div:first-child h1 {
+    font-size: 28px !important;
+  }
+
+  .dashboard-container > div:first-child p {
+    font-size: 16px !important;
+  }
+}
+
+@media (width <= 576px) {
+  .course-card {
+    min-height: 480px !important;
+  }
+
+  .dashboard-container > div:first-child {
+    padding: 24px 16px !important;
+  }
+
+  .dashboard-container > div:first-child h1 {
+    font-size: 24px !important;
+  }
 }
 
 

@@ -13,6 +13,7 @@ import {
 } from '@ant-design/icons';
 
 const { Title, Text } = Typography;
+import '@ant-design/v5-patch-for-react-19';
 
 interface Question {
   id: string;

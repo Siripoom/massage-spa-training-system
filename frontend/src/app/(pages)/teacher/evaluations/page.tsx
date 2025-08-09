@@ -15,12 +15,13 @@ import {
   // CalendarOutlined,
   // BookOutlined
 } from '@ant-design/icons';
+import '@ant-design/v5-patch-for-react-19';
 import '../../admin/dashboard/dashboard.css';
+import '@ant-design/v5-patch-for-react-19';
 
 const { Title, Text } = Typography;
 const { TextArea } = Input;
 const { Option } = Select;
-const { TabPane } = Tabs;
 
 interface Assignment {
   id: string;
@@ -522,36 +523,48 @@ const TeacherEvaluationsPage: React.FC = () => {
 
       {/* Tabs for Assignments and Evaluations */}
       <Card>
-        <Tabs activeKey={activeTab} onChange={setActiveTab}>
-          <TabPane tab="งานที่มอบหมาย" key="assignments">
-            <Table
-              columns={assignmentColumns}
-              dataSource={filteredAssignments}
-              rowKey="id"
-              pagination={{
-                pageSize: 10,
-                showSizeChanger: true,
-                showQuickJumper: true,
-                showTotal: (total, range) => 
-                  `${range[0]}-${range[1]} จาก ${total} รายการ`,
-              }}
-            />
-          </TabPane>
-          <TabPane tab="การประเมิน" key="evaluations">
-            <Table
-              columns={evaluationColumns}
-              dataSource={filteredEvaluations}
-              rowKey="id"
-              pagination={{
-                pageSize: 10,
-                showSizeChanger: true,
-                showQuickJumper: true,
-                showTotal: (total, range) => 
-                  `${range[0]}-${range[1]} จาก ${total} รายการ`,
-              }}
-            />
-          </TabPane>
-        </Tabs>
+        <Tabs 
+          activeKey={activeTab} 
+          onChange={setActiveTab}
+          items={[
+            {
+              key: 'assignments',
+              label: 'งานที่มอบหมาย',
+              children: (
+                <Table
+                  columns={assignmentColumns}
+                  dataSource={filteredAssignments}
+                  rowKey="id"
+                  pagination={{
+                    pageSize: 10,
+                    showSizeChanger: true,
+                    showQuickJumper: true,
+                    showTotal: (total, range) => 
+                      `${range[0]}-${range[1]} จาก ${total} รายการ`,
+                  }}
+                />
+              )
+            },
+            {
+              key: 'evaluations',
+              label: 'การประเมิน',
+              children: (
+                <Table
+                  columns={evaluationColumns}
+                  dataSource={filteredEvaluations}
+                  rowKey="id"
+                  pagination={{
+                    pageSize: 10,
+                    showSizeChanger: true,
+                    showQuickJumper: true,
+                    showTotal: (total, range) => 
+                      `${range[0]}-${range[1]} จาก ${total} รายการ`,
+                  }}
+                />
+              )
+            }
+          ]}
+        />
       </Card>
 
       {/* Grade Assignment Modal */}

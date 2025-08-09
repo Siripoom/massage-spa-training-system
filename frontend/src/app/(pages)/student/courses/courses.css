@@ -1,0 +1,162 @@
+/* Student Courses Page - Clean Design */
+
+/* Course cards styling matching student dashboard */
+.course-header {
+  margin-bottom: 20px;
+}
+
+.course-title {
+  color: #333;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  font-family: Georgia, serif;
+}
+
+.course-description {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.course-meta {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.course-meta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #5d4037;
+  font-size: 14px;
+}
+
+.course-progress-section {
+  background: rgba(93, 64, 55, 0.05);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+}
+
+.course-actions {
+  margin-top: auto;
+}
+
+/* Course card styling */
+.content-card {
+  border: none !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 20px rgba(93, 64, 55, 0.08) !important;
+  transition: all 0.3s ease !important;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.content-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 8px 30px rgba(93, 64, 55, 0.15) !important;
+}
+
+.content-card .ant-card-body {
+  padding: 24px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+
+/* Action buttons matching dashboard style */
+.dashboard-action-btn {
+  background: #5d4037 !important;
+  border-color: #5d4037 !important;
+  border-radius: 12px !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+}
+
+.dashboard-action-btn:hover {
+  background: #4a2c20 !important;
+  border-color: #4a2c20 !important;
+}
+
+.dashboard-action-btn:disabled {
+  background: #d9d9d9 !important;
+  border-color: #d9d9d9 !important;
+}
+
+/* Progress bars */
+.ant-progress-bg {
+  background: #5d4037 !important;
+}
+
+/* Search and filter styling */
+.ant-input-search-button {
+  background: #5d4037 !important;
+  border-color: #5d4037 !important;
+}
+
+.ant-input-search-button:hover {
+  background: #4a2c20 !important;
+  border-color: #4a2c20 !important;
+}
+
+/* Select dropdown */
+.ant-select-selector {
+  border-radius: 8px !important;
+}
+
+/* Tabs styling */
+.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #5d4037 !important;
+}
+
+.ant-tabs-ink-bar {
+  background: #5d4037 !important;
+}
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+}
+
+.empty-state h3 {
+  color: #5d4037;
+  margin-bottom: 16px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.empty-state p {
+  margin-bottom: 24px;
+  font-size: 16px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .content-card .ant-card-body {
+    padding: 20px !important;
+  }
+  
+  .course-meta {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .empty-state {
+    padding: 40px 16px;
+  }
+}

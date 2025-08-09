@@ -8,20 +8,22 @@ datasource db {
 }
 
 model User {
-  id           String        @id @default(uuid())
-  firstName    String
-  lastName     String
-  role         Role          @default(STUDENT)
-  phone        String        @unique
-  imageUrl     String?
-  birthDate    DateTime?
-  email        String        @unique
-  password     String
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime      @updatedAt
-  address      Address?
-  certificates Certificate[]
-  enrollments  Enrollment[]
+  id                  String              @id @default(uuid())
+  firstName           String
+  lastName            String
+  role                Role                @default(STUDENT)
+  phone               String              @unique
+  imageUrl            String?
+  birthDate           DateTime?
+  email               String              @unique
+  password            String
+  createdAt           DateTime            @default(now())
+  updatedAt           DateTime            @updatedAt
+  address             Address?
+  certificates        Certificate[]
+  enrollments         Enrollment[]
+  attendances         Attendance[]        // Add attendance relation
+  studentApplications StudentApplication[] // Add application relation
 }
 
 model Address {
@@ -54,7 +56,7 @@ model Course {
   description       String?
   imageUrl          String?
   price             Float
-  duration          Int
+  duration          Int            // Total hours (e.g., 150 for Thai Massage)
   requirements      String?
   status            String         @default("INACTIVE")
   registrationStart DateTime?
@@ -64,6 +66,8 @@ model Course {
   enrollments       Enrollment[]
   organizations     Organization[]
   schedules         Schedules[]
+  batches           Batch[]        // Add batch relationship
+  studentApplications StudentApplication[] // Add application relationship
 }
 
 model Organization {
@@ -79,13 +83,16 @@ model Enrollment {
   id           String        @id @default(uuid())
   userId       String
   courseId     String
+  batchId      String?       // Add batch relationship
   status       String        @default("PENDING")
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @updatedAt
   course       Course        @relation(fields: [courseId], references: [id], onDelete: Cascade)
   user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  batch        Batch?        @relation(fields: [batchId], references: [id])
   payments     Payment[]
   paymentPlans PaymentPlan[]
+  attendances  Attendance[]  // Add attendance tracking
 
   @@unique([userId, courseId])
 }
@@ -191,4 +198,89 @@ model Certificate {
 enum Role {
   STUDENT
   ADMIN
+  TEACHER
+}
+
+// New models based on old system analysis
+model Batch {
+  id              String       @id @default(uuid())
+  courseId        String
+  batchNumber     Int          // รุ่นที่ (e.g., 30, 31, 32)
+  name            String       // "หลักสูตรนวดไทยเพื่อสุขภาพ รุ่นที่ 32"
+  startDate       DateTime
+  endDate         DateTime
+  maxStudents     Int          @default(30)
+  currentStudents Int          @default(0)
+  status          BatchStatus  @default(PLANNING)
+  totalHours      Int          @default(150) // Required hours from old system
+  description     String?
+  location        String?
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+  course          Course       @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  enrollments     Enrollment[]
+  attendances     Attendance[]
+  studentApplications StudentApplication[]
+
+  @@unique([courseId, batchNumber])
+}
+
+model Attendance {
+  id           String     @id @default(uuid())
+  enrollmentId String
+  batchId      String
+  userId       String
+  date         DateTime   @db.Date
+  timeIn       DateTime?
+  timeOut      DateTime?
+  totalHours   Float      @default(0)
+  status       AttendanceStatus @default(ABSENT)
+  notes        String?
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  enrollment   Enrollment @relation(fields: [enrollmentId], references: [id], onDelete: Cascade)
+  batch        Batch      @relation(fields: [batchId], references: [id], onDelete: Cascade)
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([enrollmentId, date])
+}
+
+model StudentApplication {
+  id              String            @id @default(uuid())
+  userId          String
+  courseId        String
+  batchId         String?
+  applicationDate DateTime          @default(now())
+  status          ApplicationStatus @default(PENDING)
+  personalInfo    Json              // Store personal details as JSON
+  documents       String[]          // Array of document URLs
+  notes           String?
+  reviewedBy      String?
+  reviewedAt      DateTime?
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+  user            User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  course          Course            @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  batch           Batch?            @relation(fields: [batchId], references: [id])
+}
+
+enum BatchStatus {
+  PLANNING
+  ACTIVE
+  COMPLETED
+  CANCELLED
+}
+
+enum AttendanceStatus {
+  PRESENT
+  ABSENT
+  LATE
+  EXCUSED
+}
+
+enum ApplicationStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  UNDER_REVIEW
 }

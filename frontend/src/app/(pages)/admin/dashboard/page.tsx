@@ -24,6 +24,7 @@ import {
   DollarOutlined,
 } from "@ant-design/icons";
 import "./dashboard.css";
+import '@ant-design/v5-patch-for-react-19';
 
 export default function AdminDashboard() {
   // Mock data

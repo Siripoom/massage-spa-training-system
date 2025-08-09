@@ -1,5 +1,6 @@
 "use client";
 
+import '@ant-design/v5-patch-for-react-19';
 import React, { useState } from 'react';
 import { Card, Typography, Table, Button, Tag, Space, Input, Select, Avatar, Progress, message, Modal, Descriptions } from 'antd';
 import { 

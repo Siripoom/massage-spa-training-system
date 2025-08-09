@@ -1,367 +1,496 @@
 // src/app/(pages)/student/dashboard/page.tsx
 "use client";
 
+import '@ant-design/v5-patch-for-react-19';
 import React, { useState, useEffect } from 'react';
-import { Card, Typography, Row, Col, Space, Spin, Empty, Button, message, Progress, Avatar, Badge } from 'antd';
+import { 
+  Card, 
+  Typography, 
+  Row, 
+  Col, 
+  Space, 
+  Spin, 
+  Button, 
+  message, 
+  Progress, 
+  Avatar, 
+  List,
+  Tag
+} from 'antd';
 import { 
   TrophyOutlined, 
   BookOutlined, 
-  ArrowRightOutlined, 
   CheckCircleOutlined,
-  StarOutlined,
   PlayCircleOutlined,
-  CalendarOutlined
+  ClockCircleOutlined,
+  FileTextOutlined
 } from '@ant-design/icons';
 import dayjs from 'dayjs';
 import { useRouter } from 'next/navigation';
 import 'dayjs/locale/th';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
+import relativeTime from 'dayjs/plugin/relativeTime';
 import './dashboard.css';
 
 dayjs.locale('th');
 dayjs.extend(localizedFormat);
+dayjs.extend(relativeTime);
 
-const { Title, Text } = Typography;
+const { Text } = Typography;
 
-// Mock interfaces based on the database schema provided
-interface Student {
+// Types for the new dashboard
+interface StudentData {
   id: string;
-  firstName: string;
-  lastName: string;
+  name: string;
   email: string;
-  profile_image_url?: string;
+  level: string;
+  joinDate: string;
+  avatar?: string;
 }
 
-interface Enrollment {
-  id: string;
-  course_id: string;
-  status: 'pending' | 'inprogress' | 'completed';
-}
-
-interface Course {
+interface EnrolledCourse {
   id: string;
   title: string;
+  description: string;
+  progress: number;
+  totalLessons: number;
+  completedLessons: number;
+  instructor: string;
+  thumbnail: string;
+  category: string;
+  duration: string;
+  lastAccessed: string;
+  nextLesson?: string;
 }
 
-interface Certificate {
+interface StudentStats {
+  totalCourses: number;
+  completedCourses: number;
+  inProgressCourses: number;
+  totalLearningTime: number;
+  achievedCertificates: number;
+  averageScore: number;
+}
+
+interface Activity {
   id: string;
-  template_id: string;
-  enrollment_id: string;
-  issued_date: string;
+  type: string;
+  title: string;
+  course: string;
+  timestamp: string;
+  iconName: string;
+  color: string;
+  score?: number;
 }
 
-const mockStudent: Student = {
-  id: 'user-stu-1234',
-  firstName: 'นักเรียน',
-  lastName: 'ทดสอบ',
-  email: 'student.test@example.com',
-  profile_image_url: 'https://placehold.co/100x100/A0A0A0/FFFFFF?text=ST',
-};
+interface UpcomingExam {
+  id: string;
+  title: string;
+  course: string;
+  date: string;
+  time: string;
+  duration: string;
+  type: string;
+}
 
-const mockEnrollments: Enrollment[] = [
-  { id: 'en-1', course_id: 'course-1', status: 'inprogress' },
-  { id: 'en-2', course_id: 'course-2', status: 'completed' },
-  { id: 'en-3', course_id: 'course-3', status: 'pending' },
-];
-
-const mockCourses: Course[] = [
-  { id: 'course-1', title: 'หลักสูตรการนวดแผนไทยพื้นฐาน' },
-  { id: 'course-2', title: 'หลักสูตรการนวดอโรม่า' },
-  { id: 'course-3', title: 'หลักสูตรการนวดบำบัด' },
-];
-
-const mockCertificates: Certificate[] = [
-  { id: 'cert-1', template_id: 'temp-1', enrollment_id: 'en-2', issued_date: dayjs().subtract(2, 'month').toISOString() },
-  { id: 'cert-2', template_id: 'temp-2', enrollment_id: 'en-1', issued_date: dayjs().toISOString() },
-];
-
-const getCourseById = (id: string) => mockCourses.find(c => c.id === id);
-
-export default function StudentDashboardPage() {
+export default function StudentDashboard() {
   const router = useRouter();
+  const [studentData, setStudentData] = useState<StudentData | null>(null);
+  const [enrolledCourses, setEnrolledCourses] = useState<EnrolledCourse[]>([]);
+  const [studentStats, setStudentStats] = useState<StudentStats>({
+    totalCourses: 0,
+    completedCourses: 0,
+    inProgressCourses: 0,
+    totalLearningTime: 0,
+    achievedCertificates: 0,
+    averageScore: 0
+  });
+  const [recentActivities, setRecentActivities] = useState<Activity[]>([]);
+  const [upcomingExams, setUpcomingExams] = useState<UpcomingExam[]>([]);
   const [loading, setLoading] = useState(true);
-  const [student, setStudent] = useState<Student | null>(null);
-  const [enrollments, setEnrollments] = useState<Enrollment[]>([]);
-  const [certificates, setCertificates] = useState<Certificate[]>([]);
 
+  // Simulate data loading
   useEffect(() => {
-    // Simulate API call to fetch student data
-    const fetchData = async () => {
+    const loadDashboardData = async () => {
       setLoading(true);
-      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate network delay
-      setStudent(mockStudent);
-      setEnrollments(mockEnrollments);
-      setCertificates(mockCertificates);
-      setLoading(false);
+      try {
+        // Simulate API calls
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        
+        // Mock student data
+        setStudentData({
+          id: '1',
+          name: 'นางสาวสมหญิง ใจดี',
+          email: 'student@example.com',
+          level: 'ระดับกลาง',
+          joinDate: '2024-01-15'
+        });
+
+        // Mock enrolled courses
+        setEnrolledCourses([
+          {
+            id: '1',
+            title: 'หลักสูตรนวดแผนไทยพื้นฐาน',
+            description: 'เรียนรู้เทคนิคการนวดแผนไทยแบบดั้งเดิม',
+            progress: 75,
+            totalLessons: 12,
+            completedLessons: 9,
+            instructor: 'อาจารย์สมชาย',
+            thumbnail: '/api/placeholder/300/200',
+            category: 'นวดแผนไทย',
+            duration: '6 สัปดาห์',
+            lastAccessed: '2024-01-20',
+            nextLesson: 'บทที่ 10: เทคนิคการนวดเท้า'
+          },
+          {
+            id: '2',
+            title: 'หลักสูตรนวดน้ำมันอโรมา',
+            description: 'ศิลปะการนวดด้วยน้ำมันหอมระเหย',
+            progress: 40,
+            totalLessons: 10,
+            completedLessons: 4,
+            instructor: 'อาจารย์สมหญิง',
+            thumbnail: '/api/placeholder/300/200',
+            category: 'อโรมาเธราปี',
+            duration: '4 สัปดาห์',
+            lastAccessed: '2024-01-18',
+            nextLesson: 'บทที่ 5: การเลือกใช้น้ำมันหอมระเหย'
+          },
+          {
+            id: '3',
+            title: 'หลักสูตรนวดหิน ร้อน',
+            description: 'เทคนิคการนวดด้วยหินร้อนเพื่อคลายกล้ามเนื้อ',
+            progress: 90,
+            totalLessons: 8,
+            completedLessons: 7,
+            instructor: 'อาจารย์สมศักดิ์',
+            thumbnail: '/api/placeholder/300/200',
+            category: 'สปาเธราปี',
+            duration: '3 สัปดาห์',
+            lastAccessed: '2024-01-19',
+            nextLesson: 'บทที่ 8: การดูแลและบำรุงรักษาหิน'
+          }
+        ]);
+
+        // Calculate stats
+        const totalCourses = 3;
+        const completedCourses = 1;
+        const inProgressCourses = 2;
+        const averageProgress = (75 + 40 + 90) / 3;
+        
+        setStudentStats({
+          totalCourses,
+          completedCourses,
+          inProgressCourses,
+          totalLearningTime: 45,
+          achievedCertificates: 1,
+          averageScore: Math.round(averageProgress)
+        });
+
+        // Mock recent activities
+        setRecentActivities([
+          {
+            id: '1',
+            type: 'lesson_completed',
+            title: 'เสร็จสิ้นบทเรียน: เทคนิคการนวดไหล่และคอ',
+            course: 'หลักสูตรนวดแผนไทยพื้นฐาน',
+            timestamp: '2024-01-20T10:30:00',
+            iconName: 'CheckCircleOutlined',
+            color: '#52c41a'
+          },
+          {
+            id: '2',
+            type: 'exam_passed',
+            title: 'สอบผ่านแบบทดสอบท้ายบท',
+            course: 'หลักสูตรนวดหินร้อน',
+            score: 85,
+            timestamp: '2024-01-19T14:20:00',
+            iconName: 'TrophyOutlined',
+            color: '#faad14'
+          },
+          {
+            id: '3',
+            type: 'certificate_earned',
+            title: 'ได้รับใบประกาศนียบัตร',
+            course: 'หลักสูตรนวดแผนไทยขั้นพื้นฐาน',
+            timestamp: '2024-01-18T16:45:00',
+            iconName: 'StarOutlined',
+            color: '#722ed1'
+          },
+          {
+            id: '4',
+            type: 'course_enrolled',
+            title: 'ลงทะเบียนเรียนหลักสูตรใหม่',
+            course: 'หลักสูตรนวดน้ำมันอโรมา',
+            timestamp: '2024-01-17T09:15:00',
+            iconName: 'BookOutlined',
+            color: '#1890ff'
+          }
+        ]);
+
+        // Mock upcoming exams
+        setUpcomingExams([
+          {
+            id: '1',
+            title: 'แบบทดสอบท้ายหลักสูตร: นวดแผนไทยพื้นฐาน',
+            course: 'หลักสูตรนวดแผนไทยพื้นฐาน',
+            date: '2024-01-25',
+            time: '14:00',
+            duration: '90 นาที',
+            type: 'final_exam'
+          },
+          {
+            id: '2',
+            title: 'แบบทดสอบกลางหลักสูตร: นวดน้ำมันอโรมา',
+            course: 'หลักสูตรนวดน้ำมันอโรมา',
+            date: '2024-01-28',
+            time: '10:00',
+            duration: '60 นาที',
+            type: 'mid_exam'
+          }
+        ]);
+
+      } catch (error) {
+        console.error('Error loading dashboard data:', error);
+        message.error('เกิดข้อผิดพลาดในการโหลดข้อมูล');
+      } finally {
+        setLoading(false);
+      }
     };
 
-    fetchData();
+    loadDashboardData();
   }, []);
+
+  const handleViewAllCourses = () => {
+    router.push('/student/courses');
+  };
+
+  const formatTimeAgo = (timestamp: string) => {
+    return dayjs(timestamp).fromNow();
+  };
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-screen">
-        <Spin size="large">
-          <div className="min-h-[200px] flex items-center justify-center">
-            <span className="text-gray-600 ml-2">กำลังโหลดข้อมูล...</span>
-          </div>
-        </Spin>
+      <div className="dashboard-loading">
+        <Spin size="large" />
+        <Text style={{ marginTop: 16, display: 'block', textAlign: 'center' }}>
+          กำลังโหลดข้อมูล...
+        </Text>
       </div>
     );
   }
 
   return (
-    <div className="dashboard-container">
+    <div className="dashboard-container fade-in-up">
       {/* Page Header */}
       <div className="dashboard-header">
         <div>
-          <h1 className="dashboard-title">แดชบอร์ดนักเรียน</h1>
+          <h1 className="dashboard-title">สวัสดี, {studentData?.name}</h1>
           <p className="dashboard-subtitle">
-            ภาพรวมการเรียนรู้และความก้าวหน้าของคุณ - สวัสดี, {student?.firstName}! 👋
+            ยินดีต้อนรับสู่แดชบอร์ดนักเรียน - เริ่มต้นการเรียนรู้ของคุณวันนี้
           </p>
         </div>
-        <div className="hidden md:block">
-          <span className="text-gray-600 text-sm">
-            <CalendarOutlined className="text-orange-500 mr-2" />
-            {dayjs().format('dddd, LL')}
-          </span>
-        </div>
+        <Button type="primary" className="dashboard-action-btn">
+          ดูหลักสูตรทั้งหมด
+        </Button>
       </div>
 
       {/* Statistics Cards */}
       <Row gutter={[24, 24]} className="stats-row">
-        <Col xs={24} sm={8}>
-          <Card className="stat-card">
-            <div className="stat-content">
-              <div className="stat-icon" style={{ color: '#5d4037' }}>
-                <BookOutlined />
-              </div>
-              <div className="stat-details">
-                <div className="stat-value" style={{ color: '#5d4037' }}>
-                  {enrollments.length}
+        {[
+          {
+            title: "หลักสูตรทั้งหมด",
+            value: studentStats.totalCourses,
+            prefix: <BookOutlined />,
+            color: "#5d4037",
+          },
+          {
+            title: "หลักสูตรที่จบแล้ว",
+            value: studentStats.completedCourses,
+            prefix: <CheckCircleOutlined />,
+            color: "#8d6e63",
+          },
+          {
+            title: "กำลังเรียน",
+            value: studentStats.inProgressCourses,
+            prefix: <PlayCircleOutlined />,
+            color: "#a1887f",
+          },
+          {
+            title: "ใบประกาศนียบัตร",
+            value: studentStats.achievedCertificates,
+            prefix: <TrophyOutlined />,
+            color: "#6d4c41",
+          },
+        ].map((stat, index) => (
+          <Col xs={24} sm={12} lg={6} key={index}>
+            <Card className="stat-card">
+              <div className="stat-content">
+                <div className="stat-icon" style={{ color: stat.color }}>
+                  {stat.prefix}
                 </div>
-                <div className="stat-title">หลักสูตรทั้งหมด</div>
-                <div className="stat-trend">
-                  <span className="trend-up">
-                    กำลังเรียนอยู่ {enrollments.filter(e => e.status === 'inprogress').length} หลักสูตร
-                  </span>
-                </div>
-              </div>
-            </div>
-          </Card>
-        </Col>
-        <Col xs={24} sm={8}>
-          <Card className="stat-card">
-            <div className="stat-content">
-              <div className="stat-icon" style={{ color: '#52c41a' }}>
-                <CheckCircleOutlined />
-              </div>
-              <div className="stat-details">
-                <div className="stat-value" style={{ color: '#52c41a' }}>
-                  {enrollments.filter(e => e.status === 'completed').length}
-                </div>
-                <div className="stat-title">เรียนจบแล้ว</div>
-                <div className="stat-trend">
-                  <span className="trend-up">
-                    ความสำเร็จในการเรียน
-                  </span>
-                </div>
-              </div>
-            </div>
-          </Card>
-        </Col>
-        <Col xs={24} sm={8}>
-          <Card className="stat-card">
-            <div className="stat-content">
-              <div className="stat-icon" style={{ color: '#faad14' }}>
-                <TrophyOutlined />
-              </div>
-              <div className="stat-details">
-                <div className="stat-value" style={{ color: '#faad14' }}>
-                  {certificates.length}
-                </div>
-                <div className="stat-title">เกียรติบัตร</div>
-                <div className="stat-trend">
-                  <span className="trend-up">
-                    รางวัลที่ได้รับ
-                  </span>
+                <div className="stat-details">
+                  <div className="stat-value" style={{ color: stat.color }}>
+                    {stat.value}
+                  </div>
+                  <div className="stat-title">{stat.title}</div>
                 </div>
               </div>
-            </div>
-          </Card>
-        </Col>
+            </Card>
+          </Col>
+        ))}
       </Row>
 
       <Row gutter={[24, 24]} className="content-row">
-        {/* My Courses Section */}
-        <Col xs={24} lg={16}>
-          <Card 
-            title="หลักสูตรของฉัน"
+        {/* Course Progress */}
+        <Col xs={24} lg={12}>
+          <Card
+            title="ความคืบหน้าหลักสูตร"
             className="content-card"
             extra={
               <Button 
                 type="link" 
-                onClick={() => router.push('/student/courses')}
+                onClick={handleViewAllCourses}
                 className="card-action-btn"
               >
-                ดูทั้งหมด <ArrowRightOutlined />
+                ดูทั้งหมด
               </Button>
             }
           >
             <div className="course-progress-list">
-              {enrollments.length > 0 ? (
-                enrollments.slice(0, 3).map(en => {
-                  const course = getCourseById(en.course_id);
-                  const completionPercentage = en.status === 'completed' ? 100 : 
-                                             en.status === 'inprogress' ? 65 : 0;
-                  
-                  return (
-                    <div key={en.id} className="course-progress-item">
-                      <div className="course-header">
-                        <div className="course-info">
-                          <div className="course-name">{course?.title || 'Unknown Course'}</div>
-                          <div className="course-meta">
-                            <span className="course-students">
-                              {en.status === 'completed' && <Badge status="success" text="เรียนจบแล้ว" />}
-                              {en.status === 'inprogress' && <Badge status="processing" text="กำลังเรียน" />}
-                              {en.status === 'pending' && <Badge status="warning" text="รอการอนุมัติ" />}
-                            </span>
-                            <Button 
-                              type="primary" 
-                              size="small"
-                              className="dashboard-action-btn"
-                              style={{ fontSize: '12px', height: '28px', padding: '0 12px' }}
-                              icon={<PlayCircleOutlined />}
-                              disabled={en.status === 'pending'}
-                            >
-                              {en.status === 'completed' ? 'ทบทวน' : 'เรียนต่อ'}
-                            </Button>
-                          </div>
-                        </div>
-                        <span 
-                          className="course-percentage" 
-                          style={{ 
-                            color: en.status === 'completed' ? '#52c41a' : '#1890ff' 
-                          }}
-                        >
-                          {completionPercentage}%
+              {enrolledCourses.map((course, index) => (
+                <div key={index} className="course-progress-item">
+                  <div className="course-header">
+                    <div className="course-info">
+                      <div className="course-name">{course.title}</div>
+                      <div className="course-meta">
+                        <span className="course-students">
+                          {course.completedLessons}/{course.totalLessons} บท
                         </span>
+                        <Tag color="blue">
+                          {course.category}
+                        </Tag>
                       </div>
-                      {en.status !== 'pending' && (
-                        <Progress 
-                          percent={completionPercentage} 
-                          strokeColor={en.status === 'completed' ? '#52c41a' : '#1890ff'}
-                          trailColor="#f5f5f5"
-                          size={8}
-                          className="course-progress-bar"
-                        />
-                      )}
                     </div>
-                  );
-                })
-              ) : (
-                <Empty 
-                  description={
-                    <div className="text-center py-8">
-                      <BookOutlined className="text-4xl text-gray-300 mb-4" />
-                      <p className="text-gray-500 mb-4">ยังไม่มีหลักสูตรที่ลงทะเบียน</p>
-                      <Button 
-                        type="primary" 
-                        className="dashboard-action-btn"
-                        onClick={() => router.push('/student/courses')}
-                      >
-                        เลือกหลักสูตร
-                      </Button>
-                    </div>
-                  } 
-                />
-              )}
+                    <span
+                      className="course-percentage"
+                      style={{ color: course.progress > 70 ? "#8bc34a" : course.progress > 40 ? "#2196f3" : "#ff9800" }}
+                    >
+                      {course.progress}%
+                    </span>
+                  </div>
+                  <Progress
+                    percent={course.progress}
+                    strokeColor={course.progress > 70 ? "#8bc34a" : course.progress > 40 ? "#2196f3" : "#ff9800"}
+                    trailColor="#f5f5f5"
+                    size={8}
+                    className="course-progress-bar"
+                  />
+                </div>
+              ))}
             </div>
           </Card>
         </Col>
-
-        {/* Right Column */}
-        <Col xs={24} lg={8}>
-          <Space direction="vertical" className="w-full" size="large">
-            {/* Profile Card */}
-            <Card className="content-card" title="โปรไฟล์ของฉัน">
-              <div className="text-center">
-                <Avatar 
-                  size={80} 
-                  src={student?.profile_image_url || 'https://placehold.co/100x100/A0A0A0/FFFFFF?text=ST'}
-                  className="mb-4"
-                  style={{ border: '4px solid #f0f0f0' }}
-                />
-                <Title level={4} className="mb-1" style={{ color: '#5d4037' }}>
-                  {student?.firstName} {student?.lastName}
-                </Title>
-                <Text className="text-gray-600 block mb-4">{student?.email}</Text>
-                <Button
-                  type="default"
-                  className="card-action-btn"
-                  style={{ borderColor: '#5d4037', color: '#5d4037' }}
-                  onClick={() => message.info('ฟังก์ชันแก้ไขโปรไฟล์ยังไม่พร้อมใช้งาน')}
-                >
-                  แก้ไขโปรไฟล์
-                </Button>
-              </div>
-            </Card>
-
-            {/* Certificates Card */}
-            <Card
-              title="เกียรติบัตรของฉัน"
-              className="content-card"
-              extra={
-                certificates.length > 0 && (
-                  <Button 
-                    type="link" 
-                    onClick={() => router.push('/student/certificates')}
-                    className="card-action-btn"
-                  >
-                    ดูทั้งหมด
-                  </Button>
-                )
-              }
-            >
-              {certificates.length > 0 ? (
-                <div className="activity-list">
-                  {certificates.slice(0, 2).map(cert => {
-                    const enrollment = enrollments.find(e => e.id === cert.enrollment_id);
-                    const course = enrollment ? getCourseById(enrollment.course_id) : null;
-                    return (
-                      <div key={cert.id} className="activity-item" style={{ padding: '12px 0', borderBottom: '1px solid #f5f5f5' }}>
-                        <div style={{ display: 'flex', alignItems: 'start', gap: '12px' }}>
-                          <Avatar 
-                            style={{ backgroundColor: '#faad14', flexShrink: 0 }}
-                            icon={<StarOutlined />}
-                            size={40}
-                          />
-                          <div style={{ flex: 1 }}>
-                            <div className="activity-title" style={{ fontSize: '14px', fontWeight: 600, color: '#333', marginBottom: '4px' }}>
-                              {course?.title || 'Unknown Course'}
-                            </div>
-                            <div className="activity-text" style={{ color: '#666', fontSize: '12px' }}>
-                              ออกเมื่อ: {dayjs(cert.issued_date).format('DD MMM YYYY')}
-                            </div>
-                          </div>
+        {/* Recent Activities */}
+        <Col xs={24} lg={12}>
+          <Card
+            title="กิจกรรมล่าสุด"
+            className="content-card"
+            extra={
+              <Button type="link" className="card-action-btn">
+                ดูทั้งหมด
+              </Button>
+            }
+          >
+            <List
+              itemLayout="horizontal"
+              dataSource={recentActivities}
+              className="activity-list"
+              renderItem={(item) => (
+                <List.Item className="activity-item">
+                  <List.Item.Meta
+                    avatar={
+                      <Avatar
+                        style={{ backgroundColor: item.color }}
+                        className="activity-avatar"
+                      >
+                        {item.title.charAt(0)}
+                      </Avatar>
+                    }
+                    title={<span className="activity-title">{item.title}</span>}
+                    description={
+                      <div className="activity-description">
+                        <div className="activity-text">{item.course}</div>
+                        <div className="activity-time">
+                          <ClockCircleOutlined className="time-icon" />
+                          {formatTimeAgo(item.timestamp)}
                         </div>
                       </div>
-                    );
-                  })}
-                </div>
-              ) : (
-                <Empty 
-                  image={<TrophyOutlined className="text-4xl text-gray-300" />}
-                  description={
-                    <div className="text-center">
-                      <p className="text-gray-500 mb-2">ยังไม่มีเกียรติบัตร</p>
-                      <p className="text-xs text-gray-400">เรียนจบหลักสูตรเพื่อรับเกียรติบัตร</p>
-                    </div>
-                  }
-                />
+                    }
+                  />
+                </List.Item>
               )}
-            </Card>
-          </Space>
+            />
+          </Card>
+        </Col>
+
+        {/* Upcoming Exams */}
+        <Col xs={24}>
+          <Card
+            title="การสอบที่กำลังจะมาถึง"
+            className="content-card"
+            extra={
+              <Space>
+                <Button type="link" className="card-action-btn">
+                  ดูตารางเต็ม
+                </Button>
+                <Button type="primary" className="dashboard-action-btn">
+                  จัดการตารางสอบ
+                </Button>
+              </Space>
+            }
+          >
+            <List
+              itemLayout="horizontal"
+              dataSource={upcomingExams}
+              className="exam-list"
+              renderItem={(item) => (
+                <List.Item
+                  className="exam-item"
+                  actions={[
+                    <Button key="view" type="link" className="exam-action-btn">
+                      ดูรายละเอียด
+                    </Button>,
+                  ]}
+                >
+                  <List.Item.Meta
+                    avatar={<FileTextOutlined className="exam-icon" />}
+                    title={
+                      <div className="exam-header">
+                        <span className="exam-course-name">{item.title}</span>
+                        <div className="exam-tags">
+                          <Tag color="blue">
+                            {item.type === 'final_exam' ? 'Final' : 'Mid'}
+                          </Tag>
+                        </div>
+                      </div>
+                    }
+                    description={
+                      <div className="exam-details">
+                        <span className="exam-date">
+                          วันที่: {dayjs(item.date).format('DD MMM YYYY')}
+                        </span>
+                        <span className="exam-time">เวลา: {item.time} น.</span>
+                        <span className="exam-students">
+                          ระยะเวลา: {item.duration}
+                        </span>
+                      </div>
+                    }
+                  />
+                </List.Item>
+              )}
+            />
+          </Card>
         </Col>
       </Row>
     </div>

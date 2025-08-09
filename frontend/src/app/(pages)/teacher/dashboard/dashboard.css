@@ -1,0 +1,599 @@
+/* Teacher Dashboard - Student Dashboard Style */
+
+.teacher-dashboard {
+  padding: 0;
+  background: transparent;
+}
+
+.dashboard-loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  background: transparent;
+}
+
+/* Dashboard Container - Admin Style */
+.dashboard-container {
+  padding: 0;
+  background: transparent;
+}
+
+/* Dashboard Header - Admin Style */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.dashboard-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #5d4037;
+  margin: 0 0 8px 0;
+  font-family: "Georgia", serif;
+}
+
+.dashboard-subtitle {
+  font-size: 16px;
+  color: #8a8a8a;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.dashboard-action-btn {
+  background: #5d4037 !important;
+  border-color: #5d4037 !important;
+  border-radius: 8px !important;
+  height: 40px !important;
+  padding: 0 24px !important;
+  font-weight: 500 !important;
+}
+
+.dashboard-action-btn:hover {
+  background: #4a2c20 !important;
+  border-color: #4a2c20 !important;
+}
+
+/* Statistics Row - Admin Style */
+.stats-row {
+  margin-bottom: 32px;
+}
+
+.stat-card {
+  border: none !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 20px rgba(93, 64, 55, 0.08) !important;
+  transition: all 0.3s ease !important;
+  overflow: hidden !important;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 8px 30px rgba(93, 64, 55, 0.15) !important;
+}
+
+.stat-card .ant-card-body {
+  padding: 24px !important;
+}
+
+.stat-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.stat-icon {
+  font-size: 32px;
+  padding: 16px;
+  background: rgba(93, 64, 55, 0.08);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 64px;
+  height: 64px;
+}
+
+.stat-details {
+  flex: 1;
+}
+
+.stat-value {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.stat-title {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.stat-trend {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.trend-up {
+  color: #52c41a;
+}
+
+.trend-down {
+  color: #ff4d4f;
+}
+
+/* Content Row - Admin Style */
+.content-row {
+  margin-bottom: 32px;
+}
+
+.content-card {
+  border: none !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 20px rgba(93, 64, 55, 0.08) !important;
+  height: 100% !important;
+}
+
+.content-card .ant-card-head {
+  border-bottom: 1px solid #f5f5f5 !important;
+  padding: 0 24px !important;
+}
+
+.content-card .ant-card-head-title {
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  color: #5d4037 !important;
+  padding: 20px 0 !important;
+}
+
+.content-card .ant-card-body {
+  padding: 24px !important;
+}
+
+.card-action-btn {
+  color: #5d4037 !important;
+  font-weight: 500 !important;
+}
+
+.card-action-btn:hover {
+  color: #4a2c20 !important;
+}
+
+/* Course Progress - Admin Style */
+.course-progress-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.course-progress-item {
+  padding: 0;
+}
+
+.course-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.course-info {
+  flex: 1;
+}
+
+.course-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+.course-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.course-students {
+  font-size: 13px;
+  color: #666;
+  font-weight: 500;
+}
+
+.course-progress-bar {
+  margin-top: 16px;
+}
+
+.course-progress-bar .ant-progress-bg {
+  background: linear-gradient(90deg, #5d4037, #4a2c20) !important;
+}
+
+/* Activity List - Admin Style */
+.activity-list {
+  margin: 0;
+}
+
+.activity-list .ant-list-item {
+  border-bottom: 1px solid #f5f5f5 !important;
+  padding: 16px 0 !important;
+}
+
+.activity-list .ant-list-item:last-child {
+  border-bottom: none !important;
+}
+
+.activity-item {
+  transition: all 0.2s ease;
+}
+
+.activity-item:hover {
+  background: rgba(93, 64, 55, 0.02);
+  border-radius: 8px;
+  margin: 0 -8px;
+  padding: 16px 8px !important;
+}
+
+.activity-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.activity-description {
+  margin-bottom: 4px;
+}
+
+.activity-text {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.4;
+}
+
+.activity-time {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: #999;
+  margin-top: 4px;
+}
+
+.time-icon {
+  font-size: 11px;
+}
+
+/* Animation */
+.fade-in-up {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Progress bars */
+.ant-progress-bg {
+  background: linear-gradient(90deg, #5d4037, #4a2c20) !important;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .dashboard-header {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+  }
+  
+  .stat-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+  
+  .stat-icon {
+    align-self: center;
+  }
+  
+  .course-header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+  
+  .activity-item:hover {
+    margin: 0;
+    padding: 16px 0 !important;
+    background: transparent;
+  }
+}
+
+@media (max-width: 576px) {
+  .dashboard-title {
+    font-size: 24px;
+  }
+  
+  .dashboard-subtitle {
+    font-size: 14px;
+  }
+  
+  .stat-value {
+    font-size: 24px;
+  }
+  
+  .content-card .ant-card-head-title {
+    font-size: 16px !important;
+  }
+}
+
+/* Course card styles - Match student dashboard */
+.course-item {
+  border: 1px solid rgba(93, 64, 55, 0.1) !important;
+  border-radius: 12px !important;
+  padding: 16px !important;
+  margin-bottom: 16px !important;
+  transition: all 0.3s ease !important;
+}
+
+.course-item:hover {
+  border-color: rgba(93, 64, 55, 0.3) !important;
+  box-shadow: 0 4px 15px rgba(93, 64, 55, 0.1) !important;
+}
+
+.course-title {
+  color: #5d4037 !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  margin-bottom: 8px !important;
+}
+
+.course-stats {
+  color: #666 !important;
+  font-size: 14px !important;
+}
+
+/* Student list styles - Match student dashboard */
+.student-item {
+  border-bottom: 1px solid rgba(93, 64, 55, 0.1) !important;
+  padding: 16px 0 !important;
+}
+
+.student-item:last-child {
+  border-bottom: none !important;
+}
+
+.student-avatar {
+  background: linear-gradient(135deg, #5d4037, #4a2c20) !important;
+}
+
+.student-name {
+  color: #333 !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+}
+
+.student-course {
+  color: #666 !important;
+  font-size: 12px !important;
+}
+
+.student-progress {
+  margin-top: 8px !important;
+}
+
+.student-progress .ant-progress-bg {
+  background: linear-gradient(90deg, #5d4037, #4a2c20) !important;
+}
+
+/* Assignment styles - Match student dashboard */
+.assignment-item {
+  border: 1px solid rgba(93, 64, 55, 0.1) !important;
+  border-radius: 12px !important;
+  padding: 16px !important;
+  margin-bottom: 12px !important;
+  transition: all 0.3s ease !important;
+}
+
+.assignment-item:hover {
+  border-color: rgba(93, 64, 55, 0.3) !important;
+  background: rgba(93, 64, 55, 0.02) !important;
+}
+
+.assignment-title {
+  color: #5d4037 !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  margin-bottom: 4px !important;
+}
+
+.assignment-meta {
+  color: #666 !important;
+  font-size: 12px !important;
+}
+
+/* Activity list styles - Match student dashboard */
+.activity-list .ant-list-item {
+  border-bottom: 1px solid rgba(93, 64, 55, 0.1) !important;
+  padding: 16px 0 !important;
+}
+
+.activity-list .ant-list-item:last-child {
+  border-bottom: none !important;
+}
+
+.activity-icon {
+  background: rgba(93, 64, 55, 0.1) !important;
+  color: #5d4037 !important;
+  border-radius: 8px !important;
+  width: 32px !important;
+  height: 32px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.activity-title {
+  color: #333 !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  margin-bottom: 4px !important;
+}
+
+.activity-description {
+  color: #666 !important;
+  font-size: 12px !important;
+  margin-bottom: 4px !important;
+}
+
+.activity-time {
+  color: #999 !important;
+  font-size: 11px !important;
+}
+
+/* Action buttons - Match student dashboard */
+.dashboard-action-btn {
+  background: #5d4037 !important;
+  border-color: #5d4037 !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  height: 36px !important;
+}
+
+.dashboard-action-btn:hover {
+  background: #4a2c20 !important;
+  border-color: #4a2c20 !important;
+}
+
+.action-btn {
+  background: #5d4037 !important;
+  border-color: #5d4037 !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  height: 36px !important;
+}
+
+.action-btn:hover {
+  background: #4a2c20 !important;
+  border-color: #4a2c20 !important;
+}
+
+.secondary-btn {
+  background: white !important;
+  border: 1px solid rgba(93, 64, 55, 0.3) !important;
+  color: #5d4037 !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  height: 36px !important;
+}
+
+.secondary-btn:hover {
+  background: rgba(93, 64, 55, 0.05) !important;
+  border-color: rgba(93, 64, 55, 0.5) !important;
+  color: #5d4037 !important;
+}
+
+/* Status badges - Match student dashboard */
+.status-badge {
+  border-radius: 12px !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  padding: 4px 8px !important;
+}
+
+.status-active {
+  background: rgba(82, 196, 26, 0.1) !important;
+  color: #52c41a !important;
+  border: 1px solid rgba(82, 196, 26, 0.2) !important;
+}
+
+.status-pending {
+  background: rgba(250, 173, 20, 0.1) !important;
+  color: #faad14 !important;
+  border: 1px solid rgba(250, 173, 20, 0.2) !important;
+}
+
+.status-completed {
+  background: rgba(93, 64, 55, 0.1) !important;
+  color: #5d4037 !important;
+  border: 1px solid rgba(93, 64, 55, 0.2) !important;
+}
+
+.status-draft {
+  background: rgba(250, 173, 20, 0.1) !important;
+  color: #faad14 !important;
+  border: 1px solid rgba(250, 173, 20, 0.2) !important;
+}
+
+/* Welcome section styles - Match student dashboard */
+.welcome-badge {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 16px;
+  backdrop-filter: blur(10px);
+  text-align: center;
+}
+
+.welcome-number {
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 4px;
+}
+
+.welcome-label {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Progress bars - Match student dashboard */
+.ant-progress-bg {
+  background: linear-gradient(90deg, #5d4037, #4a2c20) !important;
+}
+
+/* Tags - Match student dashboard */
+.ant-tag {
+  border-radius: 8px !important;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .teacher-header-section {
+    padding: 24px 20px;
+  }
+  
+  .stat-card {
+    margin-bottom: 16px;
+  }
+  
+  .dashboard-container {
+    padding: 16px 12px;
+  }
+  
+  .welcome-badge {
+    padding: 12px;
+  }
+  
+  .welcome-number {
+    font-size: 20px;
+  }
+}

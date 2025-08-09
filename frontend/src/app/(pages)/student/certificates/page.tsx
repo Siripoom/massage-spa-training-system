@@ -1,6 +1,7 @@
 // src/app/(pages)/student/certificates/page.tsx
 "use client";
 
+import '@ant-design/v5-patch-for-react-19';
 import React, { useState, useEffect } from 'react';
 import { Card, Typography, Row, Col, Button, Empty, Input, Select, Badge, Space, Tag, message, Modal, Divider } from 'antd';
 import { 
@@ -40,57 +41,63 @@ interface Certificate {
   verificationCode: string;
 }
 
-// Mock data
-const mockCertificates: Certificate[] = [
-  {
-    id: 'cert-001',
-    courseName: 'หลักสูตรการนวดแผนไทยพื้นฐาน',
-    courseId: 'course-1',
-    studentName: 'นักเรียน ทดสอบ',
-    instructorName: 'อาจารย์สมศรี ใจดี',
-    issueDate: dayjs().subtract(1, 'month').toISOString(),
-    completionDate: dayjs().subtract(1, 'month').subtract(3, 'day').toISOString(),
-    certificateNumber: 'MT-2024-001',
-    grade: 'ดีเยี่ยม',
-    hours: 30,
-    skills: ['การนวดแผนไทย', 'การใช้แรงกด', 'การดูแลสุขภาพ'],
-    status: 'active',
-    template: 'traditional',
-    verificationCode: 'VER-2024-001'
-  },
-  {
-    id: 'cert-002',
-    courseName: 'หลักสูตรการนวดอโรม่า',
-    courseId: 'course-2',
-    studentName: 'นักเรียน ทดสอบ',
-    instructorName: 'อาจารย์วิไล สวยงาม',
-    issueDate: dayjs().subtract(2, 'week').toISOString(),
-    completionDate: dayjs().subtract(2, 'week').subtract(2, 'day').toISOString(),
-    certificateNumber: 'AR-2024-002',
-    grade: 'ดี',
-    hours: 25,
-    skills: ['การนวดอโรม่า', 'การผสมน้ำมันหอมระเหย', 'การบำบัดด้วยกลิ่น'],
-    status: 'active',
-    template: 'spa',
-    verificationCode: 'VER-2024-002'
-  },
-  {
-    id: 'cert-003',
-    courseName: 'หลักสูตรการนวดเพื่อสุขภาพ',
-    courseId: 'course-3',
-    studentName: 'นักเรียน ทดสอบ',
-    instructorName: 'อาจารย์ดร.สุธี เก่งมาก',
-    issueDate: dayjs().subtract(6, 'month').toISOString(),
-    completionDate: dayjs().subtract(6, 'month').subtract(5, 'day').toISOString(),
-    certificateNumber: 'HM-2023-045',
-    grade: 'ดีมาก',
-    hours: 40,
-    skills: ['การนวดบำบัด', 'การดูแลผู้ป่วย', 'การประเมินอาการ'],
-    status: 'active',
-    template: 'modern',
-    verificationCode: 'VER-2023-045'
-  }
-];
+// Generate mock data with static dates to prevent hydration mismatches
+const generateMockCertificates = () => {
+  const now = new Date();
+  const oneMonth = 30 * 24 * 60 * 60 * 1000;
+  const oneWeek = 7 * 24 * 60 * 60 * 1000;
+  
+  return [
+    {
+      id: 'cert-001',
+      courseName: 'หลักสูตรการนวดแผนไทยพื้นฐาน',
+      courseId: 'course-1',
+      studentName: 'นักเรียน ทดสอบ',
+      instructorName: 'อาจารย์สมศรี ใจดี',
+      issueDate: new Date(now.getTime() - oneMonth).toISOString(),
+      completionDate: new Date(now.getTime() - oneMonth - (3 * 24 * 60 * 60 * 1000)).toISOString(),
+      certificateNumber: 'MT-2024-001',
+      grade: 'ดีเยี่ยม',
+      hours: 30,
+      skills: ['การนวดแผนไทย', 'การใช้แรงกด', 'การดูแลสุขภาพ'],
+      status: 'active' as const,
+      template: 'traditional' as const,
+      verificationCode: 'VER-2024-001'
+    },
+    {
+      id: 'cert-002',
+      courseName: 'หลักสูตรการนวดอโรม่า',
+      courseId: 'course-2',
+      studentName: 'นักเรียน ทดสอบ',
+      instructorName: 'อาจารย์วิไล สวยงาม',
+      issueDate: new Date(now.getTime() - 2 * oneWeek).toISOString(),
+      completionDate: new Date(now.getTime() - 2 * oneWeek - (2 * 24 * 60 * 60 * 1000)).toISOString(),
+      certificateNumber: 'AR-2024-002',
+      grade: 'ดี',
+      hours: 25,
+      skills: ['การนวดอโรม่า', 'การผสมน้ำมันหอมระเหย', 'การบำบัดด้วยกลิ่น'],
+      status: 'active' as const,
+      template: 'spa' as const,
+      verificationCode: 'VER-2024-002'
+    },
+    {
+      id: 'cert-003',
+      courseName: 'หลักสูตรการนวดเพื่อสุขภาพ',
+      courseId: 'course-3',
+      studentName: 'นักเรียน ทดสอบ',
+      instructorName: 'อาจารย์ดร.สุธี เก่งมาก',
+      issueDate: new Date(now.getTime() - 6 * oneMonth).toISOString(),
+      completionDate: new Date(now.getTime() - 6 * oneMonth - (5 * 24 * 60 * 60 * 1000)).toISOString(),
+      certificateNumber: 'HM-2023-045',
+      grade: 'ดีมาก',
+      hours: 40,
+      skills: ['การนวดบำบัด', 'การดูแลผู้ป่วย', 'การประเมินอาการ'],
+      status: 'active' as const,
+      template: 'modern' as const,
+      verificationCode: 'VER-2023-045'
+    }
+  ];
+};
 
 export default function StudentCertificatesPage() {
   const [certificates, setCertificates] = useState<Certificate[]>([]);
@@ -101,8 +108,9 @@ export default function StudentCertificatesPage() {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   useEffect(() => {
-    // Simulate loading data
-    setCertificates(mockCertificates);
+    // Use client-side data generation to prevent hydration mismatch
+    const mockData = generateMockCertificates();
+    setCertificates(mockData);
   }, []);
 
   useEffect(() => {
@@ -353,7 +361,7 @@ export default function StudentCertificatesPage() {
       {filteredCertificates.length > 0 ? (
         <Row gutter={[24, 24]}>
           {filteredCertificates.map(certificate => (
-            <Col xs={24} sm={12} lg={8} xl={6} key={certificate.id}>
+            <Col xs={24} sm={12} lg={8} xl={8} key={certificate.id}>
               {renderCertificateCard(certificate)}
             </Col>
           ))}
