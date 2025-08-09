@@ -5,7 +5,7 @@ import {
   Row,
   Col,
   Card,
-  Statistic,
+  // Statistic,
   Progress,
   List,
   Avatar,
@@ -17,13 +17,14 @@ import {
   UserOutlined,
   BookOutlined,
   FileTextOutlined,
-  TrophyOutlined,
+  // TrophyOutlined,
   RiseOutlined,
   FallOutlined,
   ClockCircleOutlined,
   DollarOutlined,
 } from "@ant-design/icons";
 import "./dashboard.css";
+import '@ant-design/v5-patch-for-react-19';
 
 export default function AdminDashboard() {
   // Mock data
@@ -239,7 +240,7 @@ export default function AdminDashboard() {
                           color={
                             course.ministry === "สาธารณสุข" ? "green" : "blue"
                           }
-                          size="small"
+                          // size="small"
                         >
                           {course.ministry}
                         </Tag>
@@ -256,7 +257,7 @@ export default function AdminDashboard() {
                     percent={course.progress}
                     strokeColor={course.color}
                     trailColor="#f5f5f5"
-                    strokeWidth={8}
+                    size={8}
                     className="course-progress-bar"
                   />
                 </div>

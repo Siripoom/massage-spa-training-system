@@ -14,7 +14,6 @@ import {
   Space,
   InputNumber,
   Upload,
-  message,
   Tooltip,
 } from "antd";
 import {
@@ -41,10 +40,11 @@ import {
 import type { Color } from "antd/es/color-picker";
 import type { UploadProps } from "antd";
 import "./setting.css";
+import '@ant-design/v5-patch-for-react-19';
 
 const { Title, Text } = Typography;
 const { Option } = Select;
-const { Dragger } = Upload;
+// const { Dragger } = Upload;
 
 export default function SettingPage() {
   const {
@@ -70,24 +70,38 @@ export default function SettingPage() {
     });
   };
 
-  // Handle typography change
-  const handleTypographyChange = (field: string, value: any) => {
+  // Handle theme settings (non-color)
+  const handleThemeChange = (field: string, value: string | number) => {
     updateSettings({
-      typography: {
-        ...settings.typography,
+      theme: {
+        ...settings.theme,
         [field]: value,
       },
     });
   };
 
+  // Handle typography change
+  const handleTypographyChange = (field: string, value: string | number | null) => {
+    if (value !== null) {
+      updateSettings({
+        typography: {
+          ...settings.typography,
+          [field]: value,
+        },
+      });
+    }
+  };
+
   // Handle layout change
-  const handleLayoutChange = (field: string, value: any) => {
-    updateSettings({
-      layout: {
-        ...settings.layout,
-        [field]: value,
-      },
-    });
+  const handleLayoutChange = (field: string, value: number | null) => {
+    if (value !== null) {
+      updateSettings({
+        layout: {
+          ...settings.layout,
+          [field]: value,
+        },
+      });
+    }
   };
 
   // Handle preset colors
@@ -316,7 +330,7 @@ export default function SettingPage() {
                         <Select
                           value={settings.theme.borderRadius}
                           onChange={(value) =>
-                            handleColorChange("borderRadius", value)
+                            handleThemeChange("borderRadius", value)
                           }
                           className="w-full"
                           size="large"
@@ -338,7 +352,7 @@ export default function SettingPage() {
                         <Select
                           value={settings.theme.shadowLevel}
                           onChange={(value) =>
-                            handleColorChange("shadowLevel", value)
+                            handleThemeChange("shadowLevel", value)
                           }
                           className="w-full"
                           size="large"

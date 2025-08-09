@@ -7,5 +7,5 @@ export default function AdminLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <AppLayout>{children}</AppLayout>;
+  return <AppLayout userRole="admin">{children}</AppLayout>;
 }

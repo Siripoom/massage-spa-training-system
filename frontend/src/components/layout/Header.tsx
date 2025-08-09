@@ -23,9 +23,41 @@ const { Text } = Typography;
 
 interface HeaderProps {
   collapsed: boolean;
+  userRole?: 'admin' | 'teacher' | 'student';
 }
 
-export default function Header({ collapsed }: HeaderProps) {
+export default function Header({ collapsed, userRole = 'admin' }: HeaderProps) {
+  const getUserInfo = () => {
+    switch (userRole) {
+      case 'admin':
+        return {
+          name: 'ผู้ดูแลระบบ',
+          email: 'admin@relaxplus.com',
+          title: 'ระบบจัดการหลักสูตรฝึกอบรม RelaxPlus'
+        };
+      case 'teacher':
+        return {
+          name: 'อาจารย์สมศรี ใจดี',
+          email: 'teacher@relaxplus.com',
+          title: 'ระบบจัดการการสอน RelaxPlus'
+        };
+      case 'student':
+        return {
+          name: 'นักเรียน ทดสอบ',
+          email: 'student@relaxplus.com',
+          title: 'ระบบเรียนออนไลน์ RelaxPlus'
+        };
+      default:
+        return {
+          name: 'ผู้ใช้งาน',
+          email: 'user@relaxplus.com',
+          title: 'RelaxPlus'
+        };
+    }
+  };
+
+  const userInfo = getUserInfo();
+  console.log('Header collapsed state:', collapsed); // Use collapsed parameter
   const userMenuItems: MenuProps["items"] = [
     {
       key: "profile",
@@ -58,7 +90,7 @@ export default function Header({ collapsed }: HeaderProps) {
     <AntHeader className="relaxplus-header">
       <div className="header-left">
         <Text className="header-title">
-          ระบบจัดการหลักสูตรฝึกอบรม RelaxPlus
+          {userInfo.title}
         </Text>
       </div>
 
@@ -80,8 +112,8 @@ export default function Header({ collapsed }: HeaderProps) {
           <div className="header-user-profile">
             <Avatar icon={<UserOutlined />} className="user-avatar" />
             <div className="user-info">
-              <div className="user-name">ผู้ดูแลระบบ</div>
-              <div className="user-email">admin@relaxplus.com</div>
+              <div className="user-name">{userInfo.name}</div>
+              <div className="user-email">{userInfo.email}</div>
             </div>
           </div>
         </Dropdown>

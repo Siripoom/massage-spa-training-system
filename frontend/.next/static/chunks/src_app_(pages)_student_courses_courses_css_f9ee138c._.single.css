@@ -1,0 +1,154 @@
+/* [project]/src/app/(pages)/student/courses/courses.css [app-client] (css) */
+.course-header {
+  margin-bottom: 20px;
+}
+
+.course-title {
+  color: #333;
+  margin-bottom: 12px;
+  font-family: Georgia, serif;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.course-description {
+  color: #666;
+  margin-bottom: 16px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.course-meta {
+  gap: 16px;
+  margin-bottom: 16px;
+  display: flex;
+}
+
+.course-meta span {
+  color: #5d4037;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  display: flex;
+}
+
+.course-progress-section {
+  background: #5d40370d;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  padding: 16px;
+}
+
+.progress-header {
+  color: #333;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-weight: 600;
+  display: flex;
+}
+
+.course-actions {
+  margin-top: auto;
+}
+
+.content-card {
+  border: none !important;
+  border-radius: 16px !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  transition: all .3s !important;
+  display: flex !important;
+  box-shadow: 0 4px 20px #5d403714 !important;
+}
+
+.content-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 8px 30px #5d403726 !important;
+}
+
+.content-card .ant-card-body {
+  flex-direction: column !important;
+  height: 100% !important;
+  padding: 24px !important;
+  display: flex !important;
+}
+
+.dashboard-action-btn {
+  background: #5d4037 !important;
+  border-color: #5d4037 !important;
+  border-radius: 12px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+}
+
+.dashboard-action-btn:hover {
+  background: #4a2c20 !important;
+  border-color: #4a2c20 !important;
+}
+
+.dashboard-action-btn:disabled {
+  background: #d9d9d9 !important;
+  border-color: #d9d9d9 !important;
+}
+
+.ant-progress-bg {
+  background: #5d4037 !important;
+}
+
+.ant-input-search-button {
+  background: #5d4037 !important;
+  border-color: #5d4037 !important;
+}
+
+.ant-input-search-button:hover {
+  background: #4a2c20 !important;
+  border-color: #4a2c20 !important;
+}
+
+.ant-select-selector {
+  border-radius: 8px !important;
+}
+
+.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #5d4037 !important;
+}
+
+.ant-tabs-ink-bar {
+  background: #5d4037 !important;
+}
+
+.empty-state {
+  text-align: center;
+  color: #666;
+  padding: 60px 20px;
+}
+
+.empty-state h3 {
+  color: #5d4037;
+  margin-bottom: 16px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.empty-state p {
+  margin-bottom: 24px;
+  font-size: 16px;
+}
+
+@media (width <= 768px) {
+  .content-card .ant-card-body {
+    padding: 20px !important;
+  }
+
+  .course-meta {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .empty-state {
+    padding: 40px 16px;
+  }
+}
+
+/*# sourceMappingURL=src_app_%28pages%29_student_courses_courses_css_f9ee138c._.single.css.map*/
