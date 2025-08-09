@@ -1,9 +1,9 @@
 'use client';
 
 import '@ant-design/v5-patch-for-react-19';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Card, Form, Input, Select, DatePicker, Upload, Button, Steps, Row, Col, message, Divider, Typography, Radio, Checkbox, Tooltip, Alert, Progress, Space, Modal } from 'antd';
-import { UploadOutlined, UserOutlined, FileTextOutlined, CheckOutlined, BookOutlined, InfoCircleOutlined, SafetyCertificateOutlined, CalendarOutlined, PhoneOutlined, MailOutlined, BankOutlined, ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons';
+import { UploadOutlined, UserOutlined, FileTextOutlined, CheckOutlined, BookOutlined, InfoCircleOutlined, SafetyCertificateOutlined, CalendarOutlined, PhoneOutlined, MailOutlined, BankOutlined, ArrowLeftOutlined, ArrowRightOutlined, ManOutlined, WomanOutlined, ClockCircleOutlined, DollarOutlined, TrophyOutlined, TeamOutlined } from '@ant-design/icons';
 import PageHeader from '@/components/common/PageHeader';
 import dayjs from 'dayjs';
 
@@ -13,7 +13,7 @@ const { Title, Text } = Typography;
 const { Step } = Steps;
 
 // Static mock data to prevent hydration mismatches and circular references
-const getMockBatches = () => [
+const STATIC_BATCHES = [
   {
     id: 4,
     batchNumber: 33,
@@ -35,6 +35,8 @@ const getMockBatches = () => [
     status: 'PLANNING'
   }
 ];
+
+const getMockBatches = () => [...STATIC_BATCHES]; // Return a copy to prevent mutations
 
 // Mock data based on old system
 const mockCourses: Course[] = [
@@ -87,11 +89,13 @@ export default function StudentApplicationPage() {
   const [loading, setLoading] = useState(false);
   const [courseModalOpen, setCourseModalOpen] = useState(false);
   const [selectedCourseId, setSelectedCourseId] = useState<string>('');
+  const [batchModalOpen, setBatchModalOpen] = useState(false);
+  const [selectedBatchId, setSelectedBatchId] = useState<number | null>(null);
 
   useEffect(() => {
     const loadData = async () => {
       try {
-        // Simulate API call
+        // Simulate API call with static data to prevent circular references
         setTimeout(() => {
           setCourses(mockCourses);
           setBatches(getMockBatches());
@@ -103,33 +107,86 @@ export default function StudentApplicationPage() {
     };
     
     loadData();
-  }, []);
+  }, []); // Empty dependency array to prevent re-runs
 
-  const handleCourseChange = (courseId: string) => {
-    const course = courses.find(c => c.id === courseId);
-    setSelectedCourse(course || null);
+  const handleCourseChange = useCallback((courseId: string) => {
+    if (!courseId || !courses.length) return;
     
-    // Filter batches for selected course
-    const allBatches = getMockBatches();
-    const courseBatches = allBatches.filter((b: Batch) => 
-      course?.title.includes('นวดไทยเพื่อสุขภาพ') ? b.name.includes('นวดไทยเพื่อสุขภาพ') : false
-    );
+    const course = courses.find(c => c.id === courseId);
+    if (!course) return;
+    
+    // Prevent unnecessary re-renders by checking if course is already selected
+    if (selectedCourse?.id === courseId) return;
+    
+    setSelectedCourse(course);
+    
+    // Filter batches based on course type - use static data to prevent circular references
+    const courseBatches = STATIC_BATCHES.filter((batch) => {
+      // Simple, safe filtering logic
+      if (course.title.includes('นวดไทยเพื่อสุขภาพ')) {
+        return batch.name.includes('นวดไทยเพื่อสุขภาพ');
+      }
+      // For other courses, show all batches for now
+      return true;
+    });
+    
     setBatches(courseBatches);
     
-    // Reset batch selection
-    form.setFieldValue('batchId', undefined);
-  };
+    // Reset batch selection only if different course
+    if (selectedCourse?.id !== courseId) {
+      form.setFieldValue('batchId', undefined);
+      setSelectedBatchId(null);
+    }
+  }, [courses, selectedCourse, form]); // Remove selectedCourse?.id dependency
 
   const openCourseModal = () => {
     setCourseModalOpen(true);
   };
 
-  const handleCourseSelect = (courseId: string) => {
-    setSelectedCourseId(courseId);
-    form.setFieldValue('courseId', courseId);
-    handleCourseChange(courseId);
-    setCourseModalOpen(false);
+  const openBatchModal = () => {
+    setBatchModalOpen(true);
   };
+
+  const closeBatchModal = () => {
+    setBatchModalOpen(false);
+  };
+
+  const handleCourseSelect = useCallback((courseId: string) => {
+    if (!courseId || selectedCourseId === courseId) return;
+    
+    try {
+      setSelectedCourseId(courseId);
+      setCourseModalOpen(false);
+      
+      // Use setTimeout to break potential circular updates and ensure modal closes first
+      setTimeout(() => {
+        form.setFieldValue('courseId', courseId);
+        handleCourseChange(courseId);
+      }, 100);
+      
+    } catch (error) {
+      console.error('Error selecting course:', error);
+      message.error('เกิดข้อผิดพลาดในการเลือกหลักสูตร');
+    }
+  }, [selectedCourseId, form, handleCourseChange]);
+
+  const handleBatchSelect = useCallback((batchId: number) => {
+    if (!batchId || selectedBatchId === batchId) return;
+    
+    try {
+      setSelectedBatchId(batchId);
+      setBatchModalOpen(false);
+      
+      // Use setTimeout to break potential circular updates and ensure modal closes first
+      setTimeout(() => {
+        form.setFieldValue('batchId', batchId);
+      }, 100);
+      
+    } catch (error) {
+      console.error('Error selecting batch:', error);
+      message.error('เกิดข้อผิดพลาดในการเลือกรุ่นเรียน');
+    }
+  }, [selectedBatchId, form]);
 
   const closeCourseModal = () => {
     setCourseModalOpen(false);
@@ -138,21 +195,26 @@ export default function StudentApplicationPage() {
   const handleNext = async () => {
     try {
       await form.validateFields();
-      setCurrentStep(currentStep + 1);
-    } catch {
+      setCurrentStep(prev => prev + 1);
+    } catch (error) {
+      console.error('Validation error:', error);
       message.error('กรุณากรอกข้อมูลให้ครบถ้วน');
     }
   };
 
   const handlePrev = () => {
-    setCurrentStep(currentStep - 1);
+    setCurrentStep(prev => Math.max(0, prev - 1));
   };
 
   const handleSubmit = async () => {
     try {
       setLoading(true);
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const _values = await form.validateFields();
+      const values = await form.validateFields();
+      
+      // Validate required data
+      if (!values.courseId) {
+        throw new Error('กรุณาเลือกหลักสูตร');
+      }
       
       // Simulate API call
       setTimeout(() => {
@@ -160,11 +222,13 @@ export default function StudentApplicationPage() {
         form.resetFields();
         setCurrentStep(0);
         setSelectedCourse(null);
+        setSelectedCourseId('');
+        setSelectedBatchId(null);
         setLoading(false);
       }, 2000);
     } catch (error) {
       console.error('Error submitting application:', error);
-      message.error('เกิดข้อผิดพลาดในการส่งใบสมัคร');
+      message.error(error instanceof Error ? error.message : 'เกิดข้อผิดพลาดในการส่งใบสมัคร');
       setLoading(false);
     }
   };
@@ -199,13 +263,13 @@ export default function StudentApplicationPage() {
           <Card 
             title={
               <div style={{ display: 'flex', alignItems: 'center' }}>
-                <BookOutlined style={{ marginRight: '8px', color: '#1890ff' }} />
+                <BookOutlined style={{ marginRight: '8px', color: '#5d4037' }} />
                 เลือกหลักสูตรและรุ่นเรียน
               </div>
             }
             extra={
               <Tooltip title="เลือกหลักสูตรที่ต้องการสมัครเรียน">
-                <InfoCircleOutlined style={{ color: '#1890ff' }} />
+                <InfoCircleOutlined style={{ color: '#5d4037' }} />
               </Tooltip>
             }
           >
@@ -228,7 +292,7 @@ export default function StudentApplicationPage() {
                   alignItems: 'center',
                   gap: '8px'
                 }}>
-                  <BookOutlined style={{ color: '#3b82f6' }} />
+                  <BookOutlined style={{ color: '#5d4037' }} />
                   หลักสูตรที่สนใจ
                 </span>
               }
@@ -242,8 +306,8 @@ export default function StudentApplicationPage() {
                   width: '100%',
                   height: '56px',
                   borderRadius: '12px',
-                  border: selectedCourse ? '1px solid #3b82f6' : '1px solid #d9d9d9',
-                  backgroundColor: selectedCourse ? '#f0f8ff' : 'white',
+                  border: selectedCourse ? '1px solid #5d4037' : '1px solid #d9d9d9',
+                  backgroundColor: selectedCourse ? '#faf7f5' : 'white',
                   textAlign: 'left',
                   display: 'flex',
                   alignItems: 'center',
@@ -254,7 +318,7 @@ export default function StudentApplicationPage() {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                   {selectedCourse ? (
                     <>
-                      <BookOutlined style={{ color: '#3b82f6', fontSize: '18px' }} />
+                      <BookOutlined style={{ color: '#5d4037', fontSize: '18px' }} />
                       <div>
                         <div style={{ 
                           fontSize: '16px', 
@@ -276,14 +340,14 @@ export default function StudentApplicationPage() {
                     <>
                       <BookOutlined style={{ color: '#9ca3af', fontSize: '18px' }} />
                       <span style={{ color: '#9ca3af', fontSize: '16px' }}>
-                        🔍 คลิกเพื่อเลือกหลักสูตรที่ต้องการสมัคร...
+                        คลิกเพื่อเลือกหลักสูตรที่ต้องการสมัคร...
                       </span>
                     </>
                   )}
                 </div>
                 <ArrowRightOutlined 
                   style={{ 
-                    color: selectedCourse ? '#3b82f6' : '#9ca3af', 
+                    color: selectedCourse ? '#5d4037' : '#9ca3af', 
                     fontSize: '16px',
                     transform: courseModalOpen ? 'rotate(90deg)' : 'rotate(0deg)',
                     transition: 'transform 0.3s ease'
@@ -303,7 +367,7 @@ export default function StudentApplicationPage() {
                   fontWeight: 'bold',
                   color: '#1f2937'
                 }}>
-                  <BookOutlined style={{ color: '#3b82f6', fontSize: '24px' }} />
+                  <BookOutlined style={{ color: '#5d4037', fontSize: '24px' }} />
                   เลือกหลักสูตรที่ต้องการสมัคร
                 </div>
               }
@@ -336,10 +400,10 @@ export default function StudentApplicationPage() {
                       hoverable
                       style={{
                         borderRadius: '16px',
-                        border: selectedCourseId === course.id ? '2px solid #3b82f6' : '1px solid #e2e8f0',
-                        boxShadow: selectedCourseId === course.id ? '0 8px 30px rgba(59, 130, 246, 0.2)' : '0 2px 8px rgba(0,0,0,0.06)',
+                        border: selectedCourseId === course.id ? '2px solid #5d4037' : '1px solid #e2e8f0',
+                        boxShadow: selectedCourseId === course.id ? '0 8px 30px rgba(93, 64, 55, 0.2)' : '0 2px 8px rgba(0,0,0,0.06)',
                         transition: 'all 0.3s ease',
-                        background: selectedCourseId === course.id ? 'linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%)' : 'white'
+                        background: selectedCourseId === course.id ? 'linear-gradient(135deg, #faf7f5 0%, #f5f0eb 100%)' : 'white'
                       }}
                       styles={{ body: { padding: '24px' } }}
                     >
@@ -350,21 +414,22 @@ export default function StudentApplicationPage() {
                         <div style={{
                           width: '80px',
                           height: '80px',
-                          backgroundColor: selectedCourseId === course.id ? '#3b82f6' : '#f8fafc',
+                          backgroundColor: selectedCourseId === course.id ? '#5d4037' : '#f8fafc',
                           borderRadius: '20px',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
                           margin: '0 auto 16px',
                           fontSize: '36px',
-                          transition: 'all 0.3s ease'
+                          transition: 'all 0.3s ease',
+                          color: selectedCourseId === course.id ? 'white' : '#5d4037'
                         }}>
-                          {selectedCourseId === course.id ? '✅' : '📚'}
+                          {selectedCourseId === course.id ? <CheckOutlined /> : <BookOutlined />}
                         </div>
                         <div style={{
                           fontSize: '18px',
                           fontWeight: 'bold',
-                          color: selectedCourseId === course.id ? '#1e40af' : '#1f2937',
+                          color: selectedCourseId === course.id ? '#5d4037' : '#1f2937',
                           marginBottom: '8px',
                           lineHeight: '1.4'
                         }}>
@@ -380,10 +445,10 @@ export default function StudentApplicationPage() {
                               alignItems: 'center',
                               gap: '8px',
                               padding: '8px 12px',
-                              backgroundColor: selectedCourseId === course.id ? 'rgba(59, 130, 246, 0.1)' : '#f8fafc',
+                              backgroundColor: selectedCourseId === course.id ? 'rgba(93, 64, 55, 0.1)' : '#f8fafc',
                               borderRadius: '8px'
                             }}>
-                              <span style={{ fontSize: '18px' }}>⏰</span>
+                              <ClockCircleOutlined />
                               <span style={{ fontWeight: '600', color: '#374151' }}>
                                 จำนวนชั่วโมง: {course.duration} ชั่วโมง
                               </span>
@@ -395,10 +460,10 @@ export default function StudentApplicationPage() {
                               alignItems: 'center',
                               gap: '8px',
                               padding: '8px 12px',
-                              backgroundColor: selectedCourseId === course.id ? 'rgba(59, 130, 246, 0.1)' : '#f8fafc',
+                              backgroundColor: selectedCourseId === course.id ? 'rgba(93, 64, 55, 0.1)' : '#f8fafc',
                               borderRadius: '8px'
                             }}>
-                              <span style={{ fontSize: '18px' }}>💰</span>
+                              <DollarOutlined />
                               <span style={{ fontWeight: '600', color: '#374151' }}>
                                 ค่าธรรมเนียม: ฿{course.price.toLocaleString()}
                               </span>
@@ -413,7 +478,7 @@ export default function StudentApplicationPage() {
                               backgroundColor: selectedCourseId === course.id ? 'rgba(34, 197, 94, 0.1)' : '#f0fdf4',
                               borderRadius: '8px'
                             }}>
-                              <span style={{ fontSize: '18px' }}>🎯</span>
+                              <TrophyOutlined />
                               <span style={{ fontWeight: '600', color: '#059669' }}>
                                 หลักสูตรแนะนำ
                               </span>
@@ -430,16 +495,22 @@ export default function StudentApplicationPage() {
                           borderRadius: '12px',
                           fontWeight: '600',
                           height: '48px',
-                          backgroundColor: selectedCourseId === course.id ? '#3b82f6' : 'white',
-                          borderColor: selectedCourseId === course.id ? '#3b82f6' : '#d1d5db',
-                          boxShadow: selectedCourseId === course.id ? '0 4px 12px rgba(59, 130, 246, 0.3)' : 'none'
+                          backgroundColor: selectedCourseId === course.id ? '#5d4037' : 'white',
+                          borderColor: selectedCourseId === course.id ? '#5d4037' : '#d1d5db',
+                          boxShadow: selectedCourseId === course.id ? '0 4px 12px rgba(93, 64, 55, 0.3)' : 'none'
                         }}
                         onClick={(e) => {
                           e.stopPropagation();
                           handleCourseSelect(course.id);
                         }}
                       >
-                        {selectedCourseId === course.id ? '✅ เลือกแล้ว' : 'เลือกหลักสูตรนี้'}
+                        {selectedCourseId === course.id ? (
+                          <>
+                            <CheckOutlined /> เลือกแล้ว
+                          </>
+                        ) : (
+                          'เลือกหลักสูตรนี้'
+                        )}
                       </Button>
                     </Card>
                   </Col>
@@ -450,11 +521,11 @@ export default function StudentApplicationPage() {
             {selectedCourse && (
               <>
                 <Divider orientation="left" style={{ 
-                  borderColor: '#3b82f6',
+                  borderColor: '#5d4037',
                   fontSize: '16px',
                   fontWeight: 'bold'
                 }}>
-                  <span style={{ color: '#3b82f6' }}>📋 รายละเอียดหลักสูตร</span>
+                  <span style={{ color: '#5d4037' }}><BookOutlined /> รายละเอียดหลักสูตร</span>
                 </Divider>
                 <Card 
                   size="small" 
@@ -463,7 +534,7 @@ export default function StudentApplicationPage() {
                     marginBottom: 32,
                     borderRadius: '16px',
                     border: '1px solid #e2e8f0',
-                    boxShadow: '0 4px 20px rgba(59, 130, 246, 0.08)'
+                    boxShadow: '0 4px 20px rgba(93, 64, 55, 0.08)'
                   }}
                   styles={{ body: { padding: '24px' } }}
                 >
@@ -479,7 +550,7 @@ export default function StudentApplicationPage() {
                         <div style={{
                           width: '48px',
                           height: '48px',
-                          backgroundColor: '#3b82f6',
+                          backgroundColor: '#5d4037',
                           borderRadius: '12px',
                           display: 'flex',
                           alignItems: 'center',
@@ -488,7 +559,7 @@ export default function StudentApplicationPage() {
                           color: 'white',
                           fontSize: '20px'
                         }}>
-                          📚
+                          <BookOutlined />
                         </div>
                         <div style={{ 
                           fontWeight: 'bold',
@@ -528,7 +599,7 @@ export default function StudentApplicationPage() {
                           color: 'white',
                           fontSize: '20px'
                         }}>
-                          ⏰
+                          <ClockCircleOutlined />
                         </div>
                         <div style={{ 
                           fontWeight: 'bold',
@@ -567,7 +638,7 @@ export default function StudentApplicationPage() {
                           color: 'white',
                           fontSize: '20px'
                         }}>
-                          💰
+                          <DollarOutlined />
                         </div>
                         <div style={{ 
                           fontWeight: 'bold',
@@ -593,104 +664,294 @@ export default function StudentApplicationPage() {
 
             <Form.Item
               name="batchId"
-              label={<span style={{ fontSize: '16px', fontWeight: 'bold' }}>รุ่นที่ต้องการสมัคร</span>}
+              label={
+                <span style={{ 
+                  fontSize: '16px', 
+                  fontWeight: 'bold',
+                  color: '#1f2937',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px'
+                }}>
+                  <CalendarOutlined style={{ color: '#5d4037' }} />
+                  รุ่นที่ต้องการสมัคร
+                </span>
+              }
               rules={[{ required: true, message: 'กรุณาเลือกรุ่นเรียน' }]}
               style={{ marginTop: 24 }}
             >
-              <Select 
-                placeholder="เลือกรุ่นเรียน"
+              <Button
                 size="large"
+                onClick={openBatchModal}
                 disabled={!selectedCourse}
-                showSearch
-                optionFilterProp="children"
-                style={{ 
-                  borderRadius: '8px',
-                }}
-                styles={{
-                  popup: {
-                    root: {
-                      borderRadius: '8px',
-                      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
-                    }
-                  }
+                style={{
+                  width: '100%',
+                  height: '56px',
+                  borderRadius: '12px',
+                  border: selectedBatchId ? '1px solid #5d4037' : '1px solid #d9d9d9',
+                  backgroundColor: selectedBatchId ? '#faf7f5' : 'white',
+                  textAlign: 'left',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  padding: '0 16px',
+                  opacity: !selectedCourse ? 0.5 : 1
                 }}
               >
-                {batches.map(batch => (
-                  <Option key={batch.id} value={batch.id}>
-                    <div style={{ 
-                      padding: '12px 8px',
-                      borderRadius: '6px',
-                      transition: 'background-color 0.3s ease'
-                    }}>
-                      <div style={{ 
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                        marginBottom: '8px'
-                      }}>
-                        <div style={{ 
-                          fontWeight: 'bold', 
-                          fontSize: '16px',
-                          color: '#1f2937'
-                        }}>
-                          รุ่นที่ {batch.batchNumber}
-                        </div>
-                        <div style={{
-                          backgroundColor: '#f0f9ff',
-                          color: '#0369a1',
-                          padding: '2px 8px',
-                          borderRadius: '12px',
-                          fontSize: '12px',
-                          fontWeight: '500'
-                        }}>
-                          {batch.status === 'PLANNING' ? 'เปิดรับสมัคร' : batch.status}
-                        </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  {selectedBatchId ? (
+                    <>
+                      <CalendarOutlined style={{ color: '#5d4037', fontSize: '18px' }} />
+                      <div>
+                        {(() => {
+                          const selectedBatch = batches.find(b => b.id === selectedBatchId);
+                          if (!selectedBatch) return null;
+                          return (
+                            <>
+                              <div style={{ 
+                                fontSize: '16px', 
+                                fontWeight: 'bold',
+                                color: '#1f2937',
+                                marginBottom: '2px'
+                              }}>
+                                รุ่นที่ {selectedBatch.batchNumber}
+                              </div>
+                              <div style={{ 
+                                fontSize: '14px', 
+                                color: '#6b7280'
+                              }}>
+                                เริ่ม: {dayjs(selectedBatch.startDate).format('DD/MM/YYYY')} • {selectedBatch.currentStudents}/{selectedBatch.maxStudents} คน
+                              </div>
+                            </>
+                          );
+                        })()}
                       </div>
-                      <div style={{ 
-                        display: 'flex', 
-                        alignItems: 'center',
-                        gap: '4px',
-                        marginBottom: '8px',
-                        fontSize: '14px'
-                      }}>
-                        <span style={{ color: '#f59e0b' }}>🗓️</span>
-                        <Text type="secondary">
-                          เริ่ม: {dayjs(batch.startDate).format('DD/MM/YYYY')}
-                        </Text>
-                      </div>
-                      <div style={{ 
-                        display: 'flex', 
-                        justifyContent: 'space-between', 
-                        alignItems: 'center',
-                        gap: '12px'
-                      }}>
-                        <div style={{ 
-                          display: 'flex', 
-                          alignItems: 'center',
-                          gap: '4px',
-                          fontSize: '14px'
-                        }}>
-                          <span style={{ color: '#8b5cf6' }}>👥</span>
-                          <Text type="secondary">
-                            {batch.currentStudents}/{batch.maxStudents} คน
-                          </Text>
-                        </div>
-                        <Progress 
-                          percent={Math.round((batch.currentStudents / batch.maxStudents) * 100)}
-                          size="small"
-                          style={{ width: '80px', minWidth: '80px' }}
-                          strokeColor={{
-                            '0%': '#10b981',
-                            '50%': '#f59e0b', 
-                            '100%': '#ef4444'
-                          }}
-                        />
-                      </div>
-                    </div>
-                  </Option>
-                ))}
-              </Select>
+                    </>
+                  ) : (
+                    <>
+                      <CalendarOutlined style={{ color: '#9ca3af', fontSize: '18px' }} />
+                      <span style={{ color: '#9ca3af', fontSize: '16px' }}>
+                        {!selectedCourse ? 'กรุณาเลือกหลักสูตรก่อน...' : 'คลิกเพื่อเลือกรุ่นเรียน...'}
+                      </span>
+                    </>
+                  )}
+                </div>
+                <ArrowRightOutlined 
+                  style={{ 
+                    color: selectedBatchId ? '#5d4037' : '#9ca3af', 
+                    fontSize: '16px',
+                    transform: batchModalOpen ? 'rotate(90deg)' : 'rotate(0deg)',
+                    transition: 'transform 0.3s ease'
+                  }} 
+                />
+              </Button>
             </Form.Item>
+
+            {/* Batch Selection Modal */}
+            <Modal
+              title={
+                <div style={{ 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  gap: '12px',
+                  fontSize: '20px',
+                  fontWeight: 'bold',
+                  color: '#1f2937'
+                }}>
+                  <CalendarOutlined style={{ color: '#5d4037', fontSize: '24px' }} />
+                  เลือกรุ่นเรียนที่ต้องการสมัคร
+                </div>
+              }
+              open={batchModalOpen}
+              onCancel={closeBatchModal}
+              footer={null}
+              width={700}
+              style={{ top: 20 }}
+              styles={{
+                body: { 
+                  padding: '24px',
+                  maxHeight: '70vh',
+                  overflowY: 'auto'
+                }
+              }}
+            >
+              <div style={{ marginBottom: '24px' }}>
+                <Alert
+                  message="เลือกรุ่นเรียนที่เหมาะสม"
+                  description="เลือกรุ่นเรียนที่ตรงกับเวลาและความพร้อมของคุณ"
+                  type="info"
+                  showIcon
+                />
+              </div>
+              
+              <Row gutter={[16, 16]}>
+                {batches.map(batch => (
+                  <Col xs={24} key={batch.id}>
+                    <Card
+                      hoverable
+                      style={{
+                        borderRadius: '16px',
+                        border: selectedBatchId === batch.id ? '2px solid #5d4037' : '1px solid #e2e8f0',
+                        boxShadow: selectedBatchId === batch.id ? '0 8px 30px rgba(93, 64, 55, 0.2)' : '0 2px 8px rgba(0,0,0,0.06)',
+                        transition: 'all 0.3s ease',
+                        background: selectedBatchId === batch.id ? 'linear-gradient(135deg, #faf7f5 0%, #f5f0eb 100%)' : 'white'
+                      }}
+                      styles={{ body: { padding: '24px' } }}
+                      onClick={() => handleBatchSelect(batch.id)}
+                    >
+                      <Row gutter={[16, 0]} align="middle">
+                        <Col xs={24} sm={6}>
+                          <div style={{ textAlign: 'center' }}>
+                            <div style={{
+                              width: '80px',
+                              height: '80px',
+                              backgroundColor: selectedBatchId === batch.id ? '#5d4037' : '#f8fafc',
+                              borderRadius: '20px',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              margin: '0 auto 12px',
+                              fontSize: '24px',
+                              transition: 'all 0.3s ease',
+                              color: selectedBatchId === batch.id ? 'white' : '#5d4037'
+                            }}>
+                              {selectedBatchId === batch.id ? <CheckOutlined /> : <CalendarOutlined />}
+                            </div>
+                            <div style={{
+                              fontSize: '20px',
+                              fontWeight: 'bold',
+                              color: selectedBatchId === batch.id ? '#5d4037' : '#1f2937',
+                              marginBottom: '4px'
+                            }}>
+                              รุ่นที่ {batch.batchNumber}
+                            </div>
+                            <div style={{
+                              backgroundColor: '#f0f9ff',
+                              color: '#0369a1',
+                              padding: '4px 12px',
+                              borderRadius: '12px',
+                              fontSize: '12px',
+                              fontWeight: '500',
+                              display: 'inline-block'
+                            }}>
+                              {batch.status === 'PLANNING' ? 'เปิดรับสมัคร' : batch.status}
+                            </div>
+                          </div>
+                        </Col>
+                        <Col xs={24} sm={18}>
+                          <Row gutter={[16, 12]}>
+                            <Col span={24}>
+                              <div style={{
+                                fontSize: '16px',
+                                fontWeight: '600',
+                                color: '#1f2937',
+                                marginBottom: '12px'
+                              }}>
+                                {batch.name}
+                              </div>
+                            </Col>
+                            <Col xs={24} sm={8}>
+                              <div style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '8px',
+                                padding: '8px 12px',
+                                backgroundColor: selectedBatchId === batch.id ? 'rgba(93, 64, 55, 0.1)' : '#f8fafc',
+                                borderRadius: '8px'
+                              }}>
+                                <CalendarOutlined style={{ color: '#8d6e63' }} />
+                                <div>
+                                  <div style={{ fontSize: '12px', color: '#666', marginBottom: '2px' }}>วันเริ่มเรียน</div>
+                                  <div style={{ fontWeight: '600', color: '#374151', fontSize: '14px' }}>
+                                    {dayjs(batch.startDate).format('DD/MM/YYYY')}
+                                  </div>
+                                </div>
+                              </div>
+                            </Col>
+                            <Col xs={24} sm={8}>
+                              <div style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '8px',
+                                padding: '8px 12px',
+                                backgroundColor: selectedBatchId === batch.id ? 'rgba(93, 64, 55, 0.1)' : '#f8fafc',
+                                borderRadius: '8px'
+                              }}>
+                                <CalendarOutlined style={{ color: '#8d6e63' }} />
+                                <div>
+                                  <div style={{ fontSize: '12px', color: '#666', marginBottom: '2px' }}>วันสิ้นสุด</div>
+                                  <div style={{ fontWeight: '600', color: '#374151', fontSize: '14px' }}>
+                                    {dayjs(batch.endDate).format('DD/MM/YYYY')}
+                                  </div>
+                                </div>
+                              </div>
+                            </Col>
+                            <Col xs={24} sm={8}>
+                              <div style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '8px',
+                                padding: '8px 12px',
+                                backgroundColor: selectedBatchId === batch.id ? 'rgba(93, 64, 55, 0.1)' : '#f8fafc',
+                                borderRadius: '8px'
+                              }}>
+                                <TeamOutlined style={{ color: '#a1887f' }} />
+                                <div>
+                                  <div style={{ fontSize: '12px', color: '#666', marginBottom: '2px' }}>จำนวนนักเรียน</div>
+                                  <div style={{ fontWeight: '600', color: '#374151', fontSize: '14px' }}>
+                                    {batch.currentStudents}/{batch.maxStudents} คน
+                                  </div>
+                                </div>
+                              </div>
+                            </Col>
+                          </Row>
+                          <div style={{ marginTop: '16px' }}>
+                            <Progress 
+                              percent={Math.round((batch.currentStudents / batch.maxStudents) * 100)}
+                              size="small"
+                              strokeColor={{
+                                '0%': '#8d6e63',
+                                '50%': '#6d4c41', 
+                                '100%': '#5d4037'
+                              }}
+                              format={(percent) => `${percent}% เต็ม`}
+                            />
+                          </div>
+                        </Col>
+                      </Row>
+                      
+                      <div style={{ marginTop: '16px', textAlign: 'center' }}>
+                        <Button
+                          type={selectedBatchId === batch.id ? "primary" : "default"}
+                          size="large"
+                          style={{
+                            width: '200px',
+                            borderRadius: '12px',
+                            fontWeight: '600',
+                            height: '40px',
+                            backgroundColor: selectedBatchId === batch.id ? '#5d4037' : 'white',
+                            borderColor: selectedBatchId === batch.id ? '#5d4037' : '#d1d5db',
+                            boxShadow: selectedBatchId === batch.id ? '0 4px 12px rgba(93, 64, 55, 0.3)' : 'none'
+                          }}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleBatchSelect(batch.id);
+                          }}
+                        >
+                          {selectedBatchId === batch.id ? (
+                            <>
+                              <CheckOutlined /> เลือกแล้ว
+                            </>
+                          ) : (
+                            'เลือกรุ่นนี้'
+                          )}
+                        </Button>
+                      </div>
+                    </Card>
+                  </Col>
+                ))}
+              </Row>
+            </Modal>
           </Card>
         );
 
@@ -699,13 +960,13 @@ export default function StudentApplicationPage() {
           <Card 
             title={
               <div style={{ display: 'flex', alignItems: 'center' }}>
-                <UserOutlined style={{ marginRight: '8px', color: '#1890ff' }} />
+                <UserOutlined style={{ marginRight: '8px', color: '#5d4037' }} />
                 ข้อมูลส่วนตัว
               </div>
             }
             extra={
               <Tooltip title="กรอกข้อมูลส่วนตัวให้ครบถ้วน">
-                <InfoCircleOutlined style={{ color: '#1890ff' }} />
+                <InfoCircleOutlined style={{ color: '#5d4037' }} />
               </Tooltip>
             }
           >
@@ -726,9 +987,9 @@ export default function StudentApplicationPage() {
                   rules={[{ required: true, message: 'กรุณาเลือกคำนำหน้า' }]}
                 >
                   <Select placeholder="เลือกคำนำหน้า" size="large">
-                    <Option value="นาย">👨 นาย</Option>
-                    <Option value="นางสาว">👩 นางสาว</Option>
-                    <Option value="นาง">👩 นาง</Option>
+                    <Option value="นาย"><ManOutlined /> นาย</Option>
+                    <Option value="นางสาว"><WomanOutlined /> นางสาว</Option>
+                    <Option value="นาง"><WomanOutlined /> นาง</Option>
                   </Select>
                 </Form.Item>
               </Col>
@@ -778,7 +1039,7 @@ export default function StudentApplicationPage() {
                     placeholder="เลือกวันเกิด"
                     format="DD/MM/YYYY"
                     size="large"
-                    suffixIcon={<CalendarOutlined style={{ color: '#1890ff' }} />}
+                    suffixIcon={<CalendarOutlined style={{ color: '#5d4037' }} />}
                   />
                 </Form.Item>
               </Col>
@@ -790,10 +1051,10 @@ export default function StudentApplicationPage() {
                 >
                   <Radio.Group size="large" style={{ width: '100%' }}>
                     <Radio.Button value="male" style={{ width: '50%', textAlign: 'center' }}>
-                      👨 ชาย
+                      <ManOutlined /> ชาย
                     </Radio.Button>
                     <Radio.Button value="female" style={{ width: '50%', textAlign: 'center' }}>
-                      👩 หญิง
+                      <WomanOutlined /> หญิง
                     </Radio.Button>
                   </Radio.Group>
                 </Form.Item>
@@ -859,13 +1120,13 @@ export default function StudentApplicationPage() {
                   rules={[{ required: true, message: 'กรุณาระบุวุฒิการศึกษา' }]}
                 >
                   <Select placeholder="เลือกวุฒิการศึกษา" size="large">
-                    <Option value="ประถมศึกษา">📚 ประถมศึกษา</Option>
-                    <Option value="มัธยมศึกษาตอนต้น">📖 มัธยมศึกษาตอนต้น (ม.3)</Option>
-                    <Option value="มัธยมศึกษาตอนปลาย">📗 มัธยมศึกษาตอนปลาย (ม.6)</Option>
-                    <Option value="ปวช.">📘 ปวช.</Option>
-                    <Option value="ปวส.">📙 ปวส.</Option>
-                    <Option value="ปริญญาตรี">🎓 ปริญญาตรี</Option>
-                    <Option value="สูงกว่าปริญญาตรี">🎓 สูงกว่าปริญญาตรี</Option>
+                    <Option value="ประถมศึกษา"><BookOutlined /> ประถมศึกษา</Option>
+                    <Option value="มัธยมศึกษาตอนต้น"><BookOutlined /> มัธยมศึกษาตอนต้น (ม.3)</Option>
+                    <Option value="มัธยมศึกษาตอนปลาย"><BookOutlined /> มัธยมศึกษาตอนปลาย (ม.6)</Option>
+                    <Option value="ปวช."><BookOutlined /> ปวช.</Option>
+                    <Option value="ปวส."><BookOutlined /> ปวส.</Option>
+                    <Option value="ปริญญาตรี"><BookOutlined /> ปริญญาตรี</Option>
+                    <Option value="สูงกว่าปริญญาตรี"><BookOutlined /> สูงกว่าปริญญาตรี</Option>
                   </Select>
                 </Form.Item>
               </Col>
@@ -929,13 +1190,13 @@ export default function StudentApplicationPage() {
           <Card 
             title={
               <div style={{ display: 'flex', alignItems: 'center' }}>
-                <FileTextOutlined style={{ marginRight: '8px', color: '#1890ff' }} />
+                <FileTextOutlined style={{ marginRight: '8px', color: '#5d4037' }} />
                 เอกสารประกอบการสมัคร
               </div>
             }
             extra={
               <Tooltip title="อัปโหลดเอกสารที่จำเป็น">
-                <InfoCircleOutlined style={{ color: '#1890ff' }} />
+                <InfoCircleOutlined style={{ color: '#5d4037' }} />
               </Tooltip>
             }
           >
@@ -948,7 +1209,7 @@ export default function StudentApplicationPage() {
             />
 
             <Card size="small" style={{ backgroundColor: '#f8f9fa', marginBottom: 24 }}>
-              <Title level={5} style={{ marginBottom: 16, color: '#1890ff' }}>📋 รายการเอกสารที่ต้องใช้:</Title>
+              <Title level={5} style={{ marginBottom: 16, color: '#5d4037' }}><FileTextOutlined /> รายการเอกสารที่ต้องใช้:</Title>
               <Row gutter={[16, 8]}>
                 <Col span={24}>
                   <div style={{ display: 'flex', alignItems: 'center', marginBottom: '8px' }}>
@@ -961,7 +1222,7 @@ export default function StudentApplicationPage() {
                 <Col span={24}>
                   <div style={{ display: 'flex', alignItems: 'center', marginBottom: '8px' }}>
                     <span style={{ color: '#ff4d4f', marginRight: '8px' }}>*</span>
-                    <BookOutlined style={{ color: '#1890ff', marginRight: '8px' }} />
+                    <BookOutlined style={{ color: '#5d4037', marginRight: '8px' }} />
                     <Text strong>สำเนาวุฒิการศึกษา</Text>
                     <Text type="secondary" style={{ marginLeft: '8px' }}>(รูปภาพหรือ PDF)</Text>
                   </div>
@@ -1025,7 +1286,7 @@ export default function StudentApplicationPage() {
                   name="educationFile"
                   label={
                     <span style={{ fontWeight: 'bold' }}>
-                      <BookOutlined style={{ color: '#1890ff', marginRight: '8px' }} />
+                      <BookOutlined style={{ color: '#5d4037', marginRight: '8px' }} />
                       สำเนาวุฒิการศึกษา
                       <span style={{ color: '#ff4d4f' }}> *</span>
                     </span>
@@ -1168,12 +1429,12 @@ export default function StudentApplicationPage() {
               style={{ marginBottom: 24 }}
             />
             
-            <Title level={4} style={{ color: '#1890ff', marginBottom: 24 }}>
-              📋 สรุปข้อมูลการสมัคร
+            <Title level={4} style={{ color: '#5d4037', marginBottom: 24 }}>
+              <FileTextOutlined /> สรุปข้อมูลการสมัคร
             </Title>
             
             <Card size="small" style={{ backgroundColor: '#f0f8ff', marginBottom: 24 }}>
-              <Title level={5} style={{ color: '#1890ff', marginBottom: 16 }}>
+              <Title level={5} style={{ color: '#5d4037', marginBottom: 16 }}>
                 <BookOutlined style={{ marginRight: '8px' }} />
                 หลักสูตรและรุ่นเรียน
               </Title>

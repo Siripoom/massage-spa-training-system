@@ -158,6 +158,12 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$des
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$BankOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__BankOutlined$3e$__ = __turbopack_context__.i("[project]/node_modules/@ant-design/icons/es/icons/BankOutlined.js [app-ssr] (ecmascript) <export default as BankOutlined>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$ArrowLeftOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowLeftOutlined$3e$__ = __turbopack_context__.i("[project]/node_modules/@ant-design/icons/es/icons/ArrowLeftOutlined.js [app-ssr] (ecmascript) <export default as ArrowLeftOutlined>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$ArrowRightOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowRightOutlined$3e$__ = __turbopack_context__.i("[project]/node_modules/@ant-design/icons/es/icons/ArrowRightOutlined.js [app-ssr] (ecmascript) <export default as ArrowRightOutlined>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$ManOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ManOutlined$3e$__ = __turbopack_context__.i("[project]/node_modules/@ant-design/icons/es/icons/ManOutlined.js [app-ssr] (ecmascript) <export default as ManOutlined>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$WomanOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__WomanOutlined$3e$__ = __turbopack_context__.i("[project]/node_modules/@ant-design/icons/es/icons/WomanOutlined.js [app-ssr] (ecmascript) <export default as WomanOutlined>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$ClockCircleOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ClockCircleOutlined$3e$__ = __turbopack_context__.i("[project]/node_modules/@ant-design/icons/es/icons/ClockCircleOutlined.js [app-ssr] (ecmascript) <export default as ClockCircleOutlined>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$DollarOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__DollarOutlined$3e$__ = __turbopack_context__.i("[project]/node_modules/@ant-design/icons/es/icons/DollarOutlined.js [app-ssr] (ecmascript) <export default as DollarOutlined>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$TrophyOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__TrophyOutlined$3e$__ = __turbopack_context__.i("[project]/node_modules/@ant-design/icons/es/icons/TrophyOutlined.js [app-ssr] (ecmascript) <export default as TrophyOutlined>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$TeamOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__TeamOutlined$3e$__ = __turbopack_context__.i("[project]/node_modules/@ant-design/icons/es/icons/TeamOutlined.js [app-ssr] (ecmascript) <export default as TeamOutlined>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$common$2f$PageHeader$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/common/PageHeader.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$dayjs$2f$dayjs$2e$min$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/dayjs/dayjs.min.js [app-ssr] (ecmascript)");
 'use client';
@@ -174,28 +180,31 @@ const { Option } = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$
 const { Title, Text } = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$typography$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"];
 const { Step } = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$steps$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Steps$3e$__["Steps"];
 // Static mock data to prevent hydration mismatches and circular references
+const STATIC_BATCHES = [
+    {
+        id: 4,
+        batchNumber: 33,
+        name: 'หลักสูตรนวดไทยเพื่อสุขภาพ รุ่นที่ 33',
+        startDate: '2025-01-15',
+        endDate: '2025-04-15',
+        maxStudents: 30,
+        currentStudents: 8,
+        status: 'PLANNING'
+    },
+    {
+        id: 5,
+        batchNumber: 34,
+        name: 'หลักสูตรนวดไทยเพื่อสุขภาพ รุ่นที่ 34',
+        startDate: '2025-05-01',
+        endDate: '2025-08-01',
+        maxStudents: 30,
+        currentStudents: 2,
+        status: 'PLANNING'
+    }
+];
 const getMockBatches = ()=>[
-        {
-            id: 4,
-            batchNumber: 33,
-            name: 'หลักสูตรนวดไทยเพื่อสุขภาพ รุ่นที่ 33',
-            startDate: '2025-01-15',
-            endDate: '2025-04-15',
-            maxStudents: 30,
-            currentStudents: 8,
-            status: 'PLANNING'
-        },
-        {
-            id: 5,
-            batchNumber: 34,
-            name: 'หลักสูตรนวดไทยเพื่อสุขภาพ รุ่นที่ 34',
-            startDate: '2025-05-01',
-            endDate: '2025-08-01',
-            maxStudents: 30,
-            currentStudents: 2,
-            status: 'PLANNING'
-        }
-    ];
+        ...STATIC_BATCHES
+    ]; // Return a copy to prevent mutations
 // Mock data based on old system
 const mockCourses = [
     {
@@ -226,10 +235,12 @@ function StudentApplicationPage() {
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [courseModalOpen, setCourseModalOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [selectedCourseId, setSelectedCourseId] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('');
+    const [batchModalOpen, setBatchModalOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [selectedBatchId, setSelectedBatchId] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         const loadData = async ()=>{
             try {
-                // Simulate API call
+                // Simulate API call with static data to prevent circular references
                 setTimeout(()=>{
                     setCourses(mockCourses);
                     setBatches(getMockBatches());
@@ -240,56 +251,115 @@ function StudentApplicationPage() {
             }
         };
         loadData();
-    }, []);
-    const handleCourseChange = (courseId)=>{
+    }, []); // Empty dependency array to prevent re-runs
+    const handleCourseChange = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCallback"])((courseId)=>{
+        if (!courseId || !courses.length) return;
         const course = courses.find((c)=>c.id === courseId);
-        setSelectedCourse(course || null);
-        // Filter batches for selected course
-        const allBatches = getMockBatches();
-        const courseBatches = allBatches.filter((b)=>course?.title.includes('นวดไทยเพื่อสุขภาพ') ? b.name.includes('นวดไทยเพื่อสุขภาพ') : false);
+        if (!course) return;
+        // Prevent unnecessary re-renders by checking if course is already selected
+        if (selectedCourse?.id === courseId) return;
+        setSelectedCourse(course);
+        // Filter batches based on course type - use static data to prevent circular references
+        const courseBatches = STATIC_BATCHES.filter((batch)=>{
+            // Simple, safe filtering logic
+            if (course.title.includes('นวดไทยเพื่อสุขภาพ')) {
+                return batch.name.includes('นวดไทยเพื่อสุขภาพ');
+            }
+            // For other courses, show all batches for now
+            return true;
+        });
         setBatches(courseBatches);
-        // Reset batch selection
-        form.setFieldValue('batchId', undefined);
-    };
+        // Reset batch selection only if different course
+        if (selectedCourse?.id !== courseId) {
+            form.setFieldValue('batchId', undefined);
+            setSelectedBatchId(null);
+        }
+    }, [
+        courses,
+        selectedCourse,
+        form
+    ]); // Remove selectedCourse?.id dependency
     const openCourseModal = ()=>{
         setCourseModalOpen(true);
     };
-    const handleCourseSelect = (courseId)=>{
-        setSelectedCourseId(courseId);
-        form.setFieldValue('courseId', courseId);
-        handleCourseChange(courseId);
-        setCourseModalOpen(false);
+    const openBatchModal = ()=>{
+        setBatchModalOpen(true);
     };
+    const closeBatchModal = ()=>{
+        setBatchModalOpen(false);
+    };
+    const handleCourseSelect = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCallback"])((courseId)=>{
+        if (!courseId || selectedCourseId === courseId) return;
+        try {
+            setSelectedCourseId(courseId);
+            setCourseModalOpen(false);
+            // Use setTimeout to break potential circular updates and ensure modal closes first
+            setTimeout(()=>{
+                form.setFieldValue('courseId', courseId);
+                handleCourseChange(courseId);
+            }, 100);
+        } catch (error) {
+            console.error('Error selecting course:', error);
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__["message"].error('เกิดข้อผิดพลาดในการเลือกหลักสูตร');
+        }
+    }, [
+        selectedCourseId,
+        form,
+        handleCourseChange
+    ]);
+    const handleBatchSelect = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCallback"])((batchId)=>{
+        if (!batchId || selectedBatchId === batchId) return;
+        try {
+            setSelectedBatchId(batchId);
+            setBatchModalOpen(false);
+            // Use setTimeout to break potential circular updates and ensure modal closes first
+            setTimeout(()=>{
+                form.setFieldValue('batchId', batchId);
+            }, 100);
+        } catch (error) {
+            console.error('Error selecting batch:', error);
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__["message"].error('เกิดข้อผิดพลาดในการเลือกรุ่นเรียน');
+        }
+    }, [
+        selectedBatchId,
+        form
+    ]);
     const closeCourseModal = ()=>{
         setCourseModalOpen(false);
     };
     const handleNext = async ()=>{
         try {
             await form.validateFields();
-            setCurrentStep(currentStep + 1);
-        } catch  {
+            setCurrentStep((prev)=>prev + 1);
+        } catch (error) {
+            console.error('Validation error:', error);
             __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__["message"].error('กรุณากรอกข้อมูลให้ครบถ้วน');
         }
     };
     const handlePrev = ()=>{
-        setCurrentStep(currentStep - 1);
+        setCurrentStep((prev)=>Math.max(0, prev - 1));
     };
     const handleSubmit = async ()=>{
         try {
             setLoading(true);
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            const _values = await form.validateFields();
+            const values = await form.validateFields();
+            // Validate required data
+            if (!values.courseId) {
+                throw new Error('กรุณาเลือกหลักสูตร');
+            }
             // Simulate API call
             setTimeout(()=>{
                 __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__["message"].success('ส่งใบสมัครเรียนสำเร็จ! เจ้าหน้าที่จะติดต่อกลับภายใน 3 วันทำการ');
                 form.resetFields();
                 setCurrentStep(0);
                 setSelectedCourse(null);
+                setSelectedCourseId('');
+                setSelectedBatchId(null);
                 setLoading(false);
             }, 2000);
         } catch (error) {
             console.error('Error submitting application:', error);
-            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__["message"].error('เกิดข้อผิดพลาดในการส่งใบสมัคร');
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__["message"].error(error instanceof Error ? error.message : 'เกิดข้อผิดพลาดในการส่งใบสมัคร');
             setLoading(false);
         }
     };
@@ -298,7 +368,7 @@ function StudentApplicationPage() {
             title: 'เลือกหลักสูตร',
             icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$BookOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__BookOutlined$3e$__["BookOutlined"], {}, void 0, false, {
                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                lineNumber: 175,
+                lineNumber: 239,
                 columnNumber: 13
             }, this),
             description: 'เลือกหลักสูตรและรุ่นเรียน'
@@ -307,7 +377,7 @@ function StudentApplicationPage() {
             title: 'ข้อมูลส่วนตัว',
             icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$UserOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__UserOutlined$3e$__["UserOutlined"], {}, void 0, false, {
                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                lineNumber: 180,
+                lineNumber: 244,
                 columnNumber: 13
             }, this),
             description: 'กรอกข้อมูลส่วนตัว'
@@ -316,7 +386,7 @@ function StudentApplicationPage() {
             title: 'เอกสารประกอบ',
             icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$FileTextOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__FileTextOutlined$3e$__["FileTextOutlined"], {}, void 0, false, {
                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                lineNumber: 185,
+                lineNumber: 249,
                 columnNumber: 13
             }, this),
             description: 'อัปโหลดเอกสาร'
@@ -325,7 +395,7 @@ function StudentApplicationPage() {
             title: 'ยืนยันการสมัคร',
             icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$CheckOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckOutlined$3e$__["CheckOutlined"], {}, void 0, false, {
                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                lineNumber: 190,
+                lineNumber: 254,
                 columnNumber: 13
             }, this),
             description: 'ตรวจสอบและยืนยัน'
@@ -344,34 +414,34 @@ function StudentApplicationPage() {
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$BookOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__BookOutlined$3e$__["BookOutlined"], {
                                 style: {
                                     marginRight: '8px',
-                                    color: '#1890ff'
+                                    color: '#5d4037'
                                 }
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                lineNumber: 202,
+                                lineNumber: 266,
                                 columnNumber: 17
                             }, void 0),
                             "เลือกหลักสูตรและรุ่นเรียน"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                        lineNumber: 201,
+                        lineNumber: 265,
                         columnNumber: 15
                     }, void 0),
                     extra: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$tooltip$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Tooltip$3e$__["Tooltip"], {
                         title: "เลือกหลักสูตรที่ต้องการสมัครเรียน",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$InfoCircleOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__InfoCircleOutlined$3e$__["InfoCircleOutlined"], {
                             style: {
-                                color: '#1890ff'
+                                color: '#5d4037'
                             }
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                            lineNumber: 208,
+                            lineNumber: 272,
                             columnNumber: 17
                         }, void 0)
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                        lineNumber: 207,
+                        lineNumber: 271,
                         columnNumber: 15
                     }, void 0),
                     children: [
@@ -385,7 +455,7 @@ function StudentApplicationPage() {
                             }
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                            lineNumber: 212,
+                            lineNumber: 276,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
@@ -402,18 +472,18 @@ function StudentApplicationPage() {
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$BookOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__BookOutlined$3e$__["BookOutlined"], {
                                         style: {
-                                            color: '#3b82f6'
+                                            color: '#5d4037'
                                         }
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                        lineNumber: 231,
+                                        lineNumber: 295,
                                         columnNumber: 19
                                     }, void 0),
                                     "หลักสูตรที่สนใจ"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                lineNumber: 223,
+                                lineNumber: 287,
                                 columnNumber: 17
                             }, void 0),
                             rules: [
@@ -432,8 +502,8 @@ function StudentApplicationPage() {
                                     width: '100%',
                                     height: '56px',
                                     borderRadius: '12px',
-                                    border: selectedCourse ? '1px solid #3b82f6' : '1px solid #d9d9d9',
-                                    backgroundColor: selectedCourse ? '#f0f8ff' : 'white',
+                                    border: selectedCourse ? '1px solid #5d4037' : '1px solid #d9d9d9',
+                                    backgroundColor: selectedCourse ? '#faf7f5' : 'white',
                                     textAlign: 'left',
                                     display: 'flex',
                                     alignItems: 'center',
@@ -451,12 +521,12 @@ function StudentApplicationPage() {
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$BookOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__BookOutlined$3e$__["BookOutlined"], {
                                                     style: {
-                                                        color: '#3b82f6',
+                                                        color: '#5d4037',
                                                         fontSize: '18px'
                                                     }
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                    lineNumber: 257,
+                                                    lineNumber: 321,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -471,7 +541,7 @@ function StudentApplicationPage() {
                                                             children: selectedCourse.title
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                            lineNumber: 259,
+                                                            lineNumber: 323,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -486,13 +556,13 @@ function StudentApplicationPage() {
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                            lineNumber: 267,
+                                                            lineNumber: 331,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                    lineNumber: 258,
+                                                    lineNumber: 322,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
@@ -505,7 +575,7 @@ function StudentApplicationPage() {
                                                     }
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                    lineNumber: 277,
+                                                    lineNumber: 341,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -513,40 +583,40 @@ function StudentApplicationPage() {
                                                         color: '#9ca3af',
                                                         fontSize: '16px'
                                                     },
-                                                    children: "🔍 คลิกเพื่อเลือกหลักสูตรที่ต้องการสมัคร..."
+                                                    children: "คลิกเพื่อเลือกหลักสูตรที่ต้องการสมัคร..."
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                    lineNumber: 278,
+                                                    lineNumber: 342,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                        lineNumber: 254,
+                                        lineNumber: 318,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$ArrowRightOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowRightOutlined$3e$__["ArrowRightOutlined"], {
                                         style: {
-                                            color: selectedCourse ? '#3b82f6' : '#9ca3af',
+                                            color: selectedCourse ? '#5d4037' : '#9ca3af',
                                             fontSize: '16px',
                                             transform: courseModalOpen ? 'rotate(90deg)' : 'rotate(0deg)',
                                             transition: 'transform 0.3s ease'
                                         }
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                        lineNumber: 284,
+                                        lineNumber: 348,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                lineNumber: 238,
+                                lineNumber: 302,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                            lineNumber: 220,
+                            lineNumber: 284,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$modal$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Modal$3e$__["Modal"], {
@@ -562,19 +632,19 @@ function StudentApplicationPage() {
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$BookOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__BookOutlined$3e$__["BookOutlined"], {
                                         style: {
-                                            color: '#3b82f6',
+                                            color: '#5d4037',
                                             fontSize: '24px'
                                         }
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                        lineNumber: 306,
+                                        lineNumber: 370,
                                         columnNumber: 19
                                     }, void 0),
                                     "เลือกหลักสูตรที่ต้องการสมัคร"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                lineNumber: 298,
+                                lineNumber: 362,
                                 columnNumber: 17
                             }, void 0),
                             open: courseModalOpen,
@@ -603,12 +673,12 @@ function StudentApplicationPage() {
                                         showIcon: true
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                        lineNumber: 324,
+                                        lineNumber: 388,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                    lineNumber: 323,
+                                    lineNumber: 387,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$row$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Row$3e$__["Row"], {
@@ -623,10 +693,10 @@ function StudentApplicationPage() {
                                                 hoverable: true,
                                                 style: {
                                                     borderRadius: '16px',
-                                                    border: selectedCourseId === course.id ? '2px solid #3b82f6' : '1px solid #e2e8f0',
-                                                    boxShadow: selectedCourseId === course.id ? '0 8px 30px rgba(59, 130, 246, 0.2)' : '0 2px 8px rgba(0,0,0,0.06)',
+                                                    border: selectedCourseId === course.id ? '2px solid #5d4037' : '1px solid #e2e8f0',
+                                                    boxShadow: selectedCourseId === course.id ? '0 8px 30px rgba(93, 64, 55, 0.2)' : '0 2px 8px rgba(0,0,0,0.06)',
                                                     transition: 'all 0.3s ease',
-                                                    background: selectedCourseId === course.id ? 'linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%)' : 'white'
+                                                    background: selectedCourseId === course.id ? 'linear-gradient(135deg, #faf7f5 0%, #f5f0eb 100%)' : 'white'
                                                 },
                                                 styles: {
                                                     body: {
@@ -646,39 +716,48 @@ function StudentApplicationPage() {
                                                                 style: {
                                                                     width: '80px',
                                                                     height: '80px',
-                                                                    backgroundColor: selectedCourseId === course.id ? '#3b82f6' : '#f8fafc',
+                                                                    backgroundColor: selectedCourseId === course.id ? '#5d4037' : '#f8fafc',
                                                                     borderRadius: '20px',
                                                                     display: 'flex',
                                                                     alignItems: 'center',
                                                                     justifyContent: 'center',
                                                                     margin: '0 auto 16px',
                                                                     fontSize: '36px',
-                                                                    transition: 'all 0.3s ease'
+                                                                    transition: 'all 0.3s ease',
+                                                                    color: selectedCourseId === course.id ? 'white' : '#5d4037'
                                                                 },
-                                                                children: selectedCourseId === course.id ? '✅' : '📚'
+                                                                children: selectedCourseId === course.id ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$CheckOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckOutlined$3e$__["CheckOutlined"], {}, void 0, false, {
+                                                                    fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                    lineNumber: 427,
+                                                                    columnNumber: 61
+                                                                }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$BookOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__BookOutlined$3e$__["BookOutlined"], {}, void 0, false, {
+                                                                    fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                    lineNumber: 427,
+                                                                    columnNumber: 81
+                                                                }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                                lineNumber: 350,
+                                                                lineNumber: 414,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                 style: {
                                                                     fontSize: '18px',
                                                                     fontWeight: 'bold',
-                                                                    color: selectedCourseId === course.id ? '#1e40af' : '#1f2937',
+                                                                    color: selectedCourseId === course.id ? '#5d4037' : '#1f2937',
                                                                     marginBottom: '8px',
                                                                     lineHeight: '1.4'
                                                                 },
                                                                 children: course.title
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                                lineNumber: 364,
+                                                                lineNumber: 429,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 346,
+                                                        lineNumber: 410,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -701,18 +780,13 @@ function StudentApplicationPage() {
                                                                             alignItems: 'center',
                                                                             gap: '8px',
                                                                             padding: '8px 12px',
-                                                                            backgroundColor: selectedCourseId === course.id ? 'rgba(59, 130, 246, 0.1)' : '#f8fafc',
+                                                                            backgroundColor: selectedCourseId === course.id ? 'rgba(93, 64, 55, 0.1)' : '#f8fafc',
                                                                             borderRadius: '8px'
                                                                         },
                                                                         children: [
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                                style: {
-                                                                                    fontSize: '18px'
-                                                                                },
-                                                                                children: "⏰"
-                                                                            }, void 0, false, {
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$ClockCircleOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ClockCircleOutlined$3e$__["ClockCircleOutlined"], {}, void 0, false, {
                                                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                                                lineNumber: 386,
+                                                                                lineNumber: 451,
                                                                                 columnNumber: 31
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -727,18 +801,18 @@ function StudentApplicationPage() {
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                                                lineNumber: 387,
+                                                                                lineNumber: 452,
                                                                                 columnNumber: 31
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                                        lineNumber: 378,
+                                                                        lineNumber: 443,
                                                                         columnNumber: 29
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                                    lineNumber: 377,
+                                                                    lineNumber: 442,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
@@ -749,18 +823,13 @@ function StudentApplicationPage() {
                                                                             alignItems: 'center',
                                                                             gap: '8px',
                                                                             padding: '8px 12px',
-                                                                            backgroundColor: selectedCourseId === course.id ? 'rgba(59, 130, 246, 0.1)' : '#f8fafc',
+                                                                            backgroundColor: selectedCourseId === course.id ? 'rgba(93, 64, 55, 0.1)' : '#f8fafc',
                                                                             borderRadius: '8px'
                                                                         },
                                                                         children: [
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                                style: {
-                                                                                    fontSize: '18px'
-                                                                                },
-                                                                                children: "💰"
-                                                                            }, void 0, false, {
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$DollarOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__DollarOutlined$3e$__["DollarOutlined"], {}, void 0, false, {
                                                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                                                lineNumber: 401,
+                                                                                lineNumber: 466,
                                                                                 columnNumber: 31
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -774,18 +843,18 @@ function StudentApplicationPage() {
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                                                lineNumber: 402,
+                                                                                lineNumber: 467,
                                                                                 columnNumber: 31
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                                        lineNumber: 393,
+                                                                        lineNumber: 458,
                                                                         columnNumber: 29
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                                    lineNumber: 392,
+                                                                    lineNumber: 457,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
@@ -800,14 +869,9 @@ function StudentApplicationPage() {
                                                                             borderRadius: '8px'
                                                                         },
                                                                         children: [
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                                style: {
-                                                                                    fontSize: '18px'
-                                                                                },
-                                                                                children: "🎯"
-                                                                            }, void 0, false, {
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$TrophyOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__TrophyOutlined$3e$__["TrophyOutlined"], {}, void 0, false, {
                                                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                                                lineNumber: 416,
+                                                                                lineNumber: 481,
                                                                                 columnNumber: 31
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -818,29 +882,29 @@ function StudentApplicationPage() {
                                                                                 children: "หลักสูตรแนะนำ"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                                                lineNumber: 417,
+                                                                                lineNumber: 482,
                                                                                 columnNumber: 31
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                                        lineNumber: 408,
+                                                                        lineNumber: 473,
                                                                         columnNumber: 29
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                                    lineNumber: 407,
+                                                                    lineNumber: 472,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                            lineNumber: 376,
+                                                            lineNumber: 441,
                                                             columnNumber: 25
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 375,
+                                                        lineNumber: 440,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
@@ -851,40 +915,49 @@ function StudentApplicationPage() {
                                                             borderRadius: '12px',
                                                             fontWeight: '600',
                                                             height: '48px',
-                                                            backgroundColor: selectedCourseId === course.id ? '#3b82f6' : 'white',
-                                                            borderColor: selectedCourseId === course.id ? '#3b82f6' : '#d1d5db',
-                                                            boxShadow: selectedCourseId === course.id ? '0 4px 12px rgba(59, 130, 246, 0.3)' : 'none'
+                                                            backgroundColor: selectedCourseId === course.id ? '#5d4037' : 'white',
+                                                            borderColor: selectedCourseId === course.id ? '#5d4037' : '#d1d5db',
+                                                            boxShadow: selectedCourseId === course.id ? '0 4px 12px rgba(93, 64, 55, 0.3)' : 'none'
                                                         },
                                                         onClick: (e)=>{
                                                             e.stopPropagation();
                                                             handleCourseSelect(course.id);
                                                         },
-                                                        children: selectedCourseId === course.id ? '✅ เลือกแล้ว' : 'เลือกหลักสูตรนี้'
+                                                        children: selectedCourseId === course.id ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$CheckOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckOutlined$3e$__["CheckOutlined"], {}, void 0, false, {
+                                                                    fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                    lineNumber: 509,
+                                                                    columnNumber: 29
+                                                                }, this),
+                                                                " เลือกแล้ว"
+                                                            ]
+                                                        }, void 0, true) : 'เลือกหลักสูตรนี้'
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 425,
+                                                        lineNumber: 490,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                lineNumber: 335,
+                                                lineNumber: 399,
                                                 columnNumber: 21
                                             }, this)
                                         }, course.id, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 334,
+                                            lineNumber: 398,
                                             columnNumber: 19
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                    lineNumber: 332,
+                                    lineNumber: 396,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                            lineNumber: 296,
+                            lineNumber: 360,
                             columnNumber: 13
                         }, this),
                         selectedCourse && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -892,23 +965,30 @@ function StudentApplicationPage() {
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$divider$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Divider$3e$__["Divider"], {
                                     orientation: "left",
                                     style: {
-                                        borderColor: '#3b82f6',
+                                        borderColor: '#5d4037',
                                         fontSize: '16px',
                                         fontWeight: 'bold'
                                     },
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         style: {
-                                            color: '#3b82f6'
+                                            color: '#5d4037'
                                         },
-                                        children: "📋 รายละเอียดหลักสูตร"
-                                    }, void 0, false, {
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$BookOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__BookOutlined$3e$__["BookOutlined"], {}, void 0, false, {
+                                                fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                lineNumber: 528,
+                                                columnNumber: 54
+                                            }, this),
+                                            " รายละเอียดหลักสูตร"
+                                        ]
+                                    }, void 0, true, {
                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                        lineNumber: 457,
+                                        lineNumber: 528,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                    lineNumber: 452,
+                                    lineNumber: 523,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$card$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Card$3e$__["Card"], {
@@ -918,7 +998,7 @@ function StudentApplicationPage() {
                                         marginBottom: 32,
                                         borderRadius: '16px',
                                         border: '1px solid #e2e8f0',
-                                        boxShadow: '0 4px 20px rgba(59, 130, 246, 0.08)'
+                                        boxShadow: '0 4px 20px rgba(93, 64, 55, 0.08)'
                                     },
                                     styles: {
                                         body: {
@@ -947,7 +1027,7 @@ function StudentApplicationPage() {
                                                             style: {
                                                                 width: '48px',
                                                                 height: '48px',
-                                                                backgroundColor: '#3b82f6',
+                                                                backgroundColor: '#5d4037',
                                                                 borderRadius: '12px',
                                                                 display: 'flex',
                                                                 alignItems: 'center',
@@ -956,10 +1036,14 @@ function StudentApplicationPage() {
                                                                 color: 'white',
                                                                 fontSize: '20px'
                                                             },
-                                                            children: "📚"
+                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$BookOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__BookOutlined$3e$__["BookOutlined"], {}, void 0, false, {
+                                                                fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                lineNumber: 562,
+                                                                columnNumber: 27
+                                                            }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                            lineNumber: 479,
+                                                            lineNumber: 550,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -972,7 +1056,7 @@ function StudentApplicationPage() {
                                                             children: "ชื่อหลักสูตร"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                            lineNumber: 493,
+                                                            lineNumber: 564,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -985,18 +1069,18 @@ function StudentApplicationPage() {
                                                             children: selectedCourse.title
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                            lineNumber: 501,
+                                                            lineNumber: 572,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                    lineNumber: 472,
+                                                    lineNumber: 543,
                                                     columnNumber: 23
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                lineNumber: 471,
+                                                lineNumber: 542,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
@@ -1024,10 +1108,14 @@ function StudentApplicationPage() {
                                                                 color: 'white',
                                                                 fontSize: '20px'
                                                             },
-                                                            children: "⏰"
+                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$ClockCircleOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ClockCircleOutlined$3e$__["ClockCircleOutlined"], {}, void 0, false, {
+                                                                fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                lineNumber: 602,
+                                                                columnNumber: 27
+                                                            }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                            lineNumber: 519,
+                                                            lineNumber: 590,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1040,7 +1128,7 @@ function StudentApplicationPage() {
                                                             children: "จำนวนชั่วโมง"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                            lineNumber: 533,
+                                                            lineNumber: 604,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1055,18 +1143,18 @@ function StudentApplicationPage() {
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                            lineNumber: 541,
+                                                            lineNumber: 612,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                    lineNumber: 512,
+                                                    lineNumber: 583,
                                                     columnNumber: 23
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                lineNumber: 511,
+                                                lineNumber: 582,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
@@ -1094,10 +1182,14 @@ function StudentApplicationPage() {
                                                                 color: 'white',
                                                                 fontSize: '20px'
                                                             },
-                                                            children: "💰"
+                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$DollarOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__DollarOutlined$3e$__["DollarOutlined"], {}, void 0, false, {
+                                                                fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                lineNumber: 641,
+                                                                columnNumber: 27
+                                                            }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                            lineNumber: 558,
+                                                            lineNumber: 629,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1110,7 +1202,7 @@ function StudentApplicationPage() {
                                                             children: "ค่าธรรมเนียม"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                            lineNumber: 572,
+                                                            lineNumber: 643,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1125,29 +1217,29 @@ function StudentApplicationPage() {
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                            lineNumber: 580,
+                                                            lineNumber: 651,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                    lineNumber: 551,
+                                                    lineNumber: 622,
                                                     columnNumber: 23
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                lineNumber: 550,
+                                                lineNumber: 621,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                        lineNumber: 470,
+                                        lineNumber: 541,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                    lineNumber: 459,
+                                    lineNumber: 530,
                                     columnNumber: 17
                                 }, this)
                             ]
@@ -1157,13 +1249,28 @@ function StudentApplicationPage() {
                             label: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                 style: {
                                     fontSize: '16px',
-                                    fontWeight: 'bold'
+                                    fontWeight: 'bold',
+                                    color: '#1f2937',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '8px'
                                 },
-                                children: "รุ่นที่ต้องการสมัคร"
-                            }, void 0, false, {
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$CalendarOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CalendarOutlined$3e$__["CalendarOutlined"], {
+                                        style: {
+                                            color: '#5d4037'
+                                        }
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                        lineNumber: 676,
+                                        columnNumber: 19
+                                    }, void 0),
+                                    "รุ่นที่ต้องการสมัคร"
+                                ]
+                            }, void 0, true, {
                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                lineNumber: 596,
-                                columnNumber: 22
+                                lineNumber: 668,
+                                columnNumber: 17
                             }, void 0),
                             rules: [
                                 {
@@ -1174,205 +1281,654 @@ function StudentApplicationPage() {
                             style: {
                                 marginTop: 24
                             },
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$select$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Select$3e$__["Select"], {
-                                placeholder: "เลือกรุ่นเรียน",
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
                                 size: "large",
+                                onClick: openBatchModal,
                                 disabled: !selectedCourse,
-                                showSearch: true,
-                                optionFilterProp: "children",
                                 style: {
-                                    borderRadius: '8px'
+                                    width: '100%',
+                                    height: '56px',
+                                    borderRadius: '12px',
+                                    border: selectedBatchId ? '1px solid #5d4037' : '1px solid #d9d9d9',
+                                    backgroundColor: selectedBatchId ? '#faf7f5' : 'white',
+                                    textAlign: 'left',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'space-between',
+                                    padding: '0 16px',
+                                    opacity: !selectedCourse ? 0.5 : 1
                                 },
-                                styles: {
-                                    popup: {
-                                        root: {
-                                            borderRadius: '8px',
-                                            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
-                                        }
-                                    }
-                                },
-                                children: batches.map((batch)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Option, {
-                                        value: batch.id,
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            style: {
-                                                padding: '12px 8px',
-                                                borderRadius: '6px',
-                                                transition: 'background-color 0.3s ease'
-                                            },
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        style: {
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '12px'
+                                        },
+                                        children: selectedBatchId ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
                                             children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$CalendarOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CalendarOutlined$3e$__["CalendarOutlined"], {
                                                     style: {
-                                                        display: 'flex',
-                                                        justifyContent: 'space-between',
-                                                        alignItems: 'center',
-                                                        marginBottom: '8px'
-                                                    },
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            style: {
-                                                                fontWeight: 'bold',
-                                                                fontSize: '16px',
-                                                                color: '#1f2937'
-                                                            },
-                                                            children: [
-                                                                "รุ่นที่ ",
-                                                                batch.batchNumber
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                            lineNumber: 631,
-                                                            columnNumber: 25
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            style: {
-                                                                backgroundColor: '#f0f9ff',
-                                                                color: '#0369a1',
-                                                                padding: '2px 8px',
-                                                                borderRadius: '12px',
-                                                                fontSize: '12px',
-                                                                fontWeight: '500'
-                                                            },
-                                                            children: batch.status === 'PLANNING' ? 'เปิดรับสมัคร' : batch.status
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                            lineNumber: 638,
-                                                            columnNumber: 25
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
+                                                        color: '#5d4037',
+                                                        fontSize: '18px'
+                                                    }
+                                                }, void 0, false, {
                                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                    lineNumber: 625,
+                                                    lineNumber: 704,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    style: {
-                                                        display: 'flex',
-                                                        alignItems: 'center',
-                                                        gap: '4px',
-                                                        marginBottom: '8px',
-                                                        fontSize: '14px'
-                                                    },
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                            style: {
-                                                                color: '#f59e0b'
-                                                            },
-                                                            children: "🗓️"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                            lineNumber: 656,
-                                                            columnNumber: 25
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
-                                                            type: "secondary",
+                                                    children: (()=>{
+                                                        const selectedBatch = batches.find((b)=>b.id === selectedBatchId);
+                                                        if (!selectedBatch) return null;
+                                                        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
                                                             children: [
-                                                                "เริ่ม: ",
-                                                                (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$dayjs$2f$dayjs$2e$min$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])(batch.startDate).format('DD/MM/YYYY')
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                            lineNumber: 657,
-                                                            columnNumber: 25
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                    lineNumber: 649,
-                                                    columnNumber: 23
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    style: {
-                                                        display: 'flex',
-                                                        justifyContent: 'space-between',
-                                                        alignItems: 'center',
-                                                        gap: '12px'
-                                                    },
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            style: {
-                                                                display: 'flex',
-                                                                alignItems: 'center',
-                                                                gap: '4px',
-                                                                fontSize: '14px'
-                                                            },
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                     style: {
-                                                                        color: '#8b5cf6'
+                                                                        fontSize: '16px',
+                                                                        fontWeight: 'bold',
+                                                                        color: '#1f2937',
+                                                                        marginBottom: '2px'
                                                                     },
-                                                                    children: "👥"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                                    lineNumber: 673,
-                                                                    columnNumber: 27
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
-                                                                    type: "secondary",
                                                                     children: [
-                                                                        batch.currentStudents,
+                                                                        "รุ่นที่ ",
+                                                                        selectedBatch.batchNumber
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                    lineNumber: 711,
+                                                                    columnNumber: 31
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                    style: {
+                                                                        fontSize: '14px',
+                                                                        color: '#6b7280'
+                                                                    },
+                                                                    children: [
+                                                                        "เริ่ม: ",
+                                                                        (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$dayjs$2f$dayjs$2e$min$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])(selectedBatch.startDate).format('DD/MM/YYYY'),
+                                                                        " • ",
+                                                                        selectedBatch.currentStudents,
                                                                         "/",
-                                                                        batch.maxStudents,
+                                                                        selectedBatch.maxStudents,
                                                                         " คน"
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                                    lineNumber: 674,
-                                                                    columnNumber: 27
+                                                                    lineNumber: 719,
+                                                                    columnNumber: 31
                                                                 }, this)
                                                             ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                            lineNumber: 667,
-                                                            columnNumber: 25
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$progress$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Progress$3e$__["Progress"], {
-                                                            percent: Math.round(batch.currentStudents / batch.maxStudents * 100),
-                                                            size: "small",
-                                                            style: {
-                                                                width: '80px',
-                                                                minWidth: '80px'
-                                                            },
-                                                            strokeColor: {
-                                                                '0%': '#10b981',
-                                                                '50%': '#f59e0b',
-                                                                '100%': '#ef4444'
-                                                            }
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                            lineNumber: 678,
-                                                            columnNumber: 25
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
+                                                        }, void 0, true);
+                                                    })()
+                                                }, void 0, false, {
                                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                    lineNumber: 661,
+                                                    lineNumber: 705,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 620,
-                                            columnNumber: 21
-                                        }, this)
-                                    }, batch.id, false, {
+                                        }, void 0, true) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$CalendarOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CalendarOutlined$3e$__["CalendarOutlined"], {
+                                                    style: {
+                                                        color: '#9ca3af',
+                                                        fontSize: '18px'
+                                                    }
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                    lineNumber: 732,
+                                                    columnNumber: 23
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    style: {
+                                                        color: '#9ca3af',
+                                                        fontSize: '16px'
+                                                    },
+                                                    children: !selectedCourse ? 'กรุณาเลือกหลักสูตรก่อน...' : 'คลิกเพื่อเลือกรุ่นเรียน...'
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                    lineNumber: 733,
+                                                    columnNumber: 23
+                                                }, this)
+                                            ]
+                                        }, void 0, true)
+                                    }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                        lineNumber: 619,
-                                        columnNumber: 19
-                                    }, this))
-                            }, void 0, false, {
+                                        lineNumber: 701,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$ArrowRightOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowRightOutlined$3e$__["ArrowRightOutlined"], {
+                                        style: {
+                                            color: selectedBatchId ? '#5d4037' : '#9ca3af',
+                                            fontSize: '16px',
+                                            transform: batchModalOpen ? 'rotate(90deg)' : 'rotate(0deg)',
+                                            transition: 'transform 0.3s ease'
+                                        }
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                        lineNumber: 739,
+                                        columnNumber: 17
+                                    }, this)
+                                ]
+                            }, void 0, true, {
                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                lineNumber: 600,
+                                lineNumber: 683,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                            lineNumber: 594,
+                            lineNumber: 665,
+                            columnNumber: 13
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$modal$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Modal$3e$__["Modal"], {
+                            title: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                style: {
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '12px',
+                                    fontSize: '20px',
+                                    fontWeight: 'bold',
+                                    color: '#1f2937'
+                                },
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$CalendarOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CalendarOutlined$3e$__["CalendarOutlined"], {
+                                        style: {
+                                            color: '#5d4037',
+                                            fontSize: '24px'
+                                        }
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                        lineNumber: 761,
+                                        columnNumber: 19
+                                    }, void 0),
+                                    "เลือกรุ่นเรียนที่ต้องการสมัคร"
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                lineNumber: 753,
+                                columnNumber: 17
+                            }, void 0),
+                            open: batchModalOpen,
+                            onCancel: closeBatchModal,
+                            footer: null,
+                            width: 700,
+                            style: {
+                                top: 20
+                            },
+                            styles: {
+                                body: {
+                                    padding: '24px',
+                                    maxHeight: '70vh',
+                                    overflowY: 'auto'
+                                }
+                            },
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        marginBottom: '24px'
+                                    },
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$alert$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Alert$3e$__["Alert"], {
+                                        message: "เลือกรุ่นเรียนที่เหมาะสม",
+                                        description: "เลือกรุ่นเรียนที่ตรงกับเวลาและความพร้อมของคุณ",
+                                        type: "info",
+                                        showIcon: true
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                        lineNumber: 779,
+                                        columnNumber: 17
+                                    }, this)
+                                }, void 0, false, {
+                                    fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                    lineNumber: 778,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$row$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Row$3e$__["Row"], {
+                                    gutter: [
+                                        16,
+                                        16
+                                    ],
+                                    children: batches.map((batch)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
+                                            xs: 24,
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$card$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Card$3e$__["Card"], {
+                                                hoverable: true,
+                                                style: {
+                                                    borderRadius: '16px',
+                                                    border: selectedBatchId === batch.id ? '2px solid #5d4037' : '1px solid #e2e8f0',
+                                                    boxShadow: selectedBatchId === batch.id ? '0 8px 30px rgba(93, 64, 55, 0.2)' : '0 2px 8px rgba(0,0,0,0.06)',
+                                                    transition: 'all 0.3s ease',
+                                                    background: selectedBatchId === batch.id ? 'linear-gradient(135deg, #faf7f5 0%, #f5f0eb 100%)' : 'white'
+                                                },
+                                                styles: {
+                                                    body: {
+                                                        padding: '24px'
+                                                    }
+                                                },
+                                                onClick: ()=>handleBatchSelect(batch.id),
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$row$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Row$3e$__["Row"], {
+                                                        gutter: [
+                                                            16,
+                                                            0
+                                                        ],
+                                                        align: "middle",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
+                                                                xs: 24,
+                                                                sm: 6,
+                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                    style: {
+                                                                        textAlign: 'center'
+                                                                    },
+                                                                    children: [
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                            style: {
+                                                                                width: '80px',
+                                                                                height: '80px',
+                                                                                backgroundColor: selectedBatchId === batch.id ? '#5d4037' : '#f8fafc',
+                                                                                borderRadius: '20px',
+                                                                                display: 'flex',
+                                                                                alignItems: 'center',
+                                                                                justifyContent: 'center',
+                                                                                margin: '0 auto 12px',
+                                                                                fontSize: '24px',
+                                                                                transition: 'all 0.3s ease',
+                                                                                color: selectedBatchId === batch.id ? 'white' : '#5d4037'
+                                                                            },
+                                                                            children: selectedBatchId === batch.id ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$CheckOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckOutlined$3e$__["CheckOutlined"], {}, void 0, false, {
+                                                                                fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                                lineNumber: 818,
+                                                                                columnNumber: 63
+                                                                            }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$CalendarOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CalendarOutlined$3e$__["CalendarOutlined"], {}, void 0, false, {
+                                                                                fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                                lineNumber: 818,
+                                                                                columnNumber: 83
+                                                                            }, this)
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                            lineNumber: 805,
+                                                                            columnNumber: 29
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                            style: {
+                                                                                fontSize: '20px',
+                                                                                fontWeight: 'bold',
+                                                                                color: selectedBatchId === batch.id ? '#5d4037' : '#1f2937',
+                                                                                marginBottom: '4px'
+                                                                            },
+                                                                            children: [
+                                                                                "รุ่นที่ ",
+                                                                                batch.batchNumber
+                                                                            ]
+                                                                        }, void 0, true, {
+                                                                            fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                            lineNumber: 820,
+                                                                            columnNumber: 29
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                            style: {
+                                                                                backgroundColor: '#f0f9ff',
+                                                                                color: '#0369a1',
+                                                                                padding: '4px 12px',
+                                                                                borderRadius: '12px',
+                                                                                fontSize: '12px',
+                                                                                fontWeight: '500',
+                                                                                display: 'inline-block'
+                                                                            },
+                                                                            children: batch.status === 'PLANNING' ? 'เปิดรับสมัคร' : batch.status
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                            lineNumber: 828,
+                                                                            columnNumber: 29
+                                                                        }, this)
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                    lineNumber: 804,
+                                                                    columnNumber: 27
+                                                                }, this)
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                lineNumber: 803,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
+                                                                xs: 24,
+                                                                sm: 18,
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$row$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Row$3e$__["Row"], {
+                                                                        gutter: [
+                                                                            16,
+                                                                            12
+                                                                        ],
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
+                                                                                span: 24,
+                                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                    style: {
+                                                                                        fontSize: '16px',
+                                                                                        fontWeight: '600',
+                                                                                        color: '#1f2937',
+                                                                                        marginBottom: '12px'
+                                                                                    },
+                                                                                    children: batch.name
+                                                                                }, void 0, false, {
+                                                                                    fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                                    lineNumber: 844,
+                                                                                    columnNumber: 31
+                                                                                }, this)
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                                lineNumber: 843,
+                                                                                columnNumber: 29
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
+                                                                                xs: 24,
+                                                                                sm: 8,
+                                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                    style: {
+                                                                                        display: 'flex',
+                                                                                        alignItems: 'center',
+                                                                                        gap: '8px',
+                                                                                        padding: '8px 12px',
+                                                                                        backgroundColor: selectedBatchId === batch.id ? 'rgba(93, 64, 55, 0.1)' : '#f8fafc',
+                                                                                        borderRadius: '8px'
+                                                                                    },
+                                                                                    children: [
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$CalendarOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CalendarOutlined$3e$__["CalendarOutlined"], {
+                                                                                            style: {
+                                                                                                color: '#8d6e63'
+                                                                                            }
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                                            lineNumber: 862,
+                                                                                            columnNumber: 33
+                                                                                        }, this),
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                            children: [
+                                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                                    style: {
+                                                                                                        fontSize: '12px',
+                                                                                                        color: '#666',
+                                                                                                        marginBottom: '2px'
+                                                                                                    },
+                                                                                                    children: "วันเริ่มเรียน"
+                                                                                                }, void 0, false, {
+                                                                                                    fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                                                    lineNumber: 864,
+                                                                                                    columnNumber: 35
+                                                                                                }, this),
+                                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                                    style: {
+                                                                                                        fontWeight: '600',
+                                                                                                        color: '#374151',
+                                                                                                        fontSize: '14px'
+                                                                                                    },
+                                                                                                    children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$dayjs$2f$dayjs$2e$min$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])(batch.startDate).format('DD/MM/YYYY')
+                                                                                                }, void 0, false, {
+                                                                                                    fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                                                    lineNumber: 865,
+                                                                                                    columnNumber: 35
+                                                                                                }, this)
+                                                                                            ]
+                                                                                        }, void 0, true, {
+                                                                                            fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                                            lineNumber: 863,
+                                                                                            columnNumber: 33
+                                                                                        }, this)
+                                                                                    ]
+                                                                                }, void 0, true, {
+                                                                                    fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                                    lineNumber: 854,
+                                                                                    columnNumber: 31
+                                                                                }, this)
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                                lineNumber: 853,
+                                                                                columnNumber: 29
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
+                                                                                xs: 24,
+                                                                                sm: 8,
+                                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                    style: {
+                                                                                        display: 'flex',
+                                                                                        alignItems: 'center',
+                                                                                        gap: '8px',
+                                                                                        padding: '8px 12px',
+                                                                                        backgroundColor: selectedBatchId === batch.id ? 'rgba(93, 64, 55, 0.1)' : '#f8fafc',
+                                                                                        borderRadius: '8px'
+                                                                                    },
+                                                                                    children: [
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$CalendarOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CalendarOutlined$3e$__["CalendarOutlined"], {
+                                                                                            style: {
+                                                                                                color: '#8d6e63'
+                                                                                            }
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                                            lineNumber: 880,
+                                                                                            columnNumber: 33
+                                                                                        }, this),
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                            children: [
+                                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                                    style: {
+                                                                                                        fontSize: '12px',
+                                                                                                        color: '#666',
+                                                                                                        marginBottom: '2px'
+                                                                                                    },
+                                                                                                    children: "วันสิ้นสุด"
+                                                                                                }, void 0, false, {
+                                                                                                    fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                                                    lineNumber: 882,
+                                                                                                    columnNumber: 35
+                                                                                                }, this),
+                                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                                    style: {
+                                                                                                        fontWeight: '600',
+                                                                                                        color: '#374151',
+                                                                                                        fontSize: '14px'
+                                                                                                    },
+                                                                                                    children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$dayjs$2f$dayjs$2e$min$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])(batch.endDate).format('DD/MM/YYYY')
+                                                                                                }, void 0, false, {
+                                                                                                    fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                                                    lineNumber: 883,
+                                                                                                    columnNumber: 35
+                                                                                                }, this)
+                                                                                            ]
+                                                                                        }, void 0, true, {
+                                                                                            fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                                            lineNumber: 881,
+                                                                                            columnNumber: 33
+                                                                                        }, this)
+                                                                                    ]
+                                                                                }, void 0, true, {
+                                                                                    fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                                    lineNumber: 872,
+                                                                                    columnNumber: 31
+                                                                                }, this)
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                                lineNumber: 871,
+                                                                                columnNumber: 29
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
+                                                                                xs: 24,
+                                                                                sm: 8,
+                                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                    style: {
+                                                                                        display: 'flex',
+                                                                                        alignItems: 'center',
+                                                                                        gap: '8px',
+                                                                                        padding: '8px 12px',
+                                                                                        backgroundColor: selectedBatchId === batch.id ? 'rgba(93, 64, 55, 0.1)' : '#f8fafc',
+                                                                                        borderRadius: '8px'
+                                                                                    },
+                                                                                    children: [
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$TeamOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__TeamOutlined$3e$__["TeamOutlined"], {
+                                                                                            style: {
+                                                                                                color: '#a1887f'
+                                                                                            }
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                                            lineNumber: 898,
+                                                                                            columnNumber: 33
+                                                                                        }, this),
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                            children: [
+                                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                                    style: {
+                                                                                                        fontSize: '12px',
+                                                                                                        color: '#666',
+                                                                                                        marginBottom: '2px'
+                                                                                                    },
+                                                                                                    children: "จำนวนนักเรียน"
+                                                                                                }, void 0, false, {
+                                                                                                    fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                                                    lineNumber: 900,
+                                                                                                    columnNumber: 35
+                                                                                                }, this),
+                                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                                    style: {
+                                                                                                        fontWeight: '600',
+                                                                                                        color: '#374151',
+                                                                                                        fontSize: '14px'
+                                                                                                    },
+                                                                                                    children: [
+                                                                                                        batch.currentStudents,
+                                                                                                        "/",
+                                                                                                        batch.maxStudents,
+                                                                                                        " คน"
+                                                                                                    ]
+                                                                                                }, void 0, true, {
+                                                                                                    fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                                                    lineNumber: 901,
+                                                                                                    columnNumber: 35
+                                                                                                }, this)
+                                                                                            ]
+                                                                                        }, void 0, true, {
+                                                                                            fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                                            lineNumber: 899,
+                                                                                            columnNumber: 33
+                                                                                        }, this)
+                                                                                    ]
+                                                                                }, void 0, true, {
+                                                                                    fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                                    lineNumber: 890,
+                                                                                    columnNumber: 31
+                                                                                }, this)
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                                lineNumber: 889,
+                                                                                columnNumber: 29
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                        lineNumber: 842,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            marginTop: '16px'
+                                                                        },
+                                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$progress$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Progress$3e$__["Progress"], {
+                                                                            percent: Math.round(batch.currentStudents / batch.maxStudents * 100),
+                                                                            size: "small",
+                                                                            strokeColor: {
+                                                                                '0%': '#8d6e63',
+                                                                                '50%': '#6d4c41',
+                                                                                '100%': '#5d4037'
+                                                                            },
+                                                                            format: (percent)=>`${percent}% เต็ม`
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                            lineNumber: 909,
+                                                                            columnNumber: 29
+                                                                        }, this)
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                        lineNumber: 908,
+                                                                        columnNumber: 27
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                lineNumber: 841,
+                                                                columnNumber: 25
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                        lineNumber: 802,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        style: {
+                                                            marginTop: '16px',
+                                                            textAlign: 'center'
+                                                        },
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
+                                                            type: selectedBatchId === batch.id ? "primary" : "default",
+                                                            size: "large",
+                                                            style: {
+                                                                width: '200px',
+                                                                borderRadius: '12px',
+                                                                fontWeight: '600',
+                                                                height: '40px',
+                                                                backgroundColor: selectedBatchId === batch.id ? '#5d4037' : 'white',
+                                                                borderColor: selectedBatchId === batch.id ? '#5d4037' : '#d1d5db',
+                                                                boxShadow: selectedBatchId === batch.id ? '0 4px 12px rgba(93, 64, 55, 0.3)' : 'none'
+                                                            },
+                                                            onClick: (e)=>{
+                                                                e.stopPropagation();
+                                                                handleBatchSelect(batch.id);
+                                                            },
+                                                            children: selectedBatchId === batch.id ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$CheckOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckOutlined$3e$__["CheckOutlined"], {}, void 0, false, {
+                                                                        fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                                        lineNumber: 943,
+                                                                        columnNumber: 31
+                                                                    }, this),
+                                                                    " เลือกแล้ว"
+                                                                ]
+                                                            }, void 0, true) : 'เลือกรุ่นนี้'
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                            lineNumber: 924,
+                                                            columnNumber: 25
+                                                        }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                        lineNumber: 923,
+                                                        columnNumber: 23
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                lineNumber: 790,
+                                                columnNumber: 21
+                                            }, this)
+                                        }, batch.id, false, {
+                                            fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                            lineNumber: 789,
+                                            columnNumber: 19
+                                        }, this))
+                                }, void 0, false, {
+                                    fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                    lineNumber: 787,
+                                    columnNumber: 15
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                            lineNumber: 751,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                    lineNumber: 199,
+                    lineNumber: 263,
                     columnNumber: 11
                 }, this);
             case 1:
@@ -1386,34 +1942,34 @@ function StudentApplicationPage() {
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$UserOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__UserOutlined$3e$__["UserOutlined"], {
                                 style: {
                                     marginRight: '8px',
-                                    color: '#1890ff'
+                                    color: '#5d4037'
                                 }
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                lineNumber: 702,
+                                lineNumber: 963,
                                 columnNumber: 17
                             }, void 0),
                             "ข้อมูลส่วนตัว"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                        lineNumber: 701,
+                        lineNumber: 962,
                         columnNumber: 15
                     }, void 0),
                     extra: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$tooltip$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Tooltip$3e$__["Tooltip"], {
                         title: "กรอกข้อมูลส่วนตัวให้ครบถ้วน",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$InfoCircleOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__InfoCircleOutlined$3e$__["InfoCircleOutlined"], {
                             style: {
-                                color: '#1890ff'
+                                color: '#5d4037'
                             }
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                            lineNumber: 708,
+                            lineNumber: 969,
                             columnNumber: 17
                         }, void 0)
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                        lineNumber: 707,
+                        lineNumber: 968,
                         columnNumber: 15
                     }, void 0),
                     children: [
@@ -1427,7 +1983,7 @@ function StudentApplicationPage() {
                             }
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                            lineNumber: 712,
+                            lineNumber: 973,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$divider$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Divider$3e$__["Divider"], {
@@ -1435,7 +1991,7 @@ function StudentApplicationPage() {
                             children: "ข้อมูลพื้นฐาน"
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                            lineNumber: 720,
+                            lineNumber: 981,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$row$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Row$3e$__["Row"], {
@@ -1456,7 +2012,7 @@ function StudentApplicationPage() {
                                             children: "คำนำหน้า"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 725,
+                                            lineNumber: 986,
                                             columnNumber: 26
                                         }, void 0),
                                         rules: [
@@ -1471,42 +2027,63 @@ function StudentApplicationPage() {
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Option, {
                                                     value: "นาย",
-                                                    children: "👨 นาย"
-                                                }, void 0, false, {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$ManOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ManOutlined$3e$__["ManOutlined"], {}, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                            lineNumber: 990,
+                                                            columnNumber: 41
+                                                        }, this),
+                                                        " นาย"
+                                                    ]
+                                                }, void 0, true, {
                                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                    lineNumber: 729,
+                                                    lineNumber: 990,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Option, {
                                                     value: "นางสาว",
-                                                    children: "👩 นางสาว"
-                                                }, void 0, false, {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$WomanOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__WomanOutlined$3e$__["WomanOutlined"], {}, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                            lineNumber: 991,
+                                                            columnNumber: 44
+                                                        }, this),
+                                                        " นางสาว"
+                                                    ]
+                                                }, void 0, true, {
                                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                    lineNumber: 730,
+                                                    lineNumber: 991,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Option, {
                                                     value: "นาง",
-                                                    children: "👩 นาง"
-                                                }, void 0, false, {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$WomanOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__WomanOutlined$3e$__["WomanOutlined"], {}, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                            lineNumber: 992,
+                                                            columnNumber: 41
+                                                        }, this),
+                                                        " นาง"
+                                                    ]
+                                                }, void 0, true, {
                                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                    lineNumber: 731,
+                                                    lineNumber: 992,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 728,
+                                            lineNumber: 989,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                        lineNumber: 723,
+                                        lineNumber: 984,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                    lineNumber: 722,
+                                    lineNumber: 983,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
@@ -1521,7 +2098,7 @@ function StudentApplicationPage() {
                                             children: "ชื่อ"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 738,
+                                            lineNumber: 999,
                                             columnNumber: 26
                                         }, void 0),
                                         rules: [
@@ -1543,22 +2120,22 @@ function StudentApplicationPage() {
                                                 }
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                lineNumber: 747,
+                                                lineNumber: 1008,
                                                 columnNumber: 29
                                             }, void 0)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 744,
+                                            lineNumber: 1005,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                        lineNumber: 736,
+                                        lineNumber: 997,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                    lineNumber: 735,
+                                    lineNumber: 996,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
@@ -1573,7 +2150,7 @@ function StudentApplicationPage() {
                                             children: "นามสกุล"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 754,
+                                            lineNumber: 1015,
                                             columnNumber: 26
                                         }, void 0),
                                         rules: [
@@ -1595,28 +2172,28 @@ function StudentApplicationPage() {
                                                 }
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                lineNumber: 763,
+                                                lineNumber: 1024,
                                                 columnNumber: 29
                                             }, void 0)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 760,
+                                            lineNumber: 1021,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                        lineNumber: 752,
+                                        lineNumber: 1013,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                    lineNumber: 751,
+                                    lineNumber: 1012,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                            lineNumber: 721,
+                            lineNumber: 982,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$row$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Row$3e$__["Row"], {
@@ -1637,7 +2214,7 @@ function StudentApplicationPage() {
                                             children: "วันเกิด"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 773,
+                                            lineNumber: 1034,
                                             columnNumber: 26
                                         }, void 0),
                                         rules: [
@@ -1655,26 +2232,26 @@ function StudentApplicationPage() {
                                             size: "large",
                                             suffixIcon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$CalendarOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CalendarOutlined$3e$__["CalendarOutlined"], {
                                                 style: {
-                                                    color: '#1890ff'
+                                                    color: '#5d4037'
                                                 }
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                lineNumber: 781,
+                                                lineNumber: 1042,
                                                 columnNumber: 33
                                             }, void 0)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 776,
+                                            lineNumber: 1037,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                        lineNumber: 771,
+                                        lineNumber: 1032,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                    lineNumber: 770,
+                                    lineNumber: 1031,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
@@ -1689,7 +2266,7 @@ function StudentApplicationPage() {
                                             children: "เพศ"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 788,
+                                            lineNumber: 1049,
                                             columnNumber: 26
                                         }, void 0),
                                         rules: [
@@ -1710,10 +2287,17 @@ function StudentApplicationPage() {
                                                         width: '50%',
                                                         textAlign: 'center'
                                                     },
-                                                    children: "👨 ชาย"
-                                                }, void 0, false, {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$ManOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ManOutlined$3e$__["ManOutlined"], {}, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                            lineNumber: 1054,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        " ชาย"
+                                                    ]
+                                                }, void 0, true, {
                                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                    lineNumber: 792,
+                                                    lineNumber: 1053,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$radio$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Radio$3e$__["Radio"].Button, {
@@ -1722,32 +2306,39 @@ function StudentApplicationPage() {
                                                         width: '50%',
                                                         textAlign: 'center'
                                                     },
-                                                    children: "👩 หญิง"
-                                                }, void 0, false, {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$WomanOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__WomanOutlined$3e$__["WomanOutlined"], {}, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                            lineNumber: 1057,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        " หญิง"
+                                                    ]
+                                                }, void 0, true, {
                                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                    lineNumber: 795,
+                                                    lineNumber: 1056,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 791,
+                                            lineNumber: 1052,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                        lineNumber: 786,
+                                        lineNumber: 1047,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                    lineNumber: 785,
+                                    lineNumber: 1046,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                            lineNumber: 769,
+                            lineNumber: 1030,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$divider$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Divider$3e$__["Divider"], {
@@ -1755,7 +2346,7 @@ function StudentApplicationPage() {
                             children: "ข้อมูลติดต่อ"
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                            lineNumber: 803,
+                            lineNumber: 1064,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$row$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Row$3e$__["Row"], {
@@ -1776,7 +2367,7 @@ function StudentApplicationPage() {
                                             children: "เบอร์โทรศัพท์"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 808,
+                                            lineNumber: 1069,
                                             columnNumber: 26
                                         }, void 0),
                                         rules: [
@@ -1798,23 +2389,23 @@ function StudentApplicationPage() {
                                                 }
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                lineNumber: 817,
+                                                lineNumber: 1078,
                                                 columnNumber: 29
                                             }, void 0),
                                             maxLength: 10
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 814,
+                                            lineNumber: 1075,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                        lineNumber: 806,
+                                        lineNumber: 1067,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                    lineNumber: 805,
+                                    lineNumber: 1066,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
@@ -1829,7 +2420,7 @@ function StudentApplicationPage() {
                                             children: "อีเมล"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 825,
+                                            lineNumber: 1086,
                                             columnNumber: 26
                                         }, void 0),
                                         rules: [
@@ -1851,28 +2442,28 @@ function StudentApplicationPage() {
                                                 }
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                lineNumber: 834,
+                                                lineNumber: 1095,
                                                 columnNumber: 29
                                             }, void 0)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 831,
+                                            lineNumber: 1092,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                        lineNumber: 823,
+                                        lineNumber: 1084,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                    lineNumber: 822,
+                                    lineNumber: 1083,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                            lineNumber: 804,
+                            lineNumber: 1065,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
@@ -1884,7 +2475,7 @@ function StudentApplicationPage() {
                                 children: "ที่อยู่"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                lineNumber: 842,
+                                lineNumber: 1103,
                                 columnNumber: 22
                             }, void 0),
                             rules: [
@@ -1900,12 +2491,12 @@ function StudentApplicationPage() {
                                 maxLength: 500
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                lineNumber: 845,
+                                lineNumber: 1106,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                            lineNumber: 840,
+                            lineNumber: 1101,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$divider$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Divider$3e$__["Divider"], {
@@ -1913,7 +2504,7 @@ function StudentApplicationPage() {
                             children: "ข้อมูลการศึกษาและอาชีพ"
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                            lineNumber: 853,
+                            lineNumber: 1114,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$row$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Row$3e$__["Row"], {
@@ -1934,7 +2525,7 @@ function StudentApplicationPage() {
                                             children: "วุฒิการศึกษา"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 858,
+                                            lineNumber: 1119,
                                             columnNumber: 26
                                         }, void 0),
                                         rules: [
@@ -1949,74 +2540,123 @@ function StudentApplicationPage() {
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Option, {
                                                     value: "ประถมศึกษา",
-                                                    children: "📚 ประถมศึกษา"
-                                                }, void 0, false, {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$BookOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__BookOutlined$3e$__["BookOutlined"], {}, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                            lineNumber: 1123,
+                                                            columnNumber: 48
+                                                        }, this),
+                                                        " ประถมศึกษา"
+                                                    ]
+                                                }, void 0, true, {
                                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                    lineNumber: 862,
+                                                    lineNumber: 1123,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Option, {
                                                     value: "มัธยมศึกษาตอนต้น",
-                                                    children: "📖 มัธยมศึกษาตอนต้น (ม.3)"
-                                                }, void 0, false, {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$BookOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__BookOutlined$3e$__["BookOutlined"], {}, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                            lineNumber: 1124,
+                                                            columnNumber: 54
+                                                        }, this),
+                                                        " มัธยมศึกษาตอนต้น (ม.3)"
+                                                    ]
+                                                }, void 0, true, {
                                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                    lineNumber: 863,
+                                                    lineNumber: 1124,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Option, {
                                                     value: "มัธยมศึกษาตอนปลาย",
-                                                    children: "📗 มัธยมศึกษาตอนปลาย (ม.6)"
-                                                }, void 0, false, {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$BookOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__BookOutlined$3e$__["BookOutlined"], {}, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                            lineNumber: 1125,
+                                                            columnNumber: 55
+                                                        }, this),
+                                                        " มัธยมศึกษาตอนปลาย (ม.6)"
+                                                    ]
+                                                }, void 0, true, {
                                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                    lineNumber: 864,
+                                                    lineNumber: 1125,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Option, {
                                                     value: "ปวช.",
-                                                    children: "📘 ปวช."
-                                                }, void 0, false, {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$BookOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__BookOutlined$3e$__["BookOutlined"], {}, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                            lineNumber: 1126,
+                                                            columnNumber: 42
+                                                        }, this),
+                                                        " ปวช."
+                                                    ]
+                                                }, void 0, true, {
                                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                    lineNumber: 865,
+                                                    lineNumber: 1126,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Option, {
                                                     value: "ปวส.",
-                                                    children: "📙 ปวส."
-                                                }, void 0, false, {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$BookOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__BookOutlined$3e$__["BookOutlined"], {}, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                            lineNumber: 1127,
+                                                            columnNumber: 42
+                                                        }, this),
+                                                        " ปวส."
+                                                    ]
+                                                }, void 0, true, {
                                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                    lineNumber: 866,
+                                                    lineNumber: 1127,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Option, {
                                                     value: "ปริญญาตรี",
-                                                    children: "🎓 ปริญญาตรี"
-                                                }, void 0, false, {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$BookOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__BookOutlined$3e$__["BookOutlined"], {}, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                            lineNumber: 1128,
+                                                            columnNumber: 47
+                                                        }, this),
+                                                        " ปริญญาตรี"
+                                                    ]
+                                                }, void 0, true, {
                                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                    lineNumber: 867,
+                                                    lineNumber: 1128,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Option, {
                                                     value: "สูงกว่าปริญญาตรี",
-                                                    children: "🎓 สูงกว่าปริญญาตรี"
-                                                }, void 0, false, {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$BookOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__BookOutlined$3e$__["BookOutlined"], {}, void 0, false, {
+                                                            fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                                            lineNumber: 1129,
+                                                            columnNumber: 54
+                                                        }, this),
+                                                        " สูงกว่าปริญญาตรี"
+                                                    ]
+                                                }, void 0, true, {
                                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                    lineNumber: 868,
+                                                    lineNumber: 1129,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 861,
+                                            lineNumber: 1122,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                        lineNumber: 856,
+                                        lineNumber: 1117,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                    lineNumber: 855,
+                                    lineNumber: 1116,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
@@ -2031,7 +2671,7 @@ function StudentApplicationPage() {
                                             children: "อาชีพปัจจุบัน"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 875,
+                                            lineNumber: 1136,
                                             columnNumber: 26
                                         }, void 0),
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$input$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Input$3e$__["Input"], {
@@ -2043,28 +2683,28 @@ function StudentApplicationPage() {
                                                 }
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                lineNumber: 880,
+                                                lineNumber: 1141,
                                                 columnNumber: 29
                                             }, void 0)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 877,
+                                            lineNumber: 1138,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                        lineNumber: 873,
+                                        lineNumber: 1134,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                    lineNumber: 872,
+                                    lineNumber: 1133,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                            lineNumber: 854,
+                            lineNumber: 1115,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
@@ -2076,7 +2716,7 @@ function StudentApplicationPage() {
                                 children: "ประสบการณ์ด้านการนวด"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                lineNumber: 888,
+                                lineNumber: 1149,
                                 columnNumber: 22
                             }, void 0),
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(TextArea, {
@@ -2086,12 +2726,12 @@ function StudentApplicationPage() {
                                 maxLength: 1000
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                lineNumber: 890,
+                                lineNumber: 1151,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                            lineNumber: 886,
+                            lineNumber: 1147,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
@@ -2103,7 +2743,7 @@ function StudentApplicationPage() {
                                 children: "เหตุผลที่ต้องการเรียนหลักสูตรนี้"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                lineNumber: 900,
+                                lineNumber: 1161,
                                 columnNumber: 22
                             }, void 0),
                             rules: [
@@ -2119,12 +2759,12 @@ function StudentApplicationPage() {
                                 maxLength: 1000
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                lineNumber: 903,
+                                lineNumber: 1164,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                            lineNumber: 898,
+                            lineNumber: 1159,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$divider$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Divider$3e$__["Divider"], {
@@ -2132,7 +2772,7 @@ function StudentApplicationPage() {
                             children: "ข้อมูลสุขภาพ"
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                            lineNumber: 911,
+                            lineNumber: 1172,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
@@ -2144,7 +2784,7 @@ function StudentApplicationPage() {
                                 children: "สภาพสุขภาพ"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                lineNumber: 914,
+                                lineNumber: 1175,
                                 columnNumber: 22
                             }, void 0),
                             rules: [
@@ -2160,18 +2800,18 @@ function StudentApplicationPage() {
                                 maxLength: 500
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                lineNumber: 917,
+                                lineNumber: 1178,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                            lineNumber: 912,
+                            lineNumber: 1173,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                    lineNumber: 699,
+                    lineNumber: 960,
                     columnNumber: 11
                 }, this);
             case 2:
@@ -2185,34 +2825,34 @@ function StudentApplicationPage() {
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$FileTextOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__FileTextOutlined$3e$__["FileTextOutlined"], {
                                 style: {
                                     marginRight: '8px',
-                                    color: '#1890ff'
+                                    color: '#5d4037'
                                 }
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                lineNumber: 932,
+                                lineNumber: 1193,
                                 columnNumber: 17
                             }, void 0),
                             "เอกสารประกอบการสมัคร"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                        lineNumber: 931,
+                        lineNumber: 1192,
                         columnNumber: 15
                     }, void 0),
                     extra: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$tooltip$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Tooltip$3e$__["Tooltip"], {
                         title: "อัปโหลดเอกสารที่จำเป็น",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$InfoCircleOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__InfoCircleOutlined$3e$__["InfoCircleOutlined"], {
                             style: {
-                                color: '#1890ff'
+                                color: '#5d4037'
                             }
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                            lineNumber: 938,
+                            lineNumber: 1199,
                             columnNumber: 17
                         }, void 0)
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                        lineNumber: 937,
+                        lineNumber: 1198,
                         columnNumber: 15
                     }, void 0),
                     children: [
@@ -2226,7 +2866,7 @@ function StudentApplicationPage() {
                             }
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                            lineNumber: 942,
+                            lineNumber: 1203,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$card$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Card$3e$__["Card"], {
@@ -2240,12 +2880,19 @@ function StudentApplicationPage() {
                                     level: 5,
                                     style: {
                                         marginBottom: 16,
-                                        color: '#1890ff'
+                                        color: '#5d4037'
                                     },
-                                    children: "📋 รายการเอกสารที่ต้องใช้:"
-                                }, void 0, false, {
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$FileTextOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__FileTextOutlined$3e$__["FileTextOutlined"], {}, void 0, false, {
+                                            fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                            lineNumber: 1212,
+                                            columnNumber: 79
+                                        }, this),
+                                        " รายการเอกสารที่ต้องใช้:"
+                                    ]
+                                }, void 0, true, {
                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                    lineNumber: 951,
+                                    lineNumber: 1212,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$row$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Row$3e$__["Row"], {
@@ -2271,7 +2918,7 @@ function StudentApplicationPage() {
                                                         children: "*"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 955,
+                                                        lineNumber: 1216,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$SafetyCertificateOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__SafetyCertificateOutlined$3e$__["SafetyCertificateOutlined"], {
@@ -2281,7 +2928,7 @@ function StudentApplicationPage() {
                                                         }
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 956,
+                                                        lineNumber: 1217,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
@@ -2289,7 +2936,7 @@ function StudentApplicationPage() {
                                                         children: "สำเนาบัตรประจำตัวประชาชน"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 957,
+                                                        lineNumber: 1218,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
@@ -2300,18 +2947,18 @@ function StudentApplicationPage() {
                                                         children: "(รูปภาพหรือ PDF)"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 958,
+                                                        lineNumber: 1219,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                lineNumber: 954,
+                                                lineNumber: 1215,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 953,
+                                            lineNumber: 1214,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
@@ -2331,17 +2978,17 @@ function StudentApplicationPage() {
                                                         children: "*"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 963,
+                                                        lineNumber: 1224,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$BookOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__BookOutlined$3e$__["BookOutlined"], {
                                                         style: {
-                                                            color: '#1890ff',
+                                                            color: '#5d4037',
                                                             marginRight: '8px'
                                                         }
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 964,
+                                                        lineNumber: 1225,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
@@ -2349,7 +2996,7 @@ function StudentApplicationPage() {
                                                         children: "สำเนาวุฒิการศึกษา"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 965,
+                                                        lineNumber: 1226,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
@@ -2360,18 +3007,18 @@ function StudentApplicationPage() {
                                                         children: "(รูปภาพหรือ PDF)"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 966,
+                                                        lineNumber: 1227,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                lineNumber: 962,
+                                                lineNumber: 1223,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 961,
+                                            lineNumber: 1222,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
@@ -2390,14 +3037,14 @@ function StudentApplicationPage() {
                                                         }
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 971,
+                                                        lineNumber: 1232,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
                                                         children: "รูปถ่าย 1 นิ้ว"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 972,
+                                                        lineNumber: 1233,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
@@ -2408,18 +3055,18 @@ function StudentApplicationPage() {
                                                         children: "(ไม่บังคับ)"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 973,
+                                                        lineNumber: 1234,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                lineNumber: 970,
+                                                lineNumber: 1231,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 969,
+                                            lineNumber: 1230,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
@@ -2437,14 +3084,14 @@ function StudentApplicationPage() {
                                                         }
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 978,
+                                                        lineNumber: 1239,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
                                                         children: "ใบรับรองแพทย์"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 979,
+                                                        lineNumber: 1240,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
@@ -2455,30 +3102,30 @@ function StudentApplicationPage() {
                                                         children: "(ไม่บังคับ - กรณีมีประวัติป่วย)"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 980,
+                                                        lineNumber: 1241,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                lineNumber: 977,
+                                                lineNumber: 1238,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 976,
+                                            lineNumber: 1237,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                    lineNumber: 952,
+                                    lineNumber: 1213,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                            lineNumber: 950,
+                            lineNumber: 1211,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$divider$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Divider$3e$__["Divider"], {
@@ -2486,7 +3133,7 @@ function StudentApplicationPage() {
                             children: "เอกสารบังคับ"
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                            lineNumber: 986,
+                            lineNumber: 1247,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$row$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Row$3e$__["Row"], {
@@ -2512,7 +3159,7 @@ function StudentApplicationPage() {
                                                     }
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                    lineNumber: 993,
+                                                    lineNumber: 1254,
                                                     columnNumber: 23
                                                 }, void 0),
                                                 "สำเนาบัตรประจำตัวประชาชน",
@@ -2523,13 +3170,13 @@ function StudentApplicationPage() {
                                                     children: " *"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                    lineNumber: 995,
+                                                    lineNumber: 1256,
                                                     columnNumber: 23
                                                 }, void 0)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 992,
+                                            lineNumber: 1253,
                                             columnNumber: 21
                                         }, void 0),
                                         rules: [
@@ -2563,14 +3210,14 @@ function StudentApplicationPage() {
                                                         }
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1013,
+                                                        lineNumber: 1274,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         children: "อัปโหลดสำเนาบัตรประชาชน"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1014,
+                                                        lineNumber: 1275,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
@@ -2581,28 +3228,28 @@ function StudentApplicationPage() {
                                                         children: "รองรับ: JPG, PNG, PDF"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1015,
+                                                        lineNumber: 1276,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                lineNumber: 1012,
+                                                lineNumber: 1273,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 1005,
+                                            lineNumber: 1266,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                        lineNumber: 989,
+                                        lineNumber: 1250,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                    lineNumber: 988,
+                                    lineNumber: 1249,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
@@ -2617,12 +3264,12 @@ function StudentApplicationPage() {
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$BookOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__BookOutlined$3e$__["BookOutlined"], {
                                                     style: {
-                                                        color: '#1890ff',
+                                                        color: '#5d4037',
                                                         marginRight: '8px'
                                                     }
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                    lineNumber: 1028,
+                                                    lineNumber: 1289,
                                                     columnNumber: 23
                                                 }, void 0),
                                                 "สำเนาวุฒิการศึกษา",
@@ -2633,13 +3280,13 @@ function StudentApplicationPage() {
                                                     children: " *"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                    lineNumber: 1030,
+                                                    lineNumber: 1291,
                                                     columnNumber: 23
                                                 }, void 0)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 1027,
+                                            lineNumber: 1288,
                                             columnNumber: 21
                                         }, void 0),
                                         rules: [
@@ -2673,14 +3320,14 @@ function StudentApplicationPage() {
                                                         }
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1048,
+                                                        lineNumber: 1309,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         children: "อัปโหลดสำเนาวุฒิการศึกษา"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1049,
+                                                        lineNumber: 1310,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
@@ -2691,34 +3338,34 @@ function StudentApplicationPage() {
                                                         children: "รองรับ: JPG, PNG, PDF"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1050,
+                                                        lineNumber: 1311,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                lineNumber: 1047,
+                                                lineNumber: 1308,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 1040,
+                                            lineNumber: 1301,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                        lineNumber: 1024,
+                                        lineNumber: 1285,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                    lineNumber: 1023,
+                                    lineNumber: 1284,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                            lineNumber: 987,
+                            lineNumber: 1248,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$divider$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Divider$3e$__["Divider"], {
@@ -2726,7 +3373,7 @@ function StudentApplicationPage() {
                             children: "เอกสารเพิ่มเติม (ไม่บังคับ)"
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                            lineNumber: 1059,
+                            lineNumber: 1320,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$row$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Row$3e$__["Row"], {
@@ -2752,14 +3399,14 @@ function StudentApplicationPage() {
                                                     }
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                    lineNumber: 1066,
+                                                    lineNumber: 1327,
                                                     columnNumber: 23
                                                 }, void 0),
                                                 "รูปถ่าย 1 นิ้ว"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 1065,
+                                            lineNumber: 1326,
                                             columnNumber: 21
                                         }, void 0),
                                         extra: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
@@ -2767,7 +3414,7 @@ function StudentApplicationPage() {
                                             children: "รูปถ่ายจะใช้ในการออกใบประกาศนียบัตร"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 1070,
+                                            lineNumber: 1331,
                                             columnNumber: 26
                                         }, void 0),
                                         valuePropName: "fileList",
@@ -2792,14 +3439,14 @@ function StudentApplicationPage() {
                                                         }
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1084,
+                                                        lineNumber: 1345,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         children: "อัปโหลดรูปถ่าย"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1085,
+                                                        lineNumber: 1346,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
@@ -2810,28 +3457,28 @@ function StudentApplicationPage() {
                                                         children: "รองรับ: JPG, PNG"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1086,
+                                                        lineNumber: 1347,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                lineNumber: 1083,
+                                                lineNumber: 1344,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 1077,
+                                            lineNumber: 1338,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                        lineNumber: 1062,
+                                        lineNumber: 1323,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                    lineNumber: 1061,
+                                    lineNumber: 1322,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
@@ -2851,14 +3498,14 @@ function StudentApplicationPage() {
                                                     }
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                    lineNumber: 1099,
+                                                    lineNumber: 1360,
                                                     columnNumber: 23
                                                 }, void 0),
                                                 "ใบรับรองแพทย์"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 1098,
+                                            lineNumber: 1359,
                                             columnNumber: 21
                                         }, void 0),
                                         extra: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
@@ -2866,7 +3513,7 @@ function StudentApplicationPage() {
                                             children: "กรณีมีประวัติป่วยหรือข้อจำกัดทางร่างกาย"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 1103,
+                                            lineNumber: 1364,
                                             columnNumber: 26
                                         }, void 0),
                                         valuePropName: "fileList",
@@ -2891,14 +3538,14 @@ function StudentApplicationPage() {
                                                         }
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1117,
+                                                        lineNumber: 1378,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         children: "อัปโหลดใบรับรองแพทย์"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1118,
+                                                        lineNumber: 1379,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
@@ -2909,34 +3556,34 @@ function StudentApplicationPage() {
                                                         children: "รองรับ: JPG, PNG, PDF"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1119,
+                                                        lineNumber: 1380,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                lineNumber: 1116,
+                                                lineNumber: 1377,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 1110,
+                                            lineNumber: 1371,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                        lineNumber: 1095,
+                                        lineNumber: 1356,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                    lineNumber: 1094,
+                                    lineNumber: 1355,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                            lineNumber: 1060,
+                            lineNumber: 1321,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$alert$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Alert$3e$__["Alert"], {
@@ -2951,34 +3598,34 @@ function StudentApplicationPage() {
                                         children: "ขนาดไฟล์ไม่เกิน 5 MB ต่อไฟล์"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                        lineNumber: 1132,
+                                        lineNumber: 1393,
                                         columnNumber: 19
                                     }, void 0),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                         children: "รูปภาพควรมีความละเอียดชัดเจนและอ่านได้"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                        lineNumber: 1133,
+                                        lineNumber: 1394,
                                         columnNumber: 19
                                     }, void 0),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                         children: "หากอัปโหลด PDF ควรเป็นไฟล์ที่สแกนจากต้นฉบับ"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                        lineNumber: 1134,
+                                        lineNumber: 1395,
                                         columnNumber: 19
                                     }, void 0),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                         children: "สามารถอัปโหลดซ้ำได้หากต้องการแก้ไข"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                        lineNumber: 1135,
+                                        lineNumber: 1396,
                                         columnNumber: 19
                                     }, void 0)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                lineNumber: 1131,
+                                lineNumber: 1392,
                                 columnNumber: 17
                             }, void 0),
                             type: "warning",
@@ -2988,13 +3635,13 @@ function StudentApplicationPage() {
                             }
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                            lineNumber: 1128,
+                            lineNumber: 1389,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                    lineNumber: 929,
+                    lineNumber: 1190,
                     columnNumber: 11
                 }, this);
             case 3:
@@ -3014,14 +3661,14 @@ function StudentApplicationPage() {
                                 }
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                lineNumber: 1153,
+                                lineNumber: 1414,
                                 columnNumber: 17
                             }, void 0),
                             "ยืนยันการสมัครเรียน"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                        lineNumber: 1152,
+                        lineNumber: 1413,
                         columnNumber: 15
                     }, void 0),
                     extra: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$tooltip$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Tooltip$3e$__["Tooltip"], {
@@ -3032,12 +3679,12 @@ function StudentApplicationPage() {
                             }
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                            lineNumber: 1159,
+                            lineNumber: 1420,
                             columnNumber: 17
                         }, void 0)
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                        lineNumber: 1158,
+                        lineNumber: 1419,
                         columnNumber: 15
                     }, void 0),
                     children: [
@@ -3051,19 +3698,26 @@ function StudentApplicationPage() {
                             }
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                            lineNumber: 1163,
+                            lineNumber: 1424,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Title, {
                             level: 4,
                             style: {
-                                color: '#1890ff',
+                                color: '#5d4037',
                                 marginBottom: 24
                             },
-                            children: "📋 สรุปข้อมูลการสมัคร"
-                        }, void 0, false, {
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$FileTextOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__FileTextOutlined$3e$__["FileTextOutlined"], {}, void 0, false, {
+                                    fileName: "[project]/src/app/(pages)/student/application/page.tsx",
+                                    lineNumber: 1433,
+                                    columnNumber: 15
+                                }, this),
+                                " สรุปข้อมูลการสมัคร"
+                            ]
+                        }, void 0, true, {
                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                            lineNumber: 1171,
+                            lineNumber: 1432,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$card$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Card$3e$__["Card"], {
@@ -3076,7 +3730,7 @@ function StudentApplicationPage() {
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Title, {
                                     level: 5,
                                     style: {
-                                        color: '#1890ff',
+                                        color: '#5d4037',
                                         marginBottom: 16
                                     },
                                     children: [
@@ -3086,14 +3740,14 @@ function StudentApplicationPage() {
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 1177,
+                                            lineNumber: 1438,
                                             columnNumber: 17
                                         }, this),
                                         "หลักสูตรและรุ่นเรียน"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                    lineNumber: 1176,
+                                    lineNumber: 1437,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$row$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Row$3e$__["Row"], {
@@ -3115,7 +3769,7 @@ function StudentApplicationPage() {
                                                         children: "📚 หลักสูตร:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1183,
+                                                        lineNumber: 1444,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3127,18 +3781,18 @@ function StudentApplicationPage() {
                                                         children: selectedCourse?.title
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1184,
+                                                        lineNumber: 1445,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                lineNumber: 1182,
+                                                lineNumber: 1443,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 1181,
+                                            lineNumber: 1442,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
@@ -3154,7 +3808,7 @@ function StudentApplicationPage() {
                                                         children: "🎯 รุ่นที่:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1191,
+                                                        lineNumber: 1452,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3169,18 +3823,18 @@ function StudentApplicationPage() {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1192,
+                                                        lineNumber: 1453,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                lineNumber: 1190,
+                                                lineNumber: 1451,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 1189,
+                                            lineNumber: 1450,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
@@ -3196,7 +3850,7 @@ function StudentApplicationPage() {
                                                         children: "📅 วันเริ่มเรียน:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1199,
+                                                        lineNumber: 1460,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3207,18 +3861,18 @@ function StudentApplicationPage() {
                                                         children: selectedBatch ? (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$dayjs$2f$dayjs$2e$min$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])(selectedBatch.startDate).format('DD/MM/YYYY') : '-'
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1200,
+                                                        lineNumber: 1461,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                lineNumber: 1198,
+                                                lineNumber: 1459,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 1197,
+                                            lineNumber: 1458,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
@@ -3234,7 +3888,7 @@ function StudentApplicationPage() {
                                                         children: "💰 ค่าธรรมเนียม:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1207,
+                                                        lineNumber: 1468,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3250,30 +3904,30 @@ function StudentApplicationPage() {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1208,
+                                                        lineNumber: 1469,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                lineNumber: 1206,
+                                                lineNumber: 1467,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 1205,
+                                            lineNumber: 1466,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                    lineNumber: 1180,
+                                    lineNumber: 1441,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                            lineNumber: 1175,
+                            lineNumber: 1436,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$card$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Card$3e$__["Card"], {
@@ -3296,14 +3950,14 @@ function StudentApplicationPage() {
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 1218,
+                                            lineNumber: 1479,
                                             columnNumber: 17
                                         }, this),
                                         "ข้อมูลผู้สมัคร"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                    lineNumber: 1217,
+                                    lineNumber: 1478,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$row$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Row$3e$__["Row"], {
@@ -3325,7 +3979,7 @@ function StudentApplicationPage() {
                                                         children: "👤 ชื่อ-นามสกุล:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1224,
+                                                        lineNumber: 1485,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3342,18 +3996,18 @@ function StudentApplicationPage() {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1225,
+                                                        lineNumber: 1486,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                lineNumber: 1223,
+                                                lineNumber: 1484,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 1222,
+                                            lineNumber: 1483,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
@@ -3369,7 +4023,7 @@ function StudentApplicationPage() {
                                                         children: "🎂 วันเกิด:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1232,
+                                                        lineNumber: 1493,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3380,18 +4034,18 @@ function StudentApplicationPage() {
                                                         children: values.birthDate ? (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$dayjs$2f$dayjs$2e$min$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])(values.birthDate).format('DD/MM/YYYY') : '-'
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1233,
+                                                        lineNumber: 1494,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                lineNumber: 1231,
+                                                lineNumber: 1492,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 1230,
+                                            lineNumber: 1491,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
@@ -3407,7 +4061,7 @@ function StudentApplicationPage() {
                                                         children: "📱 เบอร์โทร:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1240,
+                                                        lineNumber: 1501,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3418,18 +4072,18 @@ function StudentApplicationPage() {
                                                         children: values.phone
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1241,
+                                                        lineNumber: 1502,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                lineNumber: 1239,
+                                                lineNumber: 1500,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 1238,
+                                            lineNumber: 1499,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
@@ -3445,7 +4099,7 @@ function StudentApplicationPage() {
                                                         children: "📧 อีเมล:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1248,
+                                                        lineNumber: 1509,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3456,18 +4110,18 @@ function StudentApplicationPage() {
                                                         children: values.email
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1249,
+                                                        lineNumber: 1510,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                lineNumber: 1247,
+                                                lineNumber: 1508,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 1246,
+                                            lineNumber: 1507,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
@@ -3483,7 +4137,7 @@ function StudentApplicationPage() {
                                                         children: "🎓 วุฒิการศึกษา:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1256,
+                                                        lineNumber: 1517,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3494,18 +4148,18 @@ function StudentApplicationPage() {
                                                         children: values.education
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1257,
+                                                        lineNumber: 1518,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                lineNumber: 1255,
+                                                lineNumber: 1516,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 1254,
+                                            lineNumber: 1515,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
@@ -3521,7 +4175,7 @@ function StudentApplicationPage() {
                                                         children: "👨‍💼 อาชีพ:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1264,
+                                                        lineNumber: 1525,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3532,30 +4186,30 @@ function StudentApplicationPage() {
                                                         children: values.occupation || 'ไม่ระบุ'
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1265,
+                                                        lineNumber: 1526,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                lineNumber: 1263,
+                                                lineNumber: 1524,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 1262,
+                                            lineNumber: 1523,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                    lineNumber: 1221,
+                                    lineNumber: 1482,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                            lineNumber: 1216,
+                            lineNumber: 1477,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$card$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Card$3e$__["Card"], {
@@ -3578,14 +4232,14 @@ function StudentApplicationPage() {
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 1275,
+                                            lineNumber: 1536,
                                             columnNumber: 17
                                         }, this),
                                         "เอกสารที่อัปโหลด"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                    lineNumber: 1274,
+                                    lineNumber: 1535,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$row$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Row$3e$__["Row"], {
@@ -3606,7 +4260,7 @@ function StudentApplicationPage() {
                                                         children: "📄 สำเนาบัตรประชาชน:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1281,
+                                                        lineNumber: 1542,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
@@ -3617,18 +4271,18 @@ function StudentApplicationPage() {
                                                         children: values.idCardFile?.length > 0 ? '✅ อัปโหลดแล้ว' : '❌ ยังไม่อัปโหลด'
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1282,
+                                                        lineNumber: 1543,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                lineNumber: 1280,
+                                                lineNumber: 1541,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 1279,
+                                            lineNumber: 1540,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
@@ -3643,7 +4297,7 @@ function StudentApplicationPage() {
                                                         children: "📜 สำเนาวุฒิการศึกษา:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1289,
+                                                        lineNumber: 1550,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
@@ -3654,18 +4308,18 @@ function StudentApplicationPage() {
                                                         children: values.educationFile?.length > 0 ? '✅ อัปโหลดแล้ว' : '❌ ยังไม่อัปโหลด'
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1290,
+                                                        lineNumber: 1551,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                lineNumber: 1288,
+                                                lineNumber: 1549,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 1287,
+                                            lineNumber: 1548,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
@@ -3680,7 +4334,7 @@ function StudentApplicationPage() {
                                                         children: "📷 รูปถ่าย:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1297,
+                                                        lineNumber: 1558,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
@@ -3691,18 +4345,18 @@ function StudentApplicationPage() {
                                                         children: values.photoFile ? '✅ อัปโหลดแล้ว' : '⭕ ไม่บังคับ'
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1298,
+                                                        lineNumber: 1559,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                lineNumber: 1296,
+                                                lineNumber: 1557,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 1295,
+                                            lineNumber: 1556,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
@@ -3717,7 +4371,7 @@ function StudentApplicationPage() {
                                                         children: "🏥 ใบรับรองแพทย์:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1305,
+                                                        lineNumber: 1566,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
@@ -3728,35 +4382,35 @@ function StudentApplicationPage() {
                                                         children: values.medicalFile ? '✅ อัปโหลดแล้ว' : '⭕ ไม่บังคับ'
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1306,
+                                                        lineNumber: 1567,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                lineNumber: 1304,
+                                                lineNumber: 1565,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 1303,
+                                            lineNumber: 1564,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                    lineNumber: 1278,
+                                    lineNumber: 1539,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                            lineNumber: 1273,
+                            lineNumber: 1534,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$divider$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Divider$3e$__["Divider"], {}, void 0, false, {
                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                            lineNumber: 1314,
+                            lineNumber: 1575,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3776,7 +4430,7 @@ function StudentApplicationPage() {
                                     children: "📋 เงื่อนไขการสมัครเรียน"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                    lineNumber: 1317,
+                                    lineNumber: 1578,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -3789,54 +4443,54 @@ function StudentApplicationPage() {
                                             children: "ผู้สมัครต้องมีอายุ 18 ปีขึ้นไป"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 1321,
+                                            lineNumber: 1582,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                             children: "ข้อมูลที่กรอกต้องเป็นความจริงทุกประการ"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 1322,
+                                            lineNumber: 1583,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                             children: "หากตรวจพบข้อมูลเท็จ ทางสถาบันขอสงวนสิทธิ์ในการยกเลิกการสมัคร"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 1323,
+                                            lineNumber: 1584,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                             children: "ค่าธรรมเนียมที่ชำระแล้วไม่สามารถขอคืนได้"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 1324,
+                                            lineNumber: 1585,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                             children: "ผู้เรียนต้องเข้าเรียนไม่น้อยกว่า 80% ของเวลาเรียนทั้งหมด"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 1325,
+                                            lineNumber: 1586,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                             children: "การออกใบประกาศนียบัตรจะต้องผ่านการสอบและการประเมินตามเกณฑ์ที่กำหนด"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 1326,
+                                            lineNumber: 1587,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                    lineNumber: 1320,
+                                    lineNumber: 1581,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                            lineNumber: 1316,
+                            lineNumber: 1577,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].Item, {
@@ -3860,23 +4514,23 @@ function StudentApplicationPage() {
                                     children: "✅ ข้าพเจ้ายืนยันว่าข้อมูลข้างต้นเป็นความจริงทุกประการ และยอมรับเงื่อนไขการสมัครเรียน"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                    lineNumber: 1336,
+                                    lineNumber: 1597,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                lineNumber: 1335,
+                                lineNumber: 1596,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                            lineNumber: 1330,
+                            lineNumber: 1591,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                    lineNumber: 1150,
+                    lineNumber: 1411,
                     columnNumber: 11
                 }, this);
             default:
@@ -3895,7 +4549,7 @@ function StudentApplicationPage() {
                 title: "สมัครเรียนหลักสูตร"
             }, void 0, false, {
                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                lineNumber: 1351,
+                lineNumber: 1612,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$styled$2d$jsx$2f$style$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -3923,7 +4577,7 @@ function StudentApplicationPage() {
                                 children: "🎓 ระบบสมัครเรียนออนไลน์"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                lineNumber: 1433,
+                                lineNumber: 1694,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
@@ -3934,13 +4588,13 @@ function StudentApplicationPage() {
                                 children: "กรอกข้อมูลครบถ้วนตามขั้นตอน เพื่อสมัครเรียนหลักสูตรการนวดแผนไทย"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                lineNumber: 1436,
+                                lineNumber: 1697,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                        lineNumber: 1432,
+                        lineNumber: 1693,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$steps$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Steps$3e$__["Steps"], {
@@ -3956,18 +4610,18 @@ function StudentApplicationPage() {
                                 description: index === 0 ? "เลือกหลักสูตร" : index === 1 ? "กรอกข้อมูล" : index === 2 ? "อัปโหลดเอกสาร" : "ตรวจสอบและส่ง"
                             }, index, false, {
                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                lineNumber: 1448,
+                                lineNumber: 1709,
                                 columnNumber: 13
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                        lineNumber: 1441,
+                        lineNumber: 1702,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                lineNumber: 1431,
+                lineNumber: 1692,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$card$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Card$3e$__["Card"], {
@@ -3978,7 +4632,7 @@ function StudentApplicationPage() {
                         children: stepContent()
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                        lineNumber: 1464,
+                        lineNumber: 1725,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$card$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Card$3e$__["Card"], {
@@ -4015,7 +4669,7 @@ function StudentApplicationPage() {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                lineNumber: 1478,
+                                                lineNumber: 1739,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4036,23 +4690,23 @@ function StudentApplicationPage() {
                                                     }
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                    lineNumber: 1482,
+                                                    lineNumber: 1743,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                lineNumber: 1481,
+                                                lineNumber: 1742,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                        lineNumber: 1477,
+                                        lineNumber: 1738,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                    lineNumber: 1476,
+                                    lineNumber: 1737,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
@@ -4069,7 +4723,7 @@ function StudentApplicationPage() {
                                                 currentStep > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
                                                     icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$ArrowLeftOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowLeftOutlined$3e$__["ArrowLeftOutlined"], {}, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1500,
+                                                        lineNumber: 1761,
                                                         columnNumber: 29
                                                     }, void 0),
                                                     onClick: handlePrev,
@@ -4079,14 +4733,14 @@ function StudentApplicationPage() {
                                                     children: "ย้อนกลับ"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                    lineNumber: 1499,
+                                                    lineNumber: 1760,
                                                     columnNumber: 21
                                                 }, this),
                                                 currentStep < steps.length - 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
                                                     type: "primary",
                                                     icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$ArrowRightOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowRightOutlined$3e$__["ArrowRightOutlined"], {}, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1510,
+                                                        lineNumber: 1771,
                                                         columnNumber: 29
                                                     }, void 0),
                                                     iconPosition: "end",
@@ -4097,7 +4751,7 @@ function StudentApplicationPage() {
                                                     children: "ถัดไป"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                    lineNumber: 1508,
+                                                    lineNumber: 1769,
                                                     columnNumber: 21
                                                 }, this),
                                                 currentStep === steps.length - 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
@@ -4106,7 +4760,7 @@ function StudentApplicationPage() {
                                                     onClick: handleSubmit,
                                                     icon: !loading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$CheckOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckOutlined$3e$__["CheckOutlined"], {}, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                        lineNumber: 1523,
+                                                        lineNumber: 1784,
                                                         columnNumber: 40
                                                     }, void 0) : undefined,
                                                     size: "large",
@@ -4119,46 +4773,46 @@ function StudentApplicationPage() {
                                                     children: loading ? 'กำלังส่งใบสมัคร...' : 'ส่งใบสมัครเรียน'
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                                    lineNumber: 1519,
+                                                    lineNumber: 1780,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                            lineNumber: 1497,
+                                            lineNumber: 1758,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                        lineNumber: 1496,
+                                        lineNumber: 1757,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                                    lineNumber: 1495,
+                                    lineNumber: 1756,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                            lineNumber: 1475,
+                            lineNumber: 1736,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                        lineNumber: 1468,
+                        lineNumber: 1729,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-                lineNumber: 1463,
+                lineNumber: 1724,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/(pages)/student/application/page.tsx",
-        lineNumber: 1350,
+        lineNumber: 1611,
         columnNumber: 5
     }, this);
 }

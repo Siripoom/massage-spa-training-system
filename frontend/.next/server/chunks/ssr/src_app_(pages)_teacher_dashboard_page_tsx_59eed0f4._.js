@@ -93,7 +93,8 @@ const mockCourses = [
 ];
 // Mock data with static dates to prevent hydration mismatches
 const generateMockData = ()=>{
-    const now = new Date();
+    // Use fixed timestamps for consistency
+    const baseTime = new Date('2024-08-09T10:00:00Z').getTime();
     return {
         students: [
             {
@@ -102,7 +103,7 @@ const generateMockData = ()=>{
                 lastName: 'ดีใจ',
                 courseId: 'course-1',
                 progress: 85,
-                lastActivity: new Date(now.getTime() - 2 * 60 * 60 * 1000).toISOString(),
+                lastActivity: new Date(baseTime - 2 * 60 * 60 * 1000).toISOString(),
                 status: 'active',
                 avatar: 'https://placehold.co/40x40/1890ff/ffffff?text=ส'
             },
@@ -112,7 +113,7 @@ const generateMockData = ()=>{
                 lastName: 'สวยงาม',
                 courseId: 'course-1',
                 progress: 92,
-                lastActivity: new Date(now.getTime() - 4 * 60 * 60 * 1000).toISOString(),
+                lastActivity: new Date(baseTime - 4 * 60 * 60 * 1000).toISOString(),
                 status: 'active',
                 avatar: 'https://placehold.co/40x40/52c41a/ffffff?text=ส'
             },
@@ -122,7 +123,7 @@ const generateMockData = ()=>{
                 lastName: 'เก่งมาก',
                 courseId: 'course-2',
                 progress: 100,
-                lastActivity: new Date(now.getTime() - 24 * 60 * 60 * 1000).toISOString(),
+                lastActivity: new Date(baseTime - 24 * 60 * 60 * 1000).toISOString(),
                 status: 'completed',
                 avatar: 'https://placehold.co/40x40/faad14/ffffff?text=ว'
             }
@@ -133,7 +134,7 @@ const generateMockData = ()=>{
                 title: 'แบบทดสอบท้ายบทที่ 1',
                 courseId: 'course-1',
                 courseName: 'หลักสูตรการนวดแผนไทยพื้นฐาน',
-                dueDate: new Date(now.getTime() + 3 * 24 * 60 * 60 * 1000).toISOString(),
+                dueDate: new Date(baseTime + 3 * 24 * 60 * 60 * 1000).toISOString(),
                 submitted: 18,
                 total: 25,
                 status: 'pending'
@@ -143,7 +144,7 @@ const generateMockData = ()=>{
                 title: 'การปฏิบัติการนวดอโรม่า',
                 courseId: 'course-2',
                 courseName: 'หลักสูตรการนวดอโรม่า',
-                dueDate: new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000).toISOString(),
+                dueDate: new Date(baseTime + 7 * 24 * 60 * 60 * 1000).toISOString(),
                 submitted: 12,
                 total: 18,
                 status: 'grading'
@@ -155,7 +156,7 @@ const generateMockData = ()=>{
                 type: 'completion',
                 title: 'นักเรียนเรียนจบบทเรียน',
                 description: 'วิทย์ เก่งมาก เรียนจบบทเรียน "การผสมน้ำมันหอมระเหย"',
-                time: new Date(now.getTime() - 30 * 60 * 1000).toISOString(),
+                time: new Date(baseTime - 30 * 60 * 1000).toISOString(),
                 studentName: 'วิทย์ เก่งมาก',
                 courseName: 'หลักสูตรการนวดอโรม่า'
             },
@@ -164,7 +165,7 @@ const generateMockData = ()=>{
                 type: 'question',
                 title: 'คำถามจากนักเรียน',
                 description: 'สมชาย ดีใจ ถามเกี่ยวกับเทคนิคการกดจุดสำคัญ',
-                time: new Date(now.getTime() - 2 * 60 * 60 * 1000).toISOString(),
+                time: new Date(baseTime - 2 * 60 * 60 * 1000).toISOString(),
                 studentName: 'สมชาย ดีใจ',
                 courseName: 'หลักสูตรการนวดแผนไทยพื้นฐาน'
             },
@@ -173,7 +174,7 @@ const generateMockData = ()=>{
                 type: 'assignment',
                 title: 'งานที่ต้องตรวจ',
                 description: 'มีงานการปฏิบัติการนวดอโรม่า 5 ชิ้น รอการตรวจสอบ',
-                time: new Date(now.getTime() - 4 * 60 * 60 * 1000).toISOString(),
+                time: new Date(baseTime - 4 * 60 * 60 * 1000).toISOString(),
                 courseName: 'หลักสูตรการนวดอโรม่า'
             }
         ]
@@ -209,12 +210,12 @@ function TeacherDashboardPage() {
                 size: "large"
             }, void 0, false, {
                 fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                lineNumber: 237,
+                lineNumber: 238,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-            lineNumber: 236,
+            lineNumber: 237,
             columnNumber: 7
         }, this);
     }
@@ -227,7 +228,7 @@ function TeacherDashboardPage() {
                     }
                 }, void 0, false, {
                     fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                    lineNumber: 244,
+                    lineNumber: 245,
                     columnNumber: 33
                 }, this);
             case 'question':
@@ -237,7 +238,7 @@ function TeacherDashboardPage() {
                     }
                 }, void 0, false, {
                     fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                    lineNumber: 245,
+                    lineNumber: 246,
                     columnNumber: 31
                 }, this);
             case 'assignment':
@@ -247,7 +248,7 @@ function TeacherDashboardPage() {
                     }
                 }, void 0, false, {
                     fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                    lineNumber: 246,
+                    lineNumber: 247,
                     columnNumber: 33
                 }, this);
             case 'enrollment':
@@ -257,32 +258,123 @@ function TeacherDashboardPage() {
                     }
                 }, void 0, false, {
                     fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                    lineNumber: 247,
+                    lineNumber: 248,
                     columnNumber: 33
                 }, this);
             default:
                 return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$ClockCircleOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ClockCircleOutlined$3e$__["ClockCircleOutlined"], {}, void 0, false, {
                     fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                    lineNumber: 248,
+                    lineNumber: 249,
                     columnNumber: 23
                 }, this);
         }
     };
     const handleViewCourse = (courseId)=>{
-        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__["message"].info(`ดูรายละเอียดหลักสูตร: ${courseId}`);
-        console.log('View course:', courseId);
+        try {
+            if (!courseId || courseId.trim() === '') {
+                __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__["message"].error('รหัสหลักสูตรไม่ถูกต้อง');
+                return;
+            }
+            const course = courses.find((c)=>c.id === courseId);
+            if (!course) {
+                __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__["message"].error('ไม่พบหลักสูตรที่เลือก');
+                return;
+            }
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__["message"].info(`ดูรายละเอียดหลักสูตร: ${course.courseName}`);
+            console.log('View course:', courseId);
+        // TODO: Navigate to course details page
+        // router.push(`/teacher/courses/${courseId}`);
+        } catch (error) {
+            console.error('Error viewing course:', error);
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__["message"].error('เกิดข้อผิดพลาดในการดูรายละเอียดหลักสูตร');
+        }
     };
     const handleViewStudent = (studentId)=>{
-        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__["message"].info(`ดูข้อมูลนักเรียน: ${studentId}`);
-        console.log('View student:', studentId);
+        try {
+            if (!studentId || studentId.trim() === '') {
+                __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__["message"].error('รหัสนักเรียนไม่ถูกต้อง');
+                return;
+            }
+            const student = students.find((s)=>s.id === studentId);
+            if (!student) {
+                __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__["message"].error('ไม่พบนักเรียนที่เลือก');
+                return;
+            }
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__["message"].info(`ดูข้อมูลนักเรียน: ${student.firstName} ${student.lastName}`);
+            console.log('View student:', studentId);
+        // TODO: Navigate to student details page
+        // router.push(`/teacher/students/${studentId}`);
+        } catch (error) {
+            console.error('Error viewing student:', error);
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__["message"].error('เกิดข้อผิดพลาดในการดูข้อมูลนักเรียน');
+        }
     };
     const handleGradeAssignment = (assignmentId)=>{
-        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__["message"].info(`ตรวจงาน: ${assignmentId}`);
-        console.log('Grade assignment:', assignmentId);
+        try {
+            if (!assignmentId || assignmentId.trim() === '') {
+                __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__["message"].error('รหัสงานไม่ถูกต้อง');
+                return;
+            }
+            const assignment = assignments.find((a)=>a.id === assignmentId);
+            if (!assignment) {
+                __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__["message"].error('ไม่พบงานที่เลือก');
+                return;
+            }
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__["message"].info(`ตรวจงาน: ${assignment.title}`);
+            console.log('Grade assignment:', assignmentId);
+        // TODO: Navigate to grading page
+        // router.push(`/teacher/assignments/${assignmentId}/grade`);
+        } catch (error) {
+            console.error('Error grading assignment:', error);
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__["message"].error('เกิดข้อผิดพลาดในการตรวจงาน');
+        }
+    };
+    const handleViewAllCourses = ()=>{
+        try {
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__["message"].info('กำลังไปยังหน้าหลักสูตรทั้งหมด...');
+        // TODO: Navigate to all courses page
+        // router.push('/teacher/courses');
+        } catch (error) {
+            console.error('Error navigating to courses:', error);
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__["message"].error('เกิดข้อผิดพลาดในการเปิดหน้าหลักสูตร');
+        }
+    };
+    const handleViewAllActivities = ()=>{
+        try {
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__["message"].info('กำลังไปยังหน้ากิจกรรมทั้งหมด...');
+        // TODO: Navigate to all activities page
+        // router.push('/teacher/activities');
+        } catch (error) {
+            console.error('Error navigating to activities:', error);
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__["message"].error('เกิดข้อผิดพลาดในการเปิดหน้ากิจกรรม');
+        }
+    };
+    const handleViewAllStudents = ()=>{
+        try {
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__["message"].info('กำลังไปยังหน้านักเรียนทั้งหมด...');
+        // TODO: Navigate to all students page
+        // router.push('/teacher/students');
+        } catch (error) {
+            console.error('Error navigating to students:', error);
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__["message"].error('เกิดข้อผิดพลาดในการเปิดหน้านักเรียน');
+        }
+    };
+    const handleViewAllAssignments = ()=>{
+        try {
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__["message"].info('กำลังไปยังหน้างานทั้งหมด...');
+        // TODO: Navigate to all assignments page
+        // router.push('/teacher/assignments');
+        } catch (error) {
+            console.error('Error navigating to assignments:', error);
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$message$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__message$3e$__["message"].error('เกิดข้อผิดพลาดในการเปิดหน้างาน');
+        }
     };
     const activeCourses = courses.filter((c)=>c.status === 'active').length;
     const completedStudents = students.filter((s)=>s.status === 'completed').length;
     const pendingAssignments = assignments.filter((a)=>a.status === 'pending' || a.status === 'grading').length;
+    // Fix division by zero and improve calculation
+    const successRate = students.length > 0 ? completedStudents / students.length * 100 : 0;
+    const totalStudentsEnrolled = courses.reduce((sum, course)=>sum + course.enrolledStudents, 0);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "dashboard-container fade-in-up",
         children: [
@@ -299,7 +391,7 @@ function TeacherDashboardPage() {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                lineNumber: 276,
+                                lineNumber: 379,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -307,28 +399,29 @@ function TeacherDashboardPage() {
                                 children: "ยินดีต้อนรับสู่แดชบอร์ดอาจารย์ - จัดการหลักสูตรและนักเรียนของคุณ"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                lineNumber: 277,
+                                lineNumber: 380,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                        lineNumber: 275,
+                        lineNumber: 378,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
                         type: "primary",
                         className: "dashboard-action-btn",
+                        onClick: handleViewAllCourses,
                         children: "ดูหลักสูตรทั้งหมด"
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                        lineNumber: 281,
+                        lineNumber: 384,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                lineNumber: 274,
+                lineNumber: 377,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$row$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Row$3e$__["Row"], {
@@ -343,17 +436,17 @@ function TeacherDashboardPage() {
                         value: activeCourses,
                         prefix: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$BookOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__BookOutlined$3e$__["BookOutlined"], {}, void 0, false, {
                             fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                            lineNumber: 292,
+                            lineNumber: 395,
                             columnNumber: 21
                         }, this),
                         color: "#5d4037"
                     },
                     {
                         title: "นักเรียนทั้งหมด",
-                        value: students.length,
+                        value: totalStudentsEnrolled,
                         prefix: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$UserOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__UserOutlined$3e$__["UserOutlined"], {}, void 0, false, {
                             fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                            lineNumber: 298,
+                            lineNumber: 401,
                             columnNumber: 21
                         }, this),
                         color: "#8d6e63"
@@ -363,17 +456,17 @@ function TeacherDashboardPage() {
                         value: pendingAssignments,
                         prefix: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$FileTextOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__FileTextOutlined$3e$__["FileTextOutlined"], {}, void 0, false, {
                             fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                            lineNumber: 304,
+                            lineNumber: 407,
                             columnNumber: 21
                         }, this),
                         color: "#a1887f"
                     },
                     {
                         title: "อัตราความสำเร็จ",
-                        value: `${(completedStudents / students.length * 100 || 0).toFixed(0)}%`,
+                        value: `${successRate.toFixed(0)}%`,
                         prefix: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$TrophyOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__TrophyOutlined$3e$__["TrophyOutlined"], {}, void 0, false, {
                             fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                            lineNumber: 310,
+                            lineNumber: 413,
                             columnNumber: 21
                         }, this),
                         color: "#6d4c41"
@@ -395,7 +488,7 @@ function TeacherDashboardPage() {
                                         children: stat.prefix
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                        lineNumber: 317,
+                                        lineNumber: 420,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -409,7 +502,7 @@ function TeacherDashboardPage() {
                                                 children: stat.value
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                                lineNumber: 321,
+                                                lineNumber: 424,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -417,34 +510,34 @@ function TeacherDashboardPage() {
                                                 children: stat.title
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                                lineNumber: 324,
+                                                lineNumber: 427,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                        lineNumber: 320,
+                                        lineNumber: 423,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                lineNumber: 316,
+                                lineNumber: 419,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                            lineNumber: 315,
+                            lineNumber: 418,
                             columnNumber: 13
                         }, this)
                     }, index, false, {
                         fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                        lineNumber: 314,
+                        lineNumber: 417,
                         columnNumber: 11
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                lineNumber: 287,
+                lineNumber: 390,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$row$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Row$3e$__["Row"], {
@@ -463,10 +556,11 @@ function TeacherDashboardPage() {
                             extra: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
                                 type: "link",
                                 className: "card-action-btn",
+                                onClick: handleViewAllCourses,
                                 children: "ดูทั้งหมด"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                lineNumber: 339,
+                                lineNumber: 442,
                                 columnNumber: 15
                             }, void 0),
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -485,7 +579,7 @@ function TeacherDashboardPage() {
                                                                 children: course.courseName
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                                                lineNumber: 349,
+                                                                lineNumber: 452,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -496,7 +590,7 @@ function TeacherDashboardPage() {
                                                                         children: course.status === 'active' ? 'กำลังสอน' : course.status === 'draft' ? 'แก้ไข' : 'เสร็จสิ้น'
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                                                        lineNumber: 351,
+                                                                        lineNumber: 454,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -507,19 +601,19 @@ function TeacherDashboardPage() {
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                                                        lineNumber: 354,
+                                                                        lineNumber: 457,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                                                lineNumber: 350,
+                                                                lineNumber: 453,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                                        lineNumber: 348,
+                                                        lineNumber: 451,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
@@ -533,52 +627,52 @@ function TeacherDashboardPage() {
                                                         },
                                                         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$EyeOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__EyeOutlined$3e$__["EyeOutlined"], {}, void 0, false, {
                                                             fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                                            lineNumber: 362,
+                                                            lineNumber: 465,
                                                             columnNumber: 29
                                                         }, void 0),
                                                         onClick: ()=>handleViewCourse(course.id),
                                                         children: "ดูรายละเอียด"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                                        lineNumber: 357,
+                                                        lineNumber: 460,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                                lineNumber: 347,
+                                                lineNumber: 450,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$progress$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Progress$3e$__["Progress"], {
-                                                percent: Math.round(course.enrolledStudents / 30 * 100),
+                                                percent: Math.min(Math.round(course.enrolledStudents / Math.max(course.enrolledStudents, 30) * 100), 100),
                                                 strokeColor: "#5d4037",
                                                 trailColor: "#f5f5f5",
                                                 size: 8,
                                                 className: "course-progress-bar"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                                lineNumber: 368,
+                                                lineNumber: 471,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, course.id, true, {
                                         fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                        lineNumber: 346,
+                                        lineNumber: 449,
                                         columnNumber: 17
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                lineNumber: 344,
+                                lineNumber: 447,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                            lineNumber: 335,
+                            lineNumber: 438,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                        lineNumber: 334,
+                        lineNumber: 437,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
@@ -590,10 +684,11 @@ function TeacherDashboardPage() {
                             extra: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
                                 type: "link",
                                 className: "card-action-btn",
+                                onClick: handleViewAllActivities,
                                 children: "ดูทั้งหมด"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                lineNumber: 387,
+                                lineNumber: 490,
                                 columnNumber: 15
                             }, void 0),
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$list$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__List$3e$__["List"], {
@@ -611,7 +706,7 @@ function TeacherDashboardPage() {
                                                 children: getActivityIcon(item.type)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                                lineNumber: 400,
+                                                lineNumber: 503,
                                                 columnNumber: 23
                                             }, void 0),
                                             title: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -619,7 +714,7 @@ function TeacherDashboardPage() {
                                                 children: item.title
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                                lineNumber: 404,
+                                                lineNumber: 507,
                                                 columnNumber: 28
                                             }, void 0),
                                             description: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -630,7 +725,7 @@ function TeacherDashboardPage() {
                                                         children: item.description
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                                        lineNumber: 407,
+                                                        lineNumber: 510,
                                                         columnNumber: 25
                                                     }, void 0),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -640,45 +735,45 @@ function TeacherDashboardPage() {
                                                                 className: "time-icon"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                                                lineNumber: 409,
+                                                                lineNumber: 512,
                                                                 columnNumber: 27
                                                             }, void 0),
                                                             (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$dayjs$2f$dayjs$2e$min$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])(item.time).fromNow()
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                                        lineNumber: 408,
+                                                        lineNumber: 511,
                                                         columnNumber: 25
                                                     }, void 0)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                                lineNumber: 406,
+                                                lineNumber: 509,
                                                 columnNumber: 23
                                             }, void 0)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                            lineNumber: 398,
+                                            lineNumber: 501,
                                             columnNumber: 19
                                         }, void 0)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                        lineNumber: 397,
+                                        lineNumber: 500,
                                         columnNumber: 17
                                     }, void 0)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                lineNumber: 392,
+                                lineNumber: 495,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                            lineNumber: 383,
+                            lineNumber: 486,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                        lineNumber: 382,
+                        lineNumber: 485,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
@@ -690,10 +785,11 @@ function TeacherDashboardPage() {
                             extra: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
                                 type: "link",
                                 className: "card-action-btn",
+                                onClick: handleViewAllStudents,
                                 children: "ดูทั้งหมด"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                lineNumber: 427,
+                                lineNumber: 530,
                                 columnNumber: 15
                             }, void 0),
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$list$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__List$3e$__["List"], {
@@ -709,7 +805,7 @@ function TeacherDashboardPage() {
                                                 children: "ดูรายละเอียด"
                                             }, "view", false, {
                                                 fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                                lineNumber: 439,
+                                                lineNumber: 542,
                                                 columnNumber: 21
                                             }, void 0)
                                         ],
@@ -719,7 +815,7 @@ function TeacherDashboardPage() {
                                                 children: student.firstName[0]
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                                lineNumber: 450,
+                                                lineNumber: 553,
                                                 columnNumber: 29
                                             }, void 0),
                                             title: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -737,7 +833,7 @@ function TeacherDashboardPage() {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                                        lineNumber: 453,
+                                                        lineNumber: 556,
                                                         columnNumber: 25
                                                     }, void 0),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$badge$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Badge$3e$__["Badge"], {
@@ -745,13 +841,13 @@ function TeacherDashboardPage() {
                                                         text: student.status === 'active' ? 'กำลังเรียน' : student.status === 'completed' ? 'เรียนจบ' : 'ไม่ได้ใช้งาน'
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                                        lineNumber: 454,
+                                                        lineNumber: 557,
                                                         columnNumber: 25
                                                     }, void 0)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                                lineNumber: 452,
+                                                lineNumber: 555,
                                                 columnNumber: 23
                                             }, void 0),
                                             description: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -761,7 +857,7 @@ function TeacherDashboardPage() {
                                                         size: "small"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                                        lineNumber: 462,
+                                                        lineNumber: 565,
                                                         columnNumber: 25
                                                     }, void 0),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
@@ -775,38 +871,38 @@ function TeacherDashboardPage() {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                                        lineNumber: 463,
+                                                        lineNumber: 566,
                                                         columnNumber: 25
                                                     }, void 0)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                                lineNumber: 461,
+                                                lineNumber: 564,
                                                 columnNumber: 23
                                             }, void 0)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                            lineNumber: 449,
+                                            lineNumber: 552,
                                             columnNumber: 19
                                         }, void 0)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                        lineNumber: 436,
+                                        lineNumber: 539,
                                         columnNumber: 17
                                     }, void 0)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                lineNumber: 432,
+                                lineNumber: 535,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                            lineNumber: 423,
+                            lineNumber: 526,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                        lineNumber: 422,
+                        lineNumber: 525,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$col$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Col$3e$__["Col"], {
@@ -818,10 +914,11 @@ function TeacherDashboardPage() {
                             extra: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$button$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Button$3e$__["Button"], {
                                 type: "link",
                                 className: "card-action-btn",
+                                onClick: handleViewAllAssignments,
                                 children: "ดูทั้งหมด"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                lineNumber: 481,
+                                lineNumber: 584,
                                 columnNumber: 15
                             }, void 0),
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$list$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__List$3e$__["List"], {
@@ -838,7 +935,7 @@ function TeacherDashboardPage() {
                                                 children: "ตรวจงาน"
                                             }, "grade", false, {
                                                 fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                                lineNumber: 493,
+                                                lineNumber: 596,
                                                 columnNumber: 21
                                             }, void 0)
                                         ],
@@ -850,7 +947,7 @@ function TeacherDashboardPage() {
                                                 }
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                                lineNumber: 505,
+                                                lineNumber: 608,
                                                 columnNumber: 29
                                             }, void 0),
                                             title: assignment.title,
@@ -860,7 +957,7 @@ function TeacherDashboardPage() {
                                                         children: assignment.courseName
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                                        lineNumber: 509,
+                                                        lineNumber: 612,
                                                         columnNumber: 25
                                                     }, void 0),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -880,7 +977,7 @@ function TeacherDashboardPage() {
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                                                lineNumber: 511,
+                                                                lineNumber: 614,
                                                                 columnNumber: 27
                                                             }, void 0),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
@@ -891,13 +988,13 @@ function TeacherDashboardPage() {
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                                                lineNumber: 514,
+                                                                lineNumber: 617,
                                                                 columnNumber: 27
                                                             }, void 0)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                                        lineNumber: 510,
+                                                        lineNumber: 613,
                                                         columnNumber: 25
                                                     }, void 0),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$progress$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Progress$3e$__["Progress"], {
@@ -906,50 +1003,50 @@ function TeacherDashboardPage() {
                                                         strokeColor: assignment.submitted === assignment.total ? '#52c41a' : '#5d4037'
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                                        lineNumber: 518,
+                                                        lineNumber: 621,
                                                         columnNumber: 25
                                                     }, void 0)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                                lineNumber: 508,
+                                                lineNumber: 611,
                                                 columnNumber: 23
                                             }, void 0)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                            lineNumber: 504,
+                                            lineNumber: 607,
                                             columnNumber: 19
                                         }, void 0)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                        lineNumber: 490,
+                                        lineNumber: 593,
                                         columnNumber: 17
                                     }, void 0)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                                lineNumber: 486,
+                                lineNumber: 589,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                            lineNumber: 477,
+                            lineNumber: 580,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                        lineNumber: 476,
+                        lineNumber: 579,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-                lineNumber: 332,
+                lineNumber: 435,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/(pages)/teacher/dashboard/page.tsx",
-        lineNumber: 272,
+        lineNumber: 375,
         columnNumber: 5
     }, this);
 }
