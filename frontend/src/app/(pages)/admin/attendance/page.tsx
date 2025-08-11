@@ -4,7 +4,6 @@ import '@ant-design/v5-patch-for-react-19';
 import { useState, useEffect, useCallback } from 'react';
 import { Card, Table, Button, Space, Tag, Select, DatePicker, Form, Row, Col, message, Modal, Input, TimePicker } from 'antd';
 import { CheckOutlined, CloseOutlined, ClockCircleOutlined, EditOutlined } from '@ant-design/icons';
-import PageHeader from '@/components/common/PageHeader';
 import dayjs from 'dayjs';
 
 const { Option } = Select;
@@ -265,8 +264,24 @@ export default function AttendanceManagePage() {
   ];
 
   return (
-    <div>
-      <PageHeader title="จัดการการเข้าเรียน" />
+    <>
+      <div style={{
+        background: 'linear-gradient(135deg, #5d4037 0%, #8d6e63 50%, #a1887f 100%)',
+        borderRadius: '12px',
+        padding: '24px',
+        marginBottom: '24px',
+        boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
+        color: 'white'
+      }}>
+        <h1 style={{ 
+          margin: 0, 
+          fontSize: '28px', 
+          fontWeight: 'bold',
+          textShadow: '0 2px 4px rgba(0,0,0,0.3)'
+        }}>
+          จัดการการเข้าเรียน
+        </h1>
+      </div>
       
       <Card style={{ marginBottom: 16 }}>
         <Row gutter={16}>
@@ -355,7 +370,7 @@ export default function AttendanceManagePage() {
           </Form.Item>
         </Form>
       </Modal>
-    </div>
+    </>
   );
 
   // Rest of the component code...

@@ -115,10 +115,11 @@ export default function StudentApplicationPage() {
     const course = courses.find(c => c.id === courseId);
     if (!course) return;
     
-    // Prevent unnecessary re-renders by checking if course is already selected
-    if (selectedCourse?.id === courseId) return;
-    
-    setSelectedCourse(course);
+    // Check if course is already selected to prevent unnecessary updates
+    setSelectedCourse(prevSelected => {
+      if (prevSelected?.id === courseId) return prevSelected;
+      return course;
+    });
     
     // Filter batches based on course type - use static data to prevent circular references
     const courseBatches = STATIC_BATCHES.filter((batch) => {
@@ -130,14 +131,13 @@ export default function StudentApplicationPage() {
       return true;
     });
     
+    // Update batches separately to avoid state update during state transition
     setBatches(courseBatches);
     
-    // Reset batch selection only if different course
-    if (selectedCourse?.id !== courseId) {
-      form.setFieldValue('batchId', undefined);
-      setSelectedBatchId(null);
-    }
-  }, [courses, selectedCourse, form]); // Remove selectedCourse?.id dependency
+    // Reset batch selection for new course selection
+    form.setFieldValue('batchId', undefined);
+    setSelectedBatchId(null);
+  }, [courses, form]); // Removed selectedCourse dependency to break circular reference
 
   const openCourseModal = () => {
     setCourseModalOpen(true);
@@ -1442,6 +1442,93 @@ export default function StudentApplicationPage() {
                 <Col xs={24} sm={12}>
                   <div style={{ marginBottom: '8px' }}>
                     <Text strong>📚 หลักสูตร:</Text>
+                    <div style={{ marginLeft: '16px', fontSize: '16px', color: '#5d4037', fontWeight: '600' }}>
+                      {selectedCourse ? selectedCourse.title : values.courseId}
+                    </div>
+                  </div>
+                </Col>
+                <Col xs={24} sm={12}>
+                  <div style={{ marginBottom: '8px' }}>
+                    <Text strong>🕐 จำนวนชั่วโมง:</Text>
+                    <div style={{ marginLeft: '16px', fontSize: '16px' }}>
+                      {selectedCourse ? `${selectedCourse.duration} ชั่วโมง` : '-'}
+                    </div>
+                  </div>
+                </Col>
+                <Col xs={24} sm={12}>
+                  <div style={{ marginBottom: '8px' }}>
+                    <Text strong>💰 ค่าธรรมเนียม:</Text>
+                    <div style={{ marginLeft: '16px', fontSize: '16px', color: '#f59e0b', fontWeight: '600' }}>
+                      {selectedCourse ? `฿${selectedCourse.price.toLocaleString()}` : '-'}
+                    </div>
+                  </div>
+                </Col>
+                <Col xs={24} sm={12}>
+                  <div style={{ marginBottom: '8px' }}>
+                    <Text strong>📅 รุ่นเรียน:</Text>
+                    <div style={{ marginLeft: '16px', fontSize: '16px' }}>
+                      {selectedBatch ? `รุ่นที่ ${selectedBatch.batchNumber}` : 'ไม่ได้เลือก'}
+                    </div>
+                  </div>
+                </Col>
+                {selectedBatch && (
+                  <>
+                    <Col xs={24} sm={12}>
+                      <div style={{ marginBottom: '8px' }}>
+                        <Text strong>🗓️ วันเริ่มเรียน:</Text>
+                        <div style={{ marginLeft: '16px', fontSize: '16px' }}>
+                          {dayjs(selectedBatch.startDate).format('DD/MM/YYYY')}
+                        </div>
+                      </div>
+                    </Col>
+                    <Col xs={24} sm={12}>
+                      <div style={{ marginBottom: '8px' }}>
+                        <Text strong>🗓️ วันสิ้นสุด:</Text>
+                        <div style={{ marginLeft: '16px', fontSize: '16px' }}>
+                          {dayjs(selectedBatch.endDate).format('DD/MM/YYYY')}
+                        </div>
+                      </div>
+                    </Col>
+                  </>
+                )}
+              </Row>
+            </Card>
+
+            <Card size="small" style={{ backgroundColor: '#f6ffed', marginBottom: 24 }}>
+              <Title level={5} style={{ color: '#52c41a', marginBottom: 16 }}>
+                <UserOutlined style={{ marginRight: '8px' }} />
+                ข้อมูลส่วนตัว
+              </Title>
+              <Row gutter={[16, 8]}>
+                <Col xs={24} sm={12}>
+                  <div style={{ marginBottom: '8px' }}>
+                    <Text strong>👤 ชื่อ-นามสกุล:</Text>
+                    <div style={{ marginLeft: '16px', fontSize: '16px' }}>
+                      {values.titleName} {values.firstName} {values.lastName}
+                    </div>
+                  </div>
+                </Col>
+                <Col xs={24} sm={12}>
+                  <div style={{ marginBottom: '8px' }}>
+                    <Text strong>🎂 วันเกิด:</Text>
+                    <div style={{ marginLeft: '16px', fontSize: '16px' }}>
+                      {values.birthDate ? dayjs(values.birthDate).format('DD/MM/YYYY') : '-'}
+                    </div>
+                  </div>
+                </Col>
+                <Col xs={24} sm={12}>
+                  <div style={{ marginBottom: '8px' }}>
+                    <Text strong>⚧️ เพศ:</Text>
+                    <div style={{ marginLeft: '16px', fontSize: '16px' }}>
+                      {values.gender === 'male' ? 'ชาย' : values.gender === 'female' ? 'หญิง' : '-'}
+                    </div>
+                  </div>
+                </Col>
+              </Row>
+              <Row gutter={[16, 8]}>
+                <Col xs={24} sm={12}>
+                  <div style={{ marginBottom: '8px' }}>
+                    <Text strong>📚 หลักสูตร:</Text>
                     <div style={{ marginLeft: '16px', fontSize: '16px', color: '#1890ff' }}>
                       {selectedCourse?.title}
                     </div>
@@ -1493,6 +1580,14 @@ export default function StudentApplicationPage() {
                     <Text strong>🎂 วันเกิด:</Text>
                     <div style={{ marginLeft: '16px', fontSize: '16px' }}>
                       {values.birthDate ? dayjs(values.birthDate).format('DD/MM/YYYY') : '-'}
+                    </div>
+                  </div>
+                </Col>
+                <Col xs={24} sm={12}>
+                  <div style={{ marginBottom: '8px' }}>
+                    <Text strong>⚧️ เพศ:</Text>
+                    <div style={{ marginLeft: '16px', fontSize: '16px' }}>
+                      {values.gender === 'male' ? 'ชาย' : values.gender === 'female' ? 'หญิง' : '-'}
                     </div>
                   </div>
                 </Col>
@@ -1745,8 +1840,8 @@ export default function StudentApplicationPage() {
                     size="small" 
                     style={{ width: '200px', maxWidth: '100%' }}
                     strokeColor={{
-                      '0%': '#108ee9',
-                      '100%': '#87d068',
+                      '0%': '#5d4037',
+                      '100%': '#8d6e63',
                     }}
                   />
                 </div>

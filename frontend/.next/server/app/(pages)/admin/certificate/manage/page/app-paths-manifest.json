@@ -1,0 +1,3 @@
+{
+  "/(pages)/admin/certificate/manage/page": "app/(pages)/admin/certificate/manage/page.js"
+}

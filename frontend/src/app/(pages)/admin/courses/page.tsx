@@ -1,91 +1,265 @@
 "use client";
 
-import '@ant-design/v5-patch-for-react-19';
-import React, { useState, useEffect } from 'react';
-import { Table, Button, Space, Modal, Input, message, Tag, Typography, Breadcrumb, Card, Collapse } from 'antd';
-import { EditOutlined, EyeOutlined, PlusOutlined, SearchOutlined, DeleteOutlined, HomeOutlined, BookOutlined } from '@ant-design/icons';
-import { useRouter } from 'next/navigation';
+import React, { useState } from 'react';
+import { Table, Space, Button, Modal, Form, Input, message, Tag, Typography, Breadcrumb, Select, DatePicker, InputNumber } from 'antd';
+import { PlusOutlined, EditOutlined, DeleteOutlined, EyeOutlined, SearchOutlined, HomeOutlined, BookOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
-import { CourseContentModule, CourseContentItem } from './manage/CourseContentManager'; // Import the interfaces
-import type { CollapseProps } from 'antd'; // Make sure to import CollapseProps
 
-const { Text, Title: AntdTitle } = Typography;
-// const { Panel } = Collapse; // Still need Panel for the type definition, but we'll use items directly
+const { Text } = Typography;
+const { TextArea } = Input;
+const { Option } = Select;
 
-// Interface for Course Data (must match the one in manage/page.tsx)
-interface CourseData {
-  id: string;
+interface Course {
+  key: string;
   courseName: string;
   description: string;
-  price: number;
   durationHours: number;
+  price: number;
+  maxStudents: number;
+  currentStudents?: number;
+  status: 'active' | 'draft' | 'completed' | 'cancelled';
+  batchNumber?: string;
+  startDate?: string;
+  endDate?: string;
   createdAt: string;
   updatedAt: string;
-  modules: CourseContentModule[]; // Array of modules for course content
+}
+
+interface CourseFormValues {
+  courseName: string;
+  description: string;
+  durationHours: number;
+  price: number;
+  maxStudents: number;
+  status: 'active' | 'draft' | 'completed' | 'cancelled';
+  batchNumber?: string;
+  startDate?: dayjs.Dayjs | null;
+  endDate?: dayjs.Dayjs | null;
 }
 
 export default function CoursesPage() {
-  const router = useRouter();
-  const [courses, setCourses] = useState<CourseData[]>([]);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [editingCourse, setEditingCourse] = useState<Course | null>(null);
+  const [form] = Form.useForm<CourseFormValues>();
   const [searchTerm, setSearchTerm] = useState('');
   const [isDetailModalVisible, setIsDetailModalVisible] = useState(false);
-  const [viewingCourse, setViewingCourse] = useState<CourseData | null>(null);
-  const [hasLoadedCourses, setHasLoadedCourses] = useState(false); // State for hydration
+  const [viewingCourse, setViewingCourse] = useState<Course | null>(null);
 
-  // Load courses from localStorage on component mount
-  useEffect(() => {
-    const loadCourses = () => {
-      try {
-        const storedCourses = JSON.parse(localStorage.getItem('courses') || '[]') as CourseData[];
-        setCourses(storedCourses);
-        setHasLoadedCourses(true);
-      } catch (error) {
-        console.error("Failed to parse courses from localStorage", error);
-        setCourses([]);
-        setHasLoadedCourses(true);
-      }
-    };
-    loadCourses();
+  const [courses, setCourses] = useState<Course[]>([
+    {
+      key: '1',
+      courseName: 'หลักสูตรนวดแผนไทยเบื้องต้น',
+      description: 'เรียนรู้เทคนิคนวดแผนไทยพื้นฐาน เหมาะสำหรับผู้เริ่มต้น',
+      durationHours: 120,
+      price: 15000,
+      maxStudents: 20,
+      currentStudents: 12,
+      status: 'active',
+      batchNumber: 'THAI-001',
+      startDate: '2024-01-15',
+      endDate: '2024-03-15',
+      createdAt: '2023-12-01',
+      updatedAt: '2023-12-15',
+    },
+    {
+      key: '2',
+      courseName: 'หลักสูตรสปาเพื่อสุขภาพ',
+      description: 'เทคนิคการนวดสปาและอโรมาเธอราปี',
+      durationHours: 80,
+      price: 12000,
+      maxStudents: 15,
+      currentStudents: 8,
+      status: 'active',
+      batchNumber: 'SPA-002',
+      startDate: '2024-02-01',
+      endDate: '2024-04-01',
+      createdAt: '2023-12-05',
+      updatedAt: '2023-12-20',
+    },
+    {
+      key: '3',
+      courseName: 'หลักสูตรนวดเท้าเพื่อสุขภาพ',
+      description: 'การนวดกดจุดเท้าเพื่อการรักษาและผ่อนคลาย',
+      durationHours: 60,
+      price: 8000,
+      maxStudents: 25,
+      currentStudents: 18,
+      status: 'completed',
+      batchNumber: 'FOOT-003',
+      startDate: '2023-11-01',
+      endDate: '2023-12-20',
+      createdAt: '2023-10-15',
+      updatedAt: '2023-12-21',
+    },
+  ]);
 
-    // Add event listener for 'storage' to update when localStorage changes from other tabs
-    const handleStorageChange = (event: StorageEvent) => {
-      if (event.key === 'courses') {
-        loadCourses();
-      }
-    };
-    window.addEventListener('storage', handleStorageChange);
+  const filteredCourses = courses.filter(course =>
+    course.courseName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    course.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    course.status.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (course.batchNumber && course.batchNumber.toLowerCase().includes(searchTerm.toLowerCase()))
+  );
 
-    return () => {
-      window.removeEventListener('storage', handleStorageChange);
-    };
-  }, []);
+  const columns = [
+    {
+      title: '#',
+      dataIndex: 'key',
+      key: 'key',
+      render: (text: string) => parseInt(text),
+      width: 50,
+      className: 'text-gray-600',
+    },
+    {
+      title: 'COURSE NAME',
+      dataIndex: 'courseName',
+      key: 'courseName',
+      className: 'font-medium text-gray-900',
+    },
+    {
+      title: 'DURATION',
+      dataIndex: 'durationHours',
+      key: 'durationHours',
+      render: (hours: number) => `${hours} ชั่วโมง`,
+      className: 'text-gray-700',
+    },
+    {
+      title: 'PRICE',
+      dataIndex: 'price',
+      key: 'price',
+      render: (price: number) => `฿${price.toLocaleString()}`,
+      className: 'text-gray-700',
+    },
+    {
+      title: 'STUDENTS',
+      key: 'students',
+      render: (_: unknown, record: Course) => `${record.currentStudents || 0}/${record.maxStudents}`,
+      className: 'text-gray-700',
+    },
+    {
+      title: 'STATUS',
+      dataIndex: 'status',
+      key: 'status',
+      render: (status: Course['status']) => {
+        const colors = {
+          active: 'green',
+          draft: 'orange',
+          completed: 'blue',
+          cancelled: 'red'
+        };
+        const labels = {
+          active: 'เปิดรับสมัคร',
+          draft: 'ร่าง',
+          completed: 'เสร็จสิ้น',
+          cancelled: 'ยกเลิก'
+        };
+        return (
+          <Tag color={colors[status]} className="rounded-full px-3 py-1 text-xs font-semibold">
+            {labels[status]}
+          </Tag>
+        );
+      },
+      className: 'text-center',
+    },
+    {
+      title: 'ACTIONS',
+      key: 'actions',
+      render: (_: unknown, record: Course) => (
+        <Space size="middle">
+          <Button
+            icon={<EyeOutlined />}
+            onClick={() => handleView(record)}
+            className="text-gray-500 border-none shadow-none hover:bg-gray-50"
+          />
+          <Button 
+            icon={<EditOutlined />} 
+            onClick={() => handleEdit(record)} 
+            className="text-blue-500 border-none shadow-none hover:bg-blue-50" 
+          />
+          <Button
+            icon={<DeleteOutlined />}
+            danger
+            onClick={() => handleDelete(record.key)}
+            className="text-red-500 border-none shadow-none hover:bg-red-50"
+          />
+        </Space>
+      ),
+    },
+  ];
 
-  const handleCreateCourse = () => {
-    router.push('/admin/courses/manage'); // Navigate to the new manage page for creation
+  const handleAdd = () => {
+    setEditingCourse(null);
+    form.resetFields();
+    setIsModalVisible(true);
   };
 
-  const handleEditCourse = (courseId: string) => {
-    router.push(`/admin/courses/manage?id=${courseId}`); // Navigate to manage page for editing
+  const handleEdit = (record: Course) => {
+    setEditingCourse(record);
+    form.setFieldsValue({
+      ...record,
+      startDate: record.startDate ? dayjs(record.startDate) : null,
+      endDate: record.endDate ? dayjs(record.endDate) : null,
+    });
+    setIsModalVisible(true);
   };
 
-  const handleDeleteCourse = (courseId: string) => {
+  const handleDelete = (keyToDelete: string) => {
     Modal.confirm({
       title: 'ยืนยันการลบ',
-      content: 'คุณแน่ใจหรือไม่ว่าต้องการลบหลักสูตรนี้? การดำเนินการนี้ไม่สามารถย้อนกลับได้',
+      content: 'คุณแน่ใจหรือไม่ว่าต้องการลบหลักสูตรนี้?',
       okText: 'ลบ',
       cancelText: 'ยกเลิก',
       onOk() {
-        setCourses(prevCourses => {
-          const updatedCourses = prevCourses.filter(course => course.id !== courseId);
-          localStorage.setItem('courses', JSON.stringify(updatedCourses));
-          message.success('ลบหลักสูตรเรียบร้อยแล้ว!');
-          return updatedCourses;
-        });
+        setCourses(prevCourses => prevCourses.filter(course => course.key !== keyToDelete));
+        message.success('ลบหลักสูตรสำเร็จ!');
       },
     });
   };
 
-  const handleViewCourse = (record: CourseData) => {
+  const handleOk = () => {
+    form.validateFields()
+      .then((values: CourseFormValues) => {
+        const formattedValues = {
+          ...values,
+          startDate: values.startDate ? values.startDate.format('YYYY-MM-DD') : undefined,
+          endDate: values.endDate ? values.endDate.format('YYYY-MM-DD') : undefined,
+        };
+        
+        if (editingCourse) {
+          setCourses(prevCourses =>
+            prevCourses.map(course =>
+              course.key === editingCourse.key 
+                ? { 
+                    ...course, 
+                    ...formattedValues,
+                    updatedAt: dayjs().format('YYYY-MM-DD')
+                  } 
+                : course
+            )
+          );
+          message.success('อัปเดตหลักสูตรสำเร็จ!');
+        } else {
+          const newCourse: Course = {
+            key: (courses.length + 1).toString(),
+            ...formattedValues,
+            currentStudents: 0,
+            createdAt: dayjs().format('YYYY-MM-DD'),
+            updatedAt: dayjs().format('YYYY-MM-DD'),
+          };
+          setCourses(prevCourses => [...prevCourses, newCourse]);
+          message.success('เพิ่มหลักสูตรสำเร็จ!');
+        }
+        setIsModalVisible(false);
+      })
+      .catch(info => {
+        console.log('Validate Failed:', info);
+      });
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleView = (record: Course) => {
     setViewingCourse(record);
     setIsDetailModalVisible(true);
   };
@@ -95,191 +269,284 @@ export default function CoursesPage() {
     setViewingCourse(null);
   };
 
-  const filteredCourses = courses.filter(course =>
-    course.courseName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    course.description.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  const columns = [
+  const breadcrumbItems = [
     {
-      title: '#',
-      render: (_: unknown, __: unknown, index: number) => index + 1,
-      width: 50,
-      className: 'text-gray-600',
+      title: (
+        <a href="/admin/dashboard">
+          <HomeOutlined /> หน้าหลัก
+        </a>
+      ),
     },
     {
-      title: 'ชื่อหลักสูตร',
-      dataIndex: 'courseName',
-      key: 'courseName',
-      className: 'font-medium text-gray-900',
-    },
-    {
-      title: 'คำอธิบาย',
-      dataIndex: 'description',
-      key: 'description',
-      ellipsis: true,
-      className: 'text-gray-700',
-    },
-    {
-      title: 'ราคา',
-      dataIndex: 'price',
-      key: 'price',
-      render: (price: number) => `${price.toFixed(2)} บาท`,
-      className: 'text-gray-700',
-    },
-    {
-      title: 'ระยะเวลา',
-      dataIndex: 'durationHours',
-      key: 'durationHours',
-      render: (duration: number) => `${duration} ชั่วโมง`,
-      className: 'text-gray-700',
-    },
-    {
-      title: 'สร้างเมื่อ',
-      dataIndex: 'createdAt',
-      key: 'createdAt',
-      render: (date: string) => dayjs(date).format('DD/MM/YYYY, HH:mm'),
-      className: 'text-gray-700',
-    },
-    {
-      title: 'อัปเดตเมื่อ',
-      dataIndex: 'updatedAt',
-      key: 'updatedAt',
-      render: (date: string) => dayjs(date).format('DD/MM/YYYY, HH:mm'),
-      className: 'text-gray-700',
-    },
-    {
-      title: 'ACTIONS',
-      key: 'actions',
-      render: (_: unknown, record: CourseData) => (
-        <Space size="middle">
-          <Button
-            icon={<EyeOutlined />}
-            onClick={() => handleViewCourse(record)}
-            className="text-gray-500 border-none shadow-none hover:bg-gray-50"
-          />
-          <Button
-            icon={<EditOutlined />}
-            onClick={() => handleEditCourse(record.id)}
-            className="text-blue-500 border-none shadow-none hover:bg-blue-50"
-          />
-          <Button
-            icon={<DeleteOutlined />}
-            danger
-            onClick={() => handleDeleteCourse(record.id)}
-            className="text-red-500 border-none shadow-none hover:bg-red-50"
-          />
-        </Space>
+      title: (
+        <>
+          <BookOutlined /> จัดการหลักสูตร
+        </>
       ),
     },
   ];
 
-  const breadcrumbItems = [
-    {
-      title: <a href="/admin/dashboard"><HomeOutlined /> หน้าหลัก</a>,
-    },
-    {
-      title: <><BookOutlined /> หลักสูตร</>,
-    },
-  ];
-
-  // Prepare items for Ant Design Collapse component in the Modal
-  const modalCollapseItems: CollapseProps['items'] = viewingCourse?.modules.map((module) => ({
-    key: module.id,
-    label: <Text strong>{module.moduleName}</Text>,
-    children: (
-      module.contents.length === 0 ? (
-        <Text type="secondary">ไม่มีเนื้อหาในโมดูลนี้</Text>
-      ) : (
-        <Space direction="vertical" className="w-full">
-          {module.contents.map((item: CourseContentItem) => (
-            <Card key={item.id} size="small" className="rounded-lg shadow-sm">
-              <Text strong>{item.itemTitle}</Text>
-              <div
-                className="text-gray-600 text-sm quill-content-display"
-                dangerouslySetInnerHTML={{ __html: item.itemDescription }}
-              />
-              <Tag color="blue" className="mt-2 text-xs">{item.itemType}</Tag>
-            </Card>
-          ))}
-        </Space>
-      )
-    ),
-  })) || []; // Ensure it's an empty array if viewingCourse or modules is null/undefined
-
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 min-h-screen">
-      <Breadcrumb className="mb-6" items={breadcrumbItems} />
-
-      <AntdTitle level={1} className="text-3xl font-bold mb-8 text-gray-800">
-        การจัดการหลักสูตร
-      </AntdTitle>
-
-      <Card className="rounded-xl shadow-custom-light p-4">
-        <div className="flex justify-between items-center mb-6 gap-10">
-          <Input
-            placeholder="ค้นหาหลักสูตร"
-            prefix={<SearchOutlined className="text-gray-400" />}
-            className="w-80 rounded-lg shadow-sm table-search-input"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          <Button
-            type="primary"
-            onClick={handleCreateCourse}
-            icon={<PlusOutlined />}
-            className="bg-orange-500 hover:bg-orange-600 text-white rounded-lg shadow-md px-6 py-3 text-base"
-          >
-            สร้างหลักสูตรใหม่
-          </Button>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      {/* Professional Header */}
+      <div style={{ 
+        background: 'linear-gradient(135deg, #5d4037 0%, #8d6e63 50%, #a1887f 100%)', 
+        borderRadius: '16px', 
+        padding: '32px 40px', 
+        marginBottom: '32px',
+        boxShadow: '0 8px 24px rgba(93, 64, 55, 0.25)',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        <div style={{
+          position: 'absolute',
+          top: '-50%',
+          right: '-10%',
+          width: '300px',
+          height: '300px',
+          background: 'rgba(255, 255, 255, 0.1)',
+          borderRadius: '50%',
+          zIndex: 1
+        }} />
+        <div style={{ position: 'relative', zIndex: 2 }}>
+          <h1 style={{ 
+            margin: 0, 
+            fontSize: '32px', 
+            fontWeight: 'bold',
+            color: 'white',
+            textShadow: '0 2px 4px rgba(0,0,0,0.3)',
+            marginBottom: '8px'
+          }}>
+            จัดการหลักสูตร
+          </h1>
+          <p style={{ 
+            margin: 0, 
+            fontSize: '16px',
+            color: 'rgba(255, 255, 255, 0.9)',
+            fontWeight: '300'
+          }}>
+            ระบบจัดการหลักสูตรการฝึกอบรม RelaxPlus
+          </p>
         </div>
-        {hasLoadedCourses ? (
-          <Table
-            columns={columns}
-            dataSource={filteredCourses}
-            rowKey="id"
-            className="rounded-xl shadow-custom-light"
-            pagination={{ pageSize: 10 }}
-            bordered={false}
-          />
-        ) : (
-          <div className="flex justify-center items-center h-40">
-            <Text>กำลังโหลดหลักสูตร...</Text>
+      </div>
+
+      {/* Breadcrumbs */}
+      <Breadcrumb items={breadcrumbItems} className="mb-6" />
+
+      <div className="flex justify-between items-center mb-6 gap-10">
+        <Input
+          placeholder="ค้นหาหลักสูตร"
+          prefix={<SearchOutlined className="text-gray-400" />}
+          className="w-80 rounded-lg shadow-sm table-search-input"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <Button
+          type="primary"
+          onClick={handleAdd}
+          icon={<PlusOutlined />}
+          className="bg-orange-500 hover:bg-orange-600 text-white rounded-lg shadow-md px-6 py-3 text-base"
+        >
+          เพิ่มหลักสูตร
+        </Button>
+      </div>
+
+      <Table
+        columns={columns}
+        dataSource={filteredCourses}
+        className="rounded-xl shadow-custom-light mt-4"
+        pagination={{ pageSize: 10 }}
+        bordered={false}
+      />
+
+      {/* Add/Edit Modal */}
+      <Modal
+        title={editingCourse ? 'แก้ไขหลักสูตร' : 'เพิ่มหลักสูตรใหม่'}
+        open={isModalVisible}
+        onOk={handleOk}
+        onCancel={handleCancel}
+        className="rounded-xl"
+        centered
+        width={600}
+      >
+        <Form
+          form={form}
+          layout="vertical"
+          name="course_form"
+          className="p-4"
+        >
+          <Form.Item
+            name="courseName"
+            label={<span className="font-semibold text-gray-700">ชื่อหลักสูตร</span>}
+            rules={[{ required: true, message: 'กรุณากรอกชื่อหลักสูตร!' }]}
+          >
+            <Input placeholder="เช่น หลักสูตรนวดแผนไทยเบื้องต้น" className="rounded-lg" />
+          </Form.Item>
+          
+          <Form.Item
+            name="description"
+            label={<span className="font-semibold text-gray-700">คำอธิบาย</span>}
+            rules={[{ required: true, message: 'กรุณากรอกคำอธิบาย!' }]}
+          >
+            <TextArea rows={3} placeholder="อธิบายรายละเอียดหลักสูตร" className="rounded-lg" />
+          </Form.Item>
+
+          <div className="grid grid-cols-2 gap-4">
+            <Form.Item
+              name="durationHours"
+              label={<span className="font-semibold text-gray-700">ระยะเวลา (ชั่วโมง)</span>}
+              rules={[{ required: true, message: 'กรุณากรอกระยะเวลา!' }]}
+            >
+              <InputNumber min={1} placeholder="120" className="w-full rounded-lg" />
+            </Form.Item>
+
+            <Form.Item
+              name="price"
+              label={<span className="font-semibold text-gray-700">ราคา (บาท)</span>}
+              rules={[{ required: true, message: 'กรุณากรอกราคา!' }]}
+            >
+              <InputNumber min={0} placeholder="15000" className="w-full rounded-lg" />
+            </Form.Item>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4">
+            <Form.Item
+              name="maxStudents"
+              label={<span className="font-semibold text-gray-700">จำนวนนักเรียนสูงสุด</span>}
+              rules={[{ required: true, message: 'กรุณากรอกจำนวนนักเรียน!' }]}
+            >
+              <InputNumber min={1} placeholder="20" className="w-full rounded-lg" />
+            </Form.Item>
+
+            <Form.Item
+              name="status"
+              label={<span className="font-semibold text-gray-700">สถานะ</span>}
+              rules={[{ required: true, message: 'กรุณาเลือกสถานะ!' }]}
+            >
+              <Select placeholder="เลือกสถานะ" className="rounded-lg">
+                <Option value="active">เปิดรับสมัคร</Option>
+                <Option value="draft">ร่าง</Option>
+                <Option value="completed">เสร็จสิ้น</Option>
+                <Option value="cancelled">ยกเลิก</Option>
+              </Select>
+            </Form.Item>
+          </div>
+
+          <Form.Item
+            name="batchNumber"
+            label={<span className="font-semibold text-gray-700">รหัสรุ่น</span>}
+          >
+            <Input placeholder="เช่น THAI-001" className="rounded-lg" />
+          </Form.Item>
+
+          <div className="grid grid-cols-2 gap-4">
+            <Form.Item
+              name="startDate"
+              label={<span className="font-semibold text-gray-700">วันที่เริ่มต้น</span>}
+            >
+              <DatePicker format="YYYY-MM-DD" className="w-full rounded-lg" />
+            </Form.Item>
+
+            <Form.Item
+              name="endDate"
+              label={<span className="font-semibold text-gray-700">วันที่สิ้นสุด</span>}
+            >
+              <DatePicker format="YYYY-MM-DD" className="w-full rounded-lg" />
+            </Form.Item>
+          </div>
+        </Form>
+      </Modal>
+
+      {/* View Details Modal */}
+      <Modal
+        title="รายละเอียดหลักสูตร"
+        open={isDetailModalVisible}
+        onCancel={handleDetailModalCancel}
+        footer={null}
+        className="rounded-xl"
+        centered
+        width={700}
+      >
+        {viewingCourse && (
+          <div className="p-4">
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <p className="mb-2"><Text strong>ชื่อหลักสูตร:</Text></p>
+                <p className="mb-4 text-gray-700">{viewingCourse.courseName}</p>
+                
+                <p className="mb-2"><Text strong>คำอธิบาย:</Text></p>
+                <p className="mb-4 text-gray-700">{viewingCourse.description}</p>
+                
+                <p className="mb-2"><Text strong>ระยะเวลา:</Text></p>
+                <p className="mb-4 text-gray-700">{viewingCourse.durationHours} ชั่วโมง</p>
+                
+                <p className="mb-2"><Text strong>ราคา:</Text></p>
+                <p className="mb-4 text-gray-700">฿{viewingCourse.price.toLocaleString()}</p>
+              </div>
+              
+              <div>
+                <p className="mb-2"><Text strong>จำนวนนักเรียนสูงสุด:</Text></p>
+                <p className="mb-4 text-gray-700">{viewingCourse.maxStudents} คน</p>
+                
+                <p className="mb-2"><Text strong>นักเรียนปัจจุบัน:</Text></p>
+                <p className="mb-4 text-gray-700">{viewingCourse.currentStudents || 0} คน</p>
+                
+                {viewingCourse.batchNumber && (
+                  <>
+                    <p className="mb-2"><Text strong>รหัสรุ่น:</Text></p>
+                    <p className="mb-4"><Tag color="blue">{viewingCourse.batchNumber}</Tag></p>
+                  </>
+                )}
+                
+                <p className="mb-2"><Text strong>สถานะ:</Text></p>
+                <p className="mb-4">
+                  <Tag color={
+                    viewingCourse.status === 'active' ? 'green' :
+                    viewingCourse.status === 'draft' ? 'orange' :
+                    viewingCourse.status === 'completed' ? 'blue' : 'red'
+                  }>
+                    {viewingCourse.status === 'active' ? 'เปิดรับสมัคร' :
+                     viewingCourse.status === 'draft' ? 'ร่าง' :
+                     viewingCourse.status === 'completed' ? 'เสร็จสิ้น' : 'ยกเลิก'}
+                  </Tag>
+                </p>
+              </div>
+            </div>
+            
+            {(viewingCourse.startDate || viewingCourse.endDate) && (
+              <div className="border-t pt-4 mt-4">
+                <div className="grid grid-cols-2 gap-4">
+                  {viewingCourse.startDate && (
+                    <div>
+                      <p className="mb-2"><Text strong>วันที่เริ่มต้น:</Text></p>
+                      <p className="text-gray-700">{dayjs(viewingCourse.startDate).format('DD/MM/YYYY')}</p>
+                    </div>
+                  )}
+                  {viewingCourse.endDate && (
+                    <div>
+                      <p className="mb-2"><Text strong>วันที่สิ้นสุด:</Text></p>
+                      <p className="text-gray-700">{dayjs(viewingCourse.endDate).format('DD/MM/YYYY')}</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+            
+            <div className="border-t pt-4 mt-4">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <p className="mb-2"><Text strong>สร้างเมื่อ:</Text></p>
+                  <p className="text-gray-500 text-sm">{dayjs(viewingCourse.createdAt).format('DD/MM/YYYY HH:mm')}</p>
+                </div>
+                <div>
+                  <p className="mb-2"><Text strong>อัปเดตล่าสุด:</Text></p>
+                  <p className="text-gray-500 text-sm">{dayjs(viewingCourse.updatedAt).format('DD/MM/YYYY HH:mm')}</p>
+                </div>
+              </div>
+            </div>
           </div>
         )}
-
-        {/* Modal for Viewing Course Details */}
-        <Modal
-          title="รายละเอียดหลักสูตร"
-          open={isDetailModalVisible}
-          onCancel={handleDetailModalCancel}
-          footer={null}
-          className="rounded-xl"
-          centered
-          width={800}
-        >
-          {viewingCourse ? (
-            <div className="p-4">
-              <p className="mb-2"><Text strong>ชื่อหลักสูตร:</Text> {viewingCourse.courseName}</p>
-              <p className="mb-2"><Text strong>คำอธิบาย:</Text> {viewingCourse.description}</p>
-              <p className="mb-2"><Text strong>ราคา:</Text> {viewingCourse.price.toFixed(2)} บาท</p>
-              <p className="mb-2"><Text strong>ระยะเวลา:</Text> {viewingCourse.durationHours} ชั่วโมง</p>
-              <p className="mb-2"><Text strong>สร้างเมื่อ:</Text> {dayjs(viewingCourse.createdAt).format('DD/MM/YYYY, HH:mm')}</p>
-              <p className="mb-2"><Text strong>อัปเดตเมื่อ:</Text> {dayjs(viewingCourse.updatedAt).format('DD/MM/YYYY, HH:mm')}</p>
-
-              <AntdTitle level={5} className="mt-6 mb-4 text-gray-700">เนื้อหาหลักสูตร</AntdTitle>
-              {viewingCourse.modules.length === 0 ? (
-                <Text type="secondary">ไม่มีเนื้อหาในหลักสูตรนี้</Text>
-              ) : (
-                // Use items prop here as well
-                <Collapse accordion className="rounded-lg shadow-sm" items={modalCollapseItems} />
-              )}
-            </div>
-          ) : (
-            <p>ไม่พบข้อมูล</p>
-          )}
-        </Modal>
-      </Card>
+      </Modal>
     </div>
   );
 }

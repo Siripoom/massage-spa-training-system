@@ -1,257 +1,195 @@
-// src/app/(pages)/(admin)/users/page.tsx
 "use client";
 
-import '@ant-design/v5-patch-for-react-19';
-import React, { useState, useEffect } from 'react';
-import { Table, Button, Space, Modal, Form, Input, message, Tag, Typography, Breadcrumb, Card, Select, DatePicker } from 'antd';
-import { EditOutlined, EyeOutlined, PlusOutlined, SearchOutlined, DeleteOutlined, HomeOutlined, UserOutlined } from '@ant-design/icons';
-import { v4 as uuidv4 } from 'uuid';
+import React, { useState } from 'react';
+import { Table, Space, Button, Modal, Form, Input, message, Tag, Typography, Breadcrumb, Select, DatePicker } from 'antd';
+import { PlusOutlined, EditOutlined, DeleteOutlined, EyeOutlined, SearchOutlined, HomeOutlined, UserOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
-import 'dayjs/locale/th'; // Import Thai locale for dayjs
-import locale from 'antd/es/date-picker/locale/th_TH'; // Import Thai locale for Ant Design DatePicker
 
-dayjs.locale('th'); // Set dayjs to Thai locale globally for this component
-
-const { Text, Title: AntdTitle } = Typography;
+const { Text } = Typography;
 const { Option } = Select;
 
-// Interface for Student Data
-interface StudentData {
-  id: string;
-  studentId: string; // Student ID, could be auto-generated or manual
-  firstName: string;
-  lastName: string;
+interface User {
+  key: string;
+  fullName: string;
   email: string;
   phone: string;
-  dob: string; // Date of Birth (ISO string format)
-  status: 'Active' | 'Inactive' | 'Graduated';
-  createdAt: string;
-  updatedAt: string;
+  role: 'admin' | 'teacher' | 'student';
+  status: 'active' | 'inactive' | 'pending';
+  registrationDate: string;
+  lastLogin?: string;
 }
 
-// The defaultStudentData has been removed as it was not being used
-
-interface FormValues {
-  firstName: string;
-  lastName: string;
+interface UserFormValues {
+  fullName: string;
   email: string;
   phone: string;
-  dob: dayjs.Dayjs;
-  status: 'Active' | 'Inactive' | 'Graduated';
+  role: 'admin' | 'teacher' | 'student';
+  status: 'active' | 'inactive' | 'pending';
+  registrationDate: dayjs.Dayjs | null;
 }
 
 export default function UsersPage() {
-  const [students, setStudents] = useState<StudentData[]>([]);
-  const [searchTerm, setSearchTerm] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [editingStudent, setEditingStudent] = useState<StudentData | null>(null);
-  const [form] = Form.useForm<FormValues>();
+  const [editingUser, setEditingUser] = useState<User | null>(null);
+  const [form] = Form.useForm<UserFormValues>();
+  const [searchTerm, setSearchTerm] = useState('');
   const [isDetailModalVisible, setIsDetailModalVisible] = useState(false);
-  const [viewingStudent, setViewingStudent] = useState<StudentData | null>(null);
-  const [hasLoadedStudents, setHasLoadedStudents] = useState(false); // State for hydration
+  const [viewingUser, setViewingUser] = useState<User | null>(null);
+  const [filterRole, setFilterRole] = useState<string>('all');
+  const [filterStatus, setFilterStatus] = useState<string>('all');
 
-  // Load students from localStorage on component mount
-  useEffect(() => {
-    const loadStudents = () => {
-      try {
-        const storedStudents = JSON.parse(localStorage.getItem('students') || '[]') as StudentData[];
-        setStudents(storedStudents);
-        setHasLoadedStudents(true);
-      } catch (error) {
-        console.error("Failed to parse students from localStorage", error);
-        setStudents([]);
-        setHasLoadedStudents(true);
-      }
-    };
-    loadStudents();
+  const [users, setUsers] = useState<User[]>([
+    {
+      key: '1',
+      fullName: 'สมชาย ใจดี',
+      email: 'somchai@email.com',
+      phone: '081-234-5678',
+      role: 'student',
+      status: 'active',
+      registrationDate: '2023-12-01',
+      lastLogin: '2024-01-15',
+    },
+    {
+      key: '2',
+      fullName: 'สมหญิง รักเรียน',
+      email: 'somying@email.com',
+      phone: '082-345-6789',
+      role: 'student',
+      status: 'active',
+      registrationDate: '2023-12-05',
+      lastLogin: '2024-01-14',
+    },
+    {
+      key: '3',
+      fullName: 'อาจารย์มานะ พากเพียร',
+      email: 'mana@school.com',
+      phone: '083-456-7890',
+      role: 'teacher',
+      status: 'active',
+      registrationDate: '2023-11-15',
+      lastLogin: '2024-01-15',
+    },
+    {
+      key: '4',
+      fullName: 'ผู้ดูแลระบบ',
+      email: 'admin@relaxplus.com',
+      phone: '084-567-8901',
+      role: 'admin',
+      status: 'active',
+      registrationDate: '2023-10-01',
+      lastLogin: '2024-01-15',
+    },
+  ]);
 
-    // Add event listener for 'storage' to update when localStorage changes from other tabs
-    const handleStorageChange = (event: StorageEvent) => {
-      if (event.key === 'students') {
-        loadStudents();
-      }
-    };
-    window.addEventListener('storage', handleStorageChange);
-
-    return () => {
-      window.removeEventListener('storage', handleStorageChange);
-    };
-  }, []);
-
-  // Handle form submission (Add/Edit)
-  const handleOk = () => {
-    form.validateFields()
-      .then((values: FormValues) => {
-        const now = dayjs().toISOString();
-        const dobISO = values.dob.toISOString(); // Now we know dob is always a Dayjs object
-
-        if (editingStudent) {
-          // Update existing student
-          const updatedStudent: StudentData = {
-            ...editingStudent,
-            firstName: values.firstName,
-            lastName: values.lastName,
-            email: values.email,
-            phone: values.phone,
-            dob: dobISO,
-            status: values.status,
-            updatedAt: now,
-          };
-          setStudents(prevStudents => {
-            const newStudents = prevStudents.map(student =>
-              student.id === updatedStudent.id ? updatedStudent : student
-            );
-            localStorage.setItem('students', JSON.stringify(newStudents));
-            return newStudents;
-          });
-          message.success('อัปเดตข้อมูลนักเรียนเรียบร้อยแล้ว!');
-        } else {
-          // Add new student
-          const newStudent: StudentData = {
-            id: uuidv4(),
-            studentId: `STU-${Math.floor(Math.random() * 100000)}`, // Simple auto-generated ID
-            firstName: values.firstName,
-            lastName: values.lastName,
-            email: values.email,
-            phone: values.phone,
-            dob: dobISO,
-            status: values.status,
-            createdAt: now,
-            updatedAt: now,
-          };
-          setStudents(prevStudents => {
-            const newStudents = [...prevStudents, newStudent];
-            localStorage.setItem('students', JSON.stringify(newStudents));
-            return newStudents;
-          });
-          message.success('เพิ่มนักเรียนใหม่เรียบร้อยแล้ว!');
-        }
-        setIsModalVisible(false);
-        setEditingStudent(null);
-        form.resetFields();
-      })
-      .catch(info => {
-        console.log('Validate Failed:', info);
-        message.error('กรุณากรอกข้อมูลให้ครบถ้วนและถูกต้อง');
-      });
-  };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
-    setEditingStudent(null);
-    form.resetFields();
-  };
-
-  const handleAdd = () => {
-    setEditingStudent(null);
-    form.resetFields();
-    setIsModalVisible(true);
-  };
-
-  const handleEdit = (record: StudentData) => {
-    setEditingStudent(record);
-    form.setFieldsValue({
-      ...record,
-      dob: dayjs(record.dob),
-    });
-    setIsModalVisible(true);
-  };
-
-  const handleDelete = (studentId: string) => {
-    Modal.confirm({
-      title: 'ยืนยันการลบ',
-      content: 'คุณแน่ใจหรือไม่ว่าต้องการลบข้อมูลนักเรียนนี้? การดำเนินการนี้ไม่สามารถย้อนกลับได้',
-      okText: 'ลบ',
-      cancelText: 'ยกเลิก',
-      onOk() {
-        setStudents(prevStudents => {
-          const updatedStudents = prevStudents.filter(student => student.id !== studentId);
-          localStorage.setItem('students', JSON.stringify(updatedStudents));
-          message.success('ลบข้อมูลนักเรียนเรียบร้อยแล้ว!');
-          return updatedStudents;
-        });
-      },
-    });
-  };
-
-  const handleView = (record: StudentData) => {
-    setViewingStudent(record);
-    setIsDetailModalVisible(true);
-  };
-
-  const handleDetailModalCancel = () => {
-    setIsDetailModalVisible(false);
-    setViewingStudent(null);
-  };
-
-  const filteredStudents = students.filter(student =>
-    student.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    student.lastName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    student.studentId.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    student.email.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredUsers = users.filter(user => {
+    const matchesSearch = user.fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         user.phone.includes(searchTerm);
+    const matchesRole = filterRole === 'all' || user.role === filterRole;
+    const matchesStatus = filterStatus === 'all' || user.status === filterStatus;
+    
+    return matchesSearch && matchesRole && matchesStatus;
+  });
 
   const columns = [
     {
       title: '#',
-      render: (_: unknown, __: unknown, index: number) => index + 1,
+      dataIndex: 'key',
+      key: 'key',
+      render: (text: string) => parseInt(text),
       width: 50,
       className: 'text-gray-600',
     },
     {
-      title: 'รหัสนักเรียน',
-      dataIndex: 'studentId',
-      key: 'studentId',
+      title: 'FULL NAME',
+      dataIndex: 'fullName',
+      key: 'fullName',
       className: 'font-medium text-gray-900',
     },
     {
-      title: 'ชื่อ-นามสกุล',
-      key: 'fullName',
-      render: (_: unknown, record: StudentData) => `${record.firstName} ${record.lastName}`,
-      className: 'text-gray-900',
-    },
-    {
-      title: 'อีเมล',
+      title: 'EMAIL',
       dataIndex: 'email',
       key: 'email',
       className: 'text-gray-700',
     },
     {
-      title: 'เบอร์โทรศัพท์',
+      title: 'PHONE',
       dataIndex: 'phone',
       key: 'phone',
       className: 'text-gray-700',
     },
     {
-      title: 'สถานะ',
+      title: 'ROLE',
+      dataIndex: 'role',
+      key: 'role',
+      render: (role: User['role']) => {
+        const colors = {
+          admin: 'red',
+          teacher: 'blue',
+          student: 'green'
+        };
+        const labels = {
+          admin: 'ผู้ดูแลระบบ',
+          teacher: 'อาจารย์',
+          student: 'นักเรียน'
+        };
+        return (
+          <Tag color={colors[role]} className="rounded-full px-3 py-1 text-xs font-semibold">
+            {labels[role]}
+          </Tag>
+        );
+      },
+      className: 'text-center',
+    },
+    {
+      title: 'STATUS',
       dataIndex: 'status',
       key: 'status',
-      render: (status: 'Active' | 'Inactive' | 'Graduated') => (
-        <Tag color={status === 'Active' ? 'green' : (status === 'Inactive' ? 'red' : 'blue')} className="rounded-full px-3 py-1 text-xs font-semibold">
-          {status}
-        </Tag>
-      ),
+      render: (status: User['status']) => {
+        const colors = {
+          active: 'green',
+          inactive: 'red',
+          pending: 'orange'
+        };
+        const labels = {
+          active: 'ใช้งาน',
+          inactive: 'ไม่ใช้งาน',
+          pending: 'รอดำเนินการ'
+        };
+        return (
+          <Tag color={colors[status]} className="rounded-full px-3 py-1 text-xs font-semibold">
+            {labels[status]}
+          </Tag>
+        );
+      },
       className: 'text-center',
+    },
+    {
+      title: 'REGISTRATION DATE',
+      dataIndex: 'registrationDate',
+      key: 'registrationDate',
+      render: (date: string) => dayjs(date).format('DD/MM/YYYY'),
+      className: 'text-gray-700',
     },
     {
       title: 'ACTIONS',
       key: 'actions',
-      render: (_: unknown, record: StudentData) => (
+      render: (_: unknown, record: User) => (
         <Space size="middle">
           <Button
             icon={<EyeOutlined />}
             onClick={() => handleView(record)}
             className="text-gray-500 border-none shadow-none hover:bg-gray-50"
           />
-          <Button
-            icon={<EditOutlined />}
-            onClick={() => handleEdit(record)}
-            className="text-blue-500 border-none shadow-none hover:bg-blue-50"
+          <Button 
+            icon={<EditOutlined />} 
+            onClick={() => handleEdit(record)} 
+            className="text-blue-500 border-none shadow-none hover:bg-blue-50" 
           />
           <Button
             icon={<DeleteOutlined />}
             danger
-            onClick={() => handleDelete(record.id)}
+            onClick={() => handleDelete(record.key)}
             className="text-red-500 border-none shadow-none hover:bg-red-50"
           />
         </Space>
@@ -259,154 +197,337 @@ export default function UsersPage() {
     },
   ];
 
+  const handleAdd = () => {
+    setEditingUser(null);
+    form.resetFields();
+    setIsModalVisible(true);
+  };
+
+  const handleEdit = (record: User) => {
+    setEditingUser(record);
+    form.setFieldsValue({
+      ...record,
+      registrationDate: record.registrationDate ? dayjs(record.registrationDate) : null,
+    });
+    setIsModalVisible(true);
+  };
+
+  const handleDelete = (keyToDelete: string) => {
+    Modal.confirm({
+      title: 'ยืนยันการลบ',
+      content: 'คุณแน่ใจหรือไม่ว่าต้องการลบผู้ใช้นี้?',
+      okText: 'ลบ',
+      cancelText: 'ยกเลิก',
+      onOk() {
+        setUsers(prevUsers => prevUsers.filter(user => user.key !== keyToDelete));
+        message.success('ลบผู้ใช้สำเร็จ!');
+      },
+    });
+  };
+
+  const handleOk = () => {
+    form.validateFields()
+      .then((values: UserFormValues) => {
+        const formattedValues = {
+          ...values,
+          registrationDate: values.registrationDate ? values.registrationDate.format('YYYY-MM-DD') : dayjs().format('YYYY-MM-DD'),
+        };
+        
+        if (editingUser) {
+          setUsers(prevUsers =>
+            prevUsers.map(user =>
+              user.key === editingUser.key 
+                ? { ...user, ...formattedValues } 
+                : user
+            )
+          );
+          message.success('อัปเดตผู้ใช้สำเร็จ!');
+        } else {
+          const newUser: User = {
+            key: (users.length + 1).toString(),
+            ...formattedValues,
+          };
+          setUsers(prevUsers => [...prevUsers, newUser]);
+          message.success('เพิ่มผู้ใช้สำเร็จ!');
+        }
+        setIsModalVisible(false);
+      })
+      .catch(info => {
+        console.log('Validate Failed:', info);
+      });
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleView = (record: User) => {
+    setViewingUser(record);
+    setIsDetailModalVisible(true);
+  };
+
+  const handleDetailModalCancel = () => {
+    setIsDetailModalVisible(false);
+    setViewingUser(null);
+  };
+
   const breadcrumbItems = [
     {
-      title: <a href="/admin/dashboard"><HomeOutlined /> หน้าหลัก</a>,
+      title: (
+        <a href="/admin/dashboard">
+          <HomeOutlined /> หน้าหลัก
+        </a>
+      ),
     },
     {
-      title: <><UserOutlined /> จัดการนักเรียน</>,
+      title: (
+        <>
+          <UserOutlined /> จัดการผู้ใช้
+        </>
+      ),
     },
   ];
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8 min-h-screen">
-      <Breadcrumb className="mb-4 sm:mb-6" items={breadcrumbItems} />
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      {/* Professional Header */}
+      <div style={{ 
+        background: 'linear-gradient(135deg, #5d4037 0%, #8d6e63 50%, #a1887f 100%)', 
+        borderRadius: '16px', 
+        padding: '32px 40px', 
+        marginBottom: '32px',
+        boxShadow: '0 8px 24px rgba(93, 64, 55, 0.25)',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        <div style={{
+          position: 'absolute',
+          top: '-50%',
+          right: '-10%',
+          width: '300px',
+          height: '300px',
+          background: 'rgba(255, 255, 255, 0.1)',
+          borderRadius: '50%',
+          zIndex: 1
+        }} />
+        <div style={{ position: 'relative', zIndex: 2 }}>
+          <h1 style={{ 
+            margin: 0, 
+            fontSize: '32px', 
+            fontWeight: 'bold',
+            color: 'white',
+            textShadow: '0 2px 4px rgba(0,0,0,0.3)',
+            marginBottom: '8px'
+          }}>
+            จัดการผู้ใช้
+          </h1>
+          <p style={{ 
+            margin: 0, 
+            fontSize: '16px',
+            color: 'rgba(255, 255, 255, 0.9)',
+            fontWeight: '300'
+          }}>
+            ระบบจัดการผู้ใช้ RelaxPlus
+          </p>
+        </div>
+      </div>
 
-      <AntdTitle level={1} className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 lg:mb-8 text-gray-800">
-        การจัดการนักเรียน
-      </AntdTitle>
+      {/* Breadcrumbs */}
+      <Breadcrumb items={breadcrumbItems} className="mb-6" />
 
-      <Card className="rounded-lg sm:rounded-xl shadow-custom-light p-2 sm:p-4">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-6 mb-4 sm:mb-6">
+      {/* Filters and Search */}
+      <div className="flex justify-between items-center mb-6 gap-4">
+        <div className="flex gap-4">
           <Input
-            placeholder="ค้นหานักเรียน (ชื่อ, รหัส, อีเมล)"
+            placeholder="ค้นหาผู้ใช้"
             prefix={<SearchOutlined className="text-gray-400" />}
-            className="w-full sm:w-80 rounded-lg shadow-sm table-search-input"
+            className="w-80 rounded-lg shadow-sm table-search-input"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <Button
-            type="primary"
-            onClick={handleAdd}
-            icon={<PlusOutlined />}
-            className="w-full sm:w-auto bg-orange-500 hover:bg-orange-600 text-white rounded-lg shadow-md px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base"
+          <Select
+            value={filterRole}
+            onChange={setFilterRole}
+            className="w-40"
+            placeholder="กรองตามบทบาท"
           >
-            เพิ่มนักเรียนใหม่
-          </Button>
+            <Option value="all">ทุกบทบาท</Option>
+            <Option value="admin">ผู้ดูแลระบบ</Option>
+            <Option value="teacher">อาจารย์</Option>
+            <Option value="student">นักเรียน</Option>
+          </Select>
+          <Select
+            value={filterStatus}
+            onChange={setFilterStatus}
+            className="w-40"
+            placeholder="กรองตามสถานะ"
+          >
+            <Option value="all">ทุกสถานะ</Option>
+            <Option value="active">ใช้งาน</Option>
+            <Option value="inactive">ไม่ใช้งาน</Option>
+            <Option value="pending">รอดำเนินการ</Option>
+          </Select>
         </div>
-        {hasLoadedStudents ? (
-          <Table
-            columns={columns}
-            dataSource={filteredStudents}
-            rowKey="id"
-            className="rounded-xl shadow-custom-light"
-            pagination={{ pageSize: 10 }}
-            bordered={false}
-          />
-        ) : (
-          <div className="flex justify-center items-center h-40">
-            <Text>กำลังโหลดข้อมูลนักเรียน...</Text>
-          </div>
-        )}
-
-        {/* Modal for Add/Edit Student */}
-        <Modal
-          title={editingStudent ? 'แก้ไขข้อมูลนักเรียน' : 'เพิ่มนักเรียนใหม่'}
-          open={isModalVisible}
-          onOk={handleOk}
-          onCancel={handleCancel}
-          className="rounded-xl modal-responsive"
-          centered
-          width={"90%"}
-          style={{ maxWidth: "600px" }}
+        <Button
+          type="primary"
+          onClick={handleAdd}
+          icon={<PlusOutlined />}
+          className="bg-orange-500 hover:bg-orange-600 text-white rounded-lg shadow-md px-6 py-3 text-base"
         >
-          <Form
-            form={form}
-            layout="vertical"
-            name="student_form"
-            className="p-4"
+          เพิ่มผู้ใช้
+        </Button>
+      </div>
+
+      <Table
+        columns={columns}
+        dataSource={filteredUsers}
+        className="rounded-xl shadow-custom-light mt-4"
+        pagination={{ pageSize: 10 }}
+        bordered={false}
+      />
+
+      {/* Add/Edit Modal */}
+      <Modal
+        title={editingUser ? 'แก้ไขผู้ใช้' : 'เพิ่มผู้ใช้ใหม่'}
+        open={isModalVisible}
+        onOk={handleOk}
+        onCancel={handleCancel}
+        className="rounded-xl"
+        centered
+        width={600}
+      >
+        <Form
+          form={form}
+          layout="vertical"
+          name="user_form"
+          className="p-4"
+        >
+          <Form.Item
+            name="fullName"
+            label={<span className="font-semibold text-gray-700">ชื่อ-นามสกุล</span>}
+            rules={[{ required: true, message: 'กรุณากรอกชื่อ-นามสกุล!' }]}
           >
-            <Form.Item
-              name="firstName"
-              label={<span className="font-semibold text-gray-700">ชื่อจริง</span>}
-              rules={[{ required: true, message: 'กรุณากรอกชื่อจริง!' }]}
-            >
-              <Input placeholder="ชื่อจริง" className="rounded-lg" />
-            </Form.Item>
-            <Form.Item
-              name="lastName"
-              label={<span className="font-semibold text-gray-700">นามสกุล</span>}
-              rules={[{ required: true, message: 'กรุณากรอกนามสกุล!' }]}
-            >
-              <Input placeholder="นามสกุล" className="rounded-lg" />
-            </Form.Item>
+            <Input placeholder="เช่น สมชาย ใจดี" className="rounded-lg" />
+          </Form.Item>
+          
+          <div className="grid grid-cols-2 gap-4">
             <Form.Item
               name="email"
               label={<span className="font-semibold text-gray-700">อีเมล</span>}
-              rules={[{ required: true, message: 'กรุณากรอกอีเมล!', type: 'email' }]}
+              rules={[
+                { required: true, message: 'กรุณากรอกอีเมล!' },
+                { type: 'email', message: 'รูปแบบอีเมลไม่ถูกต้อง!' }
+              ]}
             >
               <Input placeholder="example@email.com" className="rounded-lg" />
             </Form.Item>
+
             <Form.Item
               name="phone"
-              label={<span className="font-semibold text-gray-700">เบอร์โทรศัพท์</span>}
-              rules={[{ required: true, message: 'กรุณากรอกเบอร์โทรศัพท์!' }]}
+              label={<span className="font-semibold text-gray-700">เบอร์โทร</span>}
+              rules={[{ required: true, message: 'กรุณากรอกเบอร์โทร!' }]}
             >
-              <Input placeholder="08XXXXXXXX" className="rounded-lg" />
+              <Input placeholder="081-234-5678" className="rounded-lg" />
             </Form.Item>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4">
             <Form.Item
-              name="dob"
-              label={<span className="font-semibold text-gray-700">วันเกิด</span>}
-              rules={[{ required: true, message: 'กรุณาเลือกวันเกิด!' }]}
+              name="role"
+              label={<span className="font-semibold text-gray-700">บทบาท</span>}
+              rules={[{ required: true, message: 'กรุณาเลือกบทบาท!' }]}
             >
-              <DatePicker
-                locale={locale} // Apply Thai locale to DatePicker
-                format="DD/MM/YYYY"
-                className="w-full rounded-lg"
-                placeholder="เลือกวันเกิด"
-              />
+              <Select placeholder="เลือกบทบาท" className="rounded-lg">
+                <Option value="admin">ผู้ดูแลระบบ</Option>
+                <Option value="teacher">อาจารย์</Option>
+                <Option value="student">นักเรียน</Option>
+              </Select>
             </Form.Item>
+
             <Form.Item
               name="status"
               label={<span className="font-semibold text-gray-700">สถานะ</span>}
               rules={[{ required: true, message: 'กรุณาเลือกสถานะ!' }]}
             >
               <Select placeholder="เลือกสถานะ" className="rounded-lg">
-                <Option value="Active">Active</Option>
-                <Option value="Inactive">Inactive</Option>
-                <Option value="Graduated">Graduated</Option>
+                <Option value="active">ใช้งาน</Option>
+                <Option value="inactive">ไม่ใช้งาน</Option>
+                <Option value="pending">รอดำเนินการ</Option>
               </Select>
             </Form.Item>
-          </Form>
-        </Modal>
+          </div>
 
-        {/* Modal for Viewing Student Details */}
-        <Modal
-          title="รายละเอียดนักเรียน"
-          open={isDetailModalVisible}
-          onCancel={handleDetailModalCancel}
-          footer={null}
-          className="rounded-xl modal-responsive"
-          centered
-          width={"90%"}
-          style={{ maxWidth: "600px" }}
-        >
-          {viewingStudent ? (
-            <div className="p-2 sm:p-4 space-y-3 sm:space-y-4">
-              <p className="mb-1 sm:mb-2"><Text strong className="inline-block w-32">รหัสนักเรียน:</Text> {viewingStudent.studentId}</p>
-              <p className="mb-1 sm:mb-2"><Text strong className="inline-block w-32">ชื่อ-นามสกุล:</Text> {viewingStudent.firstName} {viewingStudent.lastName}</p>
-              <p className="mb-1 sm:mb-2"><Text strong className="inline-block w-32">อีเมล:</Text> {viewingStudent.email}</p>
-              <p className="mb-1 sm:mb-2"><Text strong className="inline-block w-32">เบอร์โทรศัพท์:</Text> {viewingStudent.phone}</p>
-              <p className="mb-1 sm:mb-2"><Text strong className="inline-block w-32">วันเกิด:</Text> {dayjs(viewingStudent.dob).format('DD MMMM YYYY')}</p>
-              <p className="mb-1 sm:mb-2"><Text strong className="inline-block w-32">สถานะ:</Text> <Tag color={viewingStudent.status === 'Active' ? 'green' : (viewingStudent.status === 'Inactive' ? 'red' : 'blue')}>{viewingStudent.status}</Tag></p>
-              <p className="mb-1 sm:mb-2"><Text strong className="inline-block w-32">สร้างเมื่อ:</Text> {dayjs(viewingStudent.createdAt).format('DD/MM/YYYY, HH:mm')}</p>
-              <p className="mb-1 sm:mb-2"><Text strong className="inline-block w-32">อัปเดตเมื่อ:</Text> {dayjs(viewingStudent.updatedAt).format('DD/MM/YYYY, HH:mm')}</p>
+          <Form.Item
+            name="registrationDate"
+            label={<span className="font-semibold text-gray-700">วันที่สมัคร</span>}
+            rules={[{ required: true, message: 'กรุณาเลือกวันที่!' }]}
+          >
+            <DatePicker format="YYYY-MM-DD" className="w-full rounded-lg" />
+          </Form.Item>
+        </Form>
+      </Modal>
+
+      {/* View Details Modal */}
+      <Modal
+        title="รายละเอียดผู้ใช้"
+        open={isDetailModalVisible}
+        onCancel={handleDetailModalCancel}
+        footer={null}
+        className="rounded-xl"
+        centered
+        width={600}
+      >
+        {viewingUser && (
+          <div className="p-4">
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <p className="mb-2"><Text strong>ชื่อ-นามสกุล:</Text></p>
+                <p className="mb-4 text-gray-700">{viewingUser.fullName}</p>
+                
+                <p className="mb-2"><Text strong>อีเมล:</Text></p>
+                <p className="mb-4 text-gray-700">{viewingUser.email}</p>
+                
+                <p className="mb-2"><Text strong>เบอร์โทร:</Text></p>
+                <p className="mb-4 text-gray-700">{viewingUser.phone}</p>
+              </div>
+              
+              <div>
+                <p className="mb-2"><Text strong>บทบาท:</Text></p>
+                <p className="mb-4">
+                  <Tag color={
+                    viewingUser.role === 'admin' ? 'red' :
+                    viewingUser.role === 'teacher' ? 'blue' : 'green'
+                  }>
+                    {viewingUser.role === 'admin' ? 'ผู้ดูแลระบบ' :
+                     viewingUser.role === 'teacher' ? 'อาจารย์' : 'นักเรียน'}
+                  </Tag>
+                </p>
+                
+                <p className="mb-2"><Text strong>สถานะ:</Text></p>
+                <p className="mb-4">
+                  <Tag color={
+                    viewingUser.status === 'active' ? 'green' :
+                    viewingUser.status === 'inactive' ? 'red' : 'orange'
+                  }>
+                    {viewingUser.status === 'active' ? 'ใช้งาน' :
+                     viewingUser.status === 'inactive' ? 'ไม่ใช้งาน' : 'รอดำเนินการ'}
+                  </Tag>
+                </p>
+                
+                <p className="mb-2"><Text strong>วันที่สมัคร:</Text></p>
+                <p className="mb-4 text-gray-700">{dayjs(viewingUser.registrationDate).format('DD/MM/YYYY')}</p>
+              </div>
             </div>
-          ) : (
-            <p>ไม่พบข้อมูล</p>
-          )}
-        </Modal>
-      </Card>
+            
+            {viewingUser.lastLogin && (
+              <div className="border-t pt-4 mt-4">
+                <p className="mb-2"><Text strong>เข้าสู่ระบบล่าสุด:</Text></p>
+                <p className="text-gray-500 text-sm">{dayjs(viewingUser.lastLogin).format('DD/MM/YYYY HH:mm')}</p>
+              </div>
+            )}
+          </div>
+        )}
+      </Modal>
     </div>
   );
 }
