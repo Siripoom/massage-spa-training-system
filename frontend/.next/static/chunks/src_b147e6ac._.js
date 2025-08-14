@@ -5027,7 +5027,7 @@ function StudentApplicationPage() {
             maxWidth: '1200px',
             margin: '0 auto'
         },
-        className: "jsx-ade1095c4c4df6",
+        className: "jsx-4dd45acbb4632eda",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$common$2f$PageHeader$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                 title: "สมัครเรียนหลักสูตร"
@@ -5037,7 +5037,7 @@ function StudentApplicationPage() {
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$styled$2d$jsx$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                id: "ade1095c4c4df6",
+                id: "4dd45acbb4632eda",
                 children: ".ant-steps-item-description{color:#8c8c8c!important}.ant-modal-content{overflow:hidden;border-radius:16px!important}.ant-modal-header{background:linear-gradient(135deg,#f8fafc 0%,#f1f5f9 100%)!important;border-bottom:1px solid #e2e8f0!important;padding:20px 24px!important}.ant-modal-title{font-size:20px!important;font-weight:700!important}.ant-modal-close{top:16px!important;right:16px!important}@media (width<=768px){.ant-steps{flex-direction:column!important}.ant-steps-item{margin-bottom:16px!important}.ant-upload-list-picture-card .ant-upload-list-item{width:100%!important;height:auto!important}.ant-form-item-label{text-align:left!important}.ant-btn-group .ant-btn{margin-bottom:8px!important}.ant-modal{max-width:100%!important;margin:0!important;padding:16px!important}.ant-modal-content{border-radius:12px!important}}@media (width<=576px){.ant-card{margin:8px!important}.ant-col{padding:8px!important}.ant-progress{width:100%!important}.ant-modal-body{padding:16px!important}}"
             }, void 0, false, void 0, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$card$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Card$3e$__["Card"], {
@@ -5050,7 +5050,7 @@ function StudentApplicationPage() {
                             textAlign: 'center',
                             marginBottom: 32
                         },
-                        className: "jsx-ade1095c4c4df6",
+                        className: "jsx-4dd45acbb4632eda",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Title, {
                                 level: 2,
@@ -5140,7 +5140,7 @@ function StudentApplicationPage() {
                                         style: {
                                             textAlign: 'left'
                                         },
-                                        className: "jsx-ade1095c4c4df6",
+                                        className: "jsx-4dd45acbb4632eda",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Text, {
                                                 type: "secondary",
@@ -5160,7 +5160,7 @@ function StudentApplicationPage() {
                                                 style: {
                                                     marginTop: 8
                                                 },
-                                                className: "jsx-ade1095c4c4df6",
+                                                className: "jsx-4dd45acbb4632eda",
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$progress$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Progress$3e$__["Progress"], {
                                                     percent: Math.round((currentStep + 1) / steps.length * 100),
                                                     size: "small",
@@ -5200,7 +5200,7 @@ function StudentApplicationPage() {
                                         style: {
                                             textAlign: 'right'
                                         },
-                                        className: "jsx-ade1095c4c4df6",
+                                        className: "jsx-4dd45acbb4632eda",
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$space$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__$3c$export__default__as__Space$3e$__["Space"].Compact, {
                                             size: "large",
                                             children: [

@@ -1211,7 +1211,7 @@ function CoursesPage() {
         columnNumber: 5
     }, this);
 }
-_s(CoursesPage, "L6p4mFnS5r6otFb+rLqEvDRw4k4=", false, function() {
+_s(CoursesPage, "4GnT1/rLuq6PRSf+0H8CeiKYzHw=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].useForm
     ];

@@ -816,7 +816,7 @@ function StudentDashboard() {
         columnNumber: 5
     }, this);
 }
-_s(StudentDashboard, "xn7fUWjFqDYgIG86DQEeveS+AvE=", false, function() {
+_s(StudentDashboard, "TOX4LW/iQss27VF5pgLdtS+0w9k=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"]
     ];
