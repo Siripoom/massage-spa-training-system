@@ -1,15 +1,6 @@
 {
   "/(pages)/(auth)/login/page": "app/(pages)/(auth)/login/page.js",
   "/(pages)/(auth)/register/page": "app/(pages)/(auth)/register/page.js",
-  "/(pages)/admin/attendance/page": "app/(pages)/admin/attendance/page.js",
-  "/(pages)/admin/batches/page": "app/(pages)/admin/batches/page.js",
-  "/(pages)/admin/courses/page": "app/(pages)/admin/courses/page.js",
-  "/(pages)/admin/dashboard/page": "app/(pages)/admin/dashboard/page.js",
-  "/(pages)/student/application/page": "app/(pages)/student/application/page.js",
-  "/(pages)/student/certificates/page": "app/(pages)/student/certificates/page.js",
-  "/(pages)/student/courses/page": "app/(pages)/student/courses/page.js",
-  "/(pages)/student/dashboard/page": "app/(pages)/student/dashboard/page.js",
-  "/(pages)/student/exams/page": "app/(pages)/student/exams/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/page": "app/page.js"
+  "/_not-found/page": "app/_not-found/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js"
 }
