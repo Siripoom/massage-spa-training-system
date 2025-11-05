@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
-import { Form, Input, Button, Checkbox, message } from "antd";
+import React from "react";
+import { Form, Input, Button, Checkbox } from "antd";
 import {
   UserOutlined,
   LockOutlined,
@@ -9,6 +9,8 @@ import {
   EyeTwoTone,
 } from "@ant-design/icons";
 import { useRouter } from "next/navigation";
+import { useAuthStore } from "@/stores/useAuthStore";
+import { showSuccess, showError, handleError } from "@/lib/errorHandler";
 
 interface LoginFormData {
   email: string;
@@ -18,27 +20,38 @@ interface LoginFormData {
 
 const LoginForm: React.FC = () => {
   const [form] = Form.useForm();
-  const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const { login, isLoading, user } = useAuthStore();
 
   const onFinish = async (values: LoginFormData) => {
-    setLoading(true);
     try {
-      // TODO: Implement actual login API call
-      console.log("Login values:", values);
+      // Call login from auth store
+      await login({
+        email: values.email,
+        password: values.password,
+      });
 
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      showSuccess("เข้าสู่ระบบสำเร็จ!");
 
-      message.success("เข้าสู่ระบบสำเร็จ!");
-
-      // Navigate based on user role (mock logic)
-      // You can implement actual role checking here
-      router.push("/admin/dashboard");
-    } catch {
-      message.error("เข้าสู่ระบบไม่สำเร็จ กรุณาลองใหม่อีกครั้ง");
-    } finally {
-      setLoading(false);
+      // Navigate based on user role
+      const currentUser = useAuthStore.getState().user;
+      if (currentUser) {
+        switch (currentUser.role) {
+          case "ADMIN":
+            router.push("/admin/dashboard");
+            break;
+          case "TEACHER":
+            router.push("/teacher/dashboard");
+            break;
+          case "STUDENT":
+            router.push("/student/dashboard");
+            break;
+          default:
+            router.push("/");
+        }
+      }
+    } catch (error) {
+      handleError(error, "เข้าสู่ระบบไม่สำเร็จ กรุณาตรวจสอบอีเมลและรหัสผ่าน");
     }
   };
 
@@ -104,7 +117,7 @@ const LoginForm: React.FC = () => {
         <Button
           type="primary"
           htmlType="submit"
-          loading={loading}
+          loading={isLoading}
           className="w-full h-12 rounded-lg gradient-btn font-medium text-lg"
         >
           เข้าสู่ระบบ

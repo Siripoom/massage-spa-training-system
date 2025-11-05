@@ -7,7 +7,6 @@ import {
   Steps,
   Card,
   Typography,
-  message,
   Row,
   Col,
   Space,
@@ -22,8 +21,11 @@ import {
   ArrowLeftOutlined,
   ArrowRightOutlined,
 } from "@ant-design/icons";
+import { useRouter } from "next/navigation";
 import PersonalInfoForm from "./PersonalInfoForm";
 import DocumentUploadForm from "./DocumentUploadForm";
+import { useAuthStore } from "@/stores/useAuthStore";
+import { showSuccess, showError, handleError } from "@/lib/errorHandler";
 import "../../styles/forms/register-form.css";
 
 const { Title, Text } = Typography;
@@ -85,13 +87,15 @@ interface RegisterFormProps {
   isLoading?: boolean;
 }
 
-const RegisterForm: React.FC<RegisterFormProps> = ({ 
-  onSubmit, 
-  isLoading = false 
+const RegisterForm: React.FC<RegisterFormProps> = ({
+  onSubmit,
+  isLoading = false
 }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [form] = Form.useForm();
   const [submitting, setSubmitting] = useState(false);
+  const router = useRouter();
+  const { register: registerUser } = useAuthStore();
 
   const handleNext = async () => {
     try {
@@ -113,7 +117,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
     try {
       setSubmitting(true);
       const values = await form.validateFields();
-      
+
       // Check agreement
       if (!values.agreeTerms || !values.agreePrivacy) {
         throw new Error('กรุณายอมรับข้อตกลงและนโยบายความเป็นส่วนตัว');
@@ -122,17 +126,28 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
       if (onSubmit) {
         await onSubmit(values as RegisterFormData);
       } else {
-        // Default behavior - simulate registration
-        setTimeout(() => {
-          message.success('สมัครสมาชิกสำเร็จ! กรุณาตรวจสอบอีเมลเพื่อยืนยันบัญชี');
-          form.resetFields();
-          setCurrentStep(0);
-          setSubmitting(false);
-        }, 2000);
+        // Call register from auth store
+        await registerUser({
+          firstName: values.firstName,
+          lastName: values.lastName,
+          email: values.email,
+          phone: values.phone,
+          password: values.password || '123456', // Default password if not provided
+          birthDate: values.dateOfBirth,
+          role: 'STUDENT', // Default role
+        });
+
+        showSuccess('สมัครสมาชิกสำเร็จ! กรุณาเข้าสู่ระบบเพื่อดำเนินการต่อ');
+        form.resetFields();
+        setCurrentStep(0);
+
+        // Redirect to login page
+        router.push('/login');
       }
     } catch (error) {
       console.error('Error submitting form:', error);
-      message.error(error instanceof Error ? error.message : 'เกิดข้อผิดพลาดในการสมัครสมาชิก');
+      handleError(error, 'เกิดข้อผิดพลาดในการสมัครสมาชิก');
+    } finally {
       setSubmitting(false);
     }
   };
