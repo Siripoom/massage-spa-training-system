@@ -1,6 +1,13 @@
 {
-  "/(pages)/(auth)/login/page": "app/(pages)/(auth)/login/page.js",
-  "/(pages)/(auth)/register/page": "app/(pages)/(auth)/register/page.js",
+  "/(pages)/admin/batches/page": "app/(pages)/admin/batches/page.js",
+  "/(pages)/admin/dashboard/page": "app/(pages)/admin/dashboard/page.js",
+  "/(pages)/admin/setting/page": "app/(pages)/admin/setting/page.js",
+  "/(pages)/student/application/page": "app/(pages)/student/application/page.js",
+  "/(pages)/student/dashboard/page": "app/(pages)/student/dashboard/page.js",
+  "/(pages)/student/exams/page": "app/(pages)/student/exams/page.js",
+  "/(pages)/teacher/dashboard/page": "app/(pages)/teacher/dashboard/page.js",
+  "/(pages)/teacher/evaluations/page": "app/(pages)/teacher/evaluations/page.js",
   "/_not-found/page": "app/_not-found/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js"
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/page": "app/page.js"
 }

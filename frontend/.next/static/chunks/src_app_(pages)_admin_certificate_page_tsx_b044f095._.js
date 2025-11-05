@@ -1242,7 +1242,7 @@ function CertificatePage() {
         columnNumber: 5
     }, this);
 }
-_s(CertificatePage, "ILrfp51N7LMdjvW7AMpPofRPfz8=");
+_s(CertificatePage, "0Ju8XYDZ6zmnEAk4dgDQaPU2nTI=");
 _c1 = CertificatePage;
 var _c, _c1;
 __turbopack_context__.k.register(_c, "DynamicCertificateCanvas");

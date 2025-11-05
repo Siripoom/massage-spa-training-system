@@ -24,16 +24,20 @@ const { Sider } = Layout;
 interface SidebarProps {
   collapsed: boolean;
   onCollapse: (collapsed: boolean) => void;
-  userRole?: 'admin' | 'teacher' | 'student';
+  userRole?: "admin" | "teacher" | "student";
 }
 
-export default function Sidebar({ collapsed, onCollapse, userRole = 'admin' }: SidebarProps) {
+export default function Sidebar({
+  collapsed,
+  onCollapse,
+  userRole = "admin",
+}: SidebarProps) {
   const router = useRouter();
   const pathname = usePathname();
 
   const getMenuItems = (): MenuProps["items"] => {
     switch (userRole) {
-      case 'admin':
+      case "admin":
         return [
           {
             key: "/admin/dashboard",
@@ -90,8 +94,8 @@ export default function Sidebar({ collapsed, onCollapse, userRole = 'admin' }: S
             className: "sidebar-menu-item",
           },
         ];
-      
-      case 'teacher':
+
+      case "teacher":
         return [
           {
             key: "/teacher/dashboard",
@@ -112,8 +116,8 @@ export default function Sidebar({ collapsed, onCollapse, userRole = 'admin' }: S
             className: "sidebar-menu-item",
           },
         ];
-      
-      case 'student':
+
+      case "student":
         return [
           {
             key: "/student/dashboard",
@@ -146,7 +150,7 @@ export default function Sidebar({ collapsed, onCollapse, userRole = 'admin' }: S
             className: "sidebar-menu-item",
           },
         ];
-      
+
       default:
         return [];
     }
@@ -176,45 +180,6 @@ export default function Sidebar({ collapsed, onCollapse, userRole = 'admin' }: S
       >
         {/* Logo Section */}
         <div className="sidebar-logo">
-          <div className="logo-icon">
-            <svg
-              width="60"
-              height="60"
-              viewBox="0 0 100 100"
-              className="logo-svg"
-            >
-              <circle
-                cx="50"
-                cy="50"
-                r="45"
-                fill="none"
-                stroke="#1890ff"
-                strokeWidth="3"
-              />
-              {/* Woman silhouette */}
-              <path
-                d="M35 30C35 25 40 20 45 20C50 20 55 25 55 30C55 35 50 40 45 40C40 40 35 35 35 30Z"
-                fill="#1890ff"
-              />
-              <path
-                d="M30 45C30 40 35 35 45 35C55 35 60 40 60 45C60 50 55 55 45 55C35 55 30 50 30 45Z"
-                fill="#1890ff"
-              />
-              {/* Leaves */}
-              <path
-                d="M60 25C65 20 70 25 68 30C66 35 60 32 60 25Z"
-                fill="#52c41a"
-              />
-              <path
-                d="M62 35C67 30 72 35 70 40C68 45 62 42 62 35Z"
-                fill="#52c41a"
-              />
-              <path
-                d="M55 15C58 10 63 12 62 18C61 24 55 22 55 15Z"
-                fill="#52c41a"
-              />
-            </svg>
-          </div>
           {!collapsed && <div className="logo-text">RelaxPlus</div>}
         </div>
 

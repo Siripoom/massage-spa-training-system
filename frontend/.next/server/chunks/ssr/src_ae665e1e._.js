@@ -245,18 +245,18 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navi
 ;
 ;
 const { Sider } = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$layout$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Layout$3e$__["Layout"];
-function Sidebar({ collapsed, onCollapse, userRole = 'admin' }) {
+function Sidebar({ collapsed, onCollapse, userRole = "admin" }) {
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRouter"])();
     const pathname = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["usePathname"])();
     const getMenuItems = ()=>{
         switch(userRole){
-            case 'admin':
+            case "admin":
                 return [
                     {
                         key: "/admin/dashboard",
                         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$DashboardOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__DashboardOutlined$3e$__["DashboardOutlined"], {}, void 0, false, {
                             fileName: "[project]/src/components/layout/Sidebar.tsx",
-                            lineNumber: 40,
+                            lineNumber: 44,
                             columnNumber: 19
                         }, this),
                         label: "Dashboard",
@@ -266,7 +266,7 @@ function Sidebar({ collapsed, onCollapse, userRole = 'admin' }) {
                         key: "/admin/courses",
                         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$BookOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__BookOutlined$3e$__["BookOutlined"], {}, void 0, false, {
                             fileName: "[project]/src/components/layout/Sidebar.tsx",
-                            lineNumber: 46,
+                            lineNumber: 50,
                             columnNumber: 19
                         }, this),
                         label: "Course",
@@ -276,7 +276,7 @@ function Sidebar({ collapsed, onCollapse, userRole = 'admin' }) {
                         key: "/admin/batches",
                         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$TeamOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__TeamOutlined$3e$__["TeamOutlined"], {}, void 0, false, {
                             fileName: "[project]/src/components/layout/Sidebar.tsx",
-                            lineNumber: 52,
+                            lineNumber: 56,
                             columnNumber: 19
                         }, this),
                         label: "Batches",
@@ -286,7 +286,7 @@ function Sidebar({ collapsed, onCollapse, userRole = 'admin' }) {
                         key: "/admin/attendance",
                         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$ClockCircleOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ClockCircleOutlined$3e$__["ClockCircleOutlined"], {}, void 0, false, {
                             fileName: "[project]/src/components/layout/Sidebar.tsx",
-                            lineNumber: 58,
+                            lineNumber: 62,
                             columnNumber: 19
                         }, this),
                         label: "Attendance",
@@ -296,7 +296,7 @@ function Sidebar({ collapsed, onCollapse, userRole = 'admin' }) {
                         key: "/admin/users",
                         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$UserOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__UserOutlined$3e$__["UserOutlined"], {}, void 0, false, {
                             fileName: "[project]/src/components/layout/Sidebar.tsx",
-                            lineNumber: 64,
+                            lineNumber: 68,
                             columnNumber: 19
                         }, this),
                         label: "Student",
@@ -306,7 +306,7 @@ function Sidebar({ collapsed, onCollapse, userRole = 'admin' }) {
                         key: "/admin/quiz",
                         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$EditOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__EditOutlined$3e$__["EditOutlined"], {}, void 0, false, {
                             fileName: "[project]/src/components/layout/Sidebar.tsx",
-                            lineNumber: 70,
+                            lineNumber: 74,
                             columnNumber: 19
                         }, this),
                         label: "Quiz",
@@ -316,7 +316,7 @@ function Sidebar({ collapsed, onCollapse, userRole = 'admin' }) {
                         key: "/admin/payment",
                         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$DollarOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__DollarOutlined$3e$__["DollarOutlined"], {}, void 0, false, {
                             fileName: "[project]/src/components/layout/Sidebar.tsx",
-                            lineNumber: 76,
+                            lineNumber: 80,
                             columnNumber: 19
                         }, this),
                         label: "Payment",
@@ -326,7 +326,7 @@ function Sidebar({ collapsed, onCollapse, userRole = 'admin' }) {
                         key: "/admin/certificate",
                         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$FileTextOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__FileTextOutlined$3e$__["FileTextOutlined"], {}, void 0, false, {
                             fileName: "[project]/src/components/layout/Sidebar.tsx",
-                            lineNumber: 82,
+                            lineNumber: 86,
                             columnNumber: 19
                         }, this),
                         label: "Certificate",
@@ -336,20 +336,20 @@ function Sidebar({ collapsed, onCollapse, userRole = 'admin' }) {
                         key: "/admin/setting",
                         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$SettingOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__SettingOutlined$3e$__["SettingOutlined"], {}, void 0, false, {
                             fileName: "[project]/src/components/layout/Sidebar.tsx",
-                            lineNumber: 88,
+                            lineNumber: 92,
                             columnNumber: 19
                         }, this),
                         label: "Setting",
                         className: "sidebar-menu-item"
                     }
                 ];
-            case 'teacher':
+            case "teacher":
                 return [
                     {
                         key: "/teacher/dashboard",
                         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$DashboardOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__DashboardOutlined$3e$__["DashboardOutlined"], {}, void 0, false, {
                             fileName: "[project]/src/components/layout/Sidebar.tsx",
-                            lineNumber: 98,
+                            lineNumber: 102,
                             columnNumber: 19
                         }, this),
                         label: "Dashboard",
@@ -359,7 +359,7 @@ function Sidebar({ collapsed, onCollapse, userRole = 'admin' }) {
                         key: "/teacher/students",
                         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$UserOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__UserOutlined$3e$__["UserOutlined"], {}, void 0, false, {
                             fileName: "[project]/src/components/layout/Sidebar.tsx",
-                            lineNumber: 104,
+                            lineNumber: 108,
                             columnNumber: 19
                         }, this),
                         label: "Students",
@@ -369,20 +369,20 @@ function Sidebar({ collapsed, onCollapse, userRole = 'admin' }) {
                         key: "/teacher/evaluations",
                         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$EditOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__EditOutlined$3e$__["EditOutlined"], {}, void 0, false, {
                             fileName: "[project]/src/components/layout/Sidebar.tsx",
-                            lineNumber: 110,
+                            lineNumber: 114,
                             columnNumber: 19
                         }, this),
                         label: "Evaluations",
                         className: "sidebar-menu-item"
                     }
                 ];
-            case 'student':
+            case "student":
                 return [
                     {
                         key: "/student/dashboard",
                         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$DashboardOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__DashboardOutlined$3e$__["DashboardOutlined"], {}, void 0, false, {
                             fileName: "[project]/src/components/layout/Sidebar.tsx",
-                            lineNumber: 120,
+                            lineNumber: 124,
                             columnNumber: 19
                         }, this),
                         label: "Dashboard",
@@ -392,7 +392,7 @@ function Sidebar({ collapsed, onCollapse, userRole = 'admin' }) {
                         key: "/student/application",
                         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$FormOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__FormOutlined$3e$__["FormOutlined"], {}, void 0, false, {
                             fileName: "[project]/src/components/layout/Sidebar.tsx",
-                            lineNumber: 126,
+                            lineNumber: 130,
                             columnNumber: 19
                         }, this),
                         label: "Apply Course",
@@ -402,7 +402,7 @@ function Sidebar({ collapsed, onCollapse, userRole = 'admin' }) {
                         key: "/student/courses",
                         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$BookOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__BookOutlined$3e$__["BookOutlined"], {}, void 0, false, {
                             fileName: "[project]/src/components/layout/Sidebar.tsx",
-                            lineNumber: 132,
+                            lineNumber: 136,
                             columnNumber: 19
                         }, this),
                         label: "My Courses",
@@ -412,7 +412,7 @@ function Sidebar({ collapsed, onCollapse, userRole = 'admin' }) {
                         key: "/student/exams",
                         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$EditOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__EditOutlined$3e$__["EditOutlined"], {}, void 0, false, {
                             fileName: "[project]/src/components/layout/Sidebar.tsx",
-                            lineNumber: 138,
+                            lineNumber: 142,
                             columnNumber: 19
                         }, this),
                         label: "Exams",
@@ -422,7 +422,7 @@ function Sidebar({ collapsed, onCollapse, userRole = 'admin' }) {
                         key: "/student/certificates",
                         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ant$2d$design$2f$icons$2f$es$2f$icons$2f$FileTextOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__FileTextOutlined$3e$__["FileTextOutlined"], {}, void 0, false, {
                             fileName: "[project]/src/components/layout/Sidebar.tsx",
-                            lineNumber: 144,
+                            lineNumber: 148,
                             columnNumber: 19
                         }, this),
                         label: "Certificates",
@@ -455,90 +455,17 @@ function Sidebar({ collapsed, onCollapse, userRole = 'admin' }) {
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "sidebar-logo",
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "logo-icon",
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                width: "60",
-                                height: "60",
-                                viewBox: "0 0 100 100",
-                                className: "logo-svg",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
-                                        cx: "50",
-                                        cy: "50",
-                                        r: "45",
-                                        fill: "none",
-                                        stroke: "#1890ff",
-                                        strokeWidth: "3"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/layout/Sidebar.tsx",
-                                        lineNumber: 186,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                        d: "M35 30C35 25 40 20 45 20C50 20 55 25 55 30C55 35 50 40 45 40C40 40 35 35 35 30Z",
-                                        fill: "#1890ff"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/layout/Sidebar.tsx",
-                                        lineNumber: 195,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                        d: "M30 45C30 40 35 35 45 35C55 35 60 40 60 45C60 50 55 55 45 55C35 55 30 50 30 45Z",
-                                        fill: "#1890ff"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/layout/Sidebar.tsx",
-                                        lineNumber: 199,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                        d: "M60 25C65 20 70 25 68 30C66 35 60 32 60 25Z",
-                                        fill: "#52c41a"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/layout/Sidebar.tsx",
-                                        lineNumber: 204,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                        d: "M62 35C67 30 72 35 70 40C68 45 62 42 62 35Z",
-                                        fill: "#52c41a"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/layout/Sidebar.tsx",
-                                        lineNumber: 208,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                        d: "M55 15C58 10 63 12 62 18C61 24 55 22 55 15Z",
-                                        fill: "#52c41a"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/layout/Sidebar.tsx",
-                                        lineNumber: 212,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/src/components/layout/Sidebar.tsx",
-                                lineNumber: 180,
-                                columnNumber: 13
-                            }, this)
-                        }, void 0, false, {
-                            fileName: "[project]/src/components/layout/Sidebar.tsx",
-                            lineNumber: 179,
-                            columnNumber: 11
-                        }, this),
-                        !collapsed && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "logo-text",
-                            children: "RelaxPlus"
-                        }, void 0, false, {
-                            fileName: "[project]/src/components/layout/Sidebar.tsx",
-                            lineNumber: 218,
-                            columnNumber: 26
-                        }, this)
-                    ]
-                }, void 0, true, {
+                    children: !collapsed && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "logo-text",
+                        children: "RelaxPlus"
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/layout/Sidebar.tsx",
+                        lineNumber: 183,
+                        columnNumber: 26
+                    }, this)
+                }, void 0, false, {
                     fileName: "[project]/src/components/layout/Sidebar.tsx",
-                    lineNumber: 178,
+                    lineNumber: 182,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -551,12 +478,12 @@ function Sidebar({ collapsed, onCollapse, userRole = 'admin' }) {
                         className: "relaxplus-menu"
                     }, void 0, false, {
                         fileName: "[project]/src/components/layout/Sidebar.tsx",
-                        lineNumber: 223,
+                        lineNumber: 188,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/layout/Sidebar.tsx",
-                    lineNumber: 222,
+                    lineNumber: 187,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -569,18 +496,18 @@ function Sidebar({ collapsed, onCollapse, userRole = 'admin' }) {
                         }
                     }, void 0, false, {
                         fileName: "[project]/src/components/layout/Sidebar.tsx",
-                        lineNumber: 237,
+                        lineNumber: 202,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/layout/Sidebar.tsx",
-                    lineNumber: 233,
+                    lineNumber: 198,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/layout/Sidebar.tsx",
-            lineNumber: 169,
+            lineNumber: 173,
             columnNumber: 7
         }, this)
     }, void 0, false);

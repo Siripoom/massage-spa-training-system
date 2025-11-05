@@ -1,513 +1,517 @@
 // src/app/(pages)/student/courses/page.tsx
 "use client";
 
-
-import '@ant-design/v5-patch-for-react-19';
-import React, { useState, useEffect } from 'react';
-import { Card, Row, Col, Button, Progress, Input, Select, Tabs, message } from 'antd';
-import './courses.css';
-import { 
-  BookOutlined, 
-  PlayCircleOutlined, 
+import "@ant-design/v5-patch-for-react-19";
+import React, { useState } from "react";
+import {
+  Card,
+  Row,
+  Col,
+  Button,
+  Progress,
+  Input,
+  Select,
+  Tabs,
+  message,
+  Tag,
+} from "antd";
+import Image from "next/image";
+import "./courses.css";
+import {
+  BookOutlined,
+  PlayCircleOutlined,
   ClockCircleOutlined,
   SearchOutlined,
-  FilterOutlined,
   StarOutlined,
   UserOutlined,
   TrophyOutlined,
-  RocketOutlined
-} from '@ant-design/icons';
-import '../dashboard/dashboard.css';
-import '@ant-design/v5-patch-for-react-19';
+  MedicineBoxOutlined,
+  BankOutlined,
+  PlusOutlined,
+} from "@ant-design/icons";
+import "../dashboard/dashboard.css";
+import { useRouter } from "next/navigation";
 
 const { Search } = Input;
 const { Option } = Select;
 
-// Interfaces matching the admin course structure
-interface CourseModule {
-  id: string;
-  title: string;
-  lessons: CourseLesson[];
-}
+// ข้อมูลประเภทหลักสูตร (สอดคล้องกับหน้า application)
+const courseTypes = [
+  {
+    id: "ministry-health",
+    name: "หลักสูตรกระทรวงสาธารณสุข",
+    description: "หลักสูตรมาตรฐานด้านการแพทย์แผนไทย",
+    icon: <MedicineBoxOutlined style={{ fontSize: 24, color: "#52c41a" }} />,
+    features: ["ปริญญาตรี 4 ปี", "ใบอนุญาตประกอบวิชาชีพ", "ทำงานได้ทันที"],
+  },
+  {
+    id: "ministry-education",
+    name: "หลักสูตรกระทรวงศึกษาธิการ",
+    description: "หลักสูตรวิชาการและการวิจัย",
+    icon: <BankOutlined style={{ fontSize: 24, color: "#1890ff" }} />,
+    features: ["วิชาการครบถ้วน", "สามารถศึกษาต่อ", "เข้าราชการได้"],
+  },
+];
 
-interface CourseLesson {
-  id: string;
-  title: string;
-  type: 'video' | 'text' | 'quiz';
-  duration?: number;
-  completed?: boolean;
-}
-
+// Interface สำหรับหลักสูตร
 interface Course {
-  id: string;
-  courseName: string;
-  description: string;
-  price: number;
-  durationHours: number;
+  id: number;
+  title: string;
+  type: string;
   instructor: string;
-  level: 'beginner' | 'intermediate' | 'advanced';
-  category: string;
-  thumbnail: string;
-  modules: CourseModule[];
+  duration: string;
+  price: number;
+  level: string;
+  students: number;
+  rating: number;
+  image: string;
+  description: string;
+  skills: string[];
+  progress?: number;
+  enrolledDate?: string;
+  lastAccessed?: string;
+  modules?: Array<{
+    id: number;
+    title: string;
+    completed: boolean;
+  }>;
 }
 
-interface Enrollment {
-  id: string;
-  course_id: string;
-  status: 'pending' | 'inprogress' | 'completed';
-  progress: number;
-  enrolled_date: string;
-  completed_date?: string;
-}
-
-// Mock data
-const mockCourses: Course[] = [
+// ข้อมูลหลักสูตร (สอดคล้องกับหน้า application)
+const availableCourses: Course[] = [
+  // หลักสูตรกระทรวงสาธารณสุข
   {
-    id: 'course-1',
-    courseName: 'หลักสูตรการนวดแผนไทยพื้นฐาน',
-    description: 'เรียนรู้เทคนิคการนวดแผนไทยแบบดั้งเดิม เพื่อการผ่อนคลายและการรักษา',
-    price: 3500,
-    durationHours: 30,
-    instructor: 'อาจารย์สมศรี ใจดี',
-    level: 'beginner',
-    category: 'การนวดแผนไทย',
-    thumbnail: 'https://placehold.co/300x200/8bc34a/ffffff?text=Thai+Massage',
-    modules: [
-      {
-        id: 'mod-1',
-        title: 'บทนำสู่การนวดแผนไทย',
-        lessons: [
-          { id: 'lesson-1', title: 'ประวัติการนวดแผนไทย', type: 'video', duration: 15, completed: true },
-          { id: 'lesson-2', title: 'หลักการและปรัชญา', type: 'text', duration: 10, completed: true },
-          { id: 'lesson-3', title: 'แบบทดสอบท้ายบท', type: 'quiz', duration: 5, completed: false }
-        ]
-      },
-      {
-        id: 'mod-2', 
-        title: 'เทคนิคพื้นฐาน',
-        lessons: [
-          { id: 'lesson-4', title: 'ท่านวดพื้นฐาน', type: 'video', duration: 25, completed: false },
-          { id: 'lesson-5', title: 'การใช้แรงกดอย่างถูกต้อง', type: 'video', duration: 20, completed: false }
-        ]
-      }
-    ]
+    id: 1,
+    title: "นวดแผนไทย ระดับเบื้องต้น",
+    type: "ministry-health",
+    instructor: "อาจารย์สมศรี นวดดี",
+    duration: "80 ชั่วโมง",
+    price: 15000,
+    level: "เริ่มต้น",
+    students: 156,
+    rating: 4.8,
+    image: "/api/placeholder/300/200",
+    description: "เรียนรู้เทคนิคการนวดแผนไทยพื้นฐาน",
+    skills: ["เส้นลมปราณ", "ท่านวดเบื้องต้น", "การปฏิบัติตัว"],
   },
   {
-    id: 'course-2',
-    courseName: 'หลักสูตรการนวดอโรม่า',
-    description: 'ศิลปะการนวดผสมผสานกับน้ำมันหอมระเหย เพื่อการผ่อนคลายสุดพิเศษ',
-    price: 4200,
-    durationHours: 25,
-    instructor: 'อาจารย์วิไล สวยงาม',
-    level: 'intermediate',
-    category: 'การนวดสปา',
-    thumbnail: 'https://placehold.co/300x200/2196f3/ffffff?text=Aroma+Massage',
-    modules: [
-      {
-        id: 'mod-3',
-        title: 'พื้นฐานอโรม่าเธอราปี',
-        lessons: [
-          { id: 'lesson-6', title: 'รู้จักน้ำมันหอมระเหย', type: 'video', duration: 20, completed: true },
-          { id: 'lesson-7', title: 'การผสมน้ำมัน', type: 'video', duration: 15, completed: false }
-        ]
-      }
-    ]
+    id: 2,
+    title: "นวดแผนไทย ระดับกลาง",
+    type: "ministry-health",
+    instructor: "อาจารย์วิชัย นวดเก่ง",
+    duration: "120 ชั่วโมง",
+    price: 25000,
+    level: "กลาง",
+    students: 89,
+    rating: 4.9,
+    image: "/api/placeholder/300/200",
+    description: "เทคนิคการนวดขั้นสูงและการรักษา",
+    skills: ["การวินิจฉัย", "นวดรักษา", "สมุนไพร"],
   },
   {
-    id: 'course-3',
-    courseName: 'หลักสูตรการนวดบำบัด',
-    description: 'เทคนิคการนวดเพื่อการรักษาและบรรเทาอาการปวดเมื่อย',
-    price: 5000,
-    durationHours: 40,
-    instructor: 'อาจารย์ดร.สุธี เก่งมาก',
-    level: 'advanced',
-    category: 'การนวดบำบัด',
-    thumbnail: 'https://placehold.co/300x200/ff9800/ffffff?text=Therapeutic',
-    modules: []
-  }
+    id: 3,
+    title: "การฝังเข็มแผนไทย",
+    type: "ministry-health",
+    instructor: "อาจารย์หญิงสุดา เข็มทอง",
+    duration: "160 ชั่วโมง",
+    price: 35000,
+    level: "สูง",
+    students: 45,
+    rating: 4.7,
+    image: "/api/placeholder/300/200",
+    description: "การฝังเข็มเพื่อการรักษาและบำบัด",
+    skills: ["จุดฝังเข็ม", "การรักษา", "ความปลอดภัย"],
+  },
+  // หลักสูตรกระทรวงศึกษาธิการ
+  {
+    id: 4,
+    title: "วิทยาศาสตร์การนวด",
+    type: "ministry-education",
+    instructor: "ดร.สมชาย วิทยา",
+    duration: "100 ชั่วโมง",
+    price: 28000,
+    level: "กลาง",
+    students: 67,
+    rating: 4.6,
+    image: "/api/placeholder/300/200",
+    description: "หลักวิทยาศาสตร์เบื้องหลังการนวด",
+    skills: ["กายวิภาคศาสตร์", "สรีรวิทยา", "การวิจัย"],
+  },
+  {
+    id: 5,
+    title: "การจัดการสปาและเวลเนส",
+    type: "ministry-education",
+    instructor: "ผศ.ดร.วิมล บริหาร",
+    duration: "90 ชั่วโมง",
+    price: 22000,
+    level: "กลาง",
+    students: 134,
+    rating: 4.5,
+    image: "/api/placeholder/300/200",
+    description: "การบริหารจัดการธุรกิจสปาและเวลเนส",
+    skills: ["การบริหาร", "การตลาด", "การเงิน"],
+  },
+  {
+    id: 6,
+    title: "อโรมาเธอราปี",
+    type: "ministry-health",
+    instructor: "อาจารย์สุดา หอมหวาน",
+    duration: "60 ชั่วโมง",
+    price: 18000,
+    level: "เริ่มต้น",
+    students: 112,
+    rating: 4.7,
+    image: "/api/placeholder/300/200",
+    description: "การบำบัดด้วยน้ำมันหอมระเหย",
+    skills: ["น้ำมันหอมระเหย", "การนวดอโรม่า", "การผสมกลิ่น"],
+  },
 ];
 
-const mockEnrollments: Enrollment[] = [
-  { id: 'en-1', course_id: 'course-1', status: 'inprogress', progress: 65, enrolled_date: '2024-06-01' },
-  { id: 'en-2', course_id: 'course-2', status: 'completed', progress: 100, enrolled_date: '2024-05-15', completed_date: '2024-07-15' },
-  { id: 'en-3', course_id: 'course-3', status: 'pending', progress: 0, enrolled_date: '2024-07-20' }
-];
+const StudentCoursesPage: React.FC = () => {
+  const router = useRouter();
+  const [selectedType, setSelectedType] = useState("all");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [activeTab, setActiveTab] = useState("available");
 
-export default function StudentCoursesPage() {
-  const [courses, setCourses] = useState<Course[]>([]);
-  const [enrollments, setEnrollments] = useState<Enrollment[]>([]);
-  const [filteredCourses, setFilteredCourses] = useState<Course[]>([]);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [statusFilter, setStatusFilter] = useState<string>('all');
-  const [activeTab, setActiveTab] = useState('enrolled');
+  // จำลองข้อมูลหลักสูตรที่ลงทะเบียนแล้ว
+  const [enrolledCourses] = useState<Course[]>([
+    {
+      ...availableCourses[0],
+      progress: 65,
+      enrolledDate: "2024-01-15",
+      lastAccessed: "2024-01-20",
+      modules: [
+        { id: 1, title: "บทนำสู่การนวดแผนไทย", completed: true },
+        { id: 2, title: "เส้นลมปราณหลัก", completed: true },
+        { id: 3, title: "ท่านวดพื้นฐาน", completed: false },
+        { id: 4, title: "การปฏิบัติจริง", completed: false },
+      ],
+    },
+    {
+      ...availableCourses[3],
+      progress: 30,
+      enrolledDate: "2024-01-10",
+      lastAccessed: "2024-01-18",
+      modules: [
+        { id: 1, title: "หลักกายวิภาคศาสตร์", completed: true },
+        { id: 2, title: "สรีรวิทยาระบบกล้ามเนื้อ", completed: false },
+        { id: 3, title: "หลักการนวดทางวิทยาศาสตร์", completed: false },
+      ],
+    },
+  ]);
 
-  useEffect(() => {
-    // Simulate loading data
-    setCourses(mockCourses);
-    setEnrollments(mockEnrollments);
-  }, []);
+  // กรองหลักสูตรตามประเภทและคำค้นหา
+  const filteredCourses = availableCourses.filter((course) => {
+    const matchesType = selectedType === "all" || course.type === selectedType;
+    const matchesSearch =
+      course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      course.instructor.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesType && matchesSearch;
+  });
 
-  useEffect(() => {
-    // Filter courses based on enrollment status and search term
-    try {
-      let filtered = [...courses]; // Create a copy to avoid mutation
-      
-      if (activeTab === 'enrolled') {
-        const enrolledCourseIds = enrollments.map(e => e.course_id).filter(Boolean);
-        filtered = courses.filter(course => course && enrolledCourseIds.includes(course.id));
-      }
-      
-      if (searchTerm && searchTerm.trim() !== '') {
-        const searchLower = searchTerm.toLowerCase().trim();
-        filtered = filtered.filter(course => 
-          course && (
-            (course.courseName && course.courseName.toLowerCase().includes(searchLower)) ||
-            (course.description && course.description.toLowerCase().includes(searchLower)) ||
-            (course.instructor && course.instructor.toLowerCase().includes(searchLower))
-          )
-        );
-      }
-      
-      if (statusFilter !== 'all' && activeTab === 'enrolled') {
-        filtered = filtered.filter(course => {
-          if (!course) return false;
-          const enrollment = enrollments.find(e => e && e.course_id === course.id);
-          return enrollment && enrollment.status === statusFilter;
-        });
-      }
-      
-      setFilteredCourses(filtered);
-    } catch (error) {
-      console.error('Error filtering courses:', error);
-      setFilteredCourses([]);
-      message.error('เกิดข้อผิดพลาดในการกรองหลักสูตร');
-    }
-  }, [courses, enrollments, searchTerm, statusFilter, activeTab]);
-
-  const getEnrollmentInfo = (courseId: string) => {
-    try {
-      if (!courseId || !Array.isArray(enrollments)) return undefined;
-      return enrollments.find(e => e && e.course_id === courseId);
-    } catch (error) {
-      console.error('Error getting enrollment info:', error);
-      return undefined;
-    }
+  // ไปยังหน้าสมัครเรียน
+  const handleEnroll = (courseId: number) => {
+    // เก็บ course id ใน localStorage หรือ state management
+    localStorage.setItem("selectedCourseId", courseId.toString());
+    router.push("/student/application");
   };
 
-  const calculateProgress = (course: Course, enrollment?: Enrollment) => {
-    if (!enrollment || !course) return 0;
-    
-    try {
-      const totalLessons = course.modules.reduce((acc, module) => {
-        if (!module || !Array.isArray(module.lessons)) return acc;
-        return acc + module.lessons.length;
-      }, 0);
-      
-      const completedLessons = course.modules.reduce((acc, module) => {
-        if (!module || !Array.isArray(module.lessons)) return acc;
-        return acc + module.lessons.filter(lesson => lesson && lesson.completed === true).length;
-      }, 0);
-      
-      if (totalLessons === 0) return 0;
-      
-      const progress = Math.round((completedLessons / totalLessons) * 100);
-      return Math.min(Math.max(progress, 0), 100); // Ensure progress is between 0-100
-    } catch (error) {
-      console.error('Error calculating progress:', error);
-      return 0;
-    }
+  const handleContinueLearning = (courseId: number) => {
+    console.log("Continuing course:", courseId);
+    message.success("กำลังเข้าสู่บทเรียน...");
+    // Navigate to course content
   };
 
-  const handleContinueCourse = (courseId: string) => {
-    try {
-      if (!courseId || courseId.trim() === '') {
-        message.error('รหัสหลักสูตรไม่ถูกต้อง');
-        return;
+  const CourseCard: React.FC<{ course: Course; isEnrolled?: boolean }> = ({
+    course,
+    isEnrolled = false,
+  }) => (
+    <Card
+      hoverable
+      className="course-card"
+      cover={
+        <div className="course-image-container">
+          <Image
+            alt={course.title}
+            src={course.image}
+            className="course-image"
+            width={300}
+            height={200}
+            style={{ objectFit: "cover" }}
+          />
+          <div className="course-overlay">
+            <Tag color={course.type === "ministry-health" ? "green" : "blue"}>
+              {courseTypes.find((type) => type.id === course.type)?.name}
+            </Tag>
+          </div>
+        </div>
       }
-      
-      const course = courses.find(c => c.id === courseId);
-      if (!course) {
-        message.error('ไม่พบหลักสูตรที่เลือก');
-        return;
+      actions={
+        isEnrolled
+          ? [
+              <Button
+                key="continue"
+                type="primary"
+                icon={<PlayCircleOutlined />}
+                onClick={() => handleContinueLearning(course.id)}
+              >
+                เรียนต่อ
+              </Button>,
+            ]
+          : [
+              <Button
+                key="enroll"
+                type="primary"
+                icon={<PlusOutlined />}
+                onClick={() => handleEnroll(course.id)}
+              >
+                สมัครเรียน
+              </Button>,
+            ]
       }
-      
-      const enrollment = getEnrollmentInfo(courseId);
-      if (!enrollment) {
-        message.error('คุณยังไม่ได้ลงทะเบียนหลักสูตรนี้');
-        return;
-      }
-      
-      if (enrollment.status === 'pending') {
-        message.warning('หลักสูตรนี้รอการอนุมัติ');
-        return;
-      }
-      
-      message.success(`เปิดหลักสูตร: ${course.courseName}`);
-      console.log('Continue course:', courseId);
-      // TODO: Navigate to course content
-      // router.push(`/student/courses/${courseId}/learn`);
-    } catch (error) {
-      console.error('Error continuing course:', error);
-      message.error('เกิดข้อผิดพลาดในการเปิดหลักสูตร');
-    }
-  };
-
-  const handleStartCourse = (courseId: string) => {
-    try {
-      if (!courseId || courseId.trim() === '') {
-        message.error('รหัสหลักสูตรไม่ถูกต้อง');
-        return;
-      }
-      
-      const course = courses.find(c => c.id === courseId);
-      if (!course) {
-        message.error('ไม่พบหลักสูตรที่เลือก');
-        return;
-      }
-      
-      // Check if already enrolled
-      const enrollment = getEnrollmentInfo(courseId);
-      if (enrollment) {
-        message.info('คุณได้ลงทะเบียนหลักสูตรนี้แล้ว');
-        return;
-      }
-      
-      message.success(`เริ่มลงทะเบียนหลักสูตร: ${course.courseName}`);
-      console.log('Start course:', courseId);
-      // TODO: Implement course enrollment
-      // router.push(`/student/courses/${courseId}/enroll`);
-    } catch (error) {
-      console.error('Error starting course:', error);
-      message.error('เกิดข้อผิดพลาดในการลงทะเบียนหลักสูตร');
-    }
-  };
-
-  const renderCourseCard = (course: Course, enrollment?: Enrollment) => {
-    const progress = calculateProgress(course, enrollment);
-    
-    return (
-      <Card
-        key={course.id}
-        className="content-card"
-        hoverable
-      >
-        <div className="course-header">
-          <div className="course-info">
-            <h3 className="course-title">{course.courseName}</h3>
+    >
+      <Card.Meta
+        title={
+          <div className="course-title">
+            {course.title}
+            <div className="course-price">฿{course.price.toLocaleString()}</div>
+          </div>
+        }
+        description={
+          <div className="course-details">
             <p className="course-description">{course.description}</p>
-            <div className="course-meta">
-              <span className="course-instructor">
-                <UserOutlined /> {course.instructor}
-              </span>
-              <span className="course-duration">
-                <ClockCircleOutlined /> {course.durationHours} ชั่วโมง
-              </span>
+
+            <div className="course-info">
+              <div className="info-item">
+                <UserOutlined />
+                <span>{course.instructor}</span>
+              </div>
+              <div className="info-item">
+                <ClockCircleOutlined />
+                <span>{course.duration}</span>
+              </div>
+              <div className="info-item">
+                <StarOutlined />
+                <span>
+                  {course.rating}/5 ({course.students} คน)
+                </span>
+              </div>
             </div>
-          </div>
-        </div>
-        
-        {enrollment && (
-          <div className="course-progress-section">
-            <div className="progress-header">
-              <span>ความคืบหน้า</span>
-              <span>{progress}%</span>
-            </div>
-            <Progress 
-              percent={progress} 
-              strokeColor="#5d4037"
-              trailColor="#f5f5f5"
-              size={8}
-            />
-          </div>
-        )}
 
-        <div className="course-actions">
-          <Button 
-            type="primary" 
-            className="dashboard-action-btn"
-            disabled={enrollment?.status === 'pending'}
-            onClick={() => enrollment ? handleContinueCourse(course.id) : handleStartCourse(course.id)}
-            icon={enrollment ? <PlayCircleOutlined /> : <RocketOutlined />}
-          >
-            {enrollment?.status === 'pending' ? 'รอการอนุมัติ' :
-             enrollment?.status === 'completed' ? 'ทบทวนเนื้อหา' :
-             enrollment ? 'เรียนต่อ' : 'เริ่มเรียน'}
-          </Button>
-        </div>
-      </Card>
-    );
-  };
-
-  return (
-    <div className="dashboard-container fade-in-up">
-      {/* Page Header */}
-      <div className="dashboard-header">
-        <div>
-          <h1 className="dashboard-title">หลักสูตรของฉัน</h1>
-          <p className="dashboard-subtitle">
-            จัดการและติดตามความคืบหน้าในการเรียนรู้ของคุณ
-          </p>
-        </div>
-        <Button type="primary" className="dashboard-action-btn">
-          เลือกหลักสูตรใหม่
-        </Button>
-      </div>
-
-      {/* Statistics Cards */}
-      <Row gutter={[24, 24]} className="stats-row">
-        {[
-          {
-            title: "หลักสูตรที่ลงทะเบียน",
-            value: enrollments.length,
-            prefix: <BookOutlined />,
-            color: "#5d4037",
-          },
-          {
-            title: "กำลังเรียน",
-            value: enrollments.filter(e => e.status === 'inprogress').length,
-            prefix: <PlayCircleOutlined />,
-            color: "#8d6e63",
-          },
-          {
-            title: "เรียนจบแล้ว",
-            value: enrollments.filter(e => e.status === 'completed').length,
-            prefix: <TrophyOutlined />,
-            color: "#a1887f",
-          },
-          {
-            title: "หลักสูตรทั้งหมด",
-            value: courses.length,
-            prefix: <StarOutlined />,
-            color: "#6d4c41",
-          },
-        ].map((stat, index) => (
-          <Col xs={24} sm={12} lg={6} key={index}>
-            <Card className="stat-card">
-              <div className="stat-content">
-                <div className="stat-icon" style={{ color: stat.color }}>
-                  {stat.prefix}
+            {isEnrolled && course.progress !== undefined && (
+              <div className="progress-section">
+                <div className="progress-label">
+                  ความคืบหน้า: {course.progress}%
                 </div>
-                <div className="stat-details">
-                  <div className="stat-value" style={{ color: stat.color }}>
-                    {stat.value}
-                  </div>
-                  <div className="stat-title">{stat.title}</div>
+                <Progress
+                  percent={course.progress}
+                  strokeColor={{
+                    "0%": "#108ee9",
+                    "100%": "#87d068",
+                  }}
+                  size="small"
+                />
+                <div className="modules-status">
+                  เรียนแล้ว{" "}
+                  {course.modules?.filter((m) => m.completed).length || 0} จาก{" "}
+                  {course.modules?.length || 0} บท
                 </div>
               </div>
-            </Card>
-          </Col>
-        ))}
-      </Row>
+            )}
 
-      {/* Search and Filter */}
-      <Row gutter={[24, 24]} className="content-row">
-        <Col span={24}>
-          <Card className="content-card">
-            <Row gutter={[16, 16]} align="middle">
-              <Col xs={24} md={12}>
-                <Search
-                  placeholder="ค้นหาหลักสูตร..."
-                  allowClear
-                  enterButton={<SearchOutlined />}
-                  size="large"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
+            <div className="course-skills">
+              <span className="skills-label">สิ่งที่จะได้เรียนรู้:</span>
+              <div className="skills-list">
+                {course.skills.map((skill: string, index: number) => (
+                  <Tag key={index} className="skill-tag">
+                    {skill}
+                  </Tag>
+                ))}
+              </div>
+            </div>
+          </div>
+        }
+      />
+    </Card>
+  );
+
+  // สถิติหลักสูตร
+  const stats = {
+    total: availableCourses.length,
+    enrolled: enrolledCourses.length,
+    ministryHealth: availableCourses.filter((c) => c.type === "ministry-health")
+      .length,
+    ministryEducation: availableCourses.filter(
+      (c) => c.type === "ministry-education"
+    ).length,
+  };
+
+  const tabItems = [
+    {
+      key: "enrolled",
+      label: `หลักสูตรที่ลงทะเบียน (${enrolledCourses.length})`,
+      children: (
+        <div>
+          {enrolledCourses.length === 0 ? (
+            <Card className="empty-state">
+              <div style={{ textAlign: "center", padding: "40px 0" }}>
+                <BookOutlined
+                  style={{
+                    fontSize: "48px",
+                    color: "#d9d9d9",
+                    marginBottom: "16px",
+                  }}
                 />
-              </Col>
-              <Col xs={24} md={8}>
-                <Select
-                  placeholder="กรองตามสถานะ"
-                  size="large"
-                  style={{ width: '100%' }}
-                  value={statusFilter}
-                  onChange={setStatusFilter}
-                >
-                  <Option value="all">ทั้งหมด</Option>
-                  <Option value="inprogress">กำลังเรียน</Option>
-                  <Option value="completed">เรียนจบแล้ว</Option>
-                  <Option value="pending">รอการอนุมัติ</Option>
-                </Select>
-              </Col>
-              <Col xs={24} md={4}>
+                <h3>ยังไม่มีหลักสูตรที่ลงทะเบียน</h3>
+                <p>เริ่มต้นการเรียนรู้ด้วยการเลือกหลักสูตรที่เหมาะกับคุณ</p>
                 <Button
-                  size="large"
-                  style={{ width: '100%' }}
-                  className="dashboard-action-btn"
-                  icon={<FilterOutlined />}
+                  type="primary"
+                  onClick={() => setActiveTab("available")}
                 >
-                  ตัวกรอง
+                  ดูหลักสูตรทั้งหมด
                 </Button>
-              </Col>
+              </div>
+            </Card>
+          ) : (
+            <Row gutter={[24, 24]}>
+              {enrolledCourses.map((course) => (
+                <Col xs={24} sm={12} lg={8} key={course.id}>
+                  <CourseCard course={course} isEnrolled={true} />
+                </Col>
+              ))}
             </Row>
-          </Card>
-        </Col>
-      </Row>
+          )}
+        </div>
+      ),
+    },
+    {
+      key: "available",
+      label: `หลักสูตรทั้งหมด (${availableCourses.length})`,
+      children: (
+        <div>
+          {/* สถิติและตัวกรอง */}
+          <Row
+            gutter={[16, 16]}
+            className="stats-row"
+            style={{ marginBottom: "24px" }}
+          >
+            <Col xs={24} sm={12} md={6}>
+              <Card className="stat-card">
+                <div className="stat-content">
+                  <div className="stat-number">{stats.total}</div>
+                  <div className="stat-label">หลักสูตรทั้งหมด</div>
+                </div>
+                <BookOutlined className="stat-icon" />
+              </Card>
+            </Col>
+            <Col xs={24} sm={12} md={6}>
+              <Card className="stat-card">
+                <div className="stat-content">
+                  <div className="stat-number">{stats.ministryHealth}</div>
+                  <div className="stat-label">กระทรวงสาธารณสุข</div>
+                </div>
+                <MedicineBoxOutlined className="stat-icon" />
+              </Card>
+            </Col>
+            <Col xs={24} sm={12} md={6}>
+              <Card className="stat-card">
+                <div className="stat-content">
+                  <div className="stat-number">{stats.ministryEducation}</div>
+                  <div className="stat-label">กระทรวงศึกษาธิการ</div>
+                </div>
+                <BankOutlined className="stat-icon" />
+              </Card>
+            </Col>
+            <Col xs={24} sm={12} md={6}>
+              <Card className="stat-card">
+                <div className="stat-content">
+                  <div className="stat-number">{enrolledCourses.length}</div>
+                  <div className="stat-label">ลงทะเบียนแล้ว</div>
+                </div>
+                <TrophyOutlined className="stat-icon" />
+              </Card>
+            </Col>
+          </Row>
 
-      {/* Course Tabs */}
-      <Row gutter={[24, 24]} className="content-row">
-        <Col span={24}>
-          <Card className="content-card">
-            <Tabs 
-              activeKey={activeTab} 
-              onChange={setActiveTab}
-              items={[
-                {
-                  key: 'enrolled',
-                  label: `หลักสูตรที่ลงทะเบียน (${enrollments.length})`,
-                  children: (
-                    filteredCourses.length > 0 ? (
-                      <Row gutter={[24, 24]} style={{ marginTop: 16 }}>
-                        {filteredCourses.map(course => {
-                          const enrollment = getEnrollmentInfo(course.id);
-                          return (
-                            <Col xs={24} md={12} lg={8} key={course.id}>
-                              {renderCourseCard(course, enrollment)}
-                            </Col>
-                          );
-                        })}
-                      </Row>
-                    ) : (
-                      <div style={{ textAlign: 'center', padding: '60px 20px' }}>
-                        <BookOutlined style={{ fontSize: 48, color: '#5d4037', marginBottom: 16 }} />
-                        <h3 style={{ color: '#5d4037', marginBottom: 8 }}>
-                          {searchTerm ? 'ไม่พบหลักสูตรที่ค้นหา' : 'ยังไม่มีหลักสูตรที่ลงทะเบียน'}
-                        </h3>
-                        <p style={{ color: '#666', marginBottom: 24 }}>
-                          เริ่มต้นการเรียนรู้ด้วยการเลือกหลักสูตรที่เหมาะกับคุณ
-                        </p>
-                        <Button 
-                          type="primary" 
-                          className="dashboard-action-btn"
-                          onClick={() => setActiveTab('available')}
-                          icon={<RocketOutlined />}
-                        >
-                          เลือกหลักสูตร
-                        </Button>
-                      </div>
-                    )
-                  )
-                },
-                {
-                  key: 'available',
-                  label: `หลักสูตรทั้งหมด (${courses.length})`,
-                  children: (
-                    <Row gutter={[24, 24]} style={{ marginTop: 16 }}>
-                      {courses.map(course => {
-                        const enrollment = getEnrollmentInfo(course.id);
-                        return (
-                          <Col xs={24} md={12} lg={8} key={course.id}>
-                            {renderCourseCard(course, enrollment)}
-                          </Col>
-                        );
-                      })}
-                    </Row>
-                  )
-                }
-              ]}
-            />
-          </Card>
-        </Col>
-      </Row>
+          {/* ตัวกรองและค้นหา */}
+          <Row gutter={[16, 16]} style={{ marginBottom: "24px" }}>
+            <Col xs={24} sm={12} md={8}>
+              <Search
+                placeholder="ค้นหาหลักสูตร..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                prefix={<SearchOutlined />}
+                allowClear
+              />
+            </Col>
+            <Col xs={24} sm={12} md={8}>
+              <Select
+                value={selectedType}
+                onChange={setSelectedType}
+                style={{ width: "100%" }}
+                placeholder="เลือกประเภทหลักสูตร"
+              >
+                <Option value="all">หลักสูตรทั้งหมด</Option>
+                <Option value="ministry-health">กระทรวงสาธารณสุข</Option>
+                <Option value="ministry-education">กระทรวงศึกษาธิการ</Option>
+              </Select>
+            </Col>
+          </Row>
+
+          {/* รายการหลักสูตร */}
+          <Row gutter={[24, 24]}>
+            {filteredCourses.map((course) => (
+              <Col xs={24} sm={12} lg={8} key={course.id}>
+                <CourseCard course={course} isEnrolled={false} />
+              </Col>
+            ))}
+          </Row>
+
+          {filteredCourses.length === 0 && (
+            <Card className="empty-state">
+              <div style={{ textAlign: "center", padding: "40px 0" }}>
+                <SearchOutlined
+                  style={{
+                    fontSize: "48px",
+                    color: "#d9d9d9",
+                    marginBottom: "16px",
+                  }}
+                />
+                <h3>ไม่พบหลักสูตรที่ค้นหา</h3>
+                <p>ลองเปลี่ยนคำค้นหาหรือตัวกรองใหม่</p>
+                <Button
+                  type="primary"
+                  onClick={() => {
+                    setSearchTerm("");
+                    setSelectedType("all");
+                  }}
+                >
+                  ล้างตัวกรอง
+                </Button>
+              </div>
+            </Card>
+          )}
+        </div>
+      ),
+    },
+  ];
+
+  return (
+    <div className="student-courses-page">
+      <div className="page-header">
+        <h1>หลักสูตรเรียน</h1>
+        <p>เลือกหลักสูตรที่เหมาะกับคุณ เริ่มต้นการเรียนรู้และพัฒนาทักษะใหม่ๆ</p>
+      </div>
+
+      <Tabs
+        activeKey={activeTab}
+        onChange={setActiveTab}
+        items={tabItems}
+        size="large"
+        className="courses-tabs"
+      />
     </div>
   );
-}
+};
+
+export default StudentCoursesPage;

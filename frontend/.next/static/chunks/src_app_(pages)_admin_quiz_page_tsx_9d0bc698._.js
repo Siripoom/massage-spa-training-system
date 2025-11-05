@@ -1239,7 +1239,7 @@ function QuizManagementPage() {
         columnNumber: 5
     }, this);
 }
-_s(QuizManagementPage, "z83ex6HyP34S7cOvdb3tQGOmcVc=", false, function() {
+_s(QuizManagementPage, "e0aW3MIoSbiDIn8aIMJVWgRszsU=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$antd$2f$es$2f$form$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Form$3e$__["Form"].useForm
     ];
