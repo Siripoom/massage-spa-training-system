@@ -113,6 +113,9 @@ export const API_CONFIG = {
       BASE: '/organization',
       BY_ID: (id: string | number) => `/organization/${id}`,
     },
+
+    // Dashboard
+    DASHBOARD: '/dashboard',
   },
 
   // Storage keys

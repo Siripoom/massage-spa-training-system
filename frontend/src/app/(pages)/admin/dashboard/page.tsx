@@ -5,156 +5,74 @@ import {
   Row,
   Col,
   Card,
-  // Statistic,
   Progress,
   List,
   Avatar,
-  Tag,
   Button,
+  Spin,
+  Tag,
   Space,
 } from "antd";
 import {
   UserOutlined,
   BookOutlined,
-  FileTextOutlined,
-  // TrophyOutlined,
+  TeamOutlined,
   RiseOutlined,
   FallOutlined,
   ClockCircleOutlined,
   DollarOutlined,
+  FileTextOutlined,
 } from "@ant-design/icons";
+import { useDashboardStats, useDashboardActivities, useDashboardCourseProgress } from "@/hooks";
 import "./dashboard.css";
 import '@ant-design/v5-patch-for-react-19';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import 'dayjs/locale/th';
+
+dayjs.extend(relativeTime);
+dayjs.locale('th');
 
 export default function AdminDashboard() {
-  // Mock data
-  const statsData = [
+  // Fetch data from API
+  const { data: stats, isLoading: statsLoading } = useDashboardStats();
+  const { data: activities, isLoading: activitiesLoading } = useDashboardActivities(10);
+  const { data: courseProgress, isLoading: progressLoading } = useDashboardCourseProgress(4);
+
+  const statsData = stats ? [
     {
       title: "นักเรียนทั้งหมด",
-      value: 1128,
+      value: stats.totalStudents,
       prefix: <UserOutlined />,
       color: "#5d4037",
       suffix: "คน",
-      trend: { value: 12, isUp: true },
+      trend: stats.trends.students,
     },
     {
       title: "หลักสูตรที่เปิดสอน",
-      value: 24,
+      value: stats.totalCourses,
       prefix: <BookOutlined />,
       color: "#8d6e63",
       suffix: "หลักสูตร",
-      trend: { value: 3, isUp: true },
+      trend: { value: 0, isUp: true },
     },
     {
-      title: "การสอบที่จัดแล้ว",
-      value: 156,
-      prefix: <FileTextOutlined />,
+      title: "รุ่นที่กำลังเปิดสอน",
+      value: stats.totalActiveBatches,
+      prefix: <TeamOutlined />,
       color: "#a1887f",
-      suffix: "ครั้ง",
-      trend: { value: 8, isUp: false },
+      suffix: "รุ่น",
+      trend: { value: 0, isUp: true },
     },
     {
       title: "รายได้รวม",
-      value: 2485000,
+      value: stats.totalRevenue,
       prefix: <DollarOutlined />,
       color: "#6d4c41",
       suffix: "บาท",
-      trend: { value: 15, isUp: true },
+      trend: { value: 0, isUp: true },
     },
-  ];
-
-  const courseProgress = [
-    {
-      name: "การนวดแผนไทยเพื่อสุขภาพ",
-      progress: 85,
-      students: 45,
-      color: "#8bc34a",
-      ministry: "สาธารณสุข",
-    },
-    {
-      name: "การนวดสปาและอโรมาเธอราปี",
-      progress: 67,
-      students: 32,
-      color: "#2196f3",
-      ministry: "ศึกษาธิการ",
-    },
-    {
-      name: "การนวดเท้าเพื่อสุขภาพ",
-      progress: 42,
-      students: 28,
-      color: "#ff9800",
-      ministry: "สาธารณสุข",
-    },
-    {
-      name: "การนวดประคบสมุนไพร",
-      progress: 78,
-      students: 38,
-      color: "#9c27b0",
-      ministry: "สาธารณสุข",
-    },
-  ];
-
-  const recentActivities = [
-    {
-      title: "นักเรียนใหม่สมัครเข้าเรียน",
-      description: "สมศรี ใจดี สมัครเรียนหลักสูตรการนวดแผนไทย",
-      time: "5 นาทีที่แล้ว",
-      avatar: "S",
-      type: "success",
-      color: "#8bc34a",
-    },
-    {
-      title: "การสอบเสร็จสิ้น",
-      description: "การสอบหลักสูตรการนวดสปา รุ่นที่ 15 เสร็จสิ้นแล้ว",
-      time: "1 ชั่วโมงที่แล้ว",
-      avatar: "E",
-      type: "info",
-      color: "#2196f3",
-    },
-    {
-      title: "ออกใบประกาศนียบัตร",
-      description: "ออกใบประกาศนียบัตรให้กับนักเรียน 15 คน",
-      time: "3 ชั่วโมงที่แล้ว",
-      avatar: "C",
-      type: "warning",
-      color: "#ff9800",
-    },
-    {
-      title: "ชำระเงินเสร็จสิ้น",
-      description: "รับชำระค่าหลักสูตรจากนักเรียน 8 คน รวม 24,000 บาท",
-      time: "5 ชั่วโมงที่แล้ว",
-      avatar: "P",
-      type: "success",
-      color: "#4caf50",
-    },
-  ];
-
-  const upcomingExams = [
-    {
-      course: "การนวดแผนไทยเพื่อสุขภาพ",
-      date: "2024-07-01",
-      time: "09:00",
-      students: 25,
-      status: "scheduled",
-      ministry: "สาธารณสุข",
-    },
-    {
-      course: "การนวดสปาและอโรมาเธอราปี",
-      date: "2024-07-02",
-      time: "14:00",
-      students: 18,
-      status: "scheduled",
-      ministry: "ศึกษาธิการ",
-    },
-    {
-      course: "การนวดเท้าเพื่อสุขภาพ",
-      date: "2024-07-03",
-      time: "10:30",
-      students: 22,
-      status: "preparing",
-      ministry: "สาธารณสุข",
-    },
-  ];
+  ] : [];
 
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat("th-TH", {
@@ -163,6 +81,21 @@ export default function AdminDashboard() {
       minimumFractionDigits: 0,
     }).format(value);
   };
+
+  const getProgressColor = (progress: number) => {
+    if (progress >= 80) return "#8bc34a";
+    if (progress >= 50) return "#2196f3";
+    if (progress >= 30) return "#ff9800";
+    return "#f44336";
+  };
+
+  if (statsLoading) {
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <Spin size="large" />
+      </div>
+    );
+  }
 
   return (
     <div className="dashboard-container fade-in-up">
@@ -227,41 +160,44 @@ export default function AdminDashboard() {
             }
           >
             <div className="course-progress-list">
-              {courseProgress.map((course, index) => (
-                <div key={index} className="course-progress-item">
-                  <div className="course-header">
-                    <div className="course-info">
-                      <div className="course-name">{course.name}</div>
-                      <div className="course-meta">
-                        <span className="course-students">
-                          {course.students} นักเรียน
-                        </span>
-                        <Tag
-                          color={
-                            course.ministry === "สาธารณสุข" ? "green" : "blue"
-                          }
-                          // size="small"
-                        >
-                          {course.ministry}
-                        </Tag>
+              {progressLoading ? (
+                <Spin />
+              ) : courseProgress && courseProgress.length > 0 ? (
+                courseProgress.map((course, index) => (
+                  <div key={index} className="course-progress-item">
+                    <div className="course-header">
+                      <div className="course-info">
+                        <div className="course-name">{course.name}</div>
+                        <div className="course-meta">
+                          <span className="course-students">
+                            {course.students} / {course.maxStudents} นักเรียน
+                          </span>
+                          <Tag color={course.status === 'ACTIVE' ? 'green' : 'blue'}>
+                            {course.status === 'ACTIVE' ? 'กำลังเรียน' : 'วางแผน'}
+                          </Tag>
+                        </div>
                       </div>
+                      <span
+                        className="course-percentage"
+                        style={{ color: getProgressColor(course.progress) }}
+                      >
+                        {course.progress}%
+                      </span>
                     </div>
-                    <span
-                      className="course-percentage"
-                      style={{ color: course.color }}
-                    >
-                      {course.progress}%
-                    </span>
+                    <Progress
+                      percent={course.progress}
+                      strokeColor={getProgressColor(course.progress)}
+                      trailColor="#f5f5f5"
+                      size={8}
+                      className="course-progress-bar"
+                    />
                   </div>
-                  <Progress
-                    percent={course.progress}
-                    strokeColor={course.color}
-                    trailColor="#f5f5f5"
-                    size={8}
-                    className="course-progress-bar"
-                  />
+                ))
+              ) : (
+                <div style={{ padding: '20px', textAlign: 'center', color: '#999' }}>
+                  ไม่มีข้อมูลหลักสูตร
                 </div>
-              ))}
+              )}
             </div>
           </Card>
         </Col>
@@ -279,9 +215,10 @@ export default function AdminDashboard() {
           >
             <List
               itemLayout="horizontal"
-              dataSource={recentActivities}
+              dataSource={activities || []}
+              loading={activitiesLoading}
               className="activity-list"
-              renderItem={(item) => (
+              renderItem={(item: any) => (
                 <List.Item className="activity-item">
                   <List.Item.Meta
                     avatar={
@@ -297,8 +234,8 @@ export default function AdminDashboard() {
                       <div className="activity-description">
                         <div className="activity-text">{item.description}</div>
                         <div className="activity-time">
-                          <ClockCircleOutlined className="time-icon" />
-                          {item.time}
+                          <ClockCircleOutlined />
+                          {dayjs(item.time).fromNow()}
                         </div>
                       </div>
                     }
@@ -309,81 +246,29 @@ export default function AdminDashboard() {
           </Card>
         </Col>
 
-        {/* Upcoming Exams */}
-        <Col xs={24}>
-          <Card
-            title="การสอบที่กำลังจะมาถึง"
-            className="content-card"
-            extra={
-              <Space>
-                <Button type="link" className="card-action-btn">
-                  ดูตารางเต็ม
-                </Button>
-                <Button type="primary" className="dashboard-action-btn">
-                  จัดการตารางสอบ
-                </Button>
-              </Space>
-            }
-          >
-            <List
-              itemLayout="horizontal"
-              dataSource={upcomingExams}
-              className="exam-list"
-              renderItem={(item) => (
-                <List.Item
-                  className="exam-item"
-                  actions={[
-                    <Button key="view" type="link" className="exam-action-btn">
-                      ดูรายละเอียด
-                    </Button>,
-                    <Button key="edit" type="link" className="exam-action-btn">
-                      แก้ไข
-                    </Button>,
-                  ]}
-                >
-                  <List.Item.Meta
-                    avatar={<FileTextOutlined className="exam-icon" />}
-                    title={
-                      <div className="exam-header">
-                        <span className="exam-course-name">{item.course}</span>
-                        <div className="exam-tags">
-                          <Tag
-                            color={
-                              item.ministry === "สาธารณสุข" ? "green" : "blue"
-                            }
-                          >
-                            {item.ministry}
-                          </Tag>
-                          <Tag
-                            color={
-                              item.status === "scheduled" ? "blue" : "orange"
-                            }
-                          >
-                            {item.status === "scheduled"
-                              ? "กำหนดการแน่นอน"
-                              : "กำลังเตรียม"}
-                          </Tag>
-                        </div>
-                      </div>
-                    }
-                    description={
-                      <div className="exam-details">
-                        <span className="exam-date">
-                          วันที่:{" "}
-                          {new Date(item.date).toLocaleDateString("th-TH")}
-                        </span>
-                        <span className="exam-time">เวลา: {item.time} น.</span>
-                        <span className="exam-students">
-                          นักเรียน: {item.students} คน
-                        </span>
-                      </div>
-                    }
-                  />
-                </List.Item>
-              )}
-            />
-          </Card>
-        </Col>
+        {/* Upcoming Exams - Hidden for now, will be implemented when quiz/exam API is ready */}
+        {false && (
+          <Col xs={24}>
+            <Card
+              title="การสอบที่กำลังจะมาถึง"
+              className="content-card"
+              extra={
+                <Space>
+                  <Button type="link" className="card-action-btn">
+                    ดูตารางเต็ม
+                  </Button>
+                  <Button type="primary" className="dashboard-action-btn">
+                    จัดการตารางสอบ
+                  </Button>
+                </Space>
+              }
+            >
+              <div style={{ padding: '40px', textAlign: 'center', color: '#999' }}>
+                ระบบจัดการสอบยังไม่พร้อมใช้งาน
+              </div>
+            </Card>
+          </Col>
+        )}
       </Row>
     </div>
   );

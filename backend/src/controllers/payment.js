@@ -103,7 +103,17 @@ exports.createPayment = async (req, res) => {
 // Get all payments with optional filtering
 exports.getAllPayments = async (req, res) => {
   try {
-    const { status, enrollmentId, paymentPlanId, paymentType } = req.query;
+    const {
+      status,
+      enrollmentId,
+      paymentPlanId,
+      paymentType,
+      search,
+      page = 1,
+      limit = 50,
+    } = req.query;
+
+    const skip = (parseInt(page) - 1) * parseInt(limit);
 
     const where = {};
 
@@ -123,30 +133,71 @@ exports.getAllPayments = async (req, res) => {
       where.paymentType = paymentType;
     }
 
-    const payments = await prisma.payment.findMany({
-      where,
-      include: {
-        enrollment: {
-          include: {
+    // Search by student name or course title
+    if (search) {
+      where.enrollment = {
+        OR: [
+          {
             user: {
-              select: {
-                id: true,
-                firstName: true,
-                lastName: true,
-                email: true,
+              OR: [
+                { firstName: { contains: search, mode: "insensitive" } },
+                { lastName: { contains: search, mode: "insensitive" } },
+                { email: { contains: search, mode: "insensitive" } },
+              ],
+            },
+          },
+        ],
+      };
+    }
+
+    const [payments, total] = await Promise.all([
+      prisma.payment.findMany({
+        where,
+        include: {
+          enrollment: {
+            include: {
+              user: {
+                select: {
+                  id: true,
+                  firstName: true,
+                  lastName: true,
+                  email: true,
+                },
+              },
+              batch: {
+                include: {
+                  course: {
+                    select: {
+                      id: true,
+                      title: true,
+                      duration: true,
+                    },
+                  },
+                },
               },
             },
-            course: true,
           },
+          paymentPlan: true,
         },
-        paymentPlan: true,
-      },
-      orderBy: {
-        createdAt: "desc",
+        orderBy: {
+          createdAt: "desc",
+        },
+        skip,
+        take: parseInt(limit),
+      }),
+      prisma.payment.count({ where }),
+    ]);
+
+    res.json({
+      success: true,
+      data: payments,
+      pagination: {
+        page: parseInt(page),
+        limit: parseInt(limit),
+        total,
+        totalPages: Math.ceil(total / parseInt(limit)),
       },
     });
-
-    res.status(200).json(payments);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -178,10 +229,16 @@ exports.getPaymentById = async (req, res) => {
     });
 
     if (!payment) {
-      return res.status(404).json({ error: "Payment not found" });
+      return res.status(404).json({
+        success: false,
+        message: "Payment not found"
+      });
     }
 
-    res.status(200).json(payment);
+    res.json({
+      success: true,
+      data: payment
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

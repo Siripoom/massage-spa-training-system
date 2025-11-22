@@ -42,6 +42,7 @@ const certificateRoutes = require("./routes/certificate");
 const batchRoutes = require("./routes/batch");
 const attendanceRoutes = require("./routes/attendance");
 const studentApplicationRoutes = require("./routes/studentApplication");
+const dashboardRoutes = require("./routes/dashboard");
 
 // Use routes
 app.use("/api/auth", authRoutes);
@@ -61,6 +62,7 @@ app.use("/api/certificates", certificateRoutes);
 app.use("/api/batches", batchRoutes);
 app.use("/api/attendance", attendanceRoutes);
 app.use("/api/student-applications", studentApplicationRoutes);
+app.use("/api/dashboard", dashboardRoutes);
 
 // Global error handling middleware
 app.use((err, req, res, next) => {

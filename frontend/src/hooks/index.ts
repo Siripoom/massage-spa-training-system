@@ -8,3 +8,4 @@ export * from './useCourses';
 export * from './useBatches';
 export * from './useThemeSettings';
 export * from './useAttendance';
+export * from './useDashboard';
