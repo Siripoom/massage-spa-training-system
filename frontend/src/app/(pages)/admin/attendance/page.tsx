@@ -1,125 +1,161 @@
 'use client';
 
 import '@ant-design/v5-patch-for-react-19';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, Table, Button, Space, Tag, Select, DatePicker, Form, Row, Col, message, Modal, Input, TimePicker } from 'antd';
-import { CheckOutlined, CloseOutlined, ClockCircleOutlined, EditOutlined } from '@ant-design/icons';
+import { CheckOutlined, CloseOutlined, ClockCircleOutlined, EditOutlined, SaveOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
+import { useBatches } from '@/hooks/useBatches';
+import enrollmentService from '@/services/enrollment.service';
+import { useBulkMarkAttendance, useAttendance } from '@/hooks/useAttendance';
 
 const { Option } = Select;
 const { TextArea } = Input;
 
-interface Student {
-  id: number;
-  firstName: string;
-  lastName: string;
-  email: string;
-}
-
-interface Batch {
-  id: number;
-  batchNumber: number;
-  name: string;
-  status: string;
+interface StudentEnrollment {
+  id: string;
+  userId: string;
+  user: {
+    id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+  };
 }
 
 interface AttendanceRecord {
-  id: number;
-  userId: number;
-  batchId: number;
-  date: string;
+  enrollmentId: string;
+  userId: string;
+  status: 'PRESENT' | 'ABSENT' | 'LATE' | 'EXCUSED';
   timeIn?: string;
   timeOut?: string;
-  totalHours: number;
-  status: 'PRESENT' | 'ABSENT' | 'LATE' | 'EXCUSED';
+  totalHours?: number;
   notes?: string;
-  student: Student;
+  user: {
+    firstName: string;
+    lastName: string;
+  };
 }
 
-// Mock data - moved outside component to prevent re-creation
-const mockBatches: Batch[] = [
-  {
-    id: 3,
-    batchNumber: 32,
-    name: 'หลักสูตรนวดไทยเพื่อสุขภาพ รุ่นที่ 32',
-    status: 'ACTIVE'
-  }
-];
-
-const mockStudents: Student[] = [
-  { id: 1, firstName: 'สมชาย', lastName: 'ใจดี', email: 'somchai@email.com' },
-  { id: 2, firstName: 'สุชาดา', lastName: 'สวยงาม', email: 'suchada@email.com' },
-  { id: 3, firstName: 'นิรันดร์', lastName: 'เก่งกาจ', email: 'niran@email.com' },
-  { id: 4, firstName: 'วรรณา', lastName: 'มั่นใจ', email: 'wanna@email.com' },
-  { id: 5, firstName: 'ประยุทธ์', lastName: 'หนักแน่น', email: 'prayuth@email.com' }
-];
-
 export default function AttendanceManagePage() {
+  const [students, setStudents] = useState<StudentEnrollment[]>([]);
   const [attendanceRecords, setAttendanceRecords] = useState<AttendanceRecord[]>([]);
-  const [selectedBatch, setSelectedBatch] = useState<number | undefined>();
+  const [selectedBatch, setSelectedBatch] = useState<string | undefined>();
   const [selectedDate, setSelectedDate] = useState<dayjs.Dayjs>(dayjs());
   const [loading, setLoading] = useState(false);
   const [editModalVisible, setEditModalVisible] = useState(false);
-  const [editingRecord, setEditingRecord] = useState<AttendanceRecord | null>(null);
+  const [editingIndex, setEditingIndex] = useState<number | null>(null);
   const [form] = Form.useForm();
 
-  const generateMockRecords = useCallback((date: dayjs.Dayjs) => {
-    return mockStudents.map((student, index) => {
-      const statuses: AttendanceRecord['status'][] = ['PRESENT', 'PRESENT', 'LATE', 'PRESENT', 'ABSENT'];
-      const status = statuses[index];
-      
-      return {
-        id: index + 1,
-        userId: student.id,
-        batchId: 3,
-        date: date.format('YYYY-MM-DD'),
-        timeIn: status === 'ABSENT' ? undefined : (status === 'LATE' ? '09:15:00' : '09:00:00'),
-        timeOut: status === 'ABSENT' ? undefined : '17:00:00',
-        totalHours: status === 'ABSENT' ? 0 : 8,
-        status,
-        notes: status === 'LATE' ? 'เข้าเรียนสาย 15 นาที' : (status === 'ABSENT' ? 'ขาดเรียน' : ''),
-        student
-      };
-    });
-  }, []);
+  // Fetch batches
+  const { data: batchesData, loading: batchesLoading } = useBatches({
+    page: 1,
+    limit: 100,
+  });
 
-  const loadData = useCallback(async () => {
-    if (!selectedBatch) return;
-    
-    setLoading(true);
-    try {
-      // Simulate API call
-      setTimeout(() => {
-        const mockRecords = generateMockRecords(selectedDate);
-        setAttendanceRecords(mockRecords);
-        setLoading(false);
-      }, 1000);
-    } catch (error) {
-      console.error('Error loading data:', error);
-      message.error('เกิดข้อผิดพลาดในการโหลดข้อมูล');
-      setLoading(false);
-    }
-  }, [selectedBatch, selectedDate, generateMockRecords]);
+  // Fetch existing attendance for selected date and batch
+  const { data: existingAttendance, refetch: refetchAttendance } = useAttendance({
+    batchId: selectedBatch,
+    date: selectedDate.format('YYYY-MM-DD'),
+    limit: 100,
+  });
 
+  // Bulk mark attendance mutation
+  const bulkMarkMutation = useBulkMarkAttendance();
+
+  // Load students when batch is selected
   useEffect(() => {
-    // Only load data if a batch is selected
-    if (selectedBatch) {
-      loadData();
-    }
-  }, [loadData, selectedBatch]);
+    const loadStudents = async () => {
+      if (!selectedBatch) {
+        setStudents([]);
+        setAttendanceRecords([]);
+        return;
+      }
 
-  const handleStatusChange = (recordId: number, newStatus: AttendanceRecord['status']) => {
-    setAttendanceRecords(prev => 
-      prev.map(record => 
-        record.id === recordId 
-          ? { ...record, status: newStatus }
-          : record
-      )
+      setLoading(true);
+      try {
+        const response = await enrollmentService.getStudentsByBatchId(selectedBatch, {
+          page: 1,
+          limit: 100,
+        });
+
+        const enrollments = response.data;
+        setStudents(enrollments);
+
+        // Initialize attendance records from existing data or create new ones
+        const records: AttendanceRecord[] = enrollments.map((enrollment: any) => {
+          // Find existing attendance for this enrollment and date
+          const existing = existingAttendance?.data?.find(
+            (att: any) => att.enrollmentId === enrollment.id
+          );
+
+          if (existing) {
+            return {
+              enrollmentId: enrollment.id,
+              userId: enrollment.userId,
+              status: existing.status,
+              timeIn: existing.timeIn ? dayjs(existing.timeIn).format('HH:mm:ss') : undefined,
+              timeOut: existing.timeOut ? dayjs(existing.timeOut).format('HH:mm:ss') : undefined,
+              totalHours: existing.totalHours || 0,
+              notes: existing.notes || '',
+              user: enrollment.user,
+            };
+          }
+
+          // Create new record with default status
+          return {
+            enrollmentId: enrollment.id,
+            userId: enrollment.userId,
+            status: 'PRESENT',
+            timeIn: '09:00:00',
+            timeOut: '17:00:00',
+            totalHours: 8,
+            notes: '',
+            user: enrollment.user,
+          };
+        });
+
+        setAttendanceRecords(records);
+      } catch (error) {
+        console.error('Error loading students:', error);
+        message.error('เกิดข้อผิดพลาดในการโหลดข้อมูลนักเรียน');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadStudents();
+  }, [selectedBatch, selectedDate, existingAttendance]);
+
+  const handleStatusChange = (index: number, newStatus: AttendanceRecord['status']) => {
+    setAttendanceRecords(prev =>
+      prev.map((record, i) => {
+        if (i === index) {
+          // Update status and adjust time based on status
+          const updates: Partial<AttendanceRecord> = { status: newStatus };
+
+          if (newStatus === 'ABSENT') {
+            updates.timeIn = undefined;
+            updates.timeOut = undefined;
+            updates.totalHours = 0;
+          } else if (newStatus === 'LATE') {
+            updates.timeIn = '09:15:00';
+            updates.timeOut = record.timeOut || '17:00:00';
+          } else if (newStatus === 'PRESENT') {
+            updates.timeIn = '09:00:00';
+            updates.timeOut = record.timeOut || '17:00:00';
+          }
+
+          return { ...record, ...updates };
+        }
+        return record;
+      })
     );
   };
 
-  const handleEditRecord = (record: AttendanceRecord) => {
-    setEditingRecord(record);
+  const handleEditRecord = (index: number) => {
+    const record = attendanceRecords[index];
+    setEditingIndex(index);
     form.setFieldsValue({
       timeIn: record.timeIn ? dayjs(record.timeIn, 'HH:mm:ss') : null,
       timeOut: record.timeOut ? dayjs(record.timeOut, 'HH:mm:ss') : null,
@@ -131,26 +167,53 @@ export default function AttendanceManagePage() {
   const handleSaveEdit = async () => {
     try {
       const values = await form.validateFields();
-      if (editingRecord) {
+      if (editingIndex !== null) {
         setAttendanceRecords(prev =>
-          prev.map(record =>
-            record.id === editingRecord.id
+          prev.map((record, i) =>
+            i === editingIndex
               ? {
-                  ...record,
-                  timeIn: values.timeIn ? values.timeIn.format('HH:mm:ss') : undefined,
-                  timeOut: values.timeOut ? values.timeOut.format('HH:mm:ss') : undefined,
-                  notes: values.notes || ''
-                }
+                ...record,
+                timeIn: values.timeIn ? values.timeIn.format('HH:mm:ss') : undefined,
+                timeOut: values.timeOut ? values.timeOut.format('HH:mm:ss') : undefined,
+                notes: values.notes || ''
+              }
               : record
           )
         );
         setEditModalVisible(false);
-        setEditingRecord(null);
+        setEditingIndex(null);
         form.resetFields();
         message.success('บันทึกข้อมูลเรียบร้อยแล้ว');
       }
     } catch (error) {
       console.error('Validation failed:', error);
+    }
+  };
+
+  const handleSaveAll = async () => {
+    if (!selectedBatch) {
+      message.error('กรุณาเลือกรุ่นเรียน');
+      return;
+    }
+
+    try {
+      await bulkMarkMutation.mutateAsync({
+        batchId: selectedBatch,
+        date: selectedDate.format('YYYY-MM-DD'),
+        attendanceData: attendanceRecords.map(record => ({
+          enrollmentId: record.enrollmentId,
+          userId: record.userId,
+          status: record.status,
+          timeIn: record.timeIn,
+          timeOut: record.timeOut,
+          notes: record.notes,
+        })),
+      });
+
+      // Refetch attendance data after save
+      refetchAttendance();
+    } catch (error) {
+      console.error('Error saving attendance:', error);
     }
   };
 
@@ -161,7 +224,7 @@ export default function AttendanceManagePage() {
       LATE: { color: 'orange', text: 'เข้าสาย' },
       EXCUSED: { color: 'blue', text: 'ลาป่วย' }
     };
-    
+
     const config = statusConfig[status];
     return <Tag color={config.color}>{config.text}</Tag>;
   };
@@ -169,16 +232,16 @@ export default function AttendanceManagePage() {
   const columns = [
     {
       title: 'ลำดับ',
-      dataIndex: 'id',
-      key: 'id',
+      key: 'index',
       width: 80,
       align: 'center' as const,
+      render: (_: any, __: any, index: number) => index + 1,
     },
     {
       title: 'ชื่อ-นามสกุล',
       key: 'studentName',
       render: (record: AttendanceRecord) => (
-        `${record.student.firstName} ${record.student.lastName}`
+        `${record.user.firstName} ${record.user.lastName}`
       ),
     },
     {
@@ -203,7 +266,7 @@ export default function AttendanceManagePage() {
       key: 'totalHours',
       width: 120,
       align: 'center' as const,
-      render: (hours: number) => `${hours} ชม.`,
+      render: (hours: number) => `${hours || 0} ชม.`,
     },
     {
       title: 'สถานะ',
@@ -222,15 +285,15 @@ export default function AttendanceManagePage() {
     {
       title: 'จัดการ',
       key: 'actions',
-      width: 200,
+      width: 250,
       align: 'center' as const,
-      render: (record: AttendanceRecord) => (
-        <Space>
+      render: (_: any, record: AttendanceRecord, index: number) => (
+        <Space wrap>
           <Button
             size="small"
             type={record.status === 'PRESENT' ? 'primary' : 'default'}
             icon={<CheckOutlined />}
-            onClick={() => handleStatusChange(record.id, 'PRESENT')}
+            onClick={() => handleStatusChange(index, 'PRESENT')}
           >
             เข้าเรียน
           </Button>
@@ -239,7 +302,7 @@ export default function AttendanceManagePage() {
             type={record.status === 'ABSENT' ? 'primary' : 'default'}
             danger={record.status === 'ABSENT'}
             icon={<CloseOutlined />}
-            onClick={() => handleStatusChange(record.id, 'ABSENT')}
+            onClick={() => handleStatusChange(index, 'ABSENT')}
           >
             ขาดเรียน
           </Button>
@@ -247,14 +310,14 @@ export default function AttendanceManagePage() {
             size="small"
             type={record.status === 'LATE' ? 'primary' : 'default'}
             icon={<ClockCircleOutlined />}
-            onClick={() => handleStatusChange(record.id, 'LATE')}
+            onClick={() => handleStatusChange(index, 'LATE')}
           >
             เข้าสาย
           </Button>
           <Button
             size="small"
             icon={<EditOutlined />}
-            onClick={() => handleEditRecord(record)}
+            onClick={() => handleEditRecord(index)}
           >
             แก้ไข
           </Button>
@@ -273,31 +336,36 @@ export default function AttendanceManagePage() {
         boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
         color: 'white'
       }}>
-        <h1 style={{ 
-          margin: 0, 
-          fontSize: '28px', 
+        <h1 style={{
+          margin: 0,
+          fontSize: '28px',
           fontWeight: 'bold',
           textShadow: '0 2px 4px rgba(0,0,0,0.3)'
         }}>
           จัดการการเข้าเรียน
         </h1>
       </div>
-      
+
       <Card style={{ marginBottom: 16 }}>
         <Row gutter={16}>
-          <Col span={8}>
+          <Col span={10}>
             <Form.Item label="เลือกรุ่นเรียน">
               <Select
                 placeholder="เลือกรุ่นเรียน"
                 value={selectedBatch}
                 onChange={setSelectedBatch}
                 style={{ width: '100%' }}
+                loading={batchesLoading}
+                showSearch
+                optionFilterProp="children"
               >
-                {mockBatches.map(batch => (
-                  <Option key={batch.id} value={batch.id}>
-                    {batch.name}
-                  </Option>
-                ))}
+                {batchesData
+                  ?.filter((batch: any) => batch.status === 'ACTIVE' || batch.status === 'PLANNING')
+                  .map((batch: any) => (
+                    <Option key={batch.id} value={batch.id}>
+                      {batch.name}
+                    </Option>
+                  ))}
               </Select>
             </Form.Item>
           </Col>
@@ -311,11 +379,19 @@ export default function AttendanceManagePage() {
               />
             </Form.Item>
           </Col>
-          <Col span={8}>
+          <Col span={6}>
             <Form.Item label=" ">
-              <Button type="primary" onClick={loadData} loading={loading}>
-                ค้นหา
-              </Button>
+              <Space>
+                <Button
+                  type="primary"
+                  icon={<SaveOutlined />}
+                  onClick={handleSaveAll}
+                  loading={bulkMarkMutation.isPending}
+                  disabled={!selectedBatch || attendanceRecords.length === 0}
+                >
+                  บันทึกทั้งหมด
+                </Button>
+              </Space>
             </Form.Item>
           </Col>
         </Row>
@@ -325,10 +401,10 @@ export default function AttendanceManagePage() {
         <Table
           columns={columns}
           dataSource={attendanceRecords}
-          rowKey="id"
+          rowKey="enrollmentId"
           loading={loading}
           pagination={false}
-          scroll={{ x: 1000 }}
+          scroll={{ x: 1200 }}
         />
       </Card>
 
@@ -338,7 +414,7 @@ export default function AttendanceManagePage() {
         onOk={handleSaveEdit}
         onCancel={() => {
           setEditModalVisible(false);
-          setEditingRecord(null);
+          setEditingIndex(null);
           form.resetFields();
         }}
         okText="บันทึก"
@@ -348,7 +424,7 @@ export default function AttendanceManagePage() {
           <Row gutter={16}>
             <Col span={12}>
               <Form.Item label="เวลาเข้า" name="timeIn">
-                <TimePicker 
+                <TimePicker
                   style={{ width: '100%' }}
                   format="HH:mm"
                   placeholder="เลือกเวลาเข้า"
@@ -357,7 +433,7 @@ export default function AttendanceManagePage() {
             </Col>
             <Col span={12}>
               <Form.Item label="เวลาออก" name="timeOut">
-                <TimePicker 
+                <TimePicker
                   style={{ width: '100%' }}
                   format="HH:mm"
                   placeholder="เลือกเวลาออก"
@@ -372,7 +448,5 @@ export default function AttendanceManagePage() {
       </Modal>
     </>
   );
-
-  // Rest of the component code...
 }
 

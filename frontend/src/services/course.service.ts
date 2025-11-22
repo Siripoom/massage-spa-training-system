@@ -21,10 +21,21 @@ class CourseService {
    */
   async getAll(params?: CourseQueryParams): Promise<PaginatedResponse<Course>> {
     const queryString = params ? buildQueryString(params) : '';
-    const response = await axiosInstance.get<PaginatedResponse<Course>>(
+    const response = await axiosInstance.get<ApiResponse<Course[]> & { pagination: any }>(
       `${API_CONFIG.ENDPOINTS.COURSES.BASE}${queryString}`
     );
-    return response.data;
+
+    // Transform backend response to match frontend expected format
+    return {
+      data: response.data.data || [],
+      pagination: response.data.pagination || {
+        page: params?.page || 1,
+        limit: params?.limit || 10,
+        total: response.data.data?.length || 0,
+        totalPages: 1,
+      },
+      success: response.data.success,
+    };
   }
 
   /**

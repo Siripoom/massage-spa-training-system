@@ -44,14 +44,14 @@ const createUser = async (req, res) => {
         imageUrl,
         address: address
           ? {
-              create: {
-                address: address.address,
-                city: address.city,
-                state: address.state,
-                country: address.country,
-                zipCode: address.zipCode,
-              },
-            }
+            create: {
+              address: address.address,
+              city: address.city,
+              state: address.state,
+              country: address.country,
+              zipCode: address.zipCode,
+            },
+          }
           : undefined,
       },
       include: {
@@ -79,7 +79,43 @@ const createUser = async (req, res) => {
 // Get all users
 const getAllUsers = async (req, res) => {
   try {
+    // Get pagination and filter parameters from query
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    const search = req.query.search || '';
+    const role = req.query.role;
+
+    const skip = (page - 1) * limit;
+
+    // Build where clause for filtering
+    const where = {};
+
+    // Add search filter
+    if (search) {
+      where.OR = [
+        { firstName: { contains: search, mode: 'insensitive' } },
+        { lastName: { contains: search, mode: 'insensitive' } },
+        { email: { contains: search, mode: 'insensitive' } },
+        { phone: { contains: search } },
+      ];
+    }
+
+    // Add role filter
+    if (role && role !== 'all') {
+      where.role = role;
+    }
+
+    // Get total count for pagination
+    const total = await prisma.user.count({ where });
+
+    // Get users with pagination
     const users = await prisma.user.findMany({
+      where,
+      skip,
+      take: limit,
+      orderBy: {
+        createdAt: 'desc',
+      },
       select: {
         id: true,
         firstName: true,
@@ -107,9 +143,18 @@ const getAllUsers = async (req, res) => {
       },
     });
 
+    // Calculate pagination metadata
+    const totalPages = Math.ceil(total / limit);
+
     res.status(200).json({
       success: true,
       data: users,
+      pagination: {
+        page,
+        limit,
+        total,
+        totalPages,
+      },
     });
   } catch (error) {
     console.error("Error in getAllUsers:", error);
@@ -227,23 +272,23 @@ const updateUser = async (req, res) => {
         ...updateData,
         address: address
           ? {
-              upsert: {
-                create: {
-                  address: address.address,
-                  city: address.city,
-                  state: address.state,
-                  country: address.country,
-                  zipCode: address.zipCode,
-                },
-                update: {
-                  address: address.address,
-                  city: address.city,
-                  state: address.state,
-                  country: address.country,
-                  zipCode: address.zipCode,
-                },
+            upsert: {
+              create: {
+                address: address.address,
+                city: address.city,
+                state: address.state,
+                country: address.country,
+                zipCode: address.zipCode,
               },
-            }
+              update: {
+                address: address.address,
+                city: address.city,
+                state: address.state,
+                country: address.country,
+                zipCode: address.zipCode,
+              },
+            },
+          }
           : undefined,
       },
       select: {

@@ -4,16 +4,16 @@ const prisma = new PrismaClient();
 // Create a new batch
 const createBatch = async (req, res) => {
   try {
-    const { 
-      courseId, 
-      batchNumber, 
-      name, 
-      startDate, 
-      endDate, 
-      maxStudents, 
-      totalHours, 
-      description, 
-      location 
+    const {
+      courseId,
+      batchNumber,
+      name,
+      startDate,
+      endDate,
+      maxStudents,
+      totalHours,
+      description,
+      location
     } = req.body;
 
     // Check if batch number already exists for this course
@@ -56,14 +56,16 @@ const createBatch = async (req, res) => {
     });
 
     res.status(201).json({
-      message: "Batch created successfully",
-      batch
+      success: true,
+      data: batch,
+      message: "Batch created successfully"
     });
   } catch (error) {
     console.error("Error creating batch:", error);
     res.status(500).json({
-      error: "Failed to create batch",
-      details: error.message
+      success: false,
+      message: "Failed to create batch",
+      error: error.message
     });
   }
 };
@@ -72,9 +74,9 @@ const createBatch = async (req, res) => {
 const getAllBatches = async (req, res) => {
   try {
     const { courseId, status, page = 1, limit = 10 } = req.query;
-    
+
     const skip = (parseInt(page) - 1) * parseInt(limit);
-    
+
     const where = {};
     if (courseId) where.courseId = courseId;
     if (status) where.status = status;
@@ -108,20 +110,21 @@ const getAllBatches = async (req, res) => {
     const total = await prisma.batch.count({ where });
 
     res.json({
-      batches,
+      success: true,
+      data: batches,
       pagination: {
-        currentPage: parseInt(page),
-        totalPages: Math.ceil(total / parseInt(limit)),
-        totalCount: total,
-        hasNext: skip + parseInt(limit) < total,
-        hasPrev: parseInt(page) > 1
+        page: parseInt(page),
+        limit: parseInt(limit),
+        total,
+        totalPages: Math.ceil(total / parseInt(limit))
       }
     });
   } catch (error) {
     console.error("Error fetching batches:", error);
     res.status(500).json({
-      error: "Failed to fetch batches",
-      details: error.message
+      success: false,
+      message: "Failed to fetch batches",
+      error: error.message
     });
   }
 };
@@ -130,7 +133,7 @@ const getAllBatches = async (req, res) => {
 const getBatchById = async (req, res) => {
   try {
     const { id } = req.params;
-    
+
     const batch = await prisma.batch.findUnique({
       where: { id },
       include: {
@@ -173,16 +176,21 @@ const getBatchById = async (req, res) => {
 
     if (!batch) {
       return res.status(404).json({
-        error: "Batch not found"
+        success: false,
+        message: "Batch not found"
       });
     }
 
-    res.json(batch);
+    res.json({
+      success: true,
+      data: batch
+    });
   } catch (error) {
     console.error("Error fetching batch:", error);
     res.status(500).json({
-      error: "Failed to fetch batch",
-      details: error.message
+      success: false,
+      message: "Failed to fetch batch",
+      error: error.message
     });
   }
 };
@@ -227,14 +235,16 @@ const updateBatch = async (req, res) => {
     });
 
     res.json({
-      message: "Batch updated successfully",
-      batch
+      success: true,
+      data: batch,
+      message: "Batch updated successfully"
     });
   } catch (error) {
     console.error("Error updating batch:", error);
     res.status(500).json({
-      error: "Failed to update batch",
-      details: error.message
+      success: false,
+      message: "Failed to update batch",
+      error: error.message
     });
   }
 };
@@ -260,13 +270,15 @@ const deleteBatch = async (req, res) => {
     });
 
     res.json({
+      success: true,
       message: "Batch deleted successfully"
     });
   } catch (error) {
     console.error("Error deleting batch:", error);
     res.status(500).json({
-      error: "Failed to delete batch",
-      details: error.message
+      success: false,
+      message: "Failed to delete batch",
+      error: error.message
     });
   }
 };
@@ -284,14 +296,18 @@ const getNextBatchNumber = async (req, res) => {
     const nextBatchNumber = lastBatch ? lastBatch.batchNumber + 1 : 1;
 
     res.json({
-      nextBatchNumber,
-      lastBatchNumber: lastBatch?.batchNumber || 0
+      success: true,
+      data: {
+        nextBatchNumber,
+        lastBatchNumber: lastBatch?.batchNumber || 0
+      }
     });
   } catch (error) {
     console.error("Error getting next batch number:", error);
     res.status(500).json({
-      error: "Failed to get next batch number",
-      details: error.message
+      success: false,
+      message: "Failed to get next batch number",
+      error: error.message
     });
   }
 };

@@ -92,6 +92,28 @@ class EnrollmentService {
     const queryParams = { ...params, batchId };
     return this.getAll(queryParams);
   }
+
+  /**
+   * Get students by batch ID with progress
+   */
+  async getStudentsByBatchId(batchId: string | number, params?: PaginationParams & { search?: string }): Promise<PaginatedResponse<any>> {
+    const queryString = params ? buildQueryString(params) : '';
+    const response = await axiosInstance.get<ApiResponse<any[]> & { pagination: any }>(
+      `${API_CONFIG.ENDPOINTS.ENROLLMENTS.BASE}/batch/${batchId}/students${queryString}`
+    );
+
+    // Transform backend response to match frontend expected format
+    return {
+      data: response.data.data || [],
+      pagination: response.data.pagination || {
+        page: params?.page || 1,
+        limit: params?.limit || 50,
+        total: response.data.data?.length || 0,
+        totalPages: 1,
+      },
+      success: response.data.success,
+    };
+  }
 }
 
 // Export singleton instance
