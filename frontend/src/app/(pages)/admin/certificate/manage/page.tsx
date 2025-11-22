@@ -1,12 +1,13 @@
 "use client";
 
+import '@ant-design/v5-patch-for-react-19';
 import React, { useState, useEffect, useRef } from 'react';
 import { Form, Input, Button, Select, message, Typography, Breadcrumb, Card, Row, Col, InputNumber } from 'antd';
 import { SaveOutlined, ArrowLeftOutlined, HomeOutlined, TrophyOutlined, AppstoreOutlined } from '@ant-design/icons';
 import { useRouter, useSearchParams } from 'next/navigation';
 import dayjs from 'dayjs';
 import { v4 as uuidv4 } from 'uuid';
-import dynamic from 'next/dynamic'; // Ensure dynamic is imported
+import dynamic from 'next/dynamic';
 import Konva from 'konva';
 
 dayjs.locale('th');

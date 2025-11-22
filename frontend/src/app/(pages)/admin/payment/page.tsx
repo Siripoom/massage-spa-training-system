@@ -1,9 +1,10 @@
 // src/app/(pages)/(admin)/payment/page.tsx
 "use client";
 
+import '@ant-design/v5-patch-for-react-19';
 import React, { useState } from 'react';
-import { Table, Button, Space, Modal, Form, Input, message, Tag, DatePicker, Select, Typography, Breadcrumb } from 'antd'; // Added Breadcrumb, Card
-import { EditOutlined, EyeOutlined, SearchOutlined, PlusOutlined, DeleteOutlined, HomeOutlined, DollarCircleOutlined } from '@ant-design/icons'; // Added HomeOutlined, DollarCircleOutlined
+import { Table, Button, Space, Modal, Form, Input, message, Tag, DatePicker, Select, Typography, Breadcrumb } from 'antd';
+import { EditOutlined, EyeOutlined, SearchOutlined, PlusOutlined, DeleteOutlined, HomeOutlined, DollarCircleOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
 
 const { Option } = Select;
