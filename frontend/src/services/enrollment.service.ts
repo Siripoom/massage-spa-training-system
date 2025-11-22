@@ -21,10 +21,24 @@ class EnrollmentService {
    */
   async getAll(params?: PaginationParams): Promise<PaginatedResponse<Enrollment>> {
     const queryString = params ? buildQueryString(params) : '';
-    const response = await axiosInstance.get<PaginatedResponse<Enrollment>>(
+    const response = await axiosInstance.get<Enrollment[] | PaginatedResponse<Enrollment>>(
       `${API_CONFIG.ENDPOINTS.ENROLLMENTS.BASE}${queryString}`
     );
-    return response.data;
+
+    // Handle both array and paginated response
+    if (Array.isArray(response.data)) {
+      return {
+        data: response.data,
+        pagination: {
+          page: 1,
+          limit: response.data.length,
+          total: response.data.length,
+          totalPages: 1,
+        },
+      } as PaginatedResponse<Enrollment>;
+    }
+
+    return response.data as PaginatedResponse<Enrollment>;
   }
 
   /**

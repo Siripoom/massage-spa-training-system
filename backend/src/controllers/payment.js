@@ -22,13 +22,15 @@ exports.createPayment = async (req, res) => {
       return res.status(404).json({ error: "Enrollment not found" });
     }
 
-    // Check if payment plan exists
-    const paymentPlan = await prisma.paymentPlan.findUnique({
-      where: { id: paymentPlanId },
-    });
+    // Check if payment plan exists (if provided)
+    if (paymentPlanId) {
+      const paymentPlan = await prisma.paymentPlan.findUnique({
+        where: { id: paymentPlanId },
+      });
 
-    if (!paymentPlan) {
-      return res.status(404).json({ error: "Payment plan not found" });
+      if (!paymentPlan) {
+        return res.status(404).json({ error: "Payment plan not found" });
+      }
     }
 
     // Validate payment type
@@ -40,36 +42,38 @@ exports.createPayment = async (req, res) => {
     }
 
     // For installment payments, validate installment number
-    if (paymentType === "INSTALLMENT") {
-      if (
-        !installmentNumber ||
-        installmentNumber < 1 ||
-        installmentNumber > paymentPlan.installments
-      ) {
-        return res.status(400).json({
-          error: `Invalid installment number. Must be between 1 and ${paymentPlan.installments}`,
-        });
-      }
-
-      // Check if this installment already exists
-      const existingPayment = await prisma.payment.findFirst({
-        where: {
-          paymentPlanId,
-          installmentNumber,
-        },
+    if (paymentType === "INSTALLMENT" && paymentPlanId) {
+      const paymentPlan = await prisma.paymentPlan.findUnique({
+        where: { id: paymentPlanId },
       });
 
-      if (existingPayment) {
-        return res.status(400).json({
-          error: `Installment ${installmentNumber} already exists for this payment plan`,
+      if (paymentPlan && installmentNumber) {
+        if (installmentNumber < 1 || installmentNumber > paymentPlan.installments) {
+          return res.status(400).json({
+            error: `Invalid installment number. Must be between 1 and ${paymentPlan.installments}`,
+          });
+        }
+
+        // Check if this installment already exists
+        const existingPayment = await prisma.payment.findFirst({
+          where: {
+            paymentPlanId,
+            installmentNumber,
+          },
         });
+
+        if (existingPayment) {
+          return res.status(400).json({
+            error: `Installment ${installmentNumber} already exists for this payment plan`,
+          });
+        }
       }
     }
 
     const payment = await prisma.payment.create({
       data: {
         enrollmentId,
-        paymentPlanId,
+        paymentPlanId: paymentPlanId || null,
         amount: parseFloat(amount),
         paymentType,
         installmentNumber: installmentNumber || 1,

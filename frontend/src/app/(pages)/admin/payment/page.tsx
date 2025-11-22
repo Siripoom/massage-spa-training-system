@@ -3,28 +3,23 @@
 
 import '@ant-design/v5-patch-for-react-19';
 import React, { useState } from 'react';
-import { Table, Button, Space, Modal, Form, Input, message, Tag, DatePicker, Select, Typography, Breadcrumb } from 'antd';
+import { Table, Button, Space, Modal, Form, Input, message, Tag, DatePicker, Select, Typography, Breadcrumb, Spin } from 'antd';
 import { EditOutlined, EyeOutlined, SearchOutlined, PlusOutlined, DeleteOutlined, HomeOutlined, DollarCircleOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
+import { usePayments, useCreatePayment, useUpdatePayment, useDeletePayment, useEnrollments } from '@/hooks';
+import type { Payment } from '@/types/api';
 
 const { Option } = Select;
-const { Text, Title: AntdTitle } = Typography; // Renamed Title to AntdTitle for clarity
-
-interface Payment {
-  key: string;
-  studentName: string;
-  courseTitle: string;
-  amount: number;
-  paymentDate: string; // Data stored in State and Backend is string (YYYY-MM-DD)
-  status: 'Complete' | 'Pending' | 'Unpaid';
-}
+const { Text, Title: AntdTitle } = Typography;
 
 interface PaymentFormValues {
-  studentName: string;
-  courseTitle: string;
+  enrollmentId: string;
+  paymentPlanId?: string;
   amount: number;
-  paymentDate: dayjs.Dayjs | null | undefined;
-  status: 'Complete' | 'Pending' | 'Unpaid';
+  paymentType: 'FULL' | 'INSTALLMENT';
+  installmentNumber?: number;
+  transferDate?: dayjs.Dayjs | null;
+  status: string;
 }
 
 export default function PaymentPage() {
@@ -32,72 +27,41 @@ export default function PaymentPage() {
   const [editingPayment, setEditingPayment] = useState<Payment | null>(null);
   const [form] = Form.useForm<PaymentFormValues>();
   const [searchTerm, setSearchTerm] = useState('');
-
   const [isDetailModalVisible, setIsDetailModalVisible] = useState(false);
   const [viewingPayment, setViewingPayment] = useState<Payment | null>(null);
 
-  const [payments, setPayments] = useState<Payment[]>([
-    {
-      key: '1',
-      studentName: 'สมชาย ใจดี',
-      courseTitle: 'นวดแผนไทยเบื้องต้น',
-      amount: 12500,
-      paymentDate: '2023-06-01',
-      status: 'Complete',
-    },
-    {
-      key: '2',
-      studentName: 'สมหญิง รักเรียน',
-      courseTitle: 'สปาเพื่อสุขภาพ',
-      amount: 15000,
-      paymentDate: '2023-06-15',
-      status: 'Pending',
-    },
-    {
-      key: '3',
-      studentName: 'มานะ พากเพียร',
-      courseTitle: 'อโรมาเธอราพี',
-      amount: 10000,
-      paymentDate: '2023-07-01',
-      status: 'Unpaid',
-    },
-    {
-      key: '4',
-      studentName: 'ดวงใจ งามยิ่ง',
-      courseTitle: 'นวดกดจุดเท้า',
-      amount: 8000,
-      paymentDate: '2023-07-05',
-      status: 'Complete',
-    },
-  ]);
+  // React Query hooks
+  const { data: paymentsData, isLoading } = usePayments({ search: searchTerm });
+  const { data: enrollmentsData, isLoading: isLoadingEnrollments } = useEnrollments({ limit: 1000 });
+  const createPaymentMutation = useCreatePayment();
+  const updatePaymentMutation = useUpdatePayment();
+  const deletePaymentMutation = useDeletePayment();
 
-
-  const filteredPayments = payments.filter(payment =>
-    payment.studentName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    payment.courseTitle.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    payment.status.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    payment.paymentDate.includes(searchTerm) // ค้นหาจากวันที่ด้วย
-  );
+  const payments = paymentsData?.data || [];
+  const enrollments = enrollmentsData?.data || [];
+  const filteredPayments = payments;
 
   const columns = [
     {
       title: '#',
-      dataIndex: 'key',
-      key: 'key',
-      render: (text: string) => parseInt(text),
+      dataIndex: 'id',
+      key: 'id',
+      render: (_text: string, _record: Payment, index: number) => index + 1,
       width: 50,
       className: 'text-gray-600',
     },
     {
       title: 'STUDENT NAME',
-      dataIndex: 'studentName',
+      dataIndex: ['enrollment', 'user'],
       key: 'studentName',
+      render: (user: any) => user ? `${user.firstName} ${user.lastName}` : 'N/A',
       className: 'font-medium text-gray-900',
     },
     {
       title: 'COURSE TITLE',
-      dataIndex: 'courseTitle',
+      dataIndex: ['enrollment', 'batch', 'course'],
       key: 'courseTitle',
+      render: (course: any) => course?.title || 'N/A',
       className: 'text-gray-700',
     },
     {
@@ -108,25 +72,28 @@ export default function PaymentPage() {
       className: 'text-gray-700',
     },
     {
-      title: 'PAYMENT DATE',
-      dataIndex: 'paymentDate',
-      key: 'paymentDate',
+      title: 'TRANSFER DATE',
+      dataIndex: 'transferDate',
+      key: 'transferDate',
+      render: (date: string) => date ? dayjs(date).format('YYYY-MM-DD') : 'N/A',
       className: 'text-gray-700',
     },
     {
       title: 'STATUS',
       dataIndex: 'status',
       key: 'status',
-      render: (status: 'Complete' | 'Pending' | 'Unpaid') => {
+      render: (status: string) => {
         let color: string;
-        switch (status) {
-          case 'Complete':
+        switch (status?.toUpperCase()) {
+          case 'COMPLETED':
+          case 'COMPLETE':
             color = 'green';
             break;
-          case 'Pending':
+          case 'PENDING':
             color = 'blue';
             break;
-          case 'Unpaid':
+          case 'UNPAID':
+          case 'FAILED':
             color = 'red';
             break;
           default:
@@ -134,7 +101,7 @@ export default function PaymentPage() {
         }
         return (
           <Tag color={color} className="rounded-full px-3 py-1 text-xs font-semibold">
-            {status}
+            {status || 'N/A'}
           </Tag>
         );
       },
@@ -150,12 +117,15 @@ export default function PaymentPage() {
             onClick={() => handleView(record)}
             className="text-gray-500 border-none shadow-none hover:bg-gray-50"
           />
-          <Button icon={<EditOutlined />} onClick={() => handleEdit(record)} className="text-blue-500 border-none shadow-none hover:bg-blue-50" />
-          {/* *** เพิ่มปุ่ม Delete ที่นี่ *** */}
+          <Button
+            icon={<EditOutlined />}
+            onClick={() => handleEdit(record)}
+            className="text-blue-500 border-none shadow-none hover:bg-blue-50"
+          />
           <Button
             icon={<DeleteOutlined />}
             danger
-            onClick={() => handleDelete(record.key)}
+            onClick={() => handleDelete(record.id)}
             className="text-red-500 border-none shadow-none hover:bg-red-50"
           />
         </Space>
@@ -172,22 +142,25 @@ export default function PaymentPage() {
   const handleEdit = (record: Payment) => {
     setEditingPayment(record);
     form.setFieldsValue({
-      ...record,
-      paymentDate: record.paymentDate ? dayjs(record.paymentDate) : null,
+      enrollmentId: record.enrollmentId,
+      paymentPlanId: record.paymentPlanId,
+      amount: record.amount,
+      paymentType: record.paymentType as 'FULL' | 'INSTALLMENT',
+      installmentNumber: record.installmentNumber,
+      transferDate: record.transferDate ? dayjs(record.transferDate) : null,
+      status: record.status,
     });
     setIsModalVisible(true);
   };
 
-  // เพิ่ม handleDelete function
-  const handleDelete = (keyToDelete: string) => {
+  const handleDelete = (idToDelete: string) => {
     Modal.confirm({
       title: 'ยืนยันการลบ',
       content: 'คุณแน่ใจหรือไม่ว่าต้องการลบข้อมูล Payment นี้?',
       okText: 'ลบ',
       cancelText: 'ยกเลิก',
       onOk() {
-        setPayments(prevPayments => prevPayments.filter(payment => payment.key !== keyToDelete));
-        message.success('ลบข้อมูล Payment สำเร็จ!');
+        deletePaymentMutation.mutate(idToDelete);
       },
     });
   };
@@ -197,24 +170,28 @@ export default function PaymentPage() {
       .then((values: PaymentFormValues) => {
         const formattedValues = {
           ...values,
-          paymentDate: values.paymentDate ? values.paymentDate.format('YYYY-MM-DD') : '',
+          transferDate: values.transferDate ? values.transferDate.format('YYYY-MM-DD') : undefined,
+          amount: Number(values.amount),
         };
+
         if (editingPayment) {
-          setPayments(prevPayments =>
-            prevPayments.map(payment =>
-              payment.key === editingPayment.key ? { ...payment, ...formattedValues } : payment
-            )
+          updatePaymentMutation.mutate(
+            { id: editingPayment.id, data: formattedValues },
+            {
+              onSuccess: () => {
+                setIsModalVisible(false);
+                form.resetFields();
+              },
+            }
           );
-          message.success('อัปเดตข้อมูล Payment สำเร็จ!');
         } else {
-          const newPayment: Payment = {
-            key: (payments.length + 1).toString(),
-            ...formattedValues,
-          };
-          setPayments(prevPayments => [...prevPayments, newPayment]);
-          message.success('เพิ่มข้อมูล Payment สำเร็จ!');
+          createPaymentMutation.mutate(formattedValues as any, {
+            onSuccess: () => {
+              setIsModalVisible(false);
+              form.resetFields();
+            },
+          });
         }
-        setIsModalVisible(false);
       })
       .catch(info => {
         console.log('Validate Failed:', info);
@@ -279,13 +256,16 @@ export default function PaymentPage() {
         </Button>
       </div>
 
-      <Table
-        columns={columns}
-        dataSource={filteredPayments}
-        className="rounded-xl shadow-custom-light mt-4"
-        pagination={{ pageSize: 10 }}
-        bordered={false}
-      />
+      <Spin spinning={isLoading}>
+        <Table
+          columns={columns}
+          dataSource={filteredPayments}
+          rowKey="id"
+          className="rounded-xl shadow-custom-light mt-4"
+          pagination={{ pageSize: 10 }}
+          bordered={false}
+        />
+      </Spin>
 
       <Modal
         title={editingPayment ? 'แก้ไขข้อมูล Payment' : 'เพิ่ม Payment ใหม่'}
@@ -302,30 +282,63 @@ export default function PaymentPage() {
           className="p-4"
         >
           <Form.Item
-            name="studentName"
-            label={<span className="font-semibold text-gray-700">ชื่อนักเรียน</span>}
-            rules={[{ required: true, message: 'กรุณากรอกชื่อนักเรียน!' }]}
+            name="enrollmentId"
+            label={<span className="font-semibold text-gray-700">เลือกการลงทะเบียน</span>}
+            rules={[{ required: true, message: 'กรุณาเลือกการลงทะเบียน!' }]}
           >
-            <Input placeholder="เช่น สมชาย ใจดี" className="rounded-lg" />
+            <Select
+              placeholder="เลือกนักเรียนและหลักสูตร"
+              className="rounded-lg"
+              loading={isLoadingEnrollments}
+              showSearch
+              allowClear
+              filterOption={(input, option) =>
+                (option?.label ?? '').toString().toLowerCase().includes(input.toLowerCase())
+              }
+            >
+              {enrollments.map((enrollment) => (
+                <Option
+                  key={enrollment.id}
+                  value={enrollment.id}
+                  label={`${enrollment.user?.firstName || ''} ${enrollment.user?.lastName || ''} - ${enrollment.course?.title || ''}`}
+                >
+                  {enrollment.user?.firstName} {enrollment.user?.lastName} - {enrollment.course?.title}
+                </Option>
+              ))}
+            </Select>
           </Form.Item>
           <Form.Item
-            name="courseTitle"
-            label={<span className="font-semibold text-gray-700">ชื่อหลักสูตร</span>}
-            rules={[{ required: true, message: 'กรุณากรอกชื่อหลักสูตร!' }]}
+            name="paymentPlanId"
+            label={<span className="font-semibold text-gray-700">Payment Plan ID (Optional)</span>}
           >
-            <Input placeholder="เช่น นวดแผนไทยเบื้องต้น" className="rounded-lg" />
+            <Input placeholder="payment-plan-id (ถ้ามี)" className="rounded-lg" />
           </Form.Item>
           <Form.Item
             name="amount"
             label={<span className="font-semibold text-gray-700">จำนวนเงิน</span>}
-            rules={[{ required: true, message: 'กรุณากรอกจำนวนเงิน!', type: 'number', transform: (value) => Number(value) || 0 }]}
+            rules={[{ required: true, message: 'กรุณากรอกจำนวนเงิน!' }]}
           >
             <Input type="number" placeholder="เช่น 12500" className="rounded-lg" />
           </Form.Item>
           <Form.Item
-            name="paymentDate"
-            label={<span className="font-semibold text-gray-700">วันที่ชำระเงิน</span>}
-            rules={[{ required: true, message: 'กรุณาเลือกวันที่ชำระเงิน!' }]}
+            name="paymentType"
+            label={<span className="font-semibold text-gray-700">ประเภทการชำระ</span>}
+            rules={[{ required: true, message: 'กรุณาเลือกประเภทการชำระ!' }]}
+          >
+            <Select placeholder="เลือกประเภทการชำระ" className="rounded-lg">
+              <Option value="FULL">ชำระเต็มจำนวน</Option>
+              <Option value="INSTALLMENT">ผ่อนชำระ</Option>
+            </Select>
+          </Form.Item>
+          <Form.Item
+            name="installmentNumber"
+            label={<span className="font-semibold text-gray-700">งวดที่</span>}
+          >
+            <Input type="number" placeholder="เช่น 1" className="rounded-lg" />
+          </Form.Item>
+          <Form.Item
+            name="transferDate"
+            label={<span className="font-semibold text-gray-700">วันที่โอนเงิน</span>}
           >
             <DatePicker format="YYYY-MM-DD" className="w-full rounded-lg" />
           </Form.Item>
@@ -334,10 +347,10 @@ export default function PaymentPage() {
             label={<span className="font-semibold text-gray-700">สถานะ</span>}
             rules={[{ required: true, message: 'กรุณาเลือกสถานะ!' }]}
           >
-            <Select<PaymentFormValues['status']> placeholder="เลือกสถานะ" className="rounded-lg">
-              <Option value="Complete">Complete</Option>
-              <Option value="Pending">Pending</Option>
-              <Option value="Unpaid">Unpaid</Option>
+            <Select placeholder="เลือกสถานะ" className="rounded-lg">
+              <Option value="COMPLETED">Complete</Option>
+              <Option value="PENDING">Pending</Option>
+              <Option value="UNPAID">Unpaid</Option>
             </Select>
           </Form.Item>
         </Form>
@@ -353,11 +366,43 @@ export default function PaymentPage() {
       >
         {viewingPayment ? (
           <div className="p-4">
-            <p className="mb-2"><Text strong>ชื่อนักเรียน:</Text> {viewingPayment.studentName}</p>
-            <p className="mb-2"><Text strong>ชื่อหลักสูตร:</Text> {viewingPayment.courseTitle}</p>
-            <p className="mb-2"><Text strong>จำนวนเงิน:</Text> {viewingPayment.amount.toLocaleString()} THB</p>
-            <p className="mb-2"><Text strong>วันที่ชำระเงิน:</Text> {viewingPayment.paymentDate}</p>
-            <p className="mb-2"><Text strong>สถานะ:</Text> <Tag color={viewingPayment.status === 'Complete' ? 'green' : (viewingPayment.status === 'Pending' ? 'blue' : 'red')}>{viewingPayment.status}</Tag></p>
+            <p className="mb-2">
+              <Text strong>ชื่อนักเรียน:</Text>{' '}
+              {viewingPayment.enrollment?.user
+                ? `${viewingPayment.enrollment.user.firstName} ${viewingPayment.enrollment.user.lastName}`
+                : 'N/A'}
+            </p>
+            <p className="mb-2">
+              <Text strong>ชื่อหลักสูตร:</Text>{' '}
+              {viewingPayment.enrollment?.batch?.course?.title || 'N/A'}
+            </p>
+            <p className="mb-2">
+              <Text strong>จำนวนเงิน:</Text> {viewingPayment.amount.toLocaleString()} THB
+            </p>
+            <p className="mb-2">
+              <Text strong>ประเภทการชำระ:</Text> {viewingPayment.paymentType}
+            </p>
+            <p className="mb-2">
+              <Text strong>งวดที่:</Text> {viewingPayment.installmentNumber || 'N/A'}
+            </p>
+            <p className="mb-2">
+              <Text strong>วันที่โอน:</Text>{' '}
+              {viewingPayment.transferDate ? dayjs(viewingPayment.transferDate).format('YYYY-MM-DD') : 'N/A'}
+            </p>
+            <p className="mb-2">
+              <Text strong>สถานะ:</Text>{' '}
+              <Tag
+                color={
+                  viewingPayment.status?.toUpperCase() === 'COMPLETED' || viewingPayment.status?.toUpperCase() === 'COMPLETE'
+                    ? 'green'
+                    : viewingPayment.status?.toUpperCase() === 'PENDING'
+                      ? 'blue'
+                      : 'red'
+                }
+              >
+                {viewingPayment.status}
+              </Tag>
+            </p>
           </div>
         ) : (
           <p>ไม่พบข้อมูล</p>

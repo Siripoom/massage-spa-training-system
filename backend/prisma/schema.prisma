@@ -116,20 +116,20 @@ model PaymentPlan {
 }
 
 model Payment {
-  id                String      @id @default(uuid())
+  id                String       @id @default(uuid())
   enrollmentId      String
-  paymentPlanId     String
+  paymentPlanId     String?
   amount            Float
-  status            String      @default("PENDING")
+  status            String       @default("PENDING")
   paymentType       String
   installmentNumber Int
   slipUrl           String[]
   transferDate      DateTime?
   receiptUrl        String?
-  createdAt         DateTime    @default(now())
-  updatedAt         DateTime    @updatedAt
-  enrollment        Enrollment  @relation(fields: [enrollmentId], references: [id], onDelete: Cascade)
-  paymentPlan       PaymentPlan @relation(fields: [paymentPlanId], references: [id], onDelete: Cascade)
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
+  enrollment        Enrollment   @relation(fields: [enrollmentId], references: [id], onDelete: Cascade)
+  paymentPlan       PaymentPlan? @relation(fields: [paymentPlanId], references: [id], onDelete: Cascade)
 }
 
 model Bank {

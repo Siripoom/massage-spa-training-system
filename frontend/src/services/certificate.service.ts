@@ -21,10 +21,24 @@ class CertificateService {
    */
   async getAll(params?: PaginationParams): Promise<PaginatedResponse<Certificate>> {
     const queryString = params ? buildQueryString(params) : '';
-    const response = await axiosInstance.get<PaginatedResponse<Certificate>>(
+    const response = await axiosInstance.get<Certificate[] | PaginatedResponse<Certificate>>(
       `${API_CONFIG.ENDPOINTS.CERTIFICATES.BASE}${queryString}`
     );
-    return response.data;
+
+    // Handle both array and paginated response
+    if (Array.isArray(response.data)) {
+      return {
+        data: response.data,
+        pagination: {
+          page: 1,
+          limit: response.data.length,
+          total: response.data.length,
+          totalPages: 1,
+        },
+      } as PaginatedResponse<Certificate>;
+    }
+
+    return response.data as PaginatedResponse<Certificate>;
   }
 
   /**

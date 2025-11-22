@@ -381,7 +381,10 @@ export interface AttendanceQueryParams extends PaginationParams {
 
 export interface PaymentQueryParams extends PaginationParams {
   enrollmentId?: string;
+  paymentPlanId?: string;
   status?: string;
+  paymentType?: string;
+  search?: string;
 }
 
 // ==================== Create/Update DTOs ====================
@@ -398,7 +401,7 @@ export interface CreateCourseDto {
   registrationEnd?: string;
 }
 
-export interface UpdateCourseDto extends Partial<CreateCourseDto> {}
+export interface UpdateCourseDto extends Partial<CreateCourseDto> { }
 
 export interface CreateBatchDto {
   courseId: string;
@@ -413,7 +416,7 @@ export interface CreateBatchDto {
   status?: BatchStatus;
 }
 
-export interface UpdateBatchDto extends Partial<CreateBatchDto> {}
+export interface UpdateBatchDto extends Partial<CreateBatchDto> { }
 
 export interface CreateEnrollmentDto {
   userId: string;
@@ -422,20 +425,20 @@ export interface CreateEnrollmentDto {
   status?: string;
 }
 
-export interface UpdateEnrollmentDto extends Partial<CreateEnrollmentDto> {}
+export interface UpdateEnrollmentDto extends Partial<CreateEnrollmentDto> { }
 
 export interface CreatePaymentDto {
   enrollmentId: string;
-  paymentPlanId: string;
+  paymentPlanId?: string;
   amount: number;
   paymentType: string;
-  installmentNumber: number;
-  slipUrl: string[];
+  installmentNumber?: number;
+  slipUrl?: string[];
   transferDate?: string;
   status?: string;
 }
 
-export interface UpdatePaymentDto extends Partial<CreatePaymentDto> {}
+export interface UpdatePaymentDto extends Partial<CreatePaymentDto> { }
 
 export interface CreateAttendanceDto {
   enrollmentId: string;
@@ -449,7 +452,7 @@ export interface CreateAttendanceDto {
   notes?: string;
 }
 
-export interface UpdateAttendanceDto extends Partial<CreateAttendanceDto> {}
+export interface UpdateAttendanceDto extends Partial<CreateAttendanceDto> { }
 
 export interface CreateStudentApplicationDto {
   userId: string;
@@ -475,7 +478,7 @@ export interface CreateCertificateDto {
   status?: string;
 }
 
-export interface UpdateCertificateDto extends Partial<CreateCertificateDto> {}
+export interface UpdateCertificateDto extends Partial<CreateCertificateDto> { }
 
 export interface CreateBankDto {
   name: string;
@@ -484,7 +487,7 @@ export interface CreateBankDto {
   qrCodeUrl?: string;
 }
 
-export interface UpdateBankDto extends Partial<CreateBankDto> {}
+export interface UpdateBankDto extends Partial<CreateBankDto> { }
 
 // ==================== Utility Types ====================
 

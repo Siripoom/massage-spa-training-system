@@ -19,7 +19,7 @@ interface CreateCertificateTemplateDto {
   layoutData: any;
 }
 
-interface UpdateCertificateTemplateDto extends Partial<CreateCertificateTemplateDto> {}
+interface UpdateCertificateTemplateDto extends Partial<CreateCertificateTemplateDto> { }
 
 class CertificateTemplateService {
   /**
@@ -27,10 +27,24 @@ class CertificateTemplateService {
    */
   async getAll(params?: PaginationParams): Promise<PaginatedResponse<CertificateTemplate>> {
     const queryString = params ? buildQueryString(params) : '';
-    const response = await axiosInstance.get<PaginatedResponse<CertificateTemplate>>(
+    const response = await axiosInstance.get<CertificateTemplate[] | PaginatedResponse<CertificateTemplate>>(
       `${API_CONFIG.ENDPOINTS.CERTIFICATE_TEMPLATES.BASE}${queryString}`
     );
-    return response.data;
+
+    // Handle both array and paginated response
+    if (Array.isArray(response.data)) {
+      return {
+        data: response.data,
+        pagination: {
+          page: 1,
+          limit: response.data.length,
+          total: response.data.length,
+          totalPages: 1,
+        },
+      } as PaginatedResponse<CertificateTemplate>;
+    }
+
+    return response.data as PaginatedResponse<CertificateTemplate>;
   }
 
   /**

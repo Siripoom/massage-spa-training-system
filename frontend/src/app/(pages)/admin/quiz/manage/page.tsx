@@ -321,7 +321,7 @@ export default function ManageQuizPage() {
                   >
                     <Select placeholder="เลือกหลักสูตร" className="rounded-lg">
                       {courses.map((course: any) => (
-                        <Option key={course.id} value={course.id}>{course.name}</Option>
+                        <Option key={course.id} value={course.id}>{course.title}</Option>
                       ))}
                     </Select>
                   </Form.Item>
