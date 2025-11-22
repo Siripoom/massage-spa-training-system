@@ -43,6 +43,8 @@ const batchRoutes = require("./routes/batch");
 const attendanceRoutes = require("./routes/attendance");
 const studentApplicationRoutes = require("./routes/studentApplication");
 const dashboardRoutes = require("./routes/dashboard");
+const quizRoutes = require("./routes/quiz");
+const quizAttemptRoutes = require("./routes/quizAttempt");
 
 // Use routes
 app.use("/api/auth", authRoutes);
@@ -63,6 +65,8 @@ app.use("/api/batches", batchRoutes);
 app.use("/api/attendance", attendanceRoutes);
 app.use("/api/student-applications", studentApplicationRoutes);
 app.use("/api/dashboard", dashboardRoutes);
+app.use("/api/quizzes", quizRoutes);
+app.use("/api/quiz-attempts", quizAttemptRoutes);
 
 // Global error handling middleware
 app.use((err, req, res, next) => {

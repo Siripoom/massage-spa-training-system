@@ -9,3 +9,5 @@ export * from './useBatches';
 export * from './useThemeSettings';
 export * from './useAttendance';
 export * from './useDashboard';
+export * from './useQuizzes';
+export * from './useQuizAttempts';

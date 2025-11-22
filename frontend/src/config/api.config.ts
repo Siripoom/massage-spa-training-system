@@ -116,6 +116,13 @@ export const API_CONFIG = {
 
     // Dashboard
     DASHBOARD: '/dashboard',
+
+    // Quizzes
+    QUIZZES: {
+      BASE: '/quizzes',
+      BY_ID: (id: string | number) => `/quizzes/${id}`,
+      UPCOMING: '/quizzes/upcoming',
+    },
   },
 
   // Storage keys

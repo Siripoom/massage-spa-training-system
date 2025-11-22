@@ -2,57 +2,40 @@
 
 import '@ant-design/v5-patch-for-react-19';
 import React, { useState, useEffect } from 'react';
-import { Form, Input, Button, Space, Card, Typography, message, Radio, Popconfirm, Row, Col, Breadcrumb, Select, Modal } from 'antd'; // Added Breadcrumb, Select, Modal
-import { PlusOutlined, DeleteOutlined, SaveOutlined, ArrowLeftOutlined, EditOutlined, HomeOutlined, FileTextOutlined, AppstoreOutlined } from '@ant-design/icons'; // Added HomeOutlined, FileTextOutlined, AppstoreOutlined
-import { v4 as uuidv4 } from 'uuid'; // สำหรับสร้าง unique ID
+import { Form, Input, Button, Space, Card, Typography, message, Radio, Popconfirm, Row, Col, Breadcrumb, Select, Modal, DatePicker, InputNumber, Spin } from 'antd';
+import { PlusOutlined, DeleteOutlined, SaveOutlined, ArrowLeftOutlined, EditOutlined, HomeOutlined, FileTextOutlined, AppstoreOutlined } from '@ant-design/icons';
+import { v4 as uuidv4 } from 'uuid';
 import { useRouter, useSearchParams } from 'next/navigation';
 import dayjs from 'dayjs';
+import { useQuiz, useCreateQuiz, useUpdateQuiz, useCourses, useBatches } from '@/hooks';
 
-dayjs.locale('th'); // Set dayjs locale to Thai
+dayjs.locale('th');
 
 const { Title: AntdTitle, Text } = Typography;
 const { TextArea } = Input;
-const { Option } = Select; // Added Option for Select component in Modal
+const { Option } = Select;
 
-
-// --- Standardized Interfaces ---
-interface Option {
-  id: string; // ID ควรเป็น string เสมอ
-  text: string;
-}
-
+// --- Interfaces ---
 interface Question {
-  id: string;
+  id?: string;
   questionText: string;
-  options: Option[];
-  correctOptionId: string; // ID ของตัวเลือกที่ถูกต้อง
+  questionType: 'MULTIPLE_CHOICE' | 'TRUE_FALSE' | 'SHORT_ANSWER' | 'ESSAY';
+  options: string[];
+  correctAnswer: string;
+  points: number;
+  order: number;
 }
 
-interface Quiz {
-  id: string;
-  title: string; // ชื่อข้อสอบ
-  description: string; // คำอธิบายทั่วไปของข้อสอบ
-  course: string; // หลักสูตรที่เกี่ยวข้อง
-  numQuestions: number; // จำนวนคำถามในข้อสอบ (จะถูกคำนวณจาก questions.length)
-  status: 'draft' | 'published'; // สถานะของข้อสอบ
-  questions: Question[];
-  createdAt: string;
-  updatedAt: string;
-}
-
-// Interface สำหรับค่าในฟอร์มหลักของ Quiz
 interface QuizFormValues {
   title: string;
   description: string;
-  course: string; // เพิ่ม course เข้ามาในฟอร์ม
-}
-
-// Interface สำหรับค่าในฟอร์มของ Question
-interface QuestionFormValues {
-  id?: string;
-  questionText: string;
-  options: { id?: string; text: string }[]; // id อาจเป็น undefined ในจังหวะแรก
-  correctOptionId: string;
+  courseId: string;
+  batchId: string | null;
+  dueDate: dayjs.Dayjs;
+  duration: number;
+  totalPoints: number;
+  passingScore: number;
+  isPublished: boolean;
 }
 
 
@@ -62,224 +45,212 @@ export default function ManageQuizPage() {
   const searchParams = useSearchParams();
   const quizId = searchParams.get('id');
 
-  const [quiz, setQuiz] = useState<Quiz | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [isEditMode, setIsEditMode] = useState(false); // Track if we are editing an existing quiz
+  // Hooks
+  const { data: quizData, isLoading: quizLoading } = useQuiz(quizId || '');
+  const { data: coursesData } = useCourses({});
+  const { data: batchesData } = useBatches({});
+  const { mutate: createQuiz, isPending: isCreating } = useCreateQuiz();
+  const { mutate: updateQuiz, isPending: isUpdating } = useUpdateQuiz();
 
+  // State
+  const [questions, setQuestions] = useState<Question[]>([]);
   const [editingQuestionIndex, setEditingQuestionIndex] = useState<number | null>(null);
-  const [currentQuestionForm] = Form.useForm<QuestionFormValues>();
-  const [isQuestionModalVisible, setIsQuestionModalVisible] = useState(false); // State for question modal
+  const [currentQuestionForm] = Form.useForm();
+  const [isQuestionModalVisible, setIsQuestionModalVisible] = useState(false);
 
-  // Use Form.useWatch to get real-time options from the form
-  // Type it as an array of objects that match the Form.List structure
-  const currentOptions: { id?: string; text: string }[] | undefined = Form.useWatch('options', currentQuestionForm);
+  const currentOptions: { text: string }[] | undefined = Form.useWatch('options', currentQuestionForm);
 
+  const courses = coursesData || [];
+  const batches = batchesData || [];
+  const isEditMode = !!quizId;
+  const loading = quizLoading;
+
+  // Load quiz data when editing
   useEffect(() => {
-    const initializeQuiz = () => {
-      if (quizId) {
-        setIsEditMode(true);
-        const storedQuizzes = JSON.parse(localStorage.getItem('quizzes') || '[]') as Quiz[];
-        const foundQuiz = storedQuizzes.find(q => q.id === quizId);
-        if (foundQuiz) {
-          setQuiz(foundQuiz);
-          form.setFieldsValue({
-            title: foundQuiz.title,
-            description: foundQuiz.description,
-            course: foundQuiz.course,
-          });
-        } else {
-          message.error('ไม่พบข้อสอบที่ต้องการแก้ไข');
-          router.push('/admin/quiz');
-        }
-      } else {
-        setIsEditMode(false);
-        const newQuiz: Quiz = {
-          id: uuidv4(),
-          title: '',
-          description: '',
-          course: '',
-          numQuestions: 0,
-          status: 'draft',
-          questions: [],
-          createdAt: dayjs().toISOString(),
-          updatedAt: dayjs().toISOString(),
-        };
-        setQuiz(newQuiz);
-        form.setFieldsValue({
-          title: newQuiz.title,
-          description: newQuiz.description,
-          course: newQuiz.course,
-        });
-      }
-      setLoading(false);
-    };
-
-    initializeQuiz();
-  }, [quizId, form, router]);
-
-  const handleQuizFormChange = (changedValues: Partial<QuizFormValues>, allValues: QuizFormValues) => {
-    if (quiz) {
-      setQuiz(prev => {
-        if (!prev) return null;
-        return {
-          ...prev,
-          title: allValues.title,
-          description: allValues.description,
-          course: allValues.course,
-          updatedAt: dayjs().toISOString(),
-        };
+    if (quizId && quizData) {
+      const quiz = quizData;
+      form.setFieldsValue({
+        title: quiz.title,
+        description: quiz.description || '',
+        courseId: quiz.courseId || '',
+        batchId: quiz.batchId || null,
+        dueDate: quiz.dueDate ? dayjs(quiz.dueDate) : dayjs().add(7, 'days'),
+        duration: quiz.duration || 60,
+        totalPoints: quiz.totalPoints || 100,
+        passingScore: quiz.passingScore || 60,
+        isPublished: quiz.isPublished || false,
       });
+
+      // Load questions
+      if (quiz.questions && Array.isArray(quiz.questions)) {
+        const loadedQuestions: Question[] = quiz.questions.map((q: any, index: number) => ({
+          id: q.id,
+          questionText: q.questionText,
+          questionType: q.questionType || 'MULTIPLE_CHOICE',
+          options: Array.isArray(q.options) ? q.options : JSON.parse(q.options || '[]'),
+          correctAnswer: q.correctAnswer,
+          points: q.points || 10,
+          order: q.order || index + 1,
+        }));
+        setQuestions(loadedQuestions);
+      }
+    } else if (!quizId) {
+      // Initialize new quiz form
+      form.setFieldsValue({
+        title: '',
+        description: '',
+        courseId: '',
+        batchId: null,
+        dueDate: dayjs().add(7, 'days'),
+        duration: 60,
+        totalPoints: 100,
+        passingScore: 60,
+        isPublished: false,
+      });
+      setQuestions([]);
     }
-  };
+  }, [quizId, quizData, form]);
+
+  // Auto-calculate total points when questions change
+  useEffect(() => {
+    const totalPoints = questions.reduce((sum, q) => sum + q.points, 0);
+    form.setFieldValue('totalPoints', totalPoints || 100);
+  }, [questions, form]);
 
   const handleAddQuestion = () => {
     setEditingQuestionIndex(null);
     currentQuestionForm.resetFields();
-    const initialOptions = [{ id: uuidv4(), text: '' }, { id: uuidv4(), text: '' }];
     currentQuestionForm.setFieldsValue({
       questionText: '',
-      options: initialOptions,
-      correctOptionId: '',
+      options: ['', ''],
+      correctAnswer: '',
+      points: 10,
     });
-    setIsQuestionModalVisible(true); // Open modal for adding question
+    setIsQuestionModalVisible(true);
   };
 
   const handleEditQuestion = (index: number) => {
     setEditingQuestionIndex(index);
-    if (quiz) {
-      const questionToEdit = quiz.questions[index];
-      currentQuestionForm.setFieldsValue(questionToEdit);
-    }
-    setIsQuestionModalVisible(true); // Open modal for editing question
+    const questionToEdit = questions[index];
+    currentQuestionForm.setFieldsValue({
+      questionText: questionToEdit.questionText,
+      options: questionToEdit.options,
+      correctAnswer: questionToEdit.correctAnswer,
+      points: questionToEdit.points,
+    });
+    setIsQuestionModalVisible(true);
   };
 
   const handleSaveQuestion = async () => {
     try {
-      const values: QuestionFormValues = await currentQuestionForm.validateFields();
+      const values = await currentQuestionForm.validateFields();
 
-      // Ensure that all options have an ID before checking selectedOptionExists
-      const optionsWithIds = values.options.map(opt => ({
-        id: opt.id || uuidv4(), // Ensure ID is always present
-        text: opt.text,
-      }));
-
-      const selectedOptionExists = optionsWithIds.some(opt => opt.id === values.correctOptionId);
-
-      if (!selectedOptionExists) {
-        message.error('กรุณาเลือกคำตอบที่ถูกต้องสำหรับคำถามนี้!');
-        currentQuestionForm.setFields([
-          {
-            name: 'correctOptionId',
-            errors: ['กรุณาเลือกคำตอบที่ถูกต้อง!'],
-          },
-        ]);
+      // Validate correct answer
+      if (!values.options.includes(values.correctAnswer)) {
+        message.error('กรุณาเลือกคำตอบที่ถูกต้องจากตัวเลือกที่มี!');
         return;
       }
 
       const newQuestion: Question = {
-        id: values.id || uuidv4(),
+        id: editingQuestionIndex !== null ? questions[editingQuestionIndex].id : undefined,
         questionText: values.questionText,
-        options: optionsWithIds, // Use optionsWithIds here
-        correctOptionId: values.correctOptionId,
+        questionType: 'MULTIPLE_CHOICE',
+        options: values.options.filter((opt: string) => opt.trim() !== ''),
+        correctAnswer: values.correctAnswer,
+        points: values.points || 10,
+        order: editingQuestionIndex !== null ? questions[editingQuestionIndex].order : questions.length + 1,
       };
 
-      setQuiz(prev => {
-        if (!prev) return null;
-        const updatedQuestions = [...prev.questions];
-        if (editingQuestionIndex !== null) {
-          updatedQuestions[editingQuestionIndex] = newQuestion;
-        } else {
-          updatedQuestions.push(newQuestion);
-        }
-        return {
-          ...prev,
-          questions: updatedQuestions,
-          numQuestions: updatedQuestions.length,
-          updatedAt: dayjs().toISOString(),
-        };
-      });
+      const updatedQuestions = [...questions];
+      if (editingQuestionIndex !== null) {
+        updatedQuestions[editingQuestionIndex] = newQuestion;
+      } else {
+        updatedQuestions.push(newQuestion);
+      }
 
+      setQuestions(updatedQuestions);
       message.success('บันทึกคำถามเรียบร้อย!');
       currentQuestionForm.resetFields();
       setEditingQuestionIndex(null);
-      setIsQuestionModalVisible(false); // Close modal after saving
+      setIsQuestionModalVisible(false);
     } catch (error) {
-      console.error('Failed to save question (validation error):', error);
-      message.error('กรุณากรอกข้อมูลคำถามให้ครบถ้วนและถูกต้อง');
+      console.error('Failed to save question:', error);
+      message.error('กรุณากรอกข้อมูลคำถามให้ครบถ้วน');
     }
   };
 
   const handleCancelQuestionEdit = () => {
     currentQuestionForm.resetFields();
     setEditingQuestionIndex(null);
-    setIsQuestionModalVisible(false); // Close modal on cancel
+    setIsQuestionModalVisible(false);
   };
 
   const handleRemoveQuestion = (index: number) => {
-    setQuiz(prev => {
-      if (!prev) return null;
-      const updatedQuestions = prev.questions.filter((_, i) => i !== index);
-      return {
-        ...prev,
-        questions: updatedQuestions,
-        numQuestions: updatedQuestions.length,
-        updatedAt: dayjs().toISOString(),
-      };
-    });
+    const updatedQuestions = questions.filter((_, i) => i !== index);
+    setQuestions(updatedQuestions);
     message.success('ลบคำถามเรียบร้อย!');
+
     if (editingQuestionIndex === index) {
       currentQuestionForm.resetFields();
       setEditingQuestionIndex(null);
-      setIsQuestionModalVisible(false); // Close modal if current editing question is deleted
+      setIsQuestionModalVisible(false);
     } else if (editingQuestionIndex !== null && editingQuestionIndex > index) {
       setEditingQuestionIndex(editingQuestionIndex - 1);
     }
   };
 
-  const handleSaveQuiz = (status: 'draft' | 'published') => {
+  const handleSaveQuiz = (publishStatus: boolean) => {
     form.validateFields()
-      .then(values => { // Use values from main quiz form
-        if (!quiz) {
-          message.error('ข้อสอบยังไม่ถูกโหลดหรือสร้างขึ้น');
-          return;
-        }
-        if (quiz.questions.length === 0) {
+      .then(values => {
+        if (questions.length === 0) {
           message.error('กรุณาเพิ่มคำถามอย่างน้อย 1 ข้อ');
           return;
         }
 
-        // Validate that correctOptionId is one of the available options for each question
-        const invalidQuestions = quiz.questions.filter(q =>
-          !q.options.some(opt => opt.id === q.correctOptionId)
-        );
+        // Calculate total points
+        const totalPoints = questions.reduce((sum, q) => sum + q.points, 0);
 
-        if (invalidQuestions.length > 0) {
-          message.error('คำถามบางข้อมีตัวเลือกที่ถูกต้องไม่ถูกต้อง กรุณาแก้ไข');
-          return;
-        }
-
-        const now = dayjs().toISOString();
-        const finalQuiz: Quiz = {
-          ...quiz, // Take existing quiz data
-          ...values, // Override with form values
-          numQuestions: quiz.questions.length,
-          status: status,
-          createdAt: isEditMode ? quiz.createdAt : now, // Keep original createdAt if editing
-          updatedAt: now,
+        const quizData = {
+          ...values,
+          batchId: values.batchId || undefined,
+          dueDate: values.dueDate.toISOString(),
+          isPublished: publishStatus,
+          totalPoints,
+          questions: questions.map((q, index) => ({
+            questionText: q.questionText,
+            questionType: q.questionType,
+            options: JSON.stringify(q.options),
+            correctAnswer: q.correctAnswer,
+            points: q.points,
+            order: index + 1,
+          })),
         };
 
-        const storedQuizzes = JSON.parse(localStorage.getItem('quizzes') || '[]') as Quiz[];
-        let updatedQuizzes: Quiz[];
-
-        if (isEditMode) {
-          updatedQuizzes = storedQuizzes.map(q => q.id === finalQuiz.id ? finalQuiz : q);
-          message.success('แก้ไขข้อสอบเรียบร้อย!');
+        if (isEditMode && quizId) {
+          updateQuiz({ id: quizId, data: quizData }, {
+            onSuccess: () => {
+              message.success('แก้ไขข้อสอบเรียบร้อย!');
+              router.push('/admin/quiz');
+            },
+            onError: (error: any) => {
+              message.error(error.response?.data?.message || 'เกิดข้อผิดพลาดในการแก้ไขข้อสอบ');
+            },
+          });
         } else {
-          updatedQuizzes = [...storedQuizzes, finalQuiz];
-          message.success('สร้างข้อสอบเรียบร้อย!');
+          console.log('Creating quiz with data:', quizData);
+          createQuiz(quizData, {
+            onSuccess: () => {
+              message.success('สร้างข้อสอบเรียบร้อย!');
+              router.push('/admin/quiz');
+            },
+            onError: (error: any) => {
+              console.error('Error creating quiz:', error);
+              console.error('Error response:', error.response?.data);
+              const errorMsg = error.response?.data?.message || error.message || 'เกิดข้อผิดพลาดในการสร้างข้อสอบ';
+              message.error(errorMsg);
+            },
+          });
         }
-        localStorage.setItem('quizzes', JSON.stringify(updatedQuizzes));
-        router.push('/admin/quiz'); // Redirect back to quiz list
       })
       .catch(info => {
         message.error('กรุณากรอกข้อมูลข้อสอบให้ครบถ้วน');
@@ -307,10 +278,10 @@ export default function ManageQuizPage() {
     },
   ];
 
-  if (loading || !quiz) {
+  if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <Text>กำลังโหลด...</Text>
+        <Spin size="large" />
       </div>
     );
   }
@@ -331,22 +302,91 @@ export default function ManageQuizPage() {
             <Form
               form={form}
               layout="vertical"
-              onValuesChange={handleQuizFormChange}
             >
-              <Form.Item
-                name="title"
-                label={<span className="font-semibold text-gray-700">ชื่อข้อสอบ</span>}
-                rules={[{ required: true, message: 'กรุณากรอกชื่อข้อสอบ!' }]}
-              >
-                <Input placeholder="เช่น ข้อสอบนวดแผนไทยเบื้องต้น" className="rounded-lg" />
-              </Form.Item>
-              <Form.Item
-                name="course"
-                label={<span className="font-semibold text-gray-700">หลักสูตร</span>}
-                rules={[{ required: true, message: 'กรุณากรอกหลักสูตรที่เกี่ยวข้อง!' }]}
-              >
-                <Input placeholder="เช่น นวดแผนไทยเบื้องต้น" className="rounded-lg" />
-              </Form.Item>
+              <Row gutter={16}>
+                <Col span={12}>
+                  <Form.Item
+                    name="title"
+                    label={<span className="font-semibold text-gray-700">ชื่อข้อสอบ</span>}
+                    rules={[{ required: true, message: 'กรุณากรอกชื่อข้อสอบ!' }]}
+                  >
+                    <Input placeholder="เช่น แบบทดสอบนวดแผนไทยเบื้องต้น" className="rounded-lg" />
+                  </Form.Item>
+                </Col>
+                <Col span={12}>
+                  <Form.Item
+                    name="courseId"
+                    label={<span className="font-semibold text-gray-700">หลักสูตร</span>}
+                    rules={[{ required: true, message: 'กรุณาเลือกหลักสูตร!' }]}
+                  >
+                    <Select placeholder="เลือกหลักสูตร" className="rounded-lg">
+                      {courses.map((course: any) => (
+                        <Option key={course.id} value={course.id}>{course.name}</Option>
+                      ))}
+                    </Select>
+                  </Form.Item>
+                </Col>
+              </Row>
+
+              <Row gutter={16}>
+                <Col span={12}>
+                  <Form.Item
+                    name="batchId"
+                    label={<span className="font-semibold text-gray-700">รุ่น (ถ้าไม่เลือกจะใช้กับทุกรุ่น)</span>}
+                  >
+                    <Select placeholder="เลือกรุ่น (ไม่บังคับ)" className="rounded-lg" allowClear>
+                      {batches.map((batch: any) => (
+                        <Option key={batch.id} value={batch.id}>รุ่นที่ {batch.batchNumber}</Option>
+                      ))}
+                    </Select>
+                  </Form.Item>
+                </Col>
+                <Col span={12}>
+                  <Form.Item
+                    name="dueDate"
+                    label={<span className="font-semibold text-gray-700">วันครบกำหนด</span>}
+                    rules={[{ required: true, message: 'กรุณาเลือกวันครบกำหนด!' }]}
+                  >
+                    <DatePicker
+                      showTime
+                      format="DD/MM/YYYY HH:mm"
+                      className="w-full rounded-lg"
+                      placeholder="เลือกวันและเวลา"
+                    />
+                  </Form.Item>
+                </Col>
+              </Row>
+
+              <Row gutter={16}>
+                <Col span={8}>
+                  <Form.Item
+                    name="duration"
+                    label={<span className="font-semibold text-gray-700">ระยะเวลาทำข้อสอบ (นาที)</span>}
+                    rules={[{ required: true, message: 'กรุณากรอกระยะเวลา!' }]}
+                  >
+                    <InputNumber min={1} placeholder="60" className="w-full rounded-lg" />
+                  </Form.Item>
+                </Col>
+                <Col span={8}>
+                  <Form.Item
+                    name="totalPoints"
+                    label={<span className="font-semibold text-gray-700">คะแนนเต็ม</span>}
+                    rules={[{ required: true, message: 'กรุณากรอกคะแนนเต็ม!' }]}
+                  >
+                    <InputNumber min={1} placeholder="100" className="w-full rounded-lg" disabled />
+                  </Form.Item>
+                </Col>
+                <Col span={8}>
+                  <Form.Item
+                    name="passingScore"
+                    label={<span className="font-semibold text-gray-700">คะแนนผ่าน</span>}
+                    rules={[{ required: true, message: 'กรุณากรอกคะแนนผ่าน!' }]}
+                  >
+                    <InputNumber min={1} placeholder="60" className="w-full rounded-lg" />
+                  </Form.Item>
+                </Col>
+              </Row>
+
               <Form.Item
                 name="description"
                 label={<span className="font-semibold text-gray-700">คำอธิบาย</span>}
@@ -360,11 +400,11 @@ export default function ManageQuizPage() {
         <Col span={24}>
           <Card className="rounded-xl shadow-custom-light p-4">
             <AntdTitle level={4} className="text-gray-700 mb-6">รายการคำถาม</AntdTitle>
-            {quiz.questions.length === 0 && (
+            {questions.length === 0 && (
               <div className="text-center text-gray-500 mb-4">ยังไม่มีคำถามในข้อสอบนี้</div>
             )}
             <Space direction="vertical" className="w-full" size="middle">
-              {quiz.questions.map((q, index) => (
+              {questions.map((q, index) => (
                 <Card
                   key={q.id}
                   size="small"
@@ -395,12 +435,12 @@ export default function ManageQuizPage() {
                   }
                 >
                   <Text strong>{index + 1}. {q.questionText}</Text>
-                  <Radio.Group value={q.correctOptionId} className="w-full mt-2">
-                    {q.options.map(opt => (
-                      <div key={opt.id} className="flex items-center mb-1">
-                        <Radio value={opt.id} disabled className="mr-2" />
-                        <Text className={opt.id === q.correctOptionId ? 'font-bold text-green-600' : ''}>
-                          {opt.text}
+                  <Radio.Group value={q.correctAnswer} className="w-full mt-2">
+                    {q.options.map((opt, optIndex) => (
+                      <div key={optIndex} className="flex items-center mb-1">
+                        <Radio value={opt} disabled className="mr-2" />
+                        <Text className={opt === q.correctAnswer ? 'font-bold text-green-600' : ''}>
+                          {opt}
                         </Text>
                       </div>
                     ))}
@@ -431,9 +471,6 @@ export default function ManageQuizPage() {
           width={700} // Adjust width as needed
         >
           <Form form={currentQuestionForm} layout="vertical" className="p-4">
-            <Form.Item name="id" hidden>
-              <Input />
-            </Form.Item>
             <Form.Item
               name="questionText"
               label={<span className="font-semibold text-gray-700">คำถาม</span>}
@@ -442,51 +479,46 @@ export default function ManageQuizPage() {
               <TextArea rows={2} placeholder="เช่น ข้อใดคือน้ำมันนวดที่นิยมใช้ในสปา?" className="rounded-lg" />
             </Form.Item>
 
-            {/* Form.List for managing options (text input and delete button) */}
+            <Form.Item
+              name="points"
+              label={<span className="font-semibold text-gray-700">คะแนน</span>}
+              rules={[{ required: true, message: 'กรุณากรอกคะแนน!' }]}
+            >
+              <InputNumber min={1} placeholder="10" className="w-full rounded-lg" />
+            </Form.Item>
+
             <Form.List name="options">
               {(fields, { add, remove }) => (
                 <>
                   <AntdTitle level={5} className="text-gray-700 mb-4">ตัวเลือก</AntdTitle>
-                  {fields.map(({ key, name }) => {
-                    return (
-                      <Space key={key} style={{ display: 'flex', marginBottom: 8 }} align="baseline" className="w-full">
-                        {/* Hidden Form.Item for the option's actual ID */}
-                        <Form.Item
-                          name={[name, 'id']}
-                          hidden
-                          noStyle
-                        >
-                          <Input />
-                        </Form.Item>
+                  {fields.map(({ key, name }) => (
+                    <Space key={key} style={{ display: 'flex', marginBottom: 8 }} align="baseline" className="w-full">
+                      <Form.Item
+                        name={name}
+                        rules={[{ required: true, message: 'กรุณากรอกตัวเลือก!' }]}
+                        className="flex-grow"
+                        noStyle
+                      >
+                        <Input
+                          placeholder={`ตัวเลือก ${name + 1}`}
+                          className="rounded-lg"
+                        />
+                      </Form.Item>
 
-                        {/* Input for option text */}
-                        <Form.Item
-                          name={[name, 'text']}
-                          rules={[{ required: true, message: 'กรุณากรอกตัวเลือก!' }]}
-                          className="flex-grow"
-                          noStyle
-                        >
-                          <Input
-                            placeholder={`ตัวเลือก ${name + 1}`}
-                            className="rounded-lg"
-                          />
-                        </Form.Item>
-
-                        {fields.length > 2 && (
-                          <Button
-                            type="text"
-                            danger
-                            icon={<DeleteOutlined />}
-                            onClick={() => remove(name)}
-                            className="text-red-500 hover:text-red-700 ml-2"
-                          />
-                        )}
-                      </Space>
-                    );
-                  })}
+                      {fields.length > 2 && (
+                        <Button
+                          type="text"
+                          danger
+                          icon={<DeleteOutlined />}
+                          onClick={() => remove(name)}
+                          className="text-red-500 hover:text-red-700 ml-2"
+                        />
+                      )}
+                    </Space>
+                  ))}
                   <Button
                     type="dashed"
-                    onClick={() => add({ id: uuidv4(), text: '' })}
+                    onClick={() => add('')}
                     block
                     icon={<PlusOutlined />}
                     className="mt-4 rounded-lg text-green-500 border-green-500 hover:text-green-700 hover:border-green-700"
@@ -497,26 +529,28 @@ export default function ManageQuizPage() {
               )}
             </Form.List>
 
-            {/* Separate Form.Item for correctOptionId and Radio.Group */}
-            {/* This Radio.Group will display options based on currentOptions watched from the form */}
             <Form.Item
-              name="correctOptionId"
-              label={<span className="font-semibold text-gray-700 mt-4">เลือกคำตอบที่ถูกต้อง</span>}
-              rules={[{ required: true, message: 'กรุณาเลือกคำตอบที่ถูกต้อง!' }]}
+              noStyle
+              shouldUpdate={(prevValues, curValues) => prevValues.options !== curValues.options}
             >
-              <Radio.Group className="w-full">
-                {/* Ensure currentOptions is not null before mapping */}
-                {currentOptions && currentOptions.map((option, index) => {
-                  // Ensure option.id is a string for key and value props
-                  const radioValue = option.id || `temp-${index}`; // Fallback to a temporary string if ID is undefined
-                  return (
-                    <Radio key={radioValue} value={radioValue} className="block mb-2">
-                      {/* Display option text as the label for the radio button */}
-                      {option.text || `ตัวเลือก ${index + 1}`}
-                    </Radio>
-                  );
-                })}
-              </Radio.Group>
+              {({ getFieldValue }) => {
+                const opts = getFieldValue('options') || [];
+                return (
+                  <Form.Item
+                    name="correctAnswer"
+                    label={<span className="font-semibold text-gray-700 mt-4">เลือกคำตอบที่ถูกต้อง</span>}
+                    rules={[{ required: true, message: 'กรุณาเลือกคำตอบที่ถูกต้อง!' }]}
+                  >
+                    <Radio.Group className="w-full">
+                      {opts.map((option: string, index: number) => (
+                        <Radio key={index} value={option} className="block mb-2" disabled={!option || option.trim() === ''}>
+                          {option || `ตัวเลือก ${index + 1}`}
+                        </Radio>
+                      ))}
+                    </Radio.Group>
+                  </Form.Item>
+                );
+              }}
             </Form.Item>
           </Form>
         </Modal>
@@ -534,7 +568,7 @@ export default function ManageQuizPage() {
             <Button
               type="primary"
               icon={<SaveOutlined />}
-              onClick={() => handleSaveQuiz('draft')} // Save as draft
+              onClick={() => handleSaveQuiz(false)} // Save as draft
               className="bg-orange-500 hover:bg-orange-600 text-white rounded-lg shadow-md px-6 py-3 text-base"
             >
               บันทึกฉบับร่าง
@@ -542,7 +576,7 @@ export default function ManageQuizPage() {
             <Button
               type="primary"
               icon={<SaveOutlined />}
-              onClick={() => handleSaveQuiz('published')} // Publish
+              onClick={() => handleSaveQuiz(true)} // Publish
               className="bg-green-500 hover:bg-green-600 text-white rounded-lg shadow-md px-6 py-3 text-base"
             >
               เผยแพร่ข้อสอบ
