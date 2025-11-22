@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Form, Input, Button, Checkbox } from "antd";
+import { Form, Input, Button, Checkbox, message } from "antd";
 import {
   UserOutlined,
   LockOutlined,
@@ -25,32 +25,44 @@ const LoginForm: React.FC = () => {
 
   const onFinish = async (values: LoginFormData) => {
     try {
+      console.log('Attempting login with:', values.email);
+
       // Call login from auth store
       await login({
         email: values.email,
         password: values.password,
       });
 
-      showSuccess("เข้าสู่ระบบสำเร็จ!");
+      console.log('Login successful, checking user...');
 
       // Navigate based on user role
       const currentUser = useAuthStore.getState().user;
+      console.log('Current user after login:', currentUser);
+
       if (currentUser) {
+        showSuccess("เข้าสู่ระบบสำเร็จ!");
+
+        let redirectPath = "/";
         switch (currentUser.role) {
           case "ADMIN":
-            router.push("/admin/dashboard");
+            redirectPath = "/admin/dashboard";
             break;
           case "TEACHER":
-            router.push("/teacher/dashboard");
+            redirectPath = "/teacher/dashboard";
             break;
           case "STUDENT":
-            router.push("/student/dashboard");
+            redirectPath = "/student/dashboard";
             break;
-          default:
-            router.push("/");
         }
+
+        console.log('Redirecting to:', redirectPath);
+        router.push(redirectPath);
+      } else {
+        console.error('User is null after login!');
+        message.error("ไม่สามารถดึงข้อมูลผู้ใช้ได้");
       }
     } catch (error) {
+      console.error('Login error:', error);
       handleError(error, "เข้าสู่ระบบไม่สำเร็จ กรุณาตรวจสอบอีเมลและรหัสผ่าน");
     }
   };

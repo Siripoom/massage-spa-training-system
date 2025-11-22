@@ -227,7 +227,7 @@ async function main() {
   const enrollments = [];
 
   // Enroll students in batch 30 (completed)
-  for (let i = 0; i < 12; i++) {
+  for (let i = 0; i < 5; i++) {
     const enrollment = await prisma.enrollment.create({
       data: {
         userId: students[i].id,
@@ -240,7 +240,7 @@ async function main() {
   }
 
   // Enroll students in batch 31 (completed)
-  for (let i = 12; i < 15; i++) {
+  for (let i = 5; i < 10; i++) {
     const enrollment = await prisma.enrollment.create({
       data: {
         userId: students[i].id,
@@ -253,7 +253,7 @@ async function main() {
   }
 
   // Enroll students in batch 32 (active)
-  for (let i = 3; i < 8; i++) {
+  for (let i = 10; i < 15; i++) {
     const enrollment = await prisma.enrollment.create({
       data: {
         userId: students[i].id,
@@ -267,7 +267,7 @@ async function main() {
 
   // Create Student Applications
   console.log('📋 Creating student applications...');
-  
+
   // Pending applications for batch 32
   for (let i = 8; i < 12; i++) {
     await prisma.studentApplication.create({
@@ -294,22 +294,22 @@ async function main() {
   // Create Attendance Records for active batch (batch 32)
   console.log('⏰ Creating attendance records...');
   const activeEnrollments = enrollments.filter(e => e.batchId === batch32.id);
-  
+
   // Create attendance for the past 30 days
   const startDate = new Date('2024-09-01');
   const today = new Date();
-  
+
   for (let d = new Date(startDate); d <= today; d.setDate(d.getDate() + 1)) {
     // Skip weekends for this demo
     if (d.getDay() === 0 || d.getDay() === 6) continue;
-    
+
     for (const enrollment of activeEnrollments) {
       const attendanceStatus = Math.random() > 0.15 ? 'PRESENT' : (Math.random() > 0.5 ? 'LATE' : 'ABSENT');
-      
+
       if (attendanceStatus === 'PRESENT' || attendanceStatus === 'LATE') {
         const timeIn = attendanceStatus === 'LATE' ? '09:15:00' : '09:00:00';
         const timeOut = '17:00:00';
-        
+
         await prisma.attendance.create({
           data: {
             enrollmentId: enrollment.id,
@@ -340,7 +340,7 @@ async function main() {
   }
 
   console.log('✅ Seed completed successfully!');
-  
+
   // Summary
   const userCount = await prisma.user.count();
   const courseCount = await prisma.course.count();

@@ -74,26 +74,26 @@ export default function LoginPage() {
             <div className="text-xs text-gray-600 space-y-2">
               <div className="flex justify-between items-center py-1">
                 <span className="font-medium">👨‍💼 ผู้ดูแลระบบ:</span>
-                <span className="font-mono bg-white px-2 py-1 rounded">
-                  admin@spa.com
+                <span className="font-mono bg-white px-2 py-1 rounded text-xs">
+                  admin@relaxplus.com
                 </span>
               </div>
               <div className="flex justify-between items-center py-1">
                 <span className="font-medium">👩‍🏫 อาจารย์:</span>
-                <span className="font-mono bg-white px-2 py-1 rounded">
-                  teacher@spa.com
+                <span className="font-mono bg-white px-2 py-1 rounded text-xs">
+                  teacher@relaxplus.com
                 </span>
               </div>
               <div className="flex justify-between items-center py-1">
                 <span className="font-medium">👨‍🎓 นักเรียน:</span>
-                <span className="font-mono bg-white px-2 py-1 rounded">
-                  student@spa.com
+                <span className="font-mono bg-white px-2 py-1 rounded text-xs">
+                  somchai@email.com
                 </span>
               </div>
               <div className="text-center mt-3 p-2 bg-blue-100 rounded-lg">
                 <span className="text-blue-700 font-medium">🔐 รหัสผ่าน: </span>
                 <span className="font-mono text-blue-800 font-bold">
-                  123456
+                  password123
                 </span>
               </div>
             </div>
