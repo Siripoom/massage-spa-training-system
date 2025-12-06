@@ -191,11 +191,153 @@ exports.deleteEnrollment = async (req, res) => {
       where: { id },
     });
 
-    res.status(204).send();
+    res.status(200).json({
+      success: true,
+      message: "Enrollment deleted successfully",
+    });
   } catch (error) {
     if (error.code === "P2025") {
-      return res.status(404).json({ error: "Enrollment not found" });
+      return res.status(404).json({
+        success: false,
+        message: "Enrollment not found"
+      });
     }
-    res.status(400).json({ error: error.message });
+    res.status(400).json({
+      success: false,
+      message: "Failed to delete enrollment",
+      error: error.message
+    });
+  }
+};
+
+// Get students by batch ID with their enrollment info
+exports.getStudentsByBatchId = async (req, res) => {
+  try {
+    const { batchId } = req.params;
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 50;
+    const search = req.query.search || '';
+
+    const skip = (page - 1) * limit;
+    const where = { batchId };
+
+    // Add search filter
+    if (search) {
+      where.user = {
+        OR: [
+          { firstName: { contains: search, mode: 'insensitive' } },
+          { lastName: { contains: search, mode: 'insensitive' } },
+          { email: { contains: search, mode: 'insensitive' } },
+        ],
+      };
+    }
+
+    // Get total count
+    const total = await prisma.enrollment.count({ where });
+
+    // Get enrollments with user details and attendance summary
+    const enrollments = await prisma.enrollment.findMany({
+      where,
+      skip,
+      take: limit,
+      include: {
+        user: {
+          select: {
+            id: true,
+            firstName: true,
+            lastName: true,
+            email: true,
+            phone: true,
+            imageUrl: true,
+          },
+        },
+        batch: {
+          select: {
+            id: true,
+            name: true,
+            batchNumber: true,
+            totalHours: true,
+          },
+        },
+        course: {
+          select: {
+            id: true,
+            title: true,
+          },
+        },
+        _count: {
+          select: {
+            attendances: true,
+          },
+        },
+      },
+      orderBy: {
+        user: {
+          firstName: 'asc',
+        },
+      },
+    });
+
+    // Calculate attendance summary for each student
+    const studentsWithProgress = await Promise.all(
+      enrollments.map(async (enrollment) => {
+        const attendanceSummary = await prisma.attendance.aggregate({
+          where: {
+            enrollmentId: enrollment.id,
+            status: { in: ['PRESENT', 'LATE'] },
+          },
+          _sum: {
+            totalHours: true,
+          },
+        });
+
+        const attendanceByStatus = await prisma.attendance.groupBy({
+          by: ['status'],
+          where: {
+            enrollmentId: enrollment.id,
+          },
+          _count: {
+            id: true,
+          },
+        });
+
+        const totalHoursAttended = attendanceSummary._sum.totalHours || 0;
+        const totalRequiredHours = enrollment.batch?.totalHours || 150;
+        const progressPercentage = (totalHoursAttended / totalRequiredHours) * 100;
+
+        return {
+          ...enrollment,
+          progress: {
+            totalHoursAttended,
+            totalRequiredHours,
+            progressPercentage: Math.round(progressPercentage * 100) / 100,
+            attendanceByStatus: attendanceByStatus.reduce((acc, curr) => {
+              acc[curr.status.toLowerCase()] = curr._count.id;
+              return acc;
+            }, {}),
+          },
+        };
+      })
+    );
+
+    const totalPages = Math.ceil(total / limit);
+
+    res.status(200).json({
+      success: true,
+      data: studentsWithProgress,
+      pagination: {
+        page,
+        limit,
+        total,
+        totalPages,
+      },
+    });
+  } catch (error) {
+    console.error('Error fetching students by batch:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to fetch students',
+      error: error.message,
+    });
   }
 };

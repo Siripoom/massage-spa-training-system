@@ -1,13 +1,14 @@
 // src/app/(pages)/admin/courses/manage/page.tsx
 "use client";
 
+import '@ant-design/v5-patch-for-react-19';
 import React, { useState, useEffect } from 'react';
-import { Form, Input, Button, message, Typography, Breadcrumb, Card, Row, Col, InputNumber,Space } from 'antd';
+import { Form, Input, Button, message, Typography, Breadcrumb, Card, Row, Col, InputNumber, Space } from 'antd';
 import { SaveOutlined, ArrowLeftOutlined, HomeOutlined, BookOutlined, AppstoreOutlined } from '@ant-design/icons';
 import { useRouter, useSearchParams } from 'next/navigation';
 import dayjs from 'dayjs';
 import { v4 as uuidv4 } from 'uuid';
-import CourseContentManager, { CourseContentModule } from './CourseContentManager'; // Import the new component and its interfaces
+import CourseContentManager, { CourseContentModule } from './CourseContentManager';
 
 const { Text, Title: AntdTitle } = Typography;
 const { TextArea } = Input;

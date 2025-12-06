@@ -34,23 +34,40 @@ export default function BatchesPage() {
   const [isDetailModalVisible, setIsDetailModalVisible] = useState(false);
   const [viewingBatch, setViewingBatch] = useState<Batch | null>(null);
   const [filterStatus, setFilterStatus] = useState<string>('all');
+  const [filterCourse, setFilterCourse] = useState<string>('all');
   const [selectedCourseId, setSelectedCourseId] = useState<string>('');
+  const [currentPage, setCurrentPage] = useState(1);
 
-  // Use custom hooks
-  const { data, loading, pagination, goToPage, refetch } = useBatches({ page: 1, limit: 10 });
+  // Use custom hooks - pass filters to API
+  const { data, loading, pagination, goToPage, refetch } = useBatches({
+    page: currentPage,
+    limit: 10,
+    status: filterStatus !== 'all' ? (filterStatus as any) : undefined,
+    courseId: filterCourse !== 'all' ? filterCourse : undefined,
+  });
   const { data: courses } = useCourses({ page: 1, limit: 100 });
   const { mutate: createBatch, loading: creating } = useCreateBatch();
   const { mutate: updateBatch, loading: updating } = useUpdateBatch();
   const { mutate: deleteBatch, loading: deleting } = useDeleteBatch();
   const { data: nextBatchNumber } = useNextBatchNumber(selectedCourseId);
 
+  // Client-side filter only for search (backend doesn't have search yet)
   const filteredBatches = data.filter(batch => {
-    const matchesSearch = batch.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         (batch.description && batch.description.toLowerCase().includes(searchTerm.toLowerCase()));
-    const matchesStatus = filterStatus === 'all' || batch.status === filterStatus;
-
-    return matchesSearch && matchesStatus;
+    if (!searchTerm) return true;
+    return batch.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (batch.description && batch.description.toLowerCase().includes(searchTerm.toLowerCase()));
   });
+
+  // Reset to page 1 when filters change
+  React.useEffect(() => {
+    setCurrentPage(1);
+  }, [filterStatus, filterCourse]);
+
+  // Handle page change
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    goToPage(page);
+  };
 
   const columns = [
     {
@@ -310,7 +327,19 @@ export default function BatchesPage() {
           size="large"
         />
         <Select
-          defaultValue="all"
+          value={filterCourse}
+          onChange={(value) => setFilterCourse(value)}
+          className="w-60"
+          size="large"
+          placeholder="เลือกหลักสูตร"
+        >
+          <Option value="all">หลักสูตรทั้งหมด</Option>
+          {courses.map(course => (
+            <Option key={course.id} value={course.id}>{course.title}</Option>
+          ))}
+        </Select>
+        <Select
+          value={filterStatus}
           onChange={(value) => setFilterStatus(value)}
           className="w-48"
           size="large"
@@ -330,10 +359,10 @@ export default function BatchesPage() {
         rowKey="id"
         loading={loading}
         pagination={{
-          current: pagination.page,
+          current: currentPage,
           pageSize: pagination.limit,
           total: pagination.total,
-          onChange: goToPage,
+          onChange: handlePageChange,
           showSizeChanger: false,
           showTotal: (total) => `ทั้งหมด ${total} รายการ`,
         }}
@@ -499,12 +528,12 @@ export default function BatchesPage() {
                 <div>
                   <Tag color={
                     viewingBatch.status === 'ACTIVE' ? 'green' :
-                    viewingBatch.status === 'PLANNING' ? 'orange' :
-                    viewingBatch.status === 'COMPLETED' ? 'blue' : 'red'
+                      viewingBatch.status === 'PLANNING' ? 'orange' :
+                        viewingBatch.status === 'COMPLETED' ? 'blue' : 'red'
                   }>
                     {viewingBatch.status === 'ACTIVE' ? 'เปิดสอน' :
-                     viewingBatch.status === 'PLANNING' ? 'กำลังวางแผน' :
-                     viewingBatch.status === 'COMPLETED' ? 'จบหลักสูตร' : 'ยกเลิก'}
+                      viewingBatch.status === 'PLANNING' ? 'กำลังวางแผน' :
+                        viewingBatch.status === 'COMPLETED' ? 'จบหลักสูตร' : 'ยกเลิก'}
                   </Tag>
                 </div>
               </div>

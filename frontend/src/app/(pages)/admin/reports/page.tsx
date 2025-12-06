@@ -1,5 +1,6 @@
 // src/app/(pages)/(admin)/reports/page.tsx
 "use client";
+import '@ant-design/v5-patch-for-react-19';
 import React from "react";
 import PageHeader from "@/components/common/PageHeader";
 

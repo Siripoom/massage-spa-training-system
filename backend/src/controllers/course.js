@@ -23,7 +23,7 @@ exports.createCourse = async (req, res) => {
         price: parseFloat(price),
         duration: parseInt(duration),
         requirements,
-        status,
+        status: status || 'DRAFT',
         registrationStart: registrationStart
           ? new Date(registrationStart)
           : null,
@@ -31,20 +31,31 @@ exports.createCourse = async (req, res) => {
       },
     });
 
-    res.status(201).json(course);
+    res.status(201).json({
+      success: true,
+      data: course,
+    });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    console.error('Error in createCourse:', error);
+    res.status(400).json({
+      success: false,
+      message: 'Error creating course',
+      error: error.message
+    });
   }
 };
 
 // Get all courses with optional filtering
 exports.getAllCourses = async (req, res) => {
   try {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
     const { status, search } = req.query;
 
+    const skip = (page - 1) * limit;
     const where = {};
 
-    if (status) {
+    if (status && status !== 'all') {
       where.status = status;
     }
 
@@ -55,28 +66,45 @@ exports.getAllCourses = async (req, res) => {
       ];
     }
 
+    // Get total count for pagination
+    const total = await prisma.course.count({ where });
+
     const courses = await prisma.course.findMany({
       where,
+      skip,
+      take: limit,
+      orderBy: {
+        createdAt: 'desc',
+      },
       include: {
         organizations: true,
-        enrollments: {
-          include: {
-            user: {
-              select: {
-                id: true,
-                firstName: true,
-                lastName: true,
-                email: true,
-              },
-            },
+        _count: {
+          select: {
+            enrollments: true,
           },
         },
       },
     });
 
-    res.status(200).json(courses);
+    const totalPages = Math.ceil(total / limit);
+
+    res.status(200).json({
+      success: true,
+      data: courses,
+      pagination: {
+        page,
+        limit,
+        total,
+        totalPages,
+      },
+    });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error('Error in getAllCourses:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Error retrieving courses',
+      error: error.message
+    });
   }
 };
 
@@ -105,12 +133,23 @@ exports.getCourseById = async (req, res) => {
     });
 
     if (!course) {
-      return res.status(404).json({ error: "Course not found" });
+      return res.status(404).json({
+        success: false,
+        message: "Course not found"
+      });
     }
 
-    res.status(200).json(course);
+    res.status(200).json({
+      success: true,
+      data: course,
+    });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error('Error in getCourseById:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Error retrieving course',
+      error: error.message
+    });
   }
 };
 
@@ -149,9 +188,17 @@ exports.updateCourse = async (req, res) => {
       },
     });
 
-    res.status(200).json(course);
+    res.status(200).json({
+      success: true,
+      data: course,
+    });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    console.error('Error in updateCourse:', error);
+    res.status(400).json({
+      success: false,
+      message: 'Error updating course',
+      error: error.message
+    });
   }
 };
 
@@ -164,8 +211,16 @@ exports.deleteCourse = async (req, res) => {
       where: { id },
     });
 
-    res.status(204).send();
+    res.status(200).json({
+      success: true,
+      message: 'Course deleted successfully',
+    });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    console.error('Error in deleteCourse:', error);
+    res.status(400).json({
+      success: false,
+      message: 'Error deleting course',
+      error: error.message
+    });
   }
 };

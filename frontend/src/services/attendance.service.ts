@@ -21,10 +21,21 @@ class AttendanceService {
    */
   async getAll(params?: AttendanceQueryParams): Promise<PaginatedResponse<Attendance>> {
     const queryString = params ? buildQueryString(params) : '';
-    const response = await axiosInstance.get<PaginatedResponse<Attendance>>(
+    const response = await axiosInstance.get<ApiResponse<Attendance[]> & { pagination: any }>(
       `${API_CONFIG.ENDPOINTS.ATTENDANCE.BASE}${queryString}`
     );
-    return response.data;
+
+    // Transform backend response to match frontend expected format
+    return {
+      data: response.data.data || [],
+      pagination: response.data.pagination || {
+        page: params?.page || 1,
+        limit: params?.limit || 50,
+        total: response.data.data?.length || 0,
+        totalPages: 1,
+      },
+      success: response.data.success,
+    };
   }
 
   /**
@@ -132,14 +143,25 @@ class AttendanceService {
   }
 
   /**
-   * Bulk create attendance for a batch
+   * Bulk mark attendance for multiple students
    */
-  async bulkCreate(batchId: string, date: string, userIds: string[]): Promise<Attendance[]> {
-    const response = await axiosInstance.post<ApiResponse<Attendance[]>>(
+  async bulkMarkAttendance(
+    batchId: string,
+    date: string,
+    attendanceData: Array<{
+      enrollmentId: string;
+      userId: string;
+      status: string;
+      timeIn?: string;
+      timeOut?: string;
+      notes?: string;
+    }>
+  ): Promise<any> {
+    const response = await axiosInstance.post<ApiResponse<any>>(
       `${API_CONFIG.ENDPOINTS.ATTENDANCE.BASE}/bulk`,
-      { batchId, date, userIds }
+      { batchId, date, attendanceData }
     );
-    return response.data.data as Attendance[];
+    return response.data.data;
   }
 
   /**
@@ -158,6 +180,20 @@ class AttendanceService {
     const queryString = buildQueryString(params);
     const response = await axiosInstance.get<ApiResponse<any>>(
       `${API_CONFIG.ENDPOINTS.ATTENDANCE.BASE}/summary${queryString}`
+    );
+    return response.data.data;
+  }
+
+  /**
+   * Get batch attendance report
+   */
+  async getBatchReport(
+    batchId: string,
+    params?: { date?: string; startDate?: string; endDate?: string }
+  ): Promise<any> {
+    const queryString = params ? buildQueryString(params) : '';
+    const response = await axiosInstance.get<ApiResponse<any>>(
+      `${API_CONFIG.ENDPOINTS.ATTENDANCE.BASE}/batch/${batchId}/report${queryString}`
     );
     return response.data.data;
   }

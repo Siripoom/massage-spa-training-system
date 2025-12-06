@@ -4,15 +4,15 @@ const prisma = new PrismaClient();
 // Mark attendance
 const markAttendance = async (req, res) => {
   try {
-    const { 
-      enrollmentId, 
-      batchId, 
-      userId, 
-      date, 
-      timeIn, 
-      timeOut, 
-      status, 
-      notes 
+    const {
+      enrollmentId,
+      batchId,
+      userId,
+      date,
+      timeIn,
+      timeOut,
+      status,
+      notes
     } = req.body;
 
     // Calculate total hours if timeIn and timeOut are provided
@@ -67,14 +67,16 @@ const markAttendance = async (req, res) => {
     });
 
     res.status(201).json({
-      message: "Attendance marked successfully",
-      attendance
+      success: true,
+      data: attendance,
+      message: "Attendance marked successfully"
     });
   } catch (error) {
     console.error("Error marking attendance:", error);
     res.status(500).json({
-      error: "Failed to mark attendance",
-      details: error.message
+      success: false,
+      message: "Failed to mark attendance",
+      error: error.message
     });
   }
 };
@@ -82,19 +84,19 @@ const markAttendance = async (req, res) => {
 // Get attendance records
 const getAttendance = async (req, res) => {
   try {
-    const { 
-      batchId, 
-      userId, 
-      enrollmentId, 
-      date, 
-      startDate, 
+    const {
+      batchId,
+      userId,
+      enrollmentId,
+      date,
+      startDate,
       endDate,
-      page = 1, 
-      limit = 50 
+      page = 1,
+      limit = 50
     } = req.query;
-    
+
     const skip = (parseInt(page) - 1) * parseInt(limit);
-    
+
     const where = {};
     if (batchId) where.batchId = batchId;
     if (userId) where.userId = userId;
@@ -144,20 +146,21 @@ const getAttendance = async (req, res) => {
     const total = await prisma.attendance.count({ where });
 
     res.json({
-      attendances,
+      success: true,
+      data: attendances,
       pagination: {
-        currentPage: parseInt(page),
-        totalPages: Math.ceil(total / parseInt(limit)),
-        totalCount: total,
-        hasNext: skip + parseInt(limit) < total,
-        hasPrev: parseInt(page) > 1
+        page: parseInt(page),
+        limit: parseInt(limit),
+        total,
+        totalPages: Math.ceil(total / parseInt(limit))
       }
     });
   } catch (error) {
     console.error("Error fetching attendance:", error);
     res.status(500).json({
-      error: "Failed to fetch attendance",
-      details: error.message
+      success: false,
+      message: "Failed to fetch attendance",
+      error: error.message
     });
   }
 };
@@ -211,9 +214,10 @@ const getStudentAttendanceSummary = async (req, res) => {
     const progressPercentage = (totalHoursAttended / totalRequiredHours) * 100;
 
     res.json({
-      userId,
-      batchId,
-      summary: {
+      success: true,
+      data: {
+        userId,
+        batchId,
         totalHoursAttended,
         totalRequiredHours,
         progressPercentage: Math.round(progressPercentage * 100) / 100,
@@ -228,8 +232,9 @@ const getStudentAttendanceSummary = async (req, res) => {
   } catch (error) {
     console.error("Error fetching attendance summary:", error);
     res.status(500).json({
-      error: "Failed to fetch attendance summary",
-      details: error.message
+      success: false,
+      message: "Failed to fetch attendance summary",
+      error: error.message
     });
   }
 };
@@ -296,23 +301,27 @@ const getBatchAttendanceReport = async (req, res) => {
     });
 
     res.json({
-      batch,
-      students: batchStudents,
-      attendances,
-      summary: {
-        totalStudents: batchStudents.length,
-        totalAttendanceRecords: attendances.length,
-        attendanceByStatus: attendances.reduce((acc, curr) => {
-          acc[curr.status] = (acc[curr.status] || 0) + 1;
-          return acc;
-        }, {})
+      success: true,
+      data: {
+        batch,
+        students: batchStudents,
+        attendances,
+        summary: {
+          totalStudents: batchStudents.length,
+          totalAttendanceRecords: attendances.length,
+          attendanceByStatus: attendances.reduce((acc, curr) => {
+            acc[curr.status] = (acc[curr.status] || 0) + 1;
+            return acc;
+          }, {})
+        }
       }
     });
   } catch (error) {
     console.error("Error fetching batch attendance report:", error);
     res.status(500).json({
-      error: "Failed to fetch batch attendance report",
-      details: error.message
+      success: false,
+      message: "Failed to fetch batch attendance report",
+      error: error.message
     });
   }
 };
@@ -367,15 +376,19 @@ const bulkMarkAttendance = async (req, res) => {
     }
 
     res.json({
-      message: "Bulk attendance marked successfully",
-      recordsProcessed: attendanceRecords.length,
-      attendances: attendanceRecords
+      success: true,
+      data: {
+        recordsProcessed: attendanceRecords.length,
+        attendances: attendanceRecords
+      },
+      message: "Bulk attendance marked successfully"
     });
   } catch (error) {
     console.error("Error bulk marking attendance:", error);
     res.status(500).json({
-      error: "Failed to bulk mark attendance",
-      details: error.message
+      success: false,
+      message: "Failed to bulk mark attendance",
+      error: error.message
     });
   }
 };

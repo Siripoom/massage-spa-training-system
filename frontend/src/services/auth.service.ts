@@ -33,10 +33,12 @@ class AuthService {
    * Login user
    */
   async login(data: LoginRequest): Promise<LoginResponse> {
-    const response = await axiosInstance.post<LoginResponse>(
+    const response = await axiosInstance.post<any>(
       API_CONFIG.ENDPOINTS.AUTH.LOGIN,
       data
     );
+
+    console.log('Login response:', response.data);
 
     // Save tokens and user data to localStorage
     if (response.data.token) {

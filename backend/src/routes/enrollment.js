@@ -8,6 +8,9 @@ router.post("/", enrollmentController.createEnrollment);
 // Get all enrollments with optional filtering
 router.get("/", enrollmentController.getAllEnrollments);
 
+// Get students by batch ID
+router.get("/batch/:batchId/students", enrollmentController.getStudentsByBatchId);
+
 // Get enrollment by ID
 router.get("/:id", enrollmentController.getEnrollmentById);
 

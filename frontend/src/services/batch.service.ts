@@ -21,10 +21,21 @@ class BatchService {
    */
   async getAll(params?: BatchQueryParams): Promise<PaginatedResponse<Batch>> {
     const queryString = params ? buildQueryString(params) : '';
-    const response = await axiosInstance.get<PaginatedResponse<Batch>>(
+    const response = await axiosInstance.get<ApiResponse<Batch[]> & { pagination: any }>(
       `${API_CONFIG.ENDPOINTS.BATCHES.BASE}${queryString}`
     );
-    return response.data;
+
+    // Transform backend response to match frontend expected format
+    return {
+      data: response.data.data || [],
+      pagination: response.data.pagination || {
+        page: params?.page || 1,
+        limit: params?.limit || 10,
+        total: response.data.data?.length || 0,
+        totalPages: 1,
+      },
+      success: response.data.success,
+    };
   }
 
   /**
@@ -73,10 +84,10 @@ class BatchService {
    * Get next batch number for a course
    */
   async getNextBatchNumber(courseId: string | number): Promise<number> {
-    const response = await axiosInstance.get<ApiResponse<{ nextNumber: number }>>(
+    const response = await axiosInstance.get<ApiResponse<{ nextBatchNumber: number }>>(
       API_CONFIG.ENDPOINTS.BATCHES.NEXT_NUMBER(courseId)
     );
-    return response.data.data?.nextNumber || 1;
+    return response.data.data?.nextBatchNumber || 1;
   }
 
   /**

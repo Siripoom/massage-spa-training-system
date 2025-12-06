@@ -16,17 +16,35 @@ const axiosInstance = axios.create({
   },
 });
 
+// Function to get token from auth store
+const getTokenFromStore = () => {
+  if (typeof window === 'undefined') return null;
+
+  try {
+    // Get from Zustand persist storage
+    const authStorage = localStorage.getItem('auth-storage');
+    if (authStorage) {
+      const parsed = JSON.parse(authStorage);
+      return parsed.state?.token || null;
+    }
+
+    // Fallback to direct localStorage
+    return localStorage.getItem(API_CONFIG.STORAGE_KEYS.ACCESS_TOKEN);
+  } catch (error) {
+    console.error('Error getting token:', error);
+    return null;
+  }
+};
+
 // ==================== Request Interceptor ====================
 
 axiosInstance.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
-    // Get token from localStorage (client-side only)
-    if (typeof window !== 'undefined') {
-      const token = localStorage.getItem(API_CONFIG.STORAGE_KEYS.ACCESS_TOKEN);
+    // Get token from auth store
+    const token = getTokenFromStore();
 
-      if (token && config.headers) {
-        config.headers.Authorization = `Bearer ${token}`;
-      }
+    if (token && config.headers) {
+      config.headers.Authorization = `Bearer ${token}`;
     }
 
     // Log request in development
@@ -75,47 +93,71 @@ axiosInstance.interceptors.response.use(
       });
     }
 
-    // Handle 401 Unauthorized - Token expired
-    if (error.response?.status === 401 && !originalRequest._retry) {
-      originalRequest._retry = true;
+    // Handle 401 Unauthorized - Token invalid or expired
+    if (error.response?.status === 401) {
+      // Don't retry if already retried or if it's a login/register request
+      const isAuthEndpoint = originalRequest.url?.includes('/auth/login') ||
+        originalRequest.url?.includes('/auth/register');
 
-      try {
-        // Try to refresh token
-        if (typeof window !== 'undefined') {
-          const refreshToken = localStorage.getItem(API_CONFIG.STORAGE_KEYS.REFRESH_TOKEN);
+      if (!originalRequest._retry && !isAuthEndpoint) {
+        originalRequest._retry = true;
 
-          if (refreshToken) {
-            const response = await axios.post(
-              `${API_CONFIG.BASE_URL}${API_CONFIG.ENDPOINTS.AUTH.REFRESH_TOKEN}`,
-              { refreshToken }
-            );
+        try {
+          // Try to refresh token
+          if (typeof window !== 'undefined') {
+            // Get refresh token from auth store
+            const authStorage = localStorage.getItem('auth-storage');
+            let refreshToken = null;
 
-            const { token, refreshToken: newRefreshToken } = response.data;
-
-            // Save new tokens
-            localStorage.setItem(API_CONFIG.STORAGE_KEYS.ACCESS_TOKEN, token);
-            if (newRefreshToken) {
-              localStorage.setItem(API_CONFIG.STORAGE_KEYS.REFRESH_TOKEN, newRefreshToken);
+            if (authStorage) {
+              try {
+                const parsed = JSON.parse(authStorage);
+                refreshToken = parsed.state?.refreshToken;
+              } catch (e) {
+                console.error('Failed to parse auth storage:', e);
+              }
             }
 
-            // Retry original request with new token
-            if (originalRequest.headers) {
-              originalRequest.headers.Authorization = `Bearer ${token}`;
+            // Fallback to direct localStorage
+            if (!refreshToken) {
+              refreshToken = localStorage.getItem(API_CONFIG.STORAGE_KEYS.REFRESH_TOKEN);
             }
-            return axiosInstance(originalRequest);
+
+            if (refreshToken) {
+              const response = await axios.post(
+                `${API_CONFIG.BASE_URL}${API_CONFIG.ENDPOINTS.AUTH.REFRESH_TOKEN}`,
+                { refreshToken }
+              );
+
+              const { token, refreshToken: newRefreshToken } = response.data;
+
+              // Update both localStorage and auth store
+              localStorage.setItem(API_CONFIG.STORAGE_KEYS.ACCESS_TOKEN, token);
+              if (newRefreshToken) {
+                localStorage.setItem(API_CONFIG.STORAGE_KEYS.REFRESH_TOKEN, newRefreshToken);
+              }
+
+              // Retry original request with new token
+              if (originalRequest.headers) {
+                originalRequest.headers.Authorization = `Bearer ${token}`;
+              }
+              return axiosInstance(originalRequest);
+            }
           }
+        } catch (refreshError) {
+          console.error('Token refresh failed:', refreshError);
         }
-      } catch (refreshError) {
-        // Refresh token failed - clear storage and redirect to login
-        if (typeof window !== 'undefined') {
-          localStorage.removeItem(API_CONFIG.STORAGE_KEYS.ACCESS_TOKEN);
-          localStorage.removeItem(API_CONFIG.STORAGE_KEYS.REFRESH_TOKEN);
-          localStorage.removeItem(API_CONFIG.STORAGE_KEYS.USER_DATA);
+      }
 
-          // Redirect to login page
-          window.location.href = '/login';
-        }
-        return Promise.reject(refreshError);
+      // If we reach here, authentication failed - clear storage and redirect
+      if (typeof window !== 'undefined' && !isAuthEndpoint) {
+        localStorage.clear(); // Clear all storage
+
+        // Show error message
+        console.error('Authentication failed. Please login again.');
+
+        // Redirect to login page
+        window.location.href = '/login';
       }
     }
 

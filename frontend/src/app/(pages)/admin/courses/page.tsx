@@ -29,20 +29,32 @@ export default function CoursesPage() {
   const [isDetailModalVisible, setIsDetailModalVisible] = useState(false);
   const [viewingCourse, setViewingCourse] = useState<Course | null>(null);
   const [filterStatus, setFilterStatus] = useState<string>('all');
+  const [currentPage, setCurrentPage] = useState(1);
 
-  // Use custom hooks
-  const { data, loading, pagination, goToPage, refetch } = useCourses({ page: 1, limit: 10 });
+  // Use custom hooks - pass search and status filter to API
+  const { data, loading, pagination, goToPage, refetch } = useCourses({
+    page: currentPage,
+    limit: 10,
+    search: searchTerm,
+    status: filterStatus !== 'all' ? filterStatus : undefined,
+  });
   const { mutate: createCourse, loading: creating } = useCreateCourse();
   const { mutate: updateCourse, loading: updating } = useUpdateCourse();
   const { mutate: deleteCourse, loading: deleting } = useDeleteCourse();
 
-  const filteredCourses = data.filter(course => {
-    const matchesSearch = course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         (course.description && course.description.toLowerCase().includes(searchTerm.toLowerCase()));
-    const matchesStatus = filterStatus === 'all' || course.status === filterStatus;
+  // Use data directly from API (already filtered by backend)
+  const filteredCourses = data;
 
-    return matchesSearch && matchesStatus;
-  });
+  // Reset to page 1 when search or filter changes
+  React.useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm, filterStatus]);
+
+  // Handle page change
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    goToPage(page);
+  };
 
   const columns = [
     {
@@ -290,10 +302,10 @@ export default function CoursesPage() {
         rowKey="id"
         loading={loading}
         pagination={{
-          current: pagination.page,
+          current: currentPage,
           pageSize: pagination.limit,
           total: pagination.total,
-          onChange: goToPage,
+          onChange: handlePageChange,
           showSizeChanger: false,
           showTotal: (total) => `ทั้งหมด ${total} รายการ`,
         }}

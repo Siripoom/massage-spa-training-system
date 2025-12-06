@@ -113,6 +113,16 @@ export const API_CONFIG = {
       BASE: '/organization',
       BY_ID: (id: string | number) => `/organization/${id}`,
     },
+
+    // Dashboard
+    DASHBOARD: '/dashboard',
+
+    // Quizzes
+    QUIZZES: {
+      BASE: '/quizzes',
+      BY_ID: (id: string | number) => `/quizzes/${id}`,
+      UPCOMING: '/quizzes/upcoming',
+    },
   },
 
   // Storage keys

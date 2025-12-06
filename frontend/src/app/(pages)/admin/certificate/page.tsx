@@ -1,16 +1,16 @@
 "use client";
 
-
 import '@ant-design/v5-patch-for-react-19';
-import React, { useState, useEffect, useRef } from 'react';
-import { Tabs, Table, Button, Space, Modal, Input, message, Tag, Typography, Breadcrumb, Card } from 'antd';
+import React, { useState, useRef, useEffect } from 'react';
+import { Tabs, Table, Button, Space, Modal, Input, message, Tag, Typography, Breadcrumb, Card, Spin } from 'antd';
 import { EditOutlined, EyeOutlined, PlusOutlined, SearchOutlined, DeleteOutlined, HomeOutlined, TrophyOutlined, PrinterOutlined } from '@ant-design/icons';
 import type { TabsProps } from 'antd';
 import dayjs from 'dayjs';
 import 'dayjs/locale/th'; // Import Thai locale for dayjs
-import { v4 as uuidv4 } from 'uuid'; // For generating unique IDs
 import dynamic from 'next/dynamic'; // Import dynamic for client-side rendering
 import type Konva from 'konva'; // Import Konva as a type only to avoid SSR issues
+import { useCertificates, useCertificateTemplates, useDeleteCertificate, useDeleteCertificateTemplate } from '@/hooks';
+import type { Certificate as APICertificate, CertificateTemplate as APICertificateTemplate } from '@/types/api';
 
 dayjs.locale('th');
 
@@ -137,74 +137,46 @@ export default function CertificatePage() {
   const [activeTab, setActiveTab] = useState('templates'); // Default to templates tab
 
   // --- State for Certificate Templates Tab ---
-  const [certificateTemplates, setCertificateTemplates] = useState<CertificateTemplate[]>([]);
   const [searchTermTemplates, setSearchTermTemplates] = useState('');
   const [isTemplateDetailModalVisible, setIsTemplateDetailModalVisible] = useState(false);
   const [viewingTemplate, setViewingTemplate] = useState<CertificateTemplate | null>(null);
-  const [hasLoadedTemplates, setHasLoadedTemplates] = useState(false); // New state for hydration
 
   // Ref for the Konva Stage in the preview modal
   const stageRefForPreview = useRef<Konva.Stage | null>(null);
 
   // --- State for Issued Certificates Tab ---
-  const [issuedCertificates, setIssuedCertificates] = useState<IssuedCertificate[]>([
-    {
-      id: uuidv4(),
-      templateName: 'ใบประกาศนวดแผนไทย',
-      studentName: 'สมชาย ใจดี',
-      courseTitle: 'หลักสูตรนวดแผนไทยเบื้องต้น',
-      issueDate: '2023-07-15',
-      status: 'Issued',
-    },
-    {
-      id: uuidv4(),
-      templateName: 'ประกาศนียบัตรสปา',
-      studentName: 'สมหญิง รักเรียน',
-      courseTitle: 'หลักสูตรสปาเพื่อสุขภาพ',
-      issueDate: '2023-07-20',
-      status: 'Issued',
-    },
-    {
-      id: uuidv4(),
-      templateName: 'ใบรับรองอโรมาเธอราพี',
-      studentName: 'มานะ พากเพียร',
-      courseTitle: 'หลักสูตรอโรมาเธอราพี',
-      issueDate: '2023-07-25',
-      status: 'Revoked',
-    },
-  ]);
   const [searchTermIssued, setSearchTermIssued] = useState('');
   const [isIssuedDetailModalVisible, setIsIssuedDetailModalVisible] = useState(false);
   const [viewingIssued, setViewingIssued] = useState<IssuedCertificate | null>(null);
-  const [hasLoadedIssued, setHasLoadedIssued] = useState(false); // New state for hydration for issued
 
-  // Load certificate templates from localStorage on component mount (client-side only)
-  useEffect(() => {
-    const loadTemplates = () => {
-      try {
-        const storedTemplates = JSON.parse(localStorage.getItem('certificateTemplates') || '[]') as CertificateTemplate[];
-        setCertificateTemplates(storedTemplates);
-        setHasLoadedTemplates(true); // Mark templates as loaded
-      } catch (error) {
-        console.error("Failed to parse certificateTemplates from localStorage", error);
-        setCertificateTemplates([]);
-        setHasLoadedTemplates(true); // Still mark as loaded to proceed
-      }
-    };
-    loadTemplates();
+  // API Hooks
+  const { data: templatesData, isLoading: isLoadingTemplates } = useCertificateTemplates();
+  const { data: certificatesData, isLoading: isLoadingCertificates } = useCertificates();
+  const deleteTemplateMutation = useDeleteCertificateTemplate();
+  const deleteCertificateMutation = useDeleteCertificate();
 
-    // Add event listener for 'storage' to update when localStorage changes from other tabs
-    const handleStorageChange = (event: StorageEvent) => {
-      if (event.key === 'certificateTemplates') {
-        loadTemplates();
-      }
-    };
-    window.addEventListener('storage', handleStorageChange);
+  // Convert API data to local format
+  const certificateTemplates: CertificateTemplate[] = (templatesData?.data || []).map((template: APICertificateTemplate) => ({
+    id: template.id,
+    templateName: template.name,
+    description: `Template: ${template.name}`,
+    status: 'Published' as const,
+    createdAt: template.createdAt,
+    updatedAt: template.updatedAt,
+    designElements: typeof template.layoutData === 'object' ? template.layoutData : defaultDesignElements,
+  }));
 
-    return () => {
-      window.removeEventListener('storage', handleStorageChange);
-    };
-  }, []);
+  const issuedCertificates: IssuedCertificate[] = (certificatesData?.data || []).map((cert: APICertificate) => ({
+    id: cert.id,
+    templateName: cert.template?.name || 'N/A',
+    studentName: `${cert.user?.firstName || ''} ${cert.user?.lastName || ''}`.trim() || 'N/A',
+    courseTitle: 'Course Name', // Note: Backend doesn't include course info, might need to add
+    issueDate: cert.issueDate ? dayjs(cert.issueDate).format('YYYY-MM-DD') : 'N/A',
+    status: cert.status === 'ISSUED' ? 'Issued' as const : 'Revoked' as const,
+  }));
+
+  const hasLoadedTemplates = !isLoadingTemplates;
+  const hasLoadedIssued = !isLoadingCertificates;
 
   // --- Certificate Templates Handlers ---
   const handleCreateTemplate = () => {
@@ -222,12 +194,7 @@ export default function CertificatePage() {
       okText: 'ลบ',
       cancelText: 'ยกเลิก',
       onOk() {
-        setCertificateTemplates(prevTemplates => {
-          const updatedTemplates = prevTemplates.filter(template => template.id !== templateId);
-          localStorage.setItem('certificateTemplates', JSON.stringify(updatedTemplates));
-          message.success('ลบแม่แบบเกียรติบัตรเรียบร้อยแล้ว!');
-          return updatedTemplates;
-        });
+        deleteTemplateMutation.mutate(templateId);
       },
     });
   };
@@ -513,10 +480,6 @@ export default function CertificatePage() {
 
 
   // --- Issued Certificates Handlers ---
-  useEffect(() => {
-    setHasLoadedIssued(true);
-  }, []);
-
   const handleViewIssued = (record: IssuedCertificate) => {
     setViewingIssued(record);
     setIsIssuedDetailModalVisible(true);
@@ -534,11 +497,7 @@ export default function CertificatePage() {
       okText: 'ลบ',
       cancelText: 'ยกเลิก',
       onOk() {
-        setIssuedCertificates(prevIssued => {
-          const updatedIssued = prevIssued.filter(issued => issued.id !== issuedId);
-          message.success('ลบข้อมูลเกียรติบัตรที่ออกแล้วเรียบร้อยแล้ว!');
-          return updatedIssued;
-        });
+        deleteCertificateMutation.mutate(issuedId);
       },
     });
   };
@@ -714,7 +673,7 @@ export default function CertificatePage() {
               สร้างแม่แบบใหม่
             </Button>
           </div>
-          {hasLoadedTemplates ? (
+          <Spin spinning={isLoadingTemplates}>
             <Table
               columns={templateColumns}
               dataSource={filteredTemplates}
@@ -723,11 +682,7 @@ export default function CertificatePage() {
               pagination={{ pageSize: 10 }}
               bordered={false}
             />
-          ) : (
-            <div className="flex justify-center items-center h-40">
-              <Text>กำลังโหลดแม่แบบเกียรติบัตร...</Text>
-            </div>
-          )}
+          </Spin>
 
           {/* Modal for Viewing Template Details */}
           <Modal
@@ -768,7 +723,7 @@ export default function CertificatePage() {
                     <div className="w-full flex justify-center">
                       <DynamicCertificateCanvas
                         certificateData={viewingTemplate.designElements}
-                        onPositionChange={() => {}} // No-op function as dragging is not needed here
+                        onPositionChange={() => { }} // No-op function as dragging is not needed here
                         stageRef={stageRefForPreview} // Pass ref to get image for printing
                         scale={0.7} // Scale down for preview in modal
                       />
@@ -799,7 +754,7 @@ export default function CertificatePage() {
               onChange={(e) => setSearchTermIssued(e.target.value)}
             />
           </div>
-          {hasLoadedIssued ? (
+          <Spin spinning={isLoadingCertificates}>
             <Table
               columns={issuedColumns}
               dataSource={filteredIssued}
@@ -808,11 +763,8 @@ export default function CertificatePage() {
               pagination={{ pageSize: 10 }}
               bordered={false}
             />
-          ) : (
-            <div className="flex justify-center items-center h-40">
-              <Text>กำลังโหลดเกียรติบัตรที่ออกแล้ว...</Text>
-            </div>
-          )}
+          </Spin>
+
           {/* Modal for Viewing Issued Certificate Details */}
           <Modal
             title="รายละเอียดเกียรติบัตรที่ออกแล้ว"

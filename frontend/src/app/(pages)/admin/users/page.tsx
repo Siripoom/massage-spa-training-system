@@ -18,6 +18,7 @@ interface UserFormValues {
   phone: string;
   role: Role;
   birthDate?: dayjs.Dayjs | null;
+  password?: string;
 }
 
 export default function UsersPage() {
@@ -28,22 +29,32 @@ export default function UsersPage() {
   const [isDetailModalVisible, setIsDetailModalVisible] = useState(false);
   const [viewingUser, setViewingUser] = useState<User | null>(null);
   const [filterRole, setFilterRole] = useState<string>('all');
+  const [currentPage, setCurrentPage] = useState(1);
 
-  // Use custom hooks
-  const { data, loading, pagination, goToPage, refetch } = useUsers({ page: 1, limit: 10 });
+  // Use custom hooks - pass search and role filter to API
+  const { data, loading, pagination, goToPage, refetch } = useUsers({
+    page: currentPage,
+    limit: 10,
+    search: searchTerm,
+    role: filterRole !== 'all' ? (filterRole as Role) : undefined,
+  });
   const { mutate: createUser, loading: creating } = useCreateUser();
   const { mutate: updateUser, loading: updating } = useUpdateUser();
   const { mutate: deleteUser, loading: deleting } = useDeleteUser();
 
-  const filteredUsers = data.filter(user => {
-    const fullName = `${user.firstName} ${user.lastName}`;
-    const matchesSearch = fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         user.phone.includes(searchTerm);
-    const matchesRole = filterRole === 'all' || user.role === filterRole;
+  // Use data directly from API (already filtered by backend)
+  const filteredUsers = data;
 
-    return matchesSearch && matchesRole;
-  });
+  // Reset to page 1 when search or filter changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm, filterRole]);
+
+  // Handle page change
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    goToPage(page);
+  };
 
   const columns = [
     {
@@ -179,10 +190,13 @@ export default function UsersPage() {
       };
 
       if (editingUser) {
-        await updateUser({ id: editingUser.id, data: userData });
+        // For update, only include password if provided
+        const updateData = values.password ? { ...userData, password: values.password } : userData;
+        await updateUser({ id: editingUser.id, data: updateData });
         showSuccess('อัปเดตผู้ใช้สำเร็จ!');
       } else {
-        await createUser({ ...userData, password: '123456' }); // Default password
+        // For create, password is required
+        await createUser({ ...userData, password: values.password || 'password123' });
         showSuccess('เพิ่มผู้ใช้สำเร็จ!');
       }
 
@@ -283,10 +297,10 @@ export default function UsersPage() {
         rowKey="id"
         loading={loading}
         pagination={{
-          current: pagination.page,
+          current: currentPage,
           pageSize: pagination.limit,
           total: pagination.total,
-          onChange: goToPage,
+          onChange: handlePageChange,
           showSizeChanger: false,
           showTotal: (total) => `ทั้งหมด ${total} รายการ`,
         }}
@@ -362,6 +376,31 @@ export default function UsersPage() {
               placeholder="เลือกวันเกิด"
             />
           </Form.Item>
+
+          {!editingUser && (
+            <Form.Item
+              name="password"
+              label="รหัสผ่าน"
+              rules={[
+                { required: true, message: 'กรุณากรอกรหัสผ่าน' },
+                { min: 6, message: 'รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร' }
+              ]}
+            >
+              <Input.Password placeholder="รหัสผ่าน" />
+            </Form.Item>
+          )}
+
+          {editingUser && (
+            <Form.Item
+              name="password"
+              label="รหัสผ่านใหม่ (ไม่บังคับ)"
+              rules={[
+                { min: 6, message: 'รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร' }
+              ]}
+            >
+              <Input.Password placeholder="ใส่รหัสผ่านใหม่หากต้องการเปลี่ยน" />
+            </Form.Item>
+          )}
         </Form>
       </Modal>
 

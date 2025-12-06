@@ -21,10 +21,24 @@ class EnrollmentService {
    */
   async getAll(params?: PaginationParams): Promise<PaginatedResponse<Enrollment>> {
     const queryString = params ? buildQueryString(params) : '';
-    const response = await axiosInstance.get<PaginatedResponse<Enrollment>>(
+    const response = await axiosInstance.get<Enrollment[] | PaginatedResponse<Enrollment>>(
       `${API_CONFIG.ENDPOINTS.ENROLLMENTS.BASE}${queryString}`
     );
-    return response.data;
+
+    // Handle both array and paginated response
+    if (Array.isArray(response.data)) {
+      return {
+        data: response.data,
+        pagination: {
+          page: 1,
+          limit: response.data.length,
+          total: response.data.length,
+          totalPages: 1,
+        },
+      } as PaginatedResponse<Enrollment>;
+    }
+
+    return response.data as PaginatedResponse<Enrollment>;
   }
 
   /**
@@ -91,6 +105,28 @@ class EnrollmentService {
   async getByBatchId(batchId: string | number, params?: PaginationParams): Promise<PaginatedResponse<Enrollment>> {
     const queryParams = { ...params, batchId };
     return this.getAll(queryParams);
+  }
+
+  /**
+   * Get students by batch ID with progress
+   */
+  async getStudentsByBatchId(batchId: string | number, params?: PaginationParams & { search?: string }): Promise<PaginatedResponse<any>> {
+    const queryString = params ? buildQueryString(params) : '';
+    const response = await axiosInstance.get<ApiResponse<any[]> & { pagination: any }>(
+      `${API_CONFIG.ENDPOINTS.ENROLLMENTS.BASE}/batch/${batchId}/students${queryString}`
+    );
+
+    // Transform backend response to match frontend expected format
+    return {
+      data: response.data.data || [],
+      pagination: response.data.pagination || {
+        page: params?.page || 1,
+        limit: params?.limit || 50,
+        total: response.data.data?.length || 0,
+        totalPages: 1,
+      },
+      success: response.data.success,
+    };
   }
 }
 
